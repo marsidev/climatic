@@ -47,6 +47,7 @@
     "@typescript-eslint/method-signature-style": ["error", "property"],
     "@typescript-eslint/type-annotation-spacing": ["error"],
     "arrow-body-style": "off",
+    "camelcase": "off",
     "capitalized-comments": "off",
     "comma-dangle": [ "warn", "never" ],
     "curly": ["error", "multi-line"],
