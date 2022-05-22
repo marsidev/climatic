@@ -20,8 +20,7 @@
       "@/*": ["src/*"],
       "@controllers/*": ["src/controllers/*"],
       "@lib/*": ["src/lib/*"],
-      "@typings/*": ["src/typings/*"],
-      "@types": ["src/types.d.ts"]
+      "@types": ["src/types/types.d.ts"]
     },
     "noImplicitAny": false,
     "noImplicitReturns": true

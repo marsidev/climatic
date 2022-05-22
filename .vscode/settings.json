@@ -9,6 +9,7 @@
     "assets",
     "hooks",
     "store",
-    "scripts"
+    "scripts",
+    "types"
   ]
 }

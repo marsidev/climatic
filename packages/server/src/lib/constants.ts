@@ -1,4 +1,4 @@
-import { FetchOptions } from '../types'
+import { FetchOptions } from '@types'
 
 const { RAPIDAPI_KEY = '', RAPIDAPI_HOST = '' } = process.env
 
