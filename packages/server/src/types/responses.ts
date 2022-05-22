@@ -35,7 +35,8 @@ interface Weather {
     degree: number
   }
   condition: Condition
-  lastUpdated: number
+  updateAt: number
+  updateDateAt: string
 }
 
 export interface WeatherResponse {
@@ -69,12 +70,36 @@ interface ForecastDay {
   }
   avgHumidity: number
   condition: Condition
+  rain: {
+    chance: number
+    willItRain: boolean
+  }
+  snow: {
+    chance: number
+    willItSnow: boolean
+  }
+}
+
+// type WeatherWithoutTimestamps = Omit<Weather, 'updateAt' | 'updateDateAt'>
+interface ForecastHour extends Omit<Weather, 'updateAt' | 'updateDateAt'> {
+  hour: number
+  rain: {
+    chance: number
+    willItRain: boolean
+  }
+  snow: {
+    chance: number
+    willItSnow: boolean
+  }
+  timestamp: number
+  date: string
 }
 
 export interface Forecast {
   timestamp: number
+  date: string
   day: ForecastDay
-  hours: Weather[]
+  hours: ForecastHour[]
   astro: ForecastDayAstro
 }
 

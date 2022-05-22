@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { WeatherResponse, RapidAPIWeatherResponse } from '@types'
 import { FETCH_OPTIONS } from '@lib/constants'
 
@@ -52,7 +51,8 @@ export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
         name: text.toLowerCase(),
         icon: `https:${icon}`
       },
-      lastUpdated: last_updated_epoch * 1000
+      updateAt: last_updated_epoch * 1000,
+      updateDateAt: new Date(last_updated_epoch * 1000).toString()
     }
   }
 

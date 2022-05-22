@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { RapidAPIForecastResponse, ForecastDaySummary, ForecastHour, ForecastResponse } from '@types'
 import { FETCH_OPTIONS } from '@lib/constants'
 import { formatData as formatWeatherData } from './weather'
@@ -15,7 +14,7 @@ export const getData = async (q: string, days: string = '3'): Promise<RapidAPIFo
 }
 
 const formatDayData = (day: ForecastDaySummary) => {
-  const { maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, avgtemp_c, avgtemp_f, maxwind_mph, maxwind_kph, totalprecip_mm, totalprecip_in, avghumidity, condition } = day
+  const { maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, avgtemp_c, avgtemp_f, maxwind_mph, maxwind_kph, totalprecip_mm, totalprecip_in, avghumidity, condition, daily_will_it_rain, daily_chance_of_rain, daily_will_it_snow, daily_chance_of_snow } = day
 
   const { text, icon, code } = condition
 
@@ -47,18 +46,27 @@ const formatDayData = (day: ForecastDaySummary) => {
       id: code,
       name: text.toLowerCase(),
       icon: `https:${icon}`
+    },
+    rain: {
+      chance: daily_chance_of_rain,
+      willItRain: daily_will_it_rain === 1
+    },
+    snow: {
+      chance: daily_chance_of_snow,
+      willItSnow: daily_will_it_snow === 1
     }
   }
 }
 
 // this function is almost the same as the one in weather.ts - refactor later
 const formatHoursData = (hours: ForecastHour[]) => {
-  const result = hours.map(hour => {
-    const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch } = hour
+  const result = hours.map((hour, i) => {
+    const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch, will_it_rain, chance_of_rain, will_it_snow, chance_of_snow } = hour
 
     const { text, icon, code } = condition
 
     return {
+      hour: i,
       condition: {
         id: code,
         name: text.toLowerCase(),
@@ -83,7 +91,16 @@ const formatHoursData = (hours: ForecastHour[]) => {
         direction: wind_dir,
         degree: wind_degree
       },
-      lastUpdated: time_epoch * 1000
+      rain: {
+        chance: chance_of_rain,
+        willItRain: will_it_rain === 1
+      },
+      snow: {
+        chance: chance_of_snow,
+        willItSnow: will_it_snow === 1
+      },
+      timestamp: time_epoch * 1000,
+      date: new Date(time_epoch * 1000).toString()
     }
   })
   return result
@@ -103,6 +120,7 @@ export const formatData = (data: RapidAPIForecastResponse): ForecastResponse => 
 
     return {
       timestamp: date_epoch * 1000,
+      date: new Date(date_epoch * 1000).toString(),
       day: dayData,
       hours: hoursData,
       astro

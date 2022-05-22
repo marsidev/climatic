@@ -17,7 +17,6 @@ export const getForecast = async (server: FastifyInstance, opts: FastifyPluginOp
     }
 
     const data = formatData(forecastData)
-    // const data = formatData(forecastData)[0].day.wind.speed.kph
     return reply.send(data)
   })
 }
