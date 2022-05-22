@@ -1,5 +1,4 @@
-/* eslint-disable camelcase */
-import { ForecastDay_Astro } from '@/types/rapidapi'
+import { ForecastDayAstro } from '@/types/rapidapi'
 
 interface Temperature {
   celsius: number
@@ -10,6 +9,14 @@ interface Condition {
   id: number
   name: string
   icon: string
+}
+
+interface Location {
+  name: string
+  country: string
+  timezone: string
+  latitude: number
+  longitude: number
 }
 
 /* Weather */
@@ -27,18 +34,12 @@ interface Weather {
     direction: string
     degree: number
   }
+  condition: Condition
   lastUpdated: number
 }
 
 export interface WeatherResponse {
-  location: {
-    name: string
-    country: string
-    timezone: string
-    latitude: number
-    longitude: number
-  }
-  condition: Condition
+  location: Location
   weather: Weather
 }
 
@@ -74,11 +75,11 @@ export interface Forecast {
   timestamp: number
   day: ForecastDay
   hours: Weather[]
-  astro: ForecastDay_Astro
+  astro: ForecastDayAstro
 }
 
-// export type ForecastResponse = Forecast[]
-export interface ForecastResponse extends Array<Forecast> { }
-// export interface ForecastResponse {
-//   [index: number]: Forecast
-// }
+export interface ForecastResponse {
+  location: Location
+  currentWeather: Weather
+  forecast: Forecast[]
+}

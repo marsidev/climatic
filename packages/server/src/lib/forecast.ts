@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { RapidAPIForecastResponse, ForecastDay_Day, ForecastHour, ForecastResponse } from '@types'
+import { RapidAPIForecastResponse, ForecastDaySummary, ForecastHour, ForecastResponse } from '@types'
 import { FETCH_OPTIONS } from '@lib/constants'
+import { formatData as formatWeatherData } from './weather'
 
 const { API_URL = '' } = process.env
 
@@ -13,7 +14,7 @@ export const getData = async (q: string, days: string = '3'): Promise<RapidAPIFo
   return data
 }
 
-const formatDayData = (day: ForecastDay_Day) => {
+const formatDayData = (day: ForecastDaySummary) => {
   const { maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, avgtemp_c, avgtemp_f, maxwind_mph, maxwind_kph, totalprecip_mm, totalprecip_in, avghumidity, condition } = day
 
   const { text, icon, code } = condition
@@ -90,9 +91,11 @@ const formatHoursData = (hours: ForecastHour[]) => {
 
 // type and assign ForecastResponse
 export const formatData = (data: RapidAPIForecastResponse): ForecastResponse => {
-  const { forecast: { forecastday } } = data
+  const { forecast: { forecastday }, location, current } = data
 
-  const result = forecastday.map(fd => {
+  const { location: locationFormatted, weather: currentWeather } = formatWeatherData({ location, current })
+
+  const forecast = forecastday.map(fd => {
     const { date_epoch, day, hour, astro } = fd
 
     const dayData = formatDayData(day)
@@ -105,6 +108,12 @@ export const formatData = (data: RapidAPIForecastResponse): ForecastResponse => 
       astro
     }
   })
+
+  const result = {
+    location: locationFormatted,
+    currentWeather,
+    forecast
+  }
 
   return result
 }

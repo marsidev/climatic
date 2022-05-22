@@ -19,8 +19,6 @@ export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
   const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch } = current
   const { text, icon, code } = condition
 
-  // console.log(data.current.condition.icon)
-
   const result = {
     location: {
       name,
@@ -28,11 +26,6 @@ export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
       timezone: tz_id,
       latitude: lat,
       longitude: lon
-    },
-    condition: {
-      id: code,
-      name: text.toLowerCase(),
-      icon: `https:${icon}`
     },
     weather: {
       cloud,
@@ -53,6 +46,11 @@ export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
         },
         direction: wind_dir,
         degree: wind_degree
+      },
+      condition: {
+        id: code,
+        name: text.toLowerCase(),
+        icon: `https:${icon}`
       },
       lastUpdated: last_updated_epoch * 1000
     }

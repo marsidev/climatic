@@ -70,7 +70,7 @@ export type ForecastHour = WeatherData & {
   chance_of_snow: number
 }
 
-export interface ForecastDay_Day {
+export interface ForecastDaySummary {
   maxtemp_c: number
   maxtemp_f: number
   mintemp_c: number
@@ -92,7 +92,7 @@ export interface ForecastDay_Day {
   uv: number
 }
 
-export interface ForecastDay_Astro {
+export interface ForecastDayAstro {
   sunrise: string
   sunset: string
   moonrise: string
@@ -104,8 +104,8 @@ export interface ForecastDay_Astro {
 interface ForecastDay {
   date: string
   date_epoch: number
-  day: ForecastDay_Day
-  astro: ForecastDay_Astro
+  day: ForecastDaySummary
+  astro: ForecastDayAstro
   hour: ForecastHour[]
 }
 
