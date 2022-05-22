@@ -1,11 +1,11 @@
-import { ForecastDayAstro } from '@/types/rapidapi'
+import { RapidAPIForecastDayAstro } from '@/types/rapidapi'
 
 interface Temperature {
   celsius: number
   fahrenheit: number
 }
 
-interface Condition {
+export interface Condition {
   id: number
   name: string
   icon: string
@@ -100,7 +100,7 @@ export interface Forecast {
   date: string
   day: ForecastDay
   hours: ForecastHour[]
-  astro: ForecastDayAstro
+  astro: RapidAPIForecastDayAstro
 }
 
 export interface ForecastResponse {

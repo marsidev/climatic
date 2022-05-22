@@ -2,17 +2,17 @@
 // export type RapidAPIForecastResponse = Merge<RapidAPIWeatherResponse, RapidAPIForecast>
 
 // commons
-interface Condition {
+export interface RapidAPICondition {
   text: string
   icon: string
   code: number
 }
 
-interface WeatherData {
+interface RapidAPIWeather {
   temp_c: number
   temp_f: number
   is_day: number
-  condition: Condition
+  condition: RapidAPICondition
   wind_mph: number
   wind_kph: number
   wind_degree: number
@@ -33,12 +33,12 @@ interface WeatherData {
 }
 
 // weather
-type CurrentWeather = WeatherData & {
+type RapidAPICurrentWeather = RapidAPIWeather & {
   last_updated_epoch: number
   last_updated: string
 }
 
-interface Location {
+interface RapidAPILocation {
   name: string
   region: string
   country: string
@@ -50,14 +50,14 @@ interface Location {
 }
 
 export interface RapidAPIWeatherResponse {
-  location: Location
-  current: CurrentWeather
+  location: RapidAPILocation
+  current: RapidAPICurrentWeather
 }
 
 // forecast
 type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent'
 
-export type ForecastHour = WeatherData & {
+export type RapidAPIForecastHour = RapidAPIWeather & {
   time_epoch: number
   time: string
   windchill_c: number
@@ -72,7 +72,7 @@ export type ForecastHour = WeatherData & {
   chance_of_snow: number
 }
 
-export interface ForecastDaySummary {
+export interface RapidAPIForecastDaySummary {
   maxtemp_c: number
   maxtemp_f: number
   mintemp_c: number
@@ -90,11 +90,11 @@ export interface ForecastDaySummary {
   daily_chance_of_rain: number
   daily_will_it_snow: number
   daily_chance_of_snow: number
-  condition: Condition
+  condition: RapidAPICondition
   uv: number
 }
 
-export interface ForecastDayAstro {
+export interface RapidAPIForecastDayAstro {
   sunrise: string
   sunset: string
   moonrise: string
@@ -103,16 +103,16 @@ export interface ForecastDayAstro {
   moon_illumination: string
 }
 
-interface ForecastDay {
+interface RapidAPIForecastDay {
   date: string
   date_epoch: number
-  day: ForecastDaySummary
-  astro: ForecastDayAstro
-  hour: ForecastHour[]
+  day: RapidAPIForecastDaySummary
+  astro: RapidAPIForecastDayAstro
+  hour: RapidAPIForecastHour[]
 }
 
 export interface RapidAPIForecastResponse extends RapidAPIWeatherResponse {
   forecast: {
-    forecastday: ForecastDay[]
+    forecastday: RapidAPIForecastDay[]
   }
 }

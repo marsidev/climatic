@@ -1,4 +1,4 @@
-import { WeatherResponse, RapidAPIWeatherResponse } from '@types'
+import { WeatherResponse, RapidAPIWeatherResponse, RapidAPICondition, Condition } from '@types'
 import { FETCH_OPTIONS } from '@lib/constants'
 
 const { API_URL = '' } = process.env
@@ -12,11 +12,19 @@ export const getData = async (q: string, days: string = '3'): Promise<RapidAPIWe
   return data
 }
 
+export const formatCondition = (condition: RapidAPICondition): Condition => {
+  const { text, icon, code } = condition
+  return {
+    id: code,
+    name: text,
+    icon: icon.replace('//cdn.weatherapi.com/weather/64x64', '')
+  }
+}
+
 export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
   const { location, current } = data
   const { country, name, lat, lon, tz_id } = location
   const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch } = current
-  const { text, icon, code } = condition
 
   const result = {
     location: {
@@ -46,11 +54,7 @@ export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
         direction: wind_dir,
         degree: wind_degree
       },
-      condition: {
-        id: code,
-        name: text.toLowerCase(),
-        icon: `https:${icon}`
-      },
+      condition: formatCondition(condition),
       updateAt: last_updated_epoch * 1000,
       updateDateAt: new Date(last_updated_epoch * 1000).toString()
     }
