@@ -1,15 +1,24 @@
+import 'isomorphic-fetch'
 import '@styles/index.css'
 import theme from '@lib/theme'
 import App from '@/App'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ChakraProvider } from '@chakra-ui/react'
 
-const Content = () => (
-  <ChakraProvider theme={theme}>
-    <App />
-  </ChakraProvider>
-)
+let container: any = null
 
-const container = document.getElementById('root') as HTMLElement
-const root = createRoot(container)
-root.render(<Content />)
+document.addEventListener('DOMContentLoaded', () => {
+  if (!container) {
+    container = document.getElementById('root') as HTMLElement
+    const root = createRoot(container)
+
+    root.render(
+      <StrictMode>
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </StrictMode>
+    )
+  }
+})
