@@ -20,9 +20,11 @@
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@lib/*": ["src/lib/*"],
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
+      "@types": ["src/types/types.d.ts"],
       "@utils/*": ["src/utils/*"]
     },
     "allowSyntheticDefaultImports": true,
