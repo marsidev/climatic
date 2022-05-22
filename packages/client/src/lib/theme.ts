@@ -1,4 +1,9 @@
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
+import '@fontsource/raleway/variable.css'
+import '@fontsource/rubik/variable.css'
+import '@fontsource/nunito/variable.css'
+import '@fontsource/roboto/300.css'
+import '@fontsource/aileron/300.css'
 
 const components = {
   Button: {
@@ -10,11 +15,16 @@ const components = {
   }
 }
 
+const fonts = {
+  heading: 'Aileron, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+  body: 'RalewayVariable, NunitoVariable, Roboto, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'
+}
+
 const config: ThemeConfig = {
   initialColorMode: 'light',
   useSystemColorMode: true
 }
 
-const theme = extendTheme({ config, components })
+const theme = extendTheme({ config, components, fonts })
 
 export default theme

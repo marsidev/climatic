@@ -32,6 +32,11 @@ importers:
       '@chakra-ui/react': ^2.0.2
       '@emotion/react': ^11.9.0
       '@emotion/styled': ^11.8.1
+      '@fontsource/aileron': ^4.5.3
+      '@fontsource/nunito': ^4.5.9
+      '@fontsource/raleway': ^4.5.8
+      '@fontsource/roboto': ^4.5.7
+      '@fontsource/rubik': ^4.5.9
       '@types/isomorphic-fetch': ^0.0.36
       '@types/react': ^18.0.9
       '@types/react-dom': ^18.0.4
@@ -51,6 +56,11 @@ importers:
       '@chakra-ui/react': 2.0.2_vtrglxfea6xbixuc4tyvssxkb4
       '@emotion/react': 11.9.0_a6wmty2wzb4cbtbfuwxel6efw4
       '@emotion/styled': 11.8.1_gugxekeluewmy6drcmw3dlruiq
+      '@fontsource/aileron': 4.5.3
+      '@fontsource/nunito': 4.5.9
+      '@fontsource/raleway': 4.5.8
+      '@fontsource/roboto': 4.5.7
+      '@fontsource/rubik': 4.5.9
       '@vitejs/plugin-react': 1.3.2
       framer-motion: 6.3.3_ef5jwxihqo6n7gxfmzogljlgcm
       isomorphic-fetch: 3.0.0
@@ -1422,6 +1432,26 @@ packages:
       send: 0.17.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@fontsource/aileron/4.5.3:
+    resolution: {integrity: sha512-pFqJqwhvNSb5bkrMRCJ66eyxtosPtR0THTfti6l1sl9vBWs7kQlu0mzXPdqr9qyLy82OnzsQhBGYCBszbbiV/w==}
+    dev: false
+
+  /@fontsource/nunito/4.5.9:
+    resolution: {integrity: sha512-HlCPb5MSCSEx5KhIYsIU6JqlOtvfFnTT2RB0Gcz3Pdht9rkShEYaYKVvlgYQV03+Eom8HUAYQJcDT5gaRbm6AQ==}
+    dev: false
+
+  /@fontsource/raleway/4.5.8:
+    resolution: {integrity: sha512-4aHInZYFegsrX/8/roXUoZHLfgrPGkkQaH/CYDx486RKf+5V/GIIetnVt5SO9mLdOqeqKJrpgLkL7kSf24SYug==}
+    dev: false
+
+  /@fontsource/roboto/4.5.7:
+    resolution: {integrity: sha512-m57UMER23Mk6Drg9OjtHW1Y+0KPGyZfE5XJoPTOsLARLar6013kJj4X2HICt+iFLJqIgTahA/QAvSn9lwF1EEw==}
+    dev: false
+
+  /@fontsource/rubik/4.5.9:
+    resolution: {integrity: sha512-atF0Mvh6woVFPX2p2MdVO0JIqw6DSjrb82EQJ9UaHnJeJ79SfaTUFxRoQMF3yF6ehaY5el3SgynSX5w02O3lqQ==}
     dev: false
 
   /@humanwhocodes/config-array/0.9.5:
