@@ -55,6 +55,8 @@ export interface RapidAPIWeatherResponse {
 }
 
 // forecast
+type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent'
+
 export type ForecastHour = WeatherData & {
   time_epoch: number
   time: string
@@ -97,7 +99,7 @@ export interface ForecastDayAstro {
   sunset: string
   moonrise: string
   moonset: string
-  moon_phase: string
+  moon_phase: MoonPhase
   moon_illumination: string
 }
 
