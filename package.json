@@ -1,0 +1,67 @@
+{
+  "private": true,
+  "author": {
+    "name": "Luis Marsiglia",
+    "email": "marsiglia.business@gmail.com"
+  },
+  "name": "weatherfull",
+  "description": "weatherfull is a weather forecast app for 2-weeks hackathon.",
+  "version": "1.0.0",
+  "repository": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "pnpm --filter ./packages/client build",
+    "start": "pnpm --filter ./packages/server start",
+    "dev": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client dev",
+    "dev:server": "pnpm --filter ./packages/server dev",
+    "dev:client": "pnpm --filter ./packages/client dev",
+    "start-all": "pnpm build && pnpm start",
+    "lint": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client lint",
+    "lint-fix": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client lint-fix",
+    "tsc": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client tsc",
+    "heroku": "git push heroku HEAD:main",
+    "prebuild": "npm install -g pnpm && pnpm install"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.15.0",
+    "eslint-config-xo": "^0.41.0",
+    "tslib": "^2.4.0",
+    "typescript": "^4.6.4"
+  },
+  "packageManager": "pnpm@7.0.0",
+  "pnpm": {
+    "overrides": {
+      "client": "workspace:*",
+      "server": "workspace:*"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@babel/core"
+      ],
+      "allowedVersions": {
+        "react": "18",
+        "react-dom": "18"
+      }
+    }
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "keywords": [
+    "weather",
+    "rapidapi",
+    "hackathon",
+    "fastify",
+    "vite",
+    "react",
+    "chakra-ui",
+    "typescript"
+  ]
+}

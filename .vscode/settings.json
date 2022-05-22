@@ -1,0 +1,14 @@
+{
+  "conventionalCommits.scopes": [
+    "root",
+    "components",
+    "layout",
+    "pages",
+    "api",
+    "styles",
+    "assets",
+    "hooks",
+    "store",
+    "scripts"
+  ]
+}

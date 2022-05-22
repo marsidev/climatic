@@ -1,0 +1,41 @@
+{
+  "location": {
+    "name": "Puerto Ordaz",
+    "region": "Bolivar",
+    "country": "Venezuela",
+    "lat": 8.3,
+    "lon": -62.72,
+    "tz_id": "America/Caracas",
+    "localtime_epoch": 1653178011,
+    "localtime": "2022-05-21 20:06"
+  },
+  "current": {
+    "last_updated_epoch": 1653174000,
+    "last_updated": "2022-05-21 19:00",
+    "temp_c": 28.7,
+    "temp_f": 83.7,
+    "is_day": 0,
+    "condition": {
+      "text": "Clear",
+      "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+      "code": 1000
+    },
+    "wind_mph": 10.5,
+    "wind_kph": 16.9,
+    "wind_degree": 59,
+    "wind_dir": "ENE",
+    "pressure_mb": 1014,
+    "pressure_in": 29.95,
+    "precip_mm": 0,
+    "precip_in": 0,
+    "humidity": 57,
+    "cloud": 18,
+    "feelslike_c": 30.4,
+    "feelslike_f": 86.7,
+    "vis_km": 10,
+    "vis_miles": 6,
+    "uv": 1,
+    "gust_mph": 14.1,
+    "gust_kph": 22.7
+  }
+}
