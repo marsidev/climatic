@@ -1,6 +1,12 @@
 // import type { Merge } from '@lib/types'
 // export type RapidAPIForecastResponse = Merge<RapidAPIWeatherResponse, RapidAPIForecast>
 
+export interface RapidApiRequestQuery {
+  q: string
+  days?: number
+  lang?: 'es' | 'en'
+}
+
 // commons
 export interface RapidAPICondition {
   text: string

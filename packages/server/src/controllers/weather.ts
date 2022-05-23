@@ -11,7 +11,7 @@ export const getWeather = async (server: FastifyInstance, opts: FastifyPluginOpt
       original = '0'
     } = query
 
-    const weatherData = await getData(q)
+    const weatherData = await getData({ q })
 
     if (original === '1') {
       return reply.send(weatherData)

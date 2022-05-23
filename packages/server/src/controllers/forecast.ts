@@ -10,7 +10,7 @@ export const getForecast = async (server: FastifyInstance, opts: FastifyPluginOp
       original = '0'
     } = query
 
-    const forecastData = await getData(q)
+    const forecastData = await getData({ q })
 
     if (original === '1') {
       return reply.send(forecastData)

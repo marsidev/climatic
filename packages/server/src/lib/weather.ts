@@ -1,10 +1,14 @@
-import { WeatherResponse, RapidAPIWeatherResponse, RapidAPICondition, Condition } from '@types'
+import type { WeatherResponse, RapidAPIWeatherResponse, RapidAPICondition, Condition, RapidApiRequestQuery } from '@types'
+
 import { FETCH_OPTIONS } from '@lib/constants'
 
 const { API_URL = '' } = process.env
 
-export const getData = async (q: string, days: string = '3'): Promise<RapidAPIWeatherResponse> => {
-  const queryString = new URLSearchParams({ q, days }).toString()
+export const getData = async (props: RapidApiRequestQuery): Promise<RapidAPIWeatherResponse> => {
+  const { q, days = 3, lang = 'es' }: RapidApiRequestQuery = props
+
+  const params = { q, days: days.toString(), lang }
+  const queryString = new URLSearchParams(params).toString()
   const url = `${API_URL}/current.json?${queryString}`
 
   const response = await fetch(url, FETCH_OPTIONS)
