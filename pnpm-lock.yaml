@@ -87,7 +87,9 @@ importers:
       eslint: ^8.16.0
       eslint-plugin-node: ^11.1.0
       fastify: ^3.29.0
+      fastify-plugin: ^3.0.1
       isomorphic-fetch: ^3.0.0
+      node-cache: ^5.1.2
       ts-node: ^10.8.0
       ts-node-dev: ^1.1.8
       tsconfig-paths: ^4.0.0
@@ -97,7 +99,9 @@ importers:
       cross-env: 7.0.3
       dotenv: 16.0.1
       fastify: 3.29.0
+      fastify-plugin: 3.0.1
       isomorphic-fetch: 3.0.0
+      node-cache: 5.1.2
       ts-node: 10.8.0_ihi2kx3po6rqbrzdqgpcfvwinm
       tsconfig-paths: 4.0.0
     devDependencies:
@@ -2003,6 +2007,11 @@ packages:
     resolution: {integrity: sha512-GRMWDxpOB6Dgk2E5Uo+3eEBvtOOlimMmpbFiKuLFnQzYDavtLFY3K5ona41jgN/WdRZtG7utuVSVTL4HbZHGkw==}
     dev: true
 
+  /clone/2.1.2:
+    resolution: {integrity: sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=}
+    engines: {node: '>=0.8'}
+    dev: false
+
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -3611,6 +3620,13 @@ packages:
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
     dev: true
+
+  /node-cache/5.1.2:
+    resolution: {integrity: sha512-t1QzWwnk4sjLWaQAS8CHgOJ+RAfmHpxFWmc36IWTiWHQfs0w5JDMBS1b1ZxQteo0vVVuWJvIUKHDkkeK7vIGCg==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      clone: 2.1.2
+    dev: false
 
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
