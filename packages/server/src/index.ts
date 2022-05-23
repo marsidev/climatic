@@ -1,8 +1,9 @@
 import type { Server, IncomingMessage, ServerResponse } from 'http'
+import type { FastifyInstance } from 'fastify'
 
 import 'dotenv/config'
 import 'isomorphic-fetch'
-import fastify, { FastifyInstance } from 'fastify'
+import fastify from 'fastify'
 import routing from './routing'
 import serve from './serve'
 import cache from './plugins/cache'

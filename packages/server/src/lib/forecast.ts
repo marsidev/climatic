@@ -1,11 +1,12 @@
-import type { RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, ForecastResponse, RapidApiRequestQuery } from '@types'
+import type { RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, ForecastResponse, RapidApiRequestQuery, RapidAPIForecastDay } from '@types'
 
 import { FETCH_OPTIONS } from '@lib/constants'
-import { formatData as formatWeatherData, formatCondition } from './weather'
+import { formatData as formatWeatherData, formatCondition } from '@lib/weather'
+import { fillNextForecastDays } from '@lib/dailyForecast'
 
 const { API_URL = '' } = process.env
 
-export const getData = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
+export const fetchForecastData = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
   const { q, days = 3, lang = 'es' }: RapidApiRequestQuery = props
 
   const params = { q, days: days.toString(), lang }
@@ -13,7 +14,10 @@ export const getData = async (props: RapidApiRequestQuery): Promise<RapidAPIFore
   const url = `${API_URL}/forecast.json?${queryString}`
 
   const response = await fetch(url, FETCH_OPTIONS)
-  const data = await response.json()
+  const _data: RapidAPIForecastResponse = await response.json()
+
+  const data = fillNextForecastDays(_data, { q, days, lang })
+
   return data
 }
 
@@ -56,7 +60,6 @@ const formatDayData = (day: RapidAPIForecastDaySummary) => {
   }
 }
 
-// this function is almost the same as the one in weather.ts - refactor later
 const formatHoursData = (hours: RapidAPIForecastHour[]) => {
   const result = hours.map((hour, i) => {
     const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch, will_it_rain, chance_of_rain, will_it_snow, chance_of_snow } = hour
@@ -98,25 +101,28 @@ const formatHoursData = (hours: RapidAPIForecastHour[]) => {
   return result
 }
 
-// type and assign ForecastResponse
+export const formatForecastData = (data: RapidAPIForecastDay) => {
+  const { date_epoch, day, hour, astro, date } = data
+
+  const dayData = formatDayData(day)
+  const hoursData = formatHoursData(hour)
+
+  return {
+    timestamp: date_epoch * 1000,
+    date,
+    day: dayData,
+    hours: hoursData,
+    astro
+  }
+}
+
 export const formatData = (data: RapidAPIForecastResponse): ForecastResponse => {
   const { forecast: { forecastday }, location, current } = data
 
   const { location: locationFormatted, weather: currentWeather } = formatWeatherData({ location, current })
 
-  const forecast = forecastday.map(fd => {
-    const { date_epoch, day, hour, astro } = fd
-
-    const dayData = formatDayData(day)
-    const hoursData = formatHoursData(hour)
-
-    return {
-      timestamp: date_epoch * 1000,
-      date: new Date(date_epoch * 1000).toString(),
-      day: dayData,
-      hours: hoursData,
-      astro
-    }
+  const forecast = forecastday.map(foreData => {
+    return formatForecastData(foreData)
   })
 
   const result = {

@@ -1,4 +1,4 @@
-import { FastifyRequest } from 'fastify'
+import type { FastifyRequest } from 'fastify'
 
 export interface Ping { ping: string }
 
@@ -10,8 +10,22 @@ export interface FetchOptions {
 }
 
 interface WeatherQuerystring {
-  Querystring: { q: string, original: string }
+  q: string
+  original?: string
 }
 
-export type WeatherRequest = FastifyRequest<WeatherQuerystring>
-export type ForecastRequest = FastifyRequest<WeatherQuerystring>
+export interface ForecastQuerystring extends WeatherQuerystring {
+  days?: number
+  dt?: string
+}
+
+interface WeatherRequestQuery {
+  Querystring: WeatherQuerystring
+}
+
+interface ForecastRequestQuery {
+  Querystring: ForecastQuerystring
+}
+
+export type WeatherRequest = FastifyRequest<WeatherRequestQuery>
+export type ForecastRequest = FastifyRequest<ForecastRequestQuery>

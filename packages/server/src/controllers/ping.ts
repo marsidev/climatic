@@ -1,5 +1,5 @@
-import { Ping } from '@types'
-import { FastifyInstance, FastifyPluginOptions, FastifyPluginCallback, FastifyReply, FastifyRequest } from 'fastify'
+import type { Ping } from '@types'
+import type { FastifyInstance, FastifyPluginOptions, FastifyPluginCallback, FastifyReply, FastifyRequest } from 'fastify'
 
 export const ping: FastifyPluginCallback = async (server: FastifyInstance, opts: FastifyPluginOptions) => {
   server.get('/', opts, async (_request: FastifyRequest, reply: FastifyReply) => {

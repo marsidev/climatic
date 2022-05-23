@@ -1,17 +1,13 @@
-import 'isomorphic-fetch'
-import { WeatherRequest } from '@types'
-import { FastifyInstance, FastifyPluginOptions, FastifyReply } from 'fastify'
-import { formatData, getData } from '@lib/weather'
+import type { WeatherRequest } from '@types'
+import type { FastifyInstance, FastifyPluginOptions, FastifyReply } from 'fastify'
+import { formatData, fetchWeatherData } from '@lib/weather'
 
 export const getWeather = async (server: FastifyInstance, opts: FastifyPluginOptions) => {
   server.get('/', opts, async (request: WeatherRequest, reply: FastifyReply) => {
     const { query } = request
-    const {
-      q = 'Los Angeles',
-      original = '0'
-    } = query
+    const { q = 'Los Angeles', original = '0' } = query
 
-    const weatherData = await getData({ q })
+    const weatherData = await fetchWeatherData({ q })
 
     if (original === '1') {
       return reply.send(weatherData)

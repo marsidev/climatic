@@ -4,7 +4,7 @@ import { FETCH_OPTIONS } from '@lib/constants'
 
 const { API_URL = '' } = process.env
 
-export const getData = async (props: RapidApiRequestQuery): Promise<RapidAPIWeatherResponse> => {
+export const fetchWeatherData = async (props: RapidApiRequestQuery): Promise<RapidAPIWeatherResponse> => {
   const { q, days = 3, lang = 'es' }: RapidApiRequestQuery = props
 
   const params = { q, days: days.toString(), lang }
@@ -12,7 +12,7 @@ export const getData = async (props: RapidApiRequestQuery): Promise<RapidAPIWeat
   const url = `${API_URL}/current.json?${queryString}`
 
   const response = await fetch(url, FETCH_OPTIONS)
-  const data = await response.json()
+  const data: RapidAPIWeatherResponse = await response.json()
   return data
 }
 
@@ -29,6 +29,8 @@ export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
   const { location, current } = data
   const { country, name, lat, lon, tz_id } = location
   const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch } = current
+
+  const timestamp = last_updated_epoch * 1000
 
   const result = {
     location: {
@@ -59,8 +61,8 @@ export const formatData = (data: RapidAPIWeatherResponse): WeatherResponse => {
         degree: wind_degree
       },
       condition: formatCondition(condition),
-      updateAt: last_updated_epoch * 1000,
-      updateDateAt: new Date(last_updated_epoch * 1000).toString()
+      updateAt: timestamp,
+      updateDateAt: new Date(timestamp).toISOString()
     }
   }
 

@@ -1,10 +1,8 @@
-// import type { Merge } from '@lib/types'
-// export type RapidAPIForecastResponse = Merge<RapidAPIWeatherResponse, RapidAPIForecast>
-
 export interface RapidApiRequestQuery {
   q: string
   days?: number
   lang?: 'es' | 'en'
+  dt?: string
 }
 
 // commons
@@ -39,7 +37,7 @@ interface RapidAPIWeather {
 }
 
 // weather
-type RapidAPICurrentWeather = RapidAPIWeather & {
+interface RapidAPICurrentWeather extends RapidAPIWeather {
   last_updated_epoch: number
   last_updated: string
 }
@@ -63,7 +61,7 @@ export interface RapidAPIWeatherResponse {
 // forecast
 type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent'
 
-export type RapidAPIForecastHour = RapidAPIWeather & {
+export interface RapidAPIForecastHour extends RapidAPIWeather {
   time_epoch: number
   time: string
   windchill_c: number
@@ -109,7 +107,7 @@ export interface RapidAPIForecastDayAstro {
   moon_illumination: string
 }
 
-interface RapidAPIForecastDay {
+export interface RapidAPIForecastDay {
   date: string
   date_epoch: number
   day: RapidAPIForecastDaySummary

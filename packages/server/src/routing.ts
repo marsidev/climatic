@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify'
+import type { FastifyInstance } from 'fastify'
 import { ping, getWeather, getForecast } from '@controllers/index'
 
 const routing = (server: FastifyInstance): void => {
