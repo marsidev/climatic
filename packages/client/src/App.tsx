@@ -5,6 +5,7 @@ import { useEffect, FC } from 'react'
 import { Flex } from '@chakra-ui/react'
 import GeoPermissionButton from '@components/GeoPermissionButton'
 import MainWeather from '@components/MainWeather'
+import Forecast from '@components/Forecast'
 import useGeo from '@hooks/useGeo'
 import useForecast from '@hooks/useForecast'
 
@@ -20,6 +21,8 @@ const App: FC<FlexProps> = ({ ...props }) => {
     console.log(forecastData)
   }, [forecastData])
 
+  if (!forecastData) return null
+
   return (
     <Flex
       as='main'
@@ -32,8 +35,8 @@ const App: FC<FlexProps> = ({ ...props }) => {
       {...props}
     >
       <GeoPermissionButton />
-      <MainWeather />
-
+      <MainWeather data={forecastData} />
+      <Forecast data={forecastData} mt={8} />
     </Flex>
   )
 }
