@@ -1,22 +1,24 @@
-import { useEffect } from 'react'
-import { FlexProps } from '@chakra-ui/react'
+import type { FlexProps } from '@chakra-ui/react'
+import type { ForecastResponse } from '@types'
 
-import { FC } from 'react'
+import { useEffect, FC } from 'react'
 import { Flex } from '@chakra-ui/react'
-import useGeo from '@hooks/useGeo'
 import GeoPermissionButton from '@components/GeoPermissionButton'
 import MainWeather from '@components/MainWeather'
+import useGeo from '@hooks/useGeo'
+import useForecast from '@hooks/useForecast'
 
 const App: FC<FlexProps> = ({ ...props }) => {
   const { latitude, longitude } = useGeo()
-  // const fetchData = async () => {
-  //   const data = await fetch('/api/ping').then(r => r.json())
-  //   setData(data)
-  // }
+  const forecastData = useForecast() as ForecastResponse
 
   useEffect(() => {
     console.log({ latitude, longitude })
   }, [latitude])
+
+  useEffect(() => {
+    console.log(forecastData)
+  }, [forecastData])
 
   return (
     <Flex
