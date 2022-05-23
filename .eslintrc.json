@@ -54,7 +54,7 @@
     "guard-for-in": "off",
     "indent": ["error", 2],
     "no-mixed-spaces-and-tabs": "off",
-    "no-console": "warn",
+    "no-console": "off",
     "no-negated-condition": "off",
     "no-extend-native": "off",
     "no-return-assign": "off",
