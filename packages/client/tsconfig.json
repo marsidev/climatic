@@ -25,7 +25,8 @@
       "@services/*": ["src/services/*"],
       "@styles/*": ["src/styles/*"],
       "@types": ["src/types/types.d.ts"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@server/*": ["../server/src/*"],
     },
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
@@ -36,7 +37,10 @@
     "noUnusedLocals": true,
     "importHelpers": true,
     "experimentalDecorators": true,
-    "noImplicitReturns": true
+    "noImplicitReturns": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
