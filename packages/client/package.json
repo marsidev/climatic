@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.0",
-    "@chakra-ui/react": "^2.0.2",
+    "@chakra-ui/react": "^2.1.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fontsource/aileron": "^4.5.3",
@@ -39,7 +39,7 @@
     "@types/isomorphic-fetch": "^0.0.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
-    "eslint": "^8.15.0",
+    "eslint": "^8.16.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0"
   }

@@ -20,7 +20,7 @@
     "dotenv": "^16.0.1",
     "fastify": "^3.29.0",
     "isomorphic-fetch": "^3.0.0",
-    "ts-node": "^10.7.0",
+    "ts-node": "^10.8.0",
     "tsconfig-paths": "^4.0.0"
   },
   "devDependencies": {

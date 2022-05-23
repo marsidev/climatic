@@ -23,14 +23,15 @@
     "lint-fix": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client lint-fix",
     "tsc": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client tsc",
     "heroku": "git push heroku HEAD:main",
-    "prebuild": "npm install -g pnpm && pnpm install"
+    "prebuild": "npm install -g pnpm && pnpm install",
+    "up-all": "pnpm -r up"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.15.0",
+    "eslint": "^8.16.0",
     "eslint-config-xo": "^0.41.0",
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
