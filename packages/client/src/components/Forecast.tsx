@@ -1,7 +1,7 @@
 import type { ForecastResponse } from '@types'
 
 import { FC } from 'react'
-import { chakra, Flex, FlexProps, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Flex, FlexProps, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { formatNumber } from '@lib/intl'
 
 interface ForecastProps extends FlexProps {
