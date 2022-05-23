@@ -9,4 +9,6 @@ export default (server: FastifyInstance): void => {
     root: clientBuildPath,
     prefix: '/'
   })
+
+  server.after(err => err ? console.log(err) : console.log('Static client serving is ready.'))
 }
