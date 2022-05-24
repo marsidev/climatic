@@ -2,7 +2,7 @@ import type { ForecastResponse } from '@types'
 
 import { FC } from 'react'
 import { Flex, FlexProps, HStack, Image, Text, VStack } from '@chakra-ui/react'
-import { formatNumber, getDayName } from '@lib/intl'
+import { formatInt, getDayName } from '@lib/intl'
 
 interface ForecastProps extends FlexProps {
   data: ForecastResponse
@@ -30,8 +30,8 @@ const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
           const unit = 'celsius'
           const minTemp = temperature[unit].min
           const maxTemp = temperature[unit].max
-          const minTempStr = formatNumber(minTemp)
-          const maxTempStr = formatNumber(maxTemp)
+          const minTempStr = formatInt(minTemp)
+          const maxTempStr = formatInt(maxTemp)
 
           return (
             <HStack key={timestamp} justify='space-between' w='100%'>

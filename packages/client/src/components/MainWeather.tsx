@@ -2,7 +2,7 @@ import type { ForecastResponse } from '@types'
 
 import { FC } from 'react'
 import { Flex, FlexProps, Heading } from '@chakra-ui/react'
-import { formatNumber, formatTemperature } from '@lib/intl'
+import { formatTemperature } from '@lib/intl'
 
 interface MainWeatherProps extends FlexProps {
   data: ForecastResponse
@@ -13,7 +13,7 @@ const MainWeather: FC<MainWeatherProps> = ({ data, ...props }) => {
   const { condition } = currentWeather
 
   const unit = 'celsius'
-  const temperature = formatNumber(currentWeather.temperature[unit])
+  const temperature = currentWeather.temperature[unit]
   const temperatureStr = formatTemperature(temperature, unit)
 
   return (
