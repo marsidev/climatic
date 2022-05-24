@@ -70,7 +70,7 @@ export declare const formatForecastData: (data: RapidAPIForecastDay) => {
         timestamp: number;
         date: string;
     }[];
-    astro: import("@types").RapidAPIForecastDayAstro;
+    astro: import("@types").Astro;
 };
 export declare const formatData: (data: RapidAPIForecastResponse) => ForecastResponse;
 //# sourceMappingURL=forecast.d.ts.map

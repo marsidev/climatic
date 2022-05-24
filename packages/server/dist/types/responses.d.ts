@@ -1,4 +1,12 @@
-import { RapidAPIForecastDayAstro } from '@/types/rapidapi';
+declare type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent';
+export interface Astro {
+    sunrise: string;
+    sunset: string;
+    moonrise: string;
+    moonset: string;
+    moon_phase: MoonPhase;
+    moon_illumination: string;
+}
 interface Temperature {
     celsius: number;
     fahrenheit: number;
@@ -89,7 +97,7 @@ export interface Forecast {
     date: string;
     day: ForecastDay;
     hours: ForecastHour[];
-    astro: RapidAPIForecastDayAstro;
+    astro: Astro;
 }
 export interface ForecastResponse {
     location: Location;
