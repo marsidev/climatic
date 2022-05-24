@@ -14,11 +14,11 @@
     "clean": "npx rimraf ../../public",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint-fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
-    "tsc": "tsc --noEmit --incremental false"
+    "tsc": "tsc --noEmit"
   },
   "dependencies": {
     "@babel/core": "^7.18.0",
-    "@chakra-ui/react": "^2.1.0",
+    "@chakra-ui/react": "^2.1.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fontsource/aileron": "^4.5.3",
@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.36",
     "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.4",
+    "@types/react-dom": "^18.0.5",
     "eslint": "^8.16.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0"
