@@ -4,12 +4,12 @@ import type { Key, Options } from 'node-cache'
 import fastifyPlugin from 'fastify-plugin'
 import NodeCache from 'node-cache'
 
-const CACHE_TTL: number = 60 // cache duration in seconds
+const CACHE_TTL: number = 900 // cache duration in seconds - 15 minutes
 let CACHE_KEY: Key
 
 const CACHE_OPTIONS: Options = {
   stdTTL: CACHE_TTL,
-  checkperiod: 600
+  checkperiod: CACHE_TTL * 2
 }
 const CacheInstance = new NodeCache(CACHE_OPTIONS)
 
