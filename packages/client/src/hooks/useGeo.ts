@@ -1,19 +1,27 @@
-import type { GeoPermission, GeoStatus, GeoPosition } from '@types'
+import type { GeoPermission, GeoStatus, GeoPosition, Geo } from '@types'
 import { useEffect, useState } from 'react'
 import { getGeoPermission, saveGeoPermission } from '@lib/localStorage'
+import { DEFAULT_LOCATION } from '@lib/constants'
 
-interface UseGeoReturn {
-  latitude: GeoPosition
-  longitude: GeoPosition
-  geoStatus: GeoStatus
-  grantPermission: () => void
+const round = (num: number) => {
+  return Math.round(num * 100) / 100
 }
 
-const useGeo = (): UseGeoReturn => {
+const catchFunction = (error: any) => {
+  if (error.code === error.PERMISSION_DENIED) {
+    console.log('geolocalization permission denied')
+    return 'denied'
+  }
+
+  console.log('error while geolocating')
+  return 'error'
+}
+
+const useGeo = (): Geo => {
   const [geoPermission, setGeoPermission] = useState<GeoPermission>('prompt')
-  const [lat, setLat] = useState<GeoPosition>(null)
-  const [lon, setLon] = useState<GeoPosition>(null)
-  const [geoStatus, setGeoStatus] = useState<GeoStatus>(null)
+  const [lat, setLat] = useState<GeoPosition>(DEFAULT_LOCATION.latitude)
+  const [lon, setLon] = useState<GeoPosition>(DEFAULT_LOCATION.longitude)
+  const [status, setStatus] = useState<GeoStatus>('loading')
 
   useEffect(() => {
     const permission = getGeoPermission()
@@ -21,7 +29,8 @@ const useGeo = (): UseGeoReturn => {
   }, [])
 
   useEffect(() => {
-    if (geoPermission === 'granted' && !lat && !lon) {
+    // add a better validator, such as checking if the forecast data exists and has the same coordinates
+    if (geoPermission === 'granted') {
       getLocation()
     }
   }, [geoPermission])
@@ -33,15 +42,17 @@ const useGeo = (): UseGeoReturn => {
 
   function getLocation() {
     if (!navigator.geolocation) {
-      setGeoStatus('not_supported')
+      setStatus('not_supported')
     } else {
-      setGeoStatus('loading')
+      setStatus('loading')
+
       navigator.geolocation.getCurrentPosition(position => {
-        setGeoStatus('success')
-        setLat(position.coords.latitude)
-        setLon(position.coords.longitude)
-      }, () => {
-        setGeoStatus('error')
+        const { coords: { latitude, longitude } } = position
+        setLat(round(latitude))
+        setLon(round(longitude))
+        setStatus('success')
+      }, error => {
+        setStatus(catchFunction(error))
       })
     }
   }
@@ -49,7 +60,7 @@ const useGeo = (): UseGeoReturn => {
   return {
     latitude: lat,
     longitude: lon,
-    geoStatus,
+    status,
     grantPermission
   }
 }

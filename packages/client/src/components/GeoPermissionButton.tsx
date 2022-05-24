@@ -4,8 +4,8 @@ import { MdMyLocation as GeoIcon } from 'react-icons/md'
 import useGeo from '@hooks/useGeo'
 
 const GeoPermissionButton: FC<FlexProps> = () => {
-  const { grantPermission, geoStatus } = useGeo()
-  const showGeoButton = geoStatus !== 'success'
+  const { grantPermission, status } = useGeo()
+  const showGeoButton = status === 'error' || status === 'not_supported' || status === 'denied'
 
   if (!showGeoButton) return null
 
