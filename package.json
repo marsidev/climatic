@@ -4,10 +4,9 @@
     "name": "Luis Marsiglia",
     "email": "marsiglia.business@gmail.com"
   },
-  "name": "weatherfull",
-  "description": "weatherfull is a weather forecast app for 2-weeks hackathon.",
+  "name": "climatic",
+  "description": "Climatic is a weather forecast app.",
   "version": "1.0.0",
-  "repository": "",
   "license": "ISC",
   "workspaces": ["packages/*"],
   "scripts": {
