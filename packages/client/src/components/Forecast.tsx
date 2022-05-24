@@ -2,14 +2,10 @@ import type { ForecastResponse } from '@types'
 
 import { FC } from 'react'
 import { Flex, FlexProps, HStack, Image, Text, VStack } from '@chakra-ui/react'
-import { formatNumber } from '@lib/intl'
+import { formatNumber, getDayName } from '@lib/intl'
 
 interface ForecastProps extends FlexProps {
   data: ForecastResponse
-}
-
-const getDayName = (date: number) => {
-  return new Intl.DateTimeFormat('es-ES', { weekday: 'long' }).format(date)
 }
 
 const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
