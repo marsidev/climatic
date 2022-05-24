@@ -15,7 +15,7 @@ const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
   return (
     <Flex
       align='center'
-      border='1px solid'
+      // border='1px solid'
       flexDir='column'
       minH={400}
       px={2}
@@ -34,10 +34,10 @@ const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
           const maxTempStr = formatInt(maxTemp)
 
           return (
-            <HStack key={timestamp} justify='space-between' w='100%'>
-              <Text minW='33.33%'>{dayName}</Text>
+            <HStack key={timestamp} justify='space-between' w='90%'>
+              <Text w='25%'>{dayName}</Text>
 
-              <Flex as='figure' justify='center' minW='33.33%'>
+              <Flex as='figure' justify='center'>
                 <Image
                   alt={`${name} icon`}
                   h={8}
