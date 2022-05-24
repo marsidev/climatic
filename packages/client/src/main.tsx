@@ -2,7 +2,6 @@ import 'isomorphic-fetch'
 import '@styles/index.css'
 import theme from '@lib/theme'
 import App from '@/App'
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ChakraProvider } from '@chakra-ui/react'
 
@@ -14,11 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = createRoot(container)
 
     root.render(
-      <StrictMode>
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
-      </StrictMode>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
     )
   }
 })
