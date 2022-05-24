@@ -11,4 +11,4 @@ export interface Geo {
   grantPermission: () => void
 }
 
-export * from '@server/types/responses'
+export * from '@climatic/shared-types'

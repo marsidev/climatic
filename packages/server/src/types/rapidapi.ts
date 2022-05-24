@@ -98,7 +98,7 @@ export interface RapidAPIForecastDaySummary {
   uv: number
 }
 
-export interface RapidAPIForecastDayAstro {
+export interface Astro {
   sunrise: string
   sunset: string
   moonrise: string
@@ -111,7 +111,7 @@ export interface RapidAPIForecastDay {
   date: string
   date_epoch: number
   day: RapidAPIForecastDaySummary
-  astro: RapidAPIForecastDayAstro
+  astro: Astro
   hour: RapidAPIForecastHour[]
 }
 

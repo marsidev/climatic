@@ -9,9 +9,7 @@
   "version": "1.0.0",
   "repository": "",
   "license": "ISC",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "build": "pnpm --filter ./packages/client build",
     "start": "pnpm --filter ./packages/server start",

@@ -1,0 +1,10 @@
+{
+  "author": {
+    "name": "Luis Marsiglia",
+    "email": "marsiglia.business@gmail.com"
+  },
+  "private": true,
+  "name": "@climatic/shared-types",
+  "version": "1.0.0",
+  "license": "ISC"
+}

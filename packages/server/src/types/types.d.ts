@@ -1,3 +1,3 @@
 export * from '@/types/rapidapi'
 export * from '@/types/requests'
-export * from '@/types/responses'
+export * from '@climatic/shared-types'

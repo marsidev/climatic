@@ -3,7 +3,7 @@
     "name": "Luis Marsiglia",
     "email": "marsiglia.business@gmail.com"
   },
-  "name": "@vite-fastify-starter/client",
+  "name": "@climatic/client",
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
@@ -19,6 +19,7 @@
   "dependencies": {
     "@babel/core": "^7.18.0",
     "@chakra-ui/react": "^2.1.2",
+    "@climatic/shared-types": "workspace:^1.0.0",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@fontsource/aileron": "^4.5.3",
