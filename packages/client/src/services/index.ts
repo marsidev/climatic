@@ -1,7 +1,7 @@
-// import { ForecastResponse } from '@types'
+import type { ForecastResponse } from '@types'
 
-export const getForecast = async () => {
-  // const data: ForecastResponse = await fetch('/api/get-forecast').then(r => r.json())
-  const data = await fetch('/api/get-forecast').then(r => r.json())
+export const getForecast = async (): Promise<ForecastResponse> => {
+  const url = '/api/get-forecast?days=8'
+  const data = await fetch(url).then(r => r.json())
   return data
 }

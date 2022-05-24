@@ -4,6 +4,7 @@ import { FETCH_OPTIONS } from '@lib/constants'
 
 const { API_URL = '' } = process.env
 const OneDayInSeconds: number = 86400
+const MAX_FORECAST_DAYS: number = 8
 
 export const fetchDayForecast = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
   const { q, dt = '', lang = 'es' } = props
@@ -19,7 +20,9 @@ export const fetchDayForecast = async (props: RapidApiRequestQuery): Promise<Rap
 
 export const fillNextForecastDays = async (data: RapidAPIForecastResponse, params: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
   let { days } = params
-  days = Number(days) > 7 ? 7 : Number(days)
+  days = Number(days) > MAX_FORECAST_DAYS
+    ? MAX_FORECAST_DAYS
+    : Number(days)
 
   const forecastCount = data.forecast.forecastday.length
   const daysToFill = days - forecastCount
