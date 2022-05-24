@@ -1,0 +1,1 @@
+{"version":3,"file":"weather.d.ts","sourceRoot":"","sources":["../../src/lib/weather.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,eAAe,EAAE,uBAAuB,EAAE,iBAAiB,EAAE,SAAS,EAAE,oBAAoB,EAAE,MAAM,QAAQ,CAAA;AAM1H,eAAO,MAAM,gBAAgB,UAAiB,oBAAoB,KAAG,QAAQ,uBAAuB,CAUnG,CAAA;AAED,eAAO,MAAM,eAAe,cAAe,iBAAiB,KAAG,SAO9D,CAAA;AAED,eAAO,MAAM,UAAU,SAAU,uBAAuB,KAAG,eA0C1D,CAAA"}

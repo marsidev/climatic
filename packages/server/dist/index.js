@@ -13,16 +13,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("dotenv/config");
+require("isomorphic-fetch");
 const fastify_1 = __importDefault(require("fastify"));
-const static_1 = __importDefault(require("@fastify/static"));
-const path_1 = __importDefault(require("path"));
-const hello_1 = __importDefault(require("@controllers/hello"));
+const routing_1 = __importDefault(require("./routing"));
+const serve_1 = __importDefault(require("./serve"));
+const cache_1 = __importDefault(require("./plugins/cache"));
 const { PORT = 3001, HOST = '0.0.0.0' } = process.env;
 const server = (0, fastify_1.default)();
-server.register(static_1.default, {
-    root: path_1.default.join(__dirname, '../../../public')
-});
-server.register(hello_1.default, { prefix: '/api/hello' });
+(0, routing_1.default)(server);
+(0, serve_1.default)(server);
+server.register(cache_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield server.listen(PORT, HOST);

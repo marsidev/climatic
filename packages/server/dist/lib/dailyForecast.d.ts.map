@@ -1,0 +1,1 @@
+{"version":3,"file":"dailyForecast.d.ts","sourceRoot":"","sources":["../../src/lib/dailyForecast.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAE,oBAAoB,EAAE,wBAAwB,EAAE,MAAM,QAAQ,CAAA;AAO5E,eAAO,MAAM,gBAAgB,UAAiB,oBAAoB,KAAG,QAAQ,wBAAwB,CAUpG,CAAA;AAED,eAAO,MAAM,oBAAoB,SAAgB,wBAAwB,UAAU,oBAAoB,KAAG,QAAQ,wBAAwB,CAwBzI,CAAA"}
