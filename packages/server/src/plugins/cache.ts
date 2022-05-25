@@ -20,7 +20,7 @@ async function cache(server: FastifyInstance, _options: FastifyPluginOptions): P
       const cached = CacheInstance.get(CACHE_KEY)
 
       if (cached !== undefined) {
-        console.log('RETURNING FROM CACHE FOR KEY', CACHE_KEY)
+        // console.log('RETURNING FROM CACHE FOR KEY', CACHE_KEY)
         reply.send(cached)
       }
     }
@@ -32,15 +32,13 @@ async function cache(server: FastifyInstance, _options: FastifyPluginOptions): P
       const response = CacheInstance.get(CACHE_KEY)
 
       if (response === undefined && reply.statusCode < 400) {
-        console.log('CACHING RESPONSE FOR KEY', CACHE_KEY)
+        // console.log('CACHING RESPONSE FOR KEY', CACHE_KEY)
         CacheInstance.set(CACHE_KEY, payload, CACHE_TTL)
       }
     }
 
     done()
   })
-
-  server.after(err => err ? console.log(err) : console.log('Cache plugin is ready.'))
 }
 
 export default fastifyPlugin(cache)

@@ -6,8 +6,6 @@ const routing = (server: FastifyInstance): void => {
   register(ping, { prefix: '/api/ping' })
   register(getWeather, { prefix: '/api/weather' })
   register(getForecast, { prefix: '/api/forecast' })
-
-  server.after(err => err ? console.log(err) : console.log('Routes are ready.'))
 }
 
 export default routing
