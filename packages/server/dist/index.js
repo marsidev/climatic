@@ -17,10 +17,12 @@ require("isomorphic-fetch");
 const fastify_1 = __importDefault(require("fastify"));
 const routing_1 = __importDefault(require("./routing"));
 const serve_1 = __importDefault(require("./serve"));
+const cache_1 = __importDefault(require("./plugins/cache"));
 const { PORT = 3001, HOST = '0.0.0.0' } = process.env;
 const server = (0, fastify_1.default)();
 (0, routing_1.default)(server);
 (0, serve_1.default)(server);
+server.register(cache_1.default);
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield server.listen(PORT, HOST);
