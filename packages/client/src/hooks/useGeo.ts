@@ -21,7 +21,7 @@ const useGeo = (): Geo => {
   const [geoPermission, setGeoPermission] = useState<GeoPermission>('prompt')
   const [lat, setLat] = useState<GeoPosition>(DEFAULT_LOCATION.latitude)
   const [lon, setLon] = useState<GeoPosition>(DEFAULT_LOCATION.longitude)
-  const [status, setStatus] = useState<GeoStatus>('loading')
+  const [status, setStatus] = useState<GeoStatus>('denied')
 
   useEffect(() => {
     const permission = getGeoPermission()
