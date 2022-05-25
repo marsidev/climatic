@@ -4,7 +4,8 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   server: {
-    proxy: { '/api': 'http://localhost:3001' } // for development purposes
+    proxy: { '/api': 'http://localhost:3001' }, // for dev mode
+    https: true
   },
   plugins: [react(), tsconfigPaths()],
   build: {
