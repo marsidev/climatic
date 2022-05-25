@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify'
 import { ping, getWeather, getForecast } from '@controllers/index'
 
-const routing = (server: FastifyInstance): void => {
+export const routing = (server: FastifyInstance): void => {
   const { register } = server
   register(ping, { prefix: '/api/ping' })
   register(getWeather, { prefix: '/api/weather' })

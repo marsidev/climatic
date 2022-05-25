@@ -4,9 +4,9 @@ import type { FastifyInstance } from 'fastify'
 import 'dotenv/config'
 import 'isomorphic-fetch'
 import fastify from 'fastify'
-import routing from './routing'
-import serve from './serve'
-import cache from './plugins/cache'
+import routing from '@plugins/routing'
+import serve from '@plugins/serve'
+import cache from '@plugins/cache'
 
 const { PORT = 3001, HOST = '0.0.0.0' } = process.env
 const server: FastifyInstance<Server, IncomingMessage, ServerResponse> = fastify()
