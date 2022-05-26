@@ -18,7 +18,7 @@ const App: FC<FlexProps> = () => {
 
   return (
     <Layout>
-      <GeoPermissionButton />
+      <GeoPermissionButton pt={2} />
       <MainWeather data={forecastData} />
       <Forecast data={forecastData} mt={8} />
     </Layout>
