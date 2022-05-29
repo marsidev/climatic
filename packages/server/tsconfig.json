@@ -1,35 +1,17 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "declaration": true,
-    "pretty": true,
-    "noEmitOnError": true,
-    "strict": true,
-    "resolveJsonModule": true,
-    "removeComments": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "baseUrl": ".",
     "outDir": "./dist",
-    "rootDir": "./src",
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "@controllers/*": ["src/controllers/*"],
       "@lib/*": ["src/lib/*"],
       "@plugins/*": ["src/plugins/*"],
-      "@types": ["src/types/types.d.ts"]
-    },
-    "noImplicitAny": false,
-    "noImplicitReturns": true,
-    "composite": true,
-    "declarationMap": true,
-    "incremental": true
+      "@types": ["src/types"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "dist/**/*"],
+  "exclude": ["node_modules", "./dist/**/*"],
   "moduleResolution": ["node_modules", "node"]
 }
