@@ -1,4 +1,5 @@
-import type { WeatherResponse, RapidAPIWeatherResponse, RapidAPICondition, Condition, RapidApiRequestQuery } from '@types'
+import type { RapidAPIWeatherResponse, RapidAPICondition, RapidApiRequestQuery } from '@types'
+import { WeatherResponse, Condition } from '@climatic/shared'
 
 import { FETCH_OPTIONS } from '@lib/constants'
 

@@ -1,4 +1,5 @@
-import type { RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, ForecastResponse, RapidApiRequestQuery, RapidAPIForecastDay } from '@types'
+import type { RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, RapidApiRequestQuery, RapidAPIForecastDay } from '@types'
+import { ForecastResponse } from '@climatic/shared'
 
 import { FETCH_OPTIONS } from '@lib/constants'
 import { formatData as formatWeatherData, formatCondition } from '@lib/weather'

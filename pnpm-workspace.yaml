@@ -1,4 +1,2 @@
 packages:
-  - 'packages/client'
-  - 'packages/server'
-  - 'packages/shared-types'
+  - 'packages/**'

@@ -8,20 +8,23 @@
   "description": "Climatic is a weather forecast app.",
   "version": "1.0.0",
   "license": "ISC",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "pnpm --filter ./packages/client build",
-    "start": "pnpm --filter ./packages/server start",
-    "dev": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client dev",
-    "dev-server": "pnpm --filter ./packages/server dev",
-    "dev-client": "pnpm --filter ./packages/client dev",
+    "build": "pnpm --filter client build",
+    "start": "pnpm --filter server start",
+    "dev": "pnpm run --parallel --filter server --filter client dev",
+    "dev-server": "pnpm --filter server dev",
+    "dev-client": "pnpm --filter client dev",
+    "dev-client-https": "pnpm --filter client dev-https",
     "start-all": "pnpm build && pnpm start",
-    "lint": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client lint",
-    "lint-fix": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client lint-fix",
-    "tsc": "pnpm run -r --workspace-concurrency 2 --filter ./packages/server --filter ./packages/client tsc",
+    "lint": "pnpm run --parallel lint",
+    "lint-fix": "pnpm run --parallel lint-fix",
+    "tsc": "pnpm run --parallel tsc",
     "heroku": "git push heroku HEAD:main",
-    "prebuild": "npm install -g pnpm && pnpm install",
-    "up-all": "pnpm -r up"
+    "up-all": "pnpm -r up",
+    "prebuild": "npm i -g pnpm && pnpm i"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
@@ -33,11 +36,12 @@
     "tslib": "^2.4.0",
     "typescript": "4.6.4"
   },
-  "packageManager": "pnpm@7.0.0",
+  "packageManager": "pnpm@7.1.6",
   "pnpm": {
     "overrides": {
       "client": "workspace:*",
-      "server": "workspace:*"
+      "server": "workspace:*",
+      "shared": "workspace:*"
     },
     "peerDependencyRules": {
       "ignoreMissing": [
@@ -50,7 +54,8 @@
     }
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.x",
+    "pnpm": "7.x"
   },
   "keywords": [
     "weather",
