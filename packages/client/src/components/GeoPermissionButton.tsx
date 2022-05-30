@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { Flex, FlexProps, IconButton } from '@chakra-ui/react'
 import { MdMyLocation as GeoIcon } from 'react-icons/md'
-import useGeo from '@hooks/useGeo'
+import useLocation from '@hooks/useLocation'
 
 const GeoPermissionButton: FC<FlexProps> = ({ ...props }) => {
-  const { grantPermission, status } = useGeo()
+  const { grantPermission, status } = useLocation()
   const showGeoButton = status === 'error' || status === 'not_supported' || status === 'denied'
 
   if (!showGeoButton) return null

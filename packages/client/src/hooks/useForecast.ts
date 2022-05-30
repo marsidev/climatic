@@ -1,14 +1,14 @@
-import type { Geo } from '@types'
+import type { Location } from '@types'
 import { useEffect, useState } from 'react'
 import { getForecast } from '@services/index'
 
-const useForecast = (geoData: Geo) => {
+const useForecast = (locationData: Location) => {
   const [data, setData] = useState<unknown>(null)
-  const { status } = geoData
+  const { status } = locationData
 
   useEffect(() => {
     if (status !== 'loading') {
-      getForecast(geoData).then(d => {
+      getForecast(locationData).then(d => {
         setData(d)
       })
     }

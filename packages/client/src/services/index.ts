@@ -1,29 +1,29 @@
-import type { Geo } from '@types'
-import type { ForecastResponse } from '@types'
+import type { Location } from '@types'
+import type { ForecastResponse } from '@climatic/shared'
+import { DEFAULT_LOCATION } from '@lib/constants'
 
-export const getForecast = async (geoData: Geo): Promise<ForecastResponse> => {
-  const { latitude, longitude, status } = geoData
+export const getForecast = async (locationData: Location): Promise<ForecastResponse> => {
+  const { coords, status } = locationData
+  const latitude = coords?.latitude
+  const longitude = coords?.longitude
 
   const noCoords: boolean = !latitude && !longitude
   const noGeo: boolean = status === 'denied' || status === 'not_supported' || status === 'error'
-  let url: string
+  let lat: string
+  let lon: string
 
-  if (noGeo) {
+  if (noGeo || noCoords) {
     console.log('no geo, fetching default forecast location')
-    url = '/api/forecast?days=8'
-  } else if (noCoords) {
-    console.log('no geo, fetching default forecast location')
-    url = '/api/forecast?days=8'
+    lat = DEFAULT_LOCATION.latitude?.toString() ?? ''
+    lon = DEFAULT_LOCATION.longitude?.toString() ?? ''
   } else {
-    const lat = latitude?.toString()
-    const lon = longitude?.toString()
-    const query = `${lat},${lon}`
-    const params = { q: query, days: '8' }
-
-    console.log({ lat, lon })
-    const queryString = new URLSearchParams(params).toString()
-    url = `/api/forecast?${queryString}`
+    lat = latitude?.toString() ?? ''
+    lon = longitude?.toString() ?? ''
   }
+
+  const params = { q: `${lat},${lon}`, days: '8' }
+  const queryString = new URLSearchParams(params).toString()
+  const url: string = `/api/forecast?${queryString}`
 
   console.log({ url })
   const data = await fetch(url).then(r => r.json())

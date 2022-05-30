@@ -1,5 +1,5 @@
 import type { FlexProps } from '@chakra-ui/react'
-import type { ForecastResponse } from '@types'
+import type { ForecastResponse } from '@climatic/shared'
 
 import { FC } from 'react'
 import GeoPermissionButton from '@components/GeoPermissionButton'
@@ -7,12 +7,12 @@ import MainWeather from '@components/MainWeather'
 import Forecast from '@components/Forecast'
 import Layout from '@components/Layout'
 import LoadingApp from '@components/LoadingApp'
-import useGeo from '@hooks/useGeo'
+import useLocation from '@hooks/useLocation'
 import useForecast from '@hooks/useForecast'
 
 const App: FC<FlexProps> = () => {
-  const geoData = useGeo()
-  const forecastData = useForecast(geoData) as ForecastResponse
+  const locationData = useLocation()
+  const forecastData = useForecast(locationData) as ForecastResponse
 
   if (!forecastData) return <LoadingApp />
 
