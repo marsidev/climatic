@@ -1,8 +1,8 @@
 import type { Location } from '@types'
 import { useEffect, useState } from 'react'
-import { getForecast } from '@services/index'
+import { getForecast } from '@services'
 
-const useForecast = (locationData: Location) => {
+export const useForecast = (locationData: Location) => {
   const [data, setData] = useState<unknown>(null)
   const { status } = locationData
 

@@ -2,13 +2,13 @@
 import type { GeoPermission, GeoStatus, Location } from '@types'
 
 import { useEffect, useState } from 'react'
-import { getGeoPermission, saveGeoPermission } from '@lib/localStorage'
+import { getPermissionFromLocalStorage, savePermissionToLocalStorage } from '@lib'
 import { toast } from 'react-toastify'
-import useGeolocation from '@hooks/_useGeolocation'
+import { useGeolocation } from '@hooks'
 
 const DISABLED_TIMEOUT: number = 1000
 
-const useLocation = (): Location => {
+export const useLocation = (): Location => {
   const [status, setStatus] = useState<GeoStatus>('denied')
   const [geoPermission, setGeoPermission] = useState<GeoPermission>('prompt')
 
@@ -25,12 +25,12 @@ const useLocation = (): Location => {
   let endTime: number
 
   useEffect(() => {
-    const permission = getGeoPermission()
+    const permission = getPermissionFromLocalStorage()
     setGeoPermission(permission)
   }, [])
 
   const grantPermission = () => {
-    saveGeoPermission('granted')
+    savePermissionToLocalStorage('granted')
     setGeoPermission('granted')
   }
 

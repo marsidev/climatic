@@ -1,4 +1,6 @@
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
+import { Dict } from '@chakra-ui/utils'
+
 import '@fontsource/raleway/variable.css'
 import '@fontsource/rubik/variable.css'
 import '@fontsource/nunito/variable.css'
@@ -25,6 +27,6 @@ const config: ThemeConfig = {
   useSystemColorMode: true
 }
 
-const theme = extendTheme({ config, components, fonts })
+export const theme: Dict = extendTheme({ config, components, fonts })
 
 export default theme

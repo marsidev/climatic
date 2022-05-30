@@ -8,7 +8,7 @@ interface ForecastProps extends FlexProps {
   data: ForecastResponse
 }
 
-const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
+export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
   const { forecast } = data
   const forecastFromTomorrow = forecast.slice(1)
 

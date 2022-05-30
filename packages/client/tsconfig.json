@@ -7,13 +7,29 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      
+      "@assets": ["src/assets"],
       "@assets/*": ["src/assets/*"],
+
+      "@components": ["src/components"],
       "@components/*": ["src/components/*"],
+      
+      "@hooks": ["src/hooks"],
       "@hooks/*": ["src/hooks/*"],
+      
+      "@lib": ["src/lib"],
       "@lib/*": ["src/lib/*"],
+      
+      "@services": ["src/services"],
       "@services/*": ["src/services/*"],
+      
+      "@styles": ["src/styles"],
       "@styles/*": ["src/styles/*"],
+      
       "@types": ["src/types"],
+      "@types/*": ["src/types/*"],
+      
+      "@utils": ["src/utils"],
       "@utils/*": ["src/utils/*"]
     }
   },

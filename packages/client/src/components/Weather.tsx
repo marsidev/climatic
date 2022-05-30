@@ -4,11 +4,11 @@ import { FC } from 'react'
 import { Flex, FlexProps, Heading } from '@chakra-ui/react'
 import { formatTemperature } from '@lib/intl'
 
-interface MainWeatherProps extends FlexProps {
+interface WeatherProps extends FlexProps {
   data: ForecastResponse
 }
 
-const MainWeather: FC<MainWeatherProps> = ({ data, ...props }) => {
+export const Weather: FC<WeatherProps> = ({ data, ...props }) => {
   const { location, currentWeather } = data
   const { condition } = currentWeather
 
@@ -37,4 +37,4 @@ const MainWeather: FC<MainWeatherProps> = ({ data, ...props }) => {
   )
 }
 
-export default MainWeather
+export default Weather

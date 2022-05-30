@@ -2,7 +2,7 @@ import { FlexProps } from '@chakra-ui/react'
 import { FC } from 'react'
 import { Flex, Heading, Skeleton, VStack } from '@chakra-ui/react'
 
-const Layout: FC<FlexProps> = () => {
+export const LoadingLayout: FC<FlexProps> = () => {
   return (
     <Flex
       align='center'
@@ -42,4 +42,4 @@ const Layout: FC<FlexProps> = () => {
   )
 }
 
-export default Layout
+export default LoadingLayout

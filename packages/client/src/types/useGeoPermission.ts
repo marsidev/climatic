@@ -5,14 +5,6 @@ export type GeoStatus = 'loading' | 'not_supported' | 'error' | 'success' | 'den
 
 export type GeoPosition = number | null
 
-// not used
-export interface Geo {
-  latitude: GeoPosition
-  longitude: GeoPosition
-  status: GeoStatus
-  grantPermission: () => void
-}
-
 export interface Location {
   isSupported: boolean | null
   coords: GeolocationCoordinates | null

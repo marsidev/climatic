@@ -2,7 +2,7 @@ import type { FlexProps } from '@chakra-ui/react'
 import { FC } from 'react'
 import { Flex } from '@chakra-ui/react'
 
-const Layout: FC<FlexProps> = ({ children }) => {
+export const Layout: FC<FlexProps> = ({ children }) => {
   return (
     <Flex
       align='center'

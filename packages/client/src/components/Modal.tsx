@@ -1,22 +1,22 @@
 import { FC, ReactNode } from 'react'
 import {
-  Modal,
+  Modal as ChakraModal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
   ModalBody,
   ModalFooter,
   ModalCloseButton,
-  ModalProps
+  ModalProps as ChakraModalProps
 } from '@chakra-ui/react'
 
-type MyModalProps = ModalProps & {
+type ModalProps = ChakraModalProps & {
   title: string
   showCloseIcon: boolean
   footer: ReactNode
 }
 
-const MyModal: FC<MyModalProps> = (props: MyModalProps) => {
+export const Modal: FC<ModalProps> = props => {
   const {
     isOpen,
     onClose,
@@ -30,7 +30,7 @@ const MyModal: FC<MyModalProps> = (props: MyModalProps) => {
   } = props
 
   return (
-    <Modal
+    <ChakraModal
       isCentered
       isOpen={isOpen}
       motionPreset='slideInBottom'
@@ -49,8 +49,8 @@ const MyModal: FC<MyModalProps> = (props: MyModalProps) => {
 
         {footer && <ModalFooter>{footer}</ModalFooter>}
       </ModalContent>
-    </Modal>
+    </ChakraModal>
   )
 }
 
-export default MyModal
+export default Modal
