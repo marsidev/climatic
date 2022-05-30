@@ -1,28 +1,62 @@
-import type { RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, RapidApiRequestQuery, RapidAPIForecastDay } from '@types'
-import { ForecastResponse } from '@climatic/shared'
+import type { RapidAPIWeatherResponse, RapidAPICondition, RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, RapidAPIForecastDay } from '@types'
+import type { WeatherResponse, Condition, ForecastResponse } from '@climatic/shared'
 
-import { FETCH_OPTIONS } from '@lib/constants'
-import { formatData as formatWeatherData, formatCondition } from '@lib/weather'
-import { fillNextForecastDays } from '@lib/dailyForecast'
-
-const { API_URL = '' } = process.env
-
-export const fetchForecastData = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
-  const { q, days = 3, lang = 'es' }: RapidApiRequestQuery = props
-
-  const params = { q, days: days.toString(), lang }
-  const queryString = new URLSearchParams(params).toString()
-  const url = `${API_URL}/forecast.json?${queryString}`
-
-  const response = await fetch(url, FETCH_OPTIONS)
-  const _data: RapidAPIForecastResponse = await response.json()
-
-  const data = fillNextForecastDays(_data, { q, days, lang })
-
-  return data
+// weather formatters
+export const formatCondition = (condition: RapidAPICondition): Condition => {
+  const { text, icon, code } = condition
+  return {
+    id: code,
+    name: text,
+    icon: icon.replace('//cdn.weatherapi.com/weather/64x64', '')
+  }
 }
 
-const formatDayData = (day: RapidAPIForecastDaySummary) => {
+export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherResponse => {
+  const { location, current } = data
+  const { country, name, lat, lon, tz_id } = location
+  const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch } = current
+
+  const timestamp = last_updated_epoch * 1000
+
+  const result = {
+    location: {
+      name,
+      country,
+      timezone: tz_id,
+      latitude: lat,
+      longitude: lon
+    },
+    weather: {
+      cloud,
+      humidity,
+      isDay: is_day === 1,
+      temperature: {
+        celsius: temp_c,
+        fahrenheit: temp_f
+      },
+      feelsLike: {
+        celsius: feelslike_c,
+        fahrenheit: feelslike_f
+      },
+      wind: {
+        speed: {
+          kph: wind_kph,
+          mph: wind_mph
+        },
+        direction: wind_dir,
+        degree: wind_degree
+      },
+      condition: formatCondition(condition),
+      updateAt: timestamp,
+      updateDateAt: new Date(timestamp).toISOString()
+    }
+  }
+
+  return result
+}
+
+// forecast formatters
+const formatDaySummary = (day: RapidAPIForecastDaySummary) => {
   const { maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, avgtemp_c, avgtemp_f, maxwind_mph, maxwind_kph, totalprecip_mm, totalprecip_in, avghumidity, condition, daily_will_it_rain, daily_chance_of_rain, daily_will_it_snow, daily_chance_of_snow } = day
 
   return {
@@ -102,10 +136,10 @@ const formatHoursData = (hours: RapidAPIForecastHour[]) => {
   return result
 }
 
-export const formatForecastData = (data: RapidAPIForecastDay) => {
+export const formatForecastDay = (data: RapidAPIForecastDay) => {
   const { date_epoch, day, hour, astro, date } = data
 
-  const dayData = formatDayData(day)
+  const dayData = formatDaySummary(day)
   const hoursData = formatHoursData(hour)
 
   return {
@@ -117,13 +151,13 @@ export const formatForecastData = (data: RapidAPIForecastDay) => {
   }
 }
 
-export const formatData = (data: RapidAPIForecastResponse): ForecastResponse => {
+export const formatForecastData = (data: RapidAPIForecastResponse): ForecastResponse => {
   const { forecast: { forecastday }, location, current } = data
 
   const { location: locationFormatted, weather: currentWeather } = formatWeatherData({ location, current })
 
   const forecast = forecastday.map(foreData => {
-    return formatForecastData(foreData)
+    return formatForecastDay(foreData)
   })
 
   const result = {

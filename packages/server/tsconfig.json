@@ -5,10 +5,18 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@controllers/*": ["src/controllers/*"],
+      
+      "@lib": ["src/lib"],
       "@lib/*": ["src/lib/*"],
+      
+      "@plugins": ["src/plugins"],
       "@plugins/*": ["src/plugins/*"],
-      "@types": ["src/types"]
+      
+      "@routes": ["src/routes"],
+      "@routes/*": ["src/routes/*"],
+      
+      "@types": ["src/types"],
+      "@types/*": ["src/types/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

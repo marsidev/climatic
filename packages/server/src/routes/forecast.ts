@@ -1,9 +1,8 @@
 import type { ForecastRequest } from '@types'
-import type { FastifyInstance, FastifyPluginOptions, FastifyReply } from 'fastify'
+import type { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyPluginAsync } from 'fastify'
+import { fetchForecastData, formatForecastData } from '@lib'
 
-import { formatData, fetchForecastData } from '@lib/forecast'
-
-export const getForecast = async (server: FastifyInstance, opts: FastifyPluginOptions) => {
+export const forecast: FastifyPluginAsync = async (server: FastifyInstance, opts: FastifyPluginOptions) => {
   server.get('/', opts, async (request: ForecastRequest, reply: FastifyReply) => {
     const { query } = request
     const { q = 'Los Angeles', original = '0', days = 3 } = query
@@ -14,9 +13,7 @@ export const getForecast = async (server: FastifyInstance, opts: FastifyPluginOp
       return reply.send(forecastData)
     }
 
-    const data = formatData(forecastData)
+    const data = formatForecastData(forecastData)
     return reply.send(data)
   })
 }
-
-export default getForecast

@@ -13,7 +13,7 @@ const CACHE_OPTIONS: Options = {
 }
 const CacheInstance = new NodeCache(CACHE_OPTIONS)
 
-async function cache(server: FastifyInstance, _options: FastifyPluginOptions): Promise<void> {
+const plugin = async (server: FastifyInstance, _options: FastifyPluginOptions) => {
   server.addHook('onRequest', async (request: FastifyRequest, reply: FastifyReply) => {
     if (request.method === 'GET') {
       CACHE_KEY = `${request.method}-${request.url}`
@@ -41,4 +41,4 @@ async function cache(server: FastifyInstance, _options: FastifyPluginOptions): P
   })
 }
 
-export default fastifyPlugin(cache)
+export const cache = fastifyPlugin(plugin)
