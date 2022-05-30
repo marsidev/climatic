@@ -27,7 +27,7 @@ export const useGeolocation = (options: GeolocationOptions = {}): useGeolocation
   }
 
   const onError = (error: GeolocationPositionError) => {
-    setLoading(false)
+    // setLoading(false)
     setError(error)
     setCoords(null)
     setTimestamp(null)

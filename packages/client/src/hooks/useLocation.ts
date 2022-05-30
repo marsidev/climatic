@@ -40,7 +40,7 @@ export const useLocation = (): Location => {
     } else if (coords) {
       setStatus('success')
     }
-  }, [loading])
+  }, [loading, error])
 
   function errorCallback(error: GeolocationPositionError): void {
     endTime = new Date().getTime()
@@ -62,6 +62,7 @@ export const useLocation = (): Location => {
     }
 
     setStatus(status)
+    setGeoPermission('denied')
   }
 
   return {
