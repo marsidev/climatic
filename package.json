@@ -12,7 +12,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm --filter client build",
+    "build": "pnpm run --parallel --filter server --filter client build",
     "start": "pnpm --filter server start",
     "dev": "pnpm run --parallel --filter server --filter client dev",
     "dev-server": "pnpm --filter server dev",

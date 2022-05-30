@@ -12,7 +12,7 @@
     "build": "pnpm clean && vite build",
     "preview": "vite preview",
     "start": "vite preview",
-    "clean": "npx rimraf ../../public",
+    "clean": "rimraf ../../public",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint-fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
     "tsc": "tsc --noEmit"
@@ -48,6 +48,7 @@
     "eslint": "^8.16.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "rimraf": "^3.0.2",
     "tslib": "^2.4.0",
     "typescript": "4.6.4"
   }

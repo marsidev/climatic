@@ -12,12 +12,13 @@
     "clean": "npx rimraf dist",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "tsc": "tsc --noEmit --incremental false"
+    "tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^17.0.36",
     "eslint": "^8.16.0",
     "eslint-plugin-node": "^11.1.0",
+    "rimraf": "^3.0.2",
     "typescript": "4.6.4"
   }
 }
