@@ -12,7 +12,7 @@
     "build": "pnpm clean && vite build",
     "preview": "vite preview",
     "start": "vite preview",
-    "clean": "rimraf ../../public",
+    "clean": "rimraf ../../dist",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint-fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
     "tsc": "tsc --noEmit"

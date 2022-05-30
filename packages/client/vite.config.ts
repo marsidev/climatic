@@ -9,7 +9,7 @@ export default defineConfig({
   },
   plugins: [react(), tsconfigPaths()],
   build: {
-    outDir: '../../public',
+    outDir: '../../dist',
     emptyOutDir: false
   }
 })

@@ -1,9 +1,10 @@
 {
   "ignorePatterns": [
     "node_modules/",
-    "public/",
+    "dist/",
     "packages/server/node_modules/",
-    "packages/client/node_modules/"
+    "packages/client/node_modules/",
+    "packages/shared/node_modules/"
   ],
   "extends": ["xo"],
   "parser": "@typescript-eslint/parser",

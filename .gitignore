@@ -13,6 +13,7 @@ yarn-error.log
 .pnp.*
 .vercel
 public
+dist
 
 todo.md
 .pnpm-debug.log
