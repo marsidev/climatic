@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '@types'
+import type { ForecastResponse } from '@climatic/shared'
 
 import { FC } from 'react'
 import { Flex, FlexProps, Heading } from '@chakra-ui/react'
