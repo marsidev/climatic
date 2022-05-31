@@ -1,13 +1,6 @@
-/* eslint-disable no-undef */
-import type { LocationStatus, GeolocationState } from '@types'
+import type { LocationStatus, GeolocationState, GeoPositionError, GeoPosition } from '@types'
 import type { StoreSlice } from '.'
-import { DISABLED_TIMEOUT } from '@lib/constants'
-
-const DEFAULT_GEO_OPTIONS: PositionOptions = {
-  enableHighAccuracy: true,
-  maximumAge: 30000,
-  timeout: 6000000
-}
+import { DISABLED_TIMEOUT, DEFAULT_GEO_OPTIONS } from '@lib/constants'
 
 export const geolocation: StoreSlice<GeolocationState> = (set, _get): GeolocationState => ({
   loading: true,
@@ -28,7 +21,7 @@ export const geolocation: StoreSlice<GeolocationState> = (set, _get): Geolocatio
     let startTime: number
     let endTime: number
 
-    const onSuccess = (position: GeolocationPosition) => {
+    const onSuccess = (position: GeoPosition) => {
       const { coords } = position
       const latitude = Number(coords.latitude.toFixed(4))
       const longitude = Number(coords.longitude.toFixed(4))
@@ -42,7 +35,7 @@ export const geolocation: StoreSlice<GeolocationState> = (set, _get): Geolocatio
       }))
     }
 
-    const onError = (error: GeolocationPositionError) => {
+    const onError = (error: GeoPositionError) => {
       endTime = new Date().getTime()
       const elapsed = endTime - startTime
       let status: LocationStatus

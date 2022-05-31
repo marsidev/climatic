@@ -8,6 +8,12 @@ export type GeoPermission = 'granted' | 'denied' | 'prompt' | null
 
 export type LocationStatus = 'idle' | 'loading' | 'off' | 'not_supported' | 'error' | 'success' | 'denied' | null
 
+export interface GeoPositionOptions extends PositionOptions { }
+
+export interface GeoPosition extends GeolocationPosition { }
+
+export interface GeoPositionError extends GeolocationPositionError { }
+
 export interface GeolocationState {
   loading: boolean
   setLoading: (loading: boolean) => void
