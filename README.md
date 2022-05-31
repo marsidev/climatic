@@ -33,19 +33,12 @@ pnpm install
 ### Set environment variables
 Create an `.env` file in the root of your project and add the following values:
 ```bash
-RAPIDAPI_HOST=
 RAPIDAPI_KEY=
-API_URL=
 APP_URL=
 ```
 
-In this project, we use [weatherapi](https://rapidapi.com/weatherapi/api/weatherapi-com/), so the environment variables becomes:
-```bash
-RAPIDAPI_HOST=weatherapi-com.p.rapidapi.com
-RAPIDAPI_KEY=
-API_URL=https://weatherapi-com.p.rapidapi.com
-APP_URL=
-```
+To get your `RAPIDAPI_KEY` you need to subscribe to [weatherapi](https://rapidapi.com/weatherapi/api/weatherapi-com/). <br />
+`APP_URL` is optional. If present, will be used as origin url for [cors](https://github.com/fastify/fastify-cors).
 
 ### Run the project
 ```bash
@@ -61,6 +54,3 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!
 Feel free to check [issues page](https://github.com/marsidev/climatic/issues).
-
-## ⭐️ Show your support
-Give a ⭐️ if you liked it!
