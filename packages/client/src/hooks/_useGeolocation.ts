@@ -21,7 +21,8 @@ export const useGeolocation = (options: GeolocationOptions = {}): useGeolocation
 
   const onSuccess = (position: GeolocationPosition) => {
     const { coords } = position
-    const { latitude, longitude } = coords
+    const latitude = Number(coords.latitude.toFixed(4))
+    const longitude = Number(coords.longitude.toFixed(4))
 
     setLoading(false)
     setError(null)
