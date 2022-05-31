@@ -1,4 +1,4 @@
-import type { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify'
+import type { FastifyPluginAsync } from 'fastify'
 import type { Key, Options } from 'node-cache'
 
 import fp from 'fastify-plugin'
@@ -13,8 +13,8 @@ const CACHE_OPTIONS: Options = {
 }
 const CacheInstance = new NodeCache(CACHE_OPTIONS)
 
-const plugin = async (server: FastifyInstance, _options: FastifyPluginOptions) => {
-  server.addHook('onRequest', async (request: FastifyRequest, reply: FastifyReply) => {
+const pluginCallback: FastifyPluginAsync = async (server, _options) => {
+  server.addHook('onRequest', async (request, reply) => {
     if (request.method === 'GET') {
       const { url, method } = request
       CACHE_KEY = `${method}-${url}`
@@ -27,7 +27,7 @@ const plugin = async (server: FastifyInstance, _options: FastifyPluginOptions) =
     }
   })
 
-  server.addHook('onSend', (request: FastifyRequest, reply: FastifyReply, payload, done) => {
+  server.addHook('onSend', (request, reply, payload, done) => {
     if (request.method === 'GET') {
       const { url, method } = request
       CACHE_KEY = `${method}-${url}`
@@ -45,4 +45,4 @@ const plugin = async (server: FastifyInstance, _options: FastifyPluginOptions) =
   })
 }
 
-export const cache = fp(plugin)
+export const cache = fp(pluginCallback)
