@@ -29,3 +29,15 @@ export const fetchForecastData = async (props: RapidApiRequestQuery): Promise<Ra
 
   return data
 }
+
+export const fetchDayForecastData = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
+  const { q, dt = '', lang = 'es' } = props
+
+  const params = { q, dt, lang }
+  const queryString = new URLSearchParams(params).toString()
+  const url = `${API_URL}/forecast.json?${queryString}`
+
+  const response = await fetch(url, FETCH_OPTIONS)
+  const data: RapidAPIForecastResponse = await response.json()
+  return data
+}
