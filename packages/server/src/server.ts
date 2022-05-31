@@ -9,7 +9,7 @@ import { ping, weather, forecast } from '@routes'
 import { logger } from '@lib'
 
 const { PORT = 3001, HOST = '0.0.0.0', APP_URL = '' } = process.env
-const server = fastify({ logger })
+const server = fastify({ logger: false })
 
 async function setupServer() {
   // register plugins
@@ -35,7 +35,7 @@ const startServer = async () => {
     await server.listen(PORT, HOST)
     console.log(`Server started on port ${PORT}`)
   } catch (err) {
-    server.log.error(err)
+    logger.error(err)
     process.exit(1)
   }
 }
