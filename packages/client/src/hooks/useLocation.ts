@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-import type { GeoPermission, GeoStatus, Location } from '@types'
+import type { GeoPermission, LocationStatus, Location } from '@types'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { getPermissionFromLocalStorage, savePermissionToLocalStorage } from '@lib'
 import { toast } from 'react-toastify'
 import { useGeolocation } from '@hooks'
@@ -9,10 +9,11 @@ import { useGeolocation } from '@hooks'
 const DISABLED_TIMEOUT: number = 1000
 
 export const useLocation = (): Location => {
-  const [status, setStatus] = useState<GeoStatus>('denied')
-  const [geoPermission, setGeoPermission] = useState<GeoPermission>('prompt')
+  const [status, setStatus] = useState<LocationStatus>('idle')
+  const [geoPermission, setGeoPermission] = useState<GeoPermission>(null)
+  const [localStorageReaded, setLocalStorageReaded] = useState<boolean>(false)
 
-  const canRetrieve = geoPermission === 'granted'
+  const canRetrieve = localStorageReaded && geoPermission === 'granted'
 
   const {
     isSupported,
@@ -26,7 +27,13 @@ export const useLocation = (): Location => {
 
   useEffect(() => {
     const permission = getPermissionFromLocalStorage()
-    setGeoPermission(permission)
+    if (permission) {
+      setGeoPermission(permission)
+    } else {
+      setGeoPermission('prompt')
+    }
+
+    setLocalStorageReaded(true)
   }, [])
 
   const grantPermission = () => {
@@ -42,17 +49,17 @@ export const useLocation = (): Location => {
     }
   }, [loading, error])
 
-  function errorCallback(error: GeolocationPositionError): void {
+  const errorCallback = useCallback((error: GeolocationPositionError) => {
     endTime = new Date().getTime()
     const elapsed = endTime - startTime
-    let status: GeoStatus
+    let status: LocationStatus
 
     if (elapsed < DISABLED_TIMEOUT && error.code === error.PERMISSION_DENIED) {
-      status = 'denied'
+      status = 'off'
       toast('Parece que tienes la geolocalización desactivada.')
     } else if (error.code === error.PERMISSION_DENIED) {
       status = 'denied'
-      toast('Has denegado el acceso a tu ubicación.')
+      // toast('Has denegado el acceso a tu ubicación.')
     } else if (error.code === (error.TIMEOUT || error.POSITION_UNAVAILABLE)) {
       status = 'not_supported'
       toast('No se puede obtener tu ubicación.')
@@ -63,11 +70,12 @@ export const useLocation = (): Location => {
 
     setStatus(status)
     setGeoPermission('denied')
-  }
+  }, [error])
 
   return {
     isSupported,
     coords,
+    geoPermission,
     grantPermission,
     status
   }

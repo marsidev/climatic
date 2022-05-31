@@ -1,13 +1,12 @@
 /* eslint-disable no-undef */
-export type GeoPermission = 'granted' | 'denied' | 'prompt'
+export type GeoPermission = 'granted' | 'denied' | 'prompt' | null
 
-export type GeoStatus = 'loading' | 'not_supported' | 'error' | 'success' | 'denied' | null
-
-export type GeoPosition = number | null
+export type LocationStatus = 'idle' | 'loading' | 'off' | 'not_supported' | 'error' | 'success' | 'denied' | null
 
 export interface Location {
   isSupported: boolean | null
   coords: GeolocationCoordinates | null
-  status: GeoStatus
+  status: LocationStatus
   grantPermission: () => void
+  geoPermission: GeoPermission
 }
