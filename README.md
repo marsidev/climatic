@@ -17,7 +17,7 @@ Created from scratch to participate in a [Hackathon](https://www.twitch.tv/video
 ## ✨ Getting Started
 
 ### Clone the project using one of these ways:
-1. [Fork](https://github.com/marsigdev/climatic/fork) the repository
+1. [Fork](https://github.com/marsidev/climatic/fork) the repository
 
 2. Clone the repository locally
 ```bash
