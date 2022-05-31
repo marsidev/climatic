@@ -45,7 +45,7 @@ To get your `RAPIDAPI_KEY` you need to subscribe to [weatherapi](https://rapidap
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [https://localhost:3000](https://localhost:3000) with your browser to see the result.
 
 ## 🚀 Preview
 [Main link](https://climatic-production.up.railway.app) <br />
