@@ -1,4 +1,4 @@
-import type { ForecastRequest, RapidAPIForecastResponse } from '@types'
+import type { ForecastRequest } from '@types'
 import type { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyPluginAsync } from 'fastify'
 import { fetchForecastData, formatForecastData } from '@lib'
 import dataLA from '@/mock_data/get-forecast-LA.json'
@@ -9,15 +9,15 @@ export const forecast: FastifyPluginAsync = async (server: FastifyInstance, opts
     const { query } = request
     const { q = 'Los Angeles', original = '0', days = 3 } = query
 
-    let forecastData: RapidAPIForecastResponse
     if (q === 'mock_LA') {
-      forecastData = dataLA as RapidAPIForecastResponse
-    } else if (q === 'mock_BCN') {
-      forecastData = dataBCN as RapidAPIForecastResponse
-    } else {
-      forecastData = await fetchForecastData({ q, days })
+      return reply.send(dataLA)
     }
 
+    if (q === 'mock_BCN') {
+      return reply.send(dataBCN)
+    }
+
+    const forecastData = await fetchForecastData({ q, days })
     if (original === '1') {
       return reply.send(forecastData)
     }
