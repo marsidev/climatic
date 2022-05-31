@@ -14,7 +14,10 @@ const server = fastify({ logger: false })
 async function setupServer() {
   // register plugins
   await server.register(cache)
-  await server.register(fastifyCors, { origin: APP_URL })
+
+  if (APP_URL) {
+    await server.register(fastifyCors, { origin: APP_URL })
+  }
 
   // register routes
   await server.register(ping, { prefix: '/api/ping' })
