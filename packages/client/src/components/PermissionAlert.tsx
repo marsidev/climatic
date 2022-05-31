@@ -3,7 +3,7 @@ import { Alert, AlertIcon, FlexProps, HStack, IconButton, Spacer, Text } from '@
 import { MdMyLocation as GeoIcon, MdClose as CloseIcon } from 'react-icons/md'
 import { useStore } from '@store'
 
-export const GeoPermissionButton: FC<FlexProps> = ({ ...props }) => {
+export const PermissionAlert: FC<FlexProps> = ({ ...props }) => {
   const { grantPermission, locationStatus, isSupported, permission } = useStore()
   const [showAlert, setShowAlert] = useState(false)
 
@@ -66,4 +66,4 @@ export const GeoPermissionButton: FC<FlexProps> = ({ ...props }) => {
   )
 }
 
-export default GeoPermissionButton
+export default PermissionAlert

@@ -1,6 +1,6 @@
 export * from './App'
 export * from './Forecast'
-export * from './GeoPermissionButton'
+export * from './PermissionAlert'
 export * from './Layout'
 export * from './Loader'
 export * from './LoadingLayout'
