@@ -1,3 +1,5 @@
+import type { TemperatureUnit } from '@climatic/shared'
+
 const locale: string = 'es-ES'
 
 export const formatInt = (n: number): number => {
@@ -8,7 +10,7 @@ export const formatInt = (n: number): number => {
   return Number(num)
 }
 
-export const formatTemperature = (temperature: number, unit: 'celsius' | 'farenheit'): string => {
+export const formatTemperature = (temperature: number, unit: TemperatureUnit): string => {
   const options: Intl.NumberFormatOptions = { style: 'unit', unit }
 
   const fomatter = new Intl.NumberFormat(locale, options)

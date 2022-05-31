@@ -1,5 +1,7 @@
 type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent'
 
+export type TemperatureUnit = 'celsius' | 'farenheit'
+
 export interface Astro {
   sunrise: string
   sunset: string
