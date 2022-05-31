@@ -1,7 +1,7 @@
 import type { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify'
 import type { Key, Options } from 'node-cache'
 
-import fastifyPlugin from 'fastify-plugin'
+import fp from 'fastify-plugin'
 import NodeCache from 'node-cache'
 
 const CACHE_TTL: number = 900 // cache duration in seconds - 15 minutes
@@ -16,7 +16,8 @@ const CacheInstance = new NodeCache(CACHE_OPTIONS)
 const plugin = async (server: FastifyInstance, _options: FastifyPluginOptions) => {
   server.addHook('onRequest', async (request: FastifyRequest, reply: FastifyReply) => {
     if (request.method === 'GET') {
-      CACHE_KEY = `${request.method}-${request.url}`
+      const { url, method } = request
+      CACHE_KEY = `${method}-${url}`
       const cached = CacheInstance.get(CACHE_KEY)
 
       if (cached !== undefined) {
@@ -28,12 +29,15 @@ const plugin = async (server: FastifyInstance, _options: FastifyPluginOptions) =
 
   server.addHook('onSend', (request: FastifyRequest, reply: FastifyReply, payload, done) => {
     if (request.method === 'GET') {
-      CACHE_KEY = `${request.method}-${request.url}`
+      const { url, method } = request
+      CACHE_KEY = `${method}-${url}`
       const response = CacheInstance.get(CACHE_KEY)
 
-      if (response === undefined && reply.statusCode < 400) {
-        // console.log('CACHING RESPONSE FOR KEY', CACHE_KEY)
-        CacheInstance.set(CACHE_KEY, payload, CACHE_TTL)
+      if (url?.includes('/api/')) {
+        if (response === undefined && reply.statusCode < 400) {
+          // console.log('CACHING RESPONSE FOR KEY', CACHE_KEY)
+          CacheInstance.set(CACHE_KEY, payload, CACHE_TTL)
+        }
       }
     }
 
@@ -41,4 +45,4 @@ const plugin = async (server: FastifyInstance, _options: FastifyPluginOptions) =
   })
 }
 
-export const cache = fastifyPlugin(plugin)
+export const cache = fp(plugin)
