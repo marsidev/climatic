@@ -1,8 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import type { RapidApiRequestQuery, RapidAPIForecastResponse } from '@types'
-import { FETCH_OPTIONS } from '@lib/constants'
+import { FETCH_OPTIONS, API_URL } from '@lib/constants'
 
-const { API_URL = '' } = process.env
 const OneDayInSeconds: number = 86400
 const MAX_FORECAST_DAYS: number = 8
 

@@ -1,9 +1,7 @@
 import type { RapidAPIWeatherResponse, RapidAPIForecastResponse, RapidApiRequestQuery } from '@types'
 
-import { FETCH_OPTIONS } from '@lib/constants'
+import { FETCH_OPTIONS, API_URL } from '@lib/constants'
 import { fillNextForecastDays } from '@lib/dailyForecast'
-
-const { API_URL = '' } = process.env
 
 export const fetchWeatherData = async (props: RapidApiRequestQuery): Promise<RapidAPIWeatherResponse> => {
   const { q, days = 3, lang = 'es' }: RapidApiRequestQuery = props
