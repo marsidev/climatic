@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import { useEffect, useState } from 'react'
-import type { GeolocationOptions, useGeolocationProps } from '@types'
+import type { GeolocationOptions, useGeolocationProps, Coordinates } from '@types'
 
 export const useGeolocation = (options: GeolocationOptions = {}): useGeolocationProps => {
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<GeolocationPositionError | null>(null)
-  const [coords, setCoords] = useState<GeolocationCoordinates | null>(null)
+  const [coords, setCoords] = useState<Coordinates | null>(null)
   const [timestamp, setTimestamp] = useState<number | null>(null)
 
   const {
@@ -20,9 +20,12 @@ export const useGeolocation = (options: GeolocationOptions = {}): useGeolocation
   const locationOptions: PositionOptions = { enableHighAccuracy, maximumAge, timeout }
 
   const onSuccess = (position: GeolocationPosition) => {
+    const { coords } = position
+    const { latitude, longitude } = coords
+
     setLoading(false)
     setError(null)
-    setCoords(position.coords)
+    setCoords({ latitude, longitude })
     setTimestamp(position.timestamp)
   }
 

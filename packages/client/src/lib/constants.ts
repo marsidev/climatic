@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-interface Coordinates extends Pick<GeolocationCoordinates, 'latitude' | 'longitude'> { }
+import type { Coordinates } from '@types'
 
 export const DEFAULT_LOCATION: Coordinates = {
   latitude: 41.3879,

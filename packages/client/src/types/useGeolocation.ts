@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
+export interface Coordinates extends Pick<GeolocationCoordinates, 'latitude' | 'longitude'> { }
 
 export interface useGeolocationProps {
   loading: boolean
   isSupported: boolean | null
-  coords: GeolocationCoordinates | null
+  coords: Coordinates | null
   timestamp: number | null
   error?: GeolocationPositionError | null
 }
