@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import type { LocationStatus, Coordinates } from '@types'
+import type { LocationStatus, GeolocationState } from '@types'
 import type { StoreSlice } from '.'
 import { DISABLED_TIMEOUT } from '@lib/constants'
 
@@ -7,27 +7,6 @@ const DEFAULT_GEO_OPTIONS: PositionOptions = {
   enableHighAccuracy: true,
   maximumAge: 30000,
   timeout: 6000000
-}
-
-export interface GeolocationState {
-  loading: boolean
-  setLoading: (loading: boolean) => void
-
-  isSupported: boolean | null
-  setIsSupported: (isSupported: boolean) => void
-
-  coords: Coordinates | null
-  setCoords: (coords: Coordinates) => void
-  getCoords: () => void
-
-  timestamp: number | null
-  setTimestamp: (timestamp: number) => void
-
-  error: GeolocationPositionError | null
-  setError: (error: GeolocationPositionError | null) => void
-
-  locationStatus: LocationStatus
-  setLocationStatus: (locationStatus: LocationStatus) => void
 }
 
 export const geolocation: StoreSlice<GeolocationState> = (set, _get): GeolocationState => ({

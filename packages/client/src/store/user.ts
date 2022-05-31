@@ -1,16 +1,6 @@
-import type { GeoPermission } from '@types'
+import type { UserState } from '@types'
 import type { StoreSlice } from '.'
 import { savePermissionToLocalStorage, getPermissionFromLocalStorage } from '@lib'
-
-export interface UserState {
-  permission: GeoPermission
-  setPermission: (permission: GeoPermission) => void
-  grantPermission: () => void
-
-  localStorageReaded: boolean
-  setLocalStorageReaded: (localStorageReaded: boolean) => void
-  initLocalStorage: () => void
-}
 
 export const user: StoreSlice<UserState> = (set, _get): UserState => ({
   permission: null,
