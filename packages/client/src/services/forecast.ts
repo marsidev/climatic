@@ -7,6 +7,8 @@ interface GetForecast {
   locationStatus: LocationStatus
 }
 
+const ENVIROMENT: any = process.env.NODE_ENV
+
 export const getForecast = async ({ coords, locationStatus }: GetForecast): Promise<ForecastResponse> => {
   const latitude = coords?.latitude
   const longitude = coords?.longitude
@@ -17,7 +19,7 @@ export const getForecast = async ({ coords, locationStatus }: GetForecast): Prom
   let lon: string
   let url: string
 
-  if (SHOW_MOCK_DATA_ON_DEV) {
+  if (SHOW_MOCK_DATA_ON_DEV && ENVIROMENT === 'development') {
     if (noGeo || noCoords) {
       console.log('retrieving default mock data')
       url = '/api/forecast?q=mock_BCN'
