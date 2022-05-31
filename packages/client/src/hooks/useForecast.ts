@@ -1,20 +1,19 @@
-import { useEffect, useState } from 'react'
-import { getForecast } from '@services'
+import type { ForecastResponse } from '@climatic/shared'
+import { useEffect } from 'react'
 import { useStore } from '@store'
 
-export const useForecast = () => {
-  const [data, setData] = useState<unknown>(null)
-  const { coords, locationStatus } = useStore()
+type ReturnState = ForecastResponse | null
+
+export const useForecast = (): ReturnState => {
+  const { coords, locationStatus, forecastData, getForecastData } = useStore()
 
   useEffect(() => {
     if (locationStatus !== 'loading') {
-      getForecast({ coords, locationStatus }).then(d => {
-        setData(d)
-      })
+      getForecastData({ coords, locationStatus })
     }
   }, [locationStatus])
 
-  return data
+  return forecastData
 }
 
 export default useForecast

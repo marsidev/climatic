@@ -2,7 +2,7 @@ import type { ForecastResponse } from '@climatic/shared'
 import { DEFAULT_LOCATION, SHOW_MOCK_DATA_ON_DEV } from '@lib/constants'
 import { Coordinates, LocationStatus } from '@types'
 
-interface GetForecast {
+export interface GetForecast {
   coords: Coordinates | null
   locationStatus: LocationStatus
 }
