@@ -18,7 +18,7 @@ export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherRespons
 
   const timestamp = last_updated_epoch * 1000
 
-  const result = {
+  const result: WeatherResponse = {
     location: {
       name,
       country,
@@ -168,7 +168,7 @@ export const formatForecastData = (data: RapidAPIForecastResponse): ForecastResp
     return formatForecastDay(foreData)
   })
 
-  const result = {
+  const result: ForecastResponse = {
     location: locationFormatted,
     currentWeather,
     forecast
