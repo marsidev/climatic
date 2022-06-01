@@ -3,7 +3,7 @@ import type { ForecastResponse } from '@climatic/shared'
 import { FC } from 'react'
 import { Flex, FlexProps, Heading, Image, Text } from '@chakra-ui/react'
 import { getLargeDate, formatTemperature } from '@lib/intl'
-import { DEFAULT_TEMPERATURE_UNIT } from '@lib/constants'
+import { DEFAULT_TEMPERATURE_UNIT, ASSETS_URL } from '@lib/constants'
 import { flag } from 'country-emoji'
 
 interface WeatherProps extends FlexProps {
@@ -56,7 +56,7 @@ export const Weather: FC<WeatherProps> = ({ data, ...props }) => {
             alt={`icono de clima ${conditionName}`}
             display='inline-block'
             h={8}
-            src={`/src/assets/icons/${conditionIcon}`}
+            src={`${ASSETS_URL}/icons/${conditionIcon}`}
             w={8}
           />
         </Flex>

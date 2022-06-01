@@ -28,6 +28,13 @@ async function setupServer() {
   const clientBuildPath: string = path.join(__dirname, '../../../dist')
   server.register(statics, { root: clientBuildPath })
 
+  // serve client assets
+  const clientAssetsPath: string = path.join(__dirname, '../../../packages/client/src/assets')
+  server.register(statics, {
+    root: clientAssetsPath, prefix: '/server-assets/',
+    decorateReply: false
+  })
+
   // prepare server
   await server.ready()
 }

@@ -17,3 +17,8 @@ export const DEFAULT_GEO_OPTIONS: GeoPositionOptions = {
 export const DEFAULT_TEMPERATURE_UNIT: TemperatureUnit = 'celsius'
 
 export const DISABLED_TIMEOUT: number = 1000
+
+export const ASSETS_URL =
+  process.env.NODE_ENV === 'development'
+    ? '/src/assets'
+    : '/server-assets'
