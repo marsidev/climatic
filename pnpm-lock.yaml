@@ -36,6 +36,7 @@ importers:
       '@emotion/react': ^11.9.0
       '@emotion/styled': ^11.8.1
       '@fontsource/aileron': ^4.5.3
+      '@fontsource/lato': ^4.5.8
       '@fontsource/nunito': ^4.5.9
       '@fontsource/raleway': ^4.5.8
       '@fontsource/roboto': ^4.5.7
@@ -45,6 +46,7 @@ importers:
       '@types/react': ^18.0.9
       '@types/react-dom': ^18.0.5
       '@vitejs/plugin-react': ^1.3.2
+      country-emoji: ^1.5.6
       eslint: ^8.16.0
       eslint-plugin-react: ^7.30.0
       eslint-plugin-react-hooks: ^4.5.0
@@ -67,11 +69,13 @@ importers:
       '@emotion/react': 11.9.0_wyic7k6y4scqvmgrpshixuqwly
       '@emotion/styled': 11.8.1_v7eedgdx7xjx7aqq5pyjhqmfyu
       '@fontsource/aileron': 4.5.3
+      '@fontsource/lato': 4.5.8
       '@fontsource/nunito': 4.5.9
       '@fontsource/raleway': 4.5.8
       '@fontsource/roboto': 4.5.7
       '@fontsource/rubik': 4.5.9
       '@vitejs/plugin-react': 1.3.2
+      country-emoji: 1.5.6
       framer-motion: 6.3.4_ef5jwxihqo6n7gxfmzogljlgcm
       isomorphic-fetch: 3.0.0
       react: 18.1.0
@@ -1483,6 +1487,10 @@ packages:
     resolution: {integrity: sha512-pFqJqwhvNSb5bkrMRCJ66eyxtosPtR0THTfti6l1sl9vBWs7kQlu0mzXPdqr9qyLy82OnzsQhBGYCBszbbiV/w==}
     dev: false
 
+  /@fontsource/lato/4.5.8:
+    resolution: {integrity: sha512-IoSvhhzHsSzJu5XEOmDqzqcSmtfcJ788nz2TDgGXac076DApUsYIPHHBd0dh9guMBIVuHZ8Y2dlXNHFl4bCyLA==}
+    dev: false
+
   /@fontsource/nunito/4.5.9:
     resolution: {integrity: sha512-HlCPb5MSCSEx5KhIYsIU6JqlOtvfFnTT2RB0Gcz3Pdht9rkShEYaYKVvlgYQV03+Eom8HUAYQJcDT5gaRbm6AQ==}
     dev: false
@@ -2192,6 +2200,10 @@ packages:
       yaml: 1.10.2
     dev: true
     optional: true
+
+  /country-emoji/1.5.6:
+    resolution: {integrity: sha512-pSB8OOROfimFc2bcN+H41DuzXYIod/JQ6SgF4pYXkRCm9f8uF1JAJ0vXPhenug6xkpt3Gv33mdypMXB49CJWRA==}
+    dev: false
 
   /create-require/1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}

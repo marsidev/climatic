@@ -26,3 +26,27 @@ export const getDayName = (date: number | Date) => {
   const fomatter = new Intl.DateTimeFormat(locale, options)
   return fomatter.format(date)
 }
+
+export const getShortDate = (date: number | Date) => {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    timeZone: 'UTC'
+  }
+
+  const fomatter = new Intl.DateTimeFormat(locale, options)
+  return fomatter.format(date)
+}
+
+export const getLargeDate = (date: number | Date) => {
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    timeZone: 'UTC'
+  }
+
+  const fomatter = new Intl.DateTimeFormat(locale, options)
+  return fomatter.format(date)
+}

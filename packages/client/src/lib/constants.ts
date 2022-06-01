@@ -1,3 +1,4 @@
+import type { TemperatureUnit } from '@climatic/shared'
 import type { Coordinates, GeoPositionOptions } from '@types'
 
 export const SHOW_MOCK_DATA_ON_DEV = true
@@ -12,5 +13,7 @@ export const DEFAULT_GEO_OPTIONS: GeoPositionOptions = {
   maximumAge: 30000,
   timeout: 6000000
 }
+
+export const DEFAULT_TEMPERATURE_UNIT: TemperatureUnit = 'celsius'
 
 export const DISABLED_TIMEOUT: number = 1000

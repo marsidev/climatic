@@ -1,7 +1,9 @@
-import type { ForecastResponse, TemperatureUnit } from '@climatic/shared'
+import type { ForecastResponse } from '@climatic/shared'
 import { useEffect } from 'react'
 import { useStore } from '@store'
 import { formatTemperature } from '@lib/intl'
+import { DEFAULT_TEMPERATURE_UNIT } from '@lib/constants'
+import { flag } from 'country-emoji'
 
 type ReturnState = ForecastResponse | null
 
@@ -19,13 +21,14 @@ export const useForecast = (): ReturnState => {
       const { location, currentWeather } = forecastData
       const { temperature, isDay } = currentWeather
 
-      const unit: TemperatureUnit = 'celsius'
-      const _temperature = temperature[unit]
-      const temperatureString = formatTemperature(_temperature, unit)
-      const city = location.name
+      const { country, name: city } = location
+
+      const _temperature = temperature[DEFAULT_TEMPERATURE_UNIT]
+      const temperatureString = formatTemperature(_temperature, DEFAULT_TEMPERATURE_UNIT)
+      const countryEmoji = flag(country)
       const timeEmoji = isDay ? '☀' : '🌕'
 
-      const title = `${temperatureString} en ${city} ${timeEmoji} | Climatic`
+      const title = `${temperatureString} en ${city} ${countryEmoji} ${timeEmoji} | Climatic`
       document.title = title
     }
   }, [forecastData])

@@ -25,7 +25,7 @@ export const PermissionAlert: FC<FlexProps> = ({ ...props }) => {
 
   return (
     <Alert
-      borderRadius={8}
+      borderRadius={24}
       color='#000'
       flexDir='row'
       px={2}

@@ -1,8 +1,9 @@
 import type { ForecastResponse } from '@climatic/shared'
 
 import { FC } from 'react'
-import { Flex, FlexProps, HStack, Image, Text, VStack } from '@chakra-ui/react'
-import { formatInt, getDayName } from '@lib/intl'
+import { Flex, FlexProps, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { formatInt, getShortDate, formatTemperature } from '@lib/intl'
+import { DEFAULT_TEMPERATURE_UNIT } from '@lib/constants'
 
 interface ForecastProps extends FlexProps {
   data: ForecastResponse
@@ -15,41 +16,55 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
   return (
     <Flex
       align='center'
-      // border='1px solid'
+      as='section'
       flexDir='column'
-      minH={400}
       px={2}
       {...props}
     >
-      <VStack w='100%'>
+      <Heading
+        as='h4'
+        fontSize={18}
+        textAlign='left'
+        w='90%'
+      >
+        Predicción de los próximos 7 días
+      </Heading>
+
+      <VStack as='ul' fontSize={14} spacing={1} w='100%'>
         {forecastFromTomorrow.map(data => {
           const { timestamp, day } = data
           const { condition: { icon, name }, temperature } = day
 
-          const dayName = getDayName(timestamp)
-          const unit = 'celsius'
-          const minTemp = temperature[unit].min
-          const maxTemp = temperature[unit].max
-          const minTempStr = formatInt(minTemp)
+          const date = getShortDate(timestamp)
+          const minTemp = temperature[DEFAULT_TEMPERATURE_UNIT].min
+          const maxTemp = temperature[DEFAULT_TEMPERATURE_UNIT].max
+          // const minTempStr = formatTemperature(formatInt(minTemp), DEFAULT_TEMPERATURE_UNIT)
+          const minTempStr = formatTemperature(formatInt(minTemp), DEFAULT_TEMPERATURE_UNIT)
           const maxTempStr = formatInt(maxTemp)
 
+          const conditionName = name.toLowerCase()
+
           return (
-            <HStack key={timestamp} justify='space-between' w='90%'>
-              <Text w='25%'>{dayName}</Text>
+            <HStack
+              key={timestamp}
+              as='li'
+              fontFamily='NunitoVariable, san-serif'
+              justify='space-between'
+              w='90%'
+            >
+              <Text as='span' minW='80px'>{date}</Text>
 
               <Flex as='figure' justify='center'>
                 <Image
-                  alt={`${name} icon`}
+                  alt={`icono de clima ${conditionName}`}
                   h={8}
-                  src={`https://cdn.weatherapi.com/weather/64x64${icon}`}
+                  src={`/src/assets/icons/${icon}`}
                   w={8}
                 />
               </Flex>
 
-              <HStack justify='flex-end' minW='33.33%' pr={4}>
-                <Text>{maxTempStr}</Text>
-                <Text>{minTempStr}</Text>
-              </HStack>
+              <Text as='span'>{maxTempStr} / {minTempStr}</Text>
+              <Text as='span'>{conditionName}</Text>
             </HStack>
           )
         })}

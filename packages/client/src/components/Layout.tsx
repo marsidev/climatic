@@ -1,29 +1,27 @@
-import type { FlexProps } from '@chakra-ui/react'
-import { FC } from 'react'
-import { Flex } from '@chakra-ui/react'
+import type { ForecastResponse } from '@climatic/shared'
+import type { BoxProps } from '@chakra-ui/react'
 
-export const Layout: FC<FlexProps> = ({ children }) => {
+import { FC } from 'react'
+import { Box, Spacer } from '@chakra-ui/react'
+import { PermissionAlert, Forecast, Weather } from '@components'
+
+interface LayoutProps extends BoxProps {
+  data: ForecastResponse
+}
+
+export const Layout: FC<LayoutProps> = ({ data }) => {
   return (
-    <Flex
-      align='center'
-      as='main'
-      bg='purple.300'
-      color='white'
-      flexDir='column'
-      justify='flex-start'
-      minH='100vh'
+    <Box
+      bg='linear-gradient(0deg, rgba(148,187,233,1) 35%, rgba(255,234,107,1) 100%)'
+      className='container'
     >
-      <Flex
-        // border='2px solid purple'
-        flexDir='column'
-        h='full'
-        justify='flex-start'
-        maxW={500}
-        w='100%'
-      >
-        {children}
-      </Flex>
-    </Flex>
+      <Box as='main' className='weather-card'>
+        <PermissionAlert />
+        <Weather data={data} />
+        <Spacer />
+        <Forecast data={data} />
+      </Box>
+    </Box>
   )
 }
 
