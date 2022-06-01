@@ -3,7 +3,7 @@ import type { BoxProps } from '@chakra-ui/react'
 
 import { FC } from 'react'
 import { Box, Spacer } from '@chakra-ui/react'
-import { PermissionAlert, Forecast, Weather } from '@components'
+import { PermissionAlert, Forecast, Header, Temperature, WeatherStats } from '@components'
 
 interface LayoutProps extends BoxProps {
   data: ForecastResponse
@@ -17,7 +17,9 @@ export const Layout: FC<LayoutProps> = ({ data }) => {
     >
       <Box as='main' className='weather-card'>
         <PermissionAlert />
-        <Weather data={data} />
+        <Header data={data} />
+        <Temperature data={data} />
+        <WeatherStats data={data} />
         <Spacer />
         <Forecast data={data} />
       </Box>
