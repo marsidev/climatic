@@ -1,5 +1,5 @@
-## About the project
-Climatic is a monorepo app that shows the current weather data and weather forecast for next days. <br />
+## Climatic
+Monorepo project that shows the current weather data and weather forecast for next 7 days. <br />
 Created from scratch to participate in a [Hackathon](https://www.twitch.tv/videos/1488279878) hosted by [midudev](https://www.github.com/midudev) and [RapidAPI](https://rapidapi.com).
 
 ## 🛠️ Tech
