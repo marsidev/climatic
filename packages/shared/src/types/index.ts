@@ -2,6 +2,8 @@ type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibb
 
 export type TemperatureUnit = 'celsius' | 'farenheit'
 
+export type SpeedUnit = 'mph' | 'kph'
+
 export interface Astro {
   sunrise: string
   sunset: string

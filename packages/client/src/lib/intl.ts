@@ -1,4 +1,4 @@
-import type { TemperatureUnit } from '@climatic/shared'
+import type { TemperatureUnit, SpeedUnit } from '@climatic/shared'
 
 const locale: string = 'es-ES'
 
@@ -15,6 +15,17 @@ export const formatTemperature = (temperature: number, unit: TemperatureUnit): s
 
   const fomatter = new Intl.NumberFormat(locale, options)
   return fomatter.format(formatInt(temperature))
+}
+
+export const formatSpeed = (speed: number, unit: SpeedUnit): string => {
+  let unitFormatted: string | undefined
+  if (unit === 'kph') unitFormatted = 'kilometer-per-hour'
+  if (unit === 'mph') unitFormatted = 'mile-per-hour'
+
+  const options: Intl.NumberFormatOptions = { style: 'unit', unit: unitFormatted, unitDisplay: 'short' }
+
+  const fomatter = new Intl.NumberFormat(locale, options)
+  return fomatter.format(formatInt(speed))
 }
 
 export const getDayName = (date: number | Date) => {

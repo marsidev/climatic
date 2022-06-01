@@ -64,7 +64,10 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
               </Flex>
 
               <Text as='span'>{maxTempStr} / {minTempStr}</Text>
-              <Text as='span'>{conditionName}</Text>
+
+              <Text as='span' fontSize={12} w='100px'>
+                {conditionName}
+              </Text>
             </HStack>
           )
         })}

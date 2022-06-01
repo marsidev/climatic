@@ -1,7 +1,7 @@
-import type { TemperatureUnit } from '@climatic/shared'
+import type { TemperatureUnit, SpeedUnit } from '@climatic/shared'
 import type { Coordinates, GeoPositionOptions } from '@types'
 
-export const SHOW_MOCK_DATA_ON_DEV = true
+export const SHOW_MOCK_DATA_ON_DEV = false
 
 export const DEFAULT_LOCATION: Coordinates = {
   latitude: 41.3879,
@@ -15,6 +15,8 @@ export const DEFAULT_GEO_OPTIONS: GeoPositionOptions = {
 }
 
 export const DEFAULT_TEMPERATURE_UNIT: TemperatureUnit = 'celsius'
+
+export const DEFAULT_SPEED_UNIT: SpeedUnit = 'kph'
 
 export const DISABLED_TIMEOUT: number = 1000
 
