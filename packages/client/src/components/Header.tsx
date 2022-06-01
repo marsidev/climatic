@@ -28,6 +28,7 @@ export const Header: FC<HeaderProps> = ({ data, ...props }) => {
         as='h2'
         fontSize={48}
         fontWeight={300}
+        lineHeight={1}
         textAlign='center'
       >
         {`${city}, ${flag(country)}`}
@@ -37,6 +38,7 @@ export const Header: FC<HeaderProps> = ({ data, ...props }) => {
         as='h3'
         fontSize={24}
         fontWeight={400}
+        mt={1}
       >
         {date}
       </Heading>

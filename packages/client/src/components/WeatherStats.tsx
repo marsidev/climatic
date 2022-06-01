@@ -1,8 +1,8 @@
 import type { ForecastResponse } from '@climatic/shared'
-import { StackProps } from '@chakra-ui/react'
+import { StackProps, FlexProps } from '@chakra-ui/react'
 
 import { FC } from 'react'
-import { chakra, Flex, HStack } from '@chakra-ui/react'
+import { chakra, Box, Flex, HStack } from '@chakra-ui/react'
 import { formatSpeed } from '@lib/intl'
 import { DEFAULT_SPEED_UNIT } from '@lib/constants'
 import { WindDirectionIcon } from '@components'
@@ -17,7 +17,8 @@ interface WeatherStatsProps extends StackProps {
   data: ForecastResponse
 }
 
-const WeatherStatStyle = {
+const statItemStyle: FlexProps = {
+  as: 'li',
   align: 'center',
   border: '1px solid',
   borderColor: 'blackAlpha.700',
@@ -36,29 +37,29 @@ export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
   const windSpeed = formatSpeed(speed[DEFAULT_SPEED_UNIT], DEFAULT_SPEED_UNIT)
 
   return (
-    <HStack
-      align='center'
-      as='section'
-      borderRadius={8}
-      {...props}
-    >
-      <Flex {...WeatherStatStyle}>
-        <chakra.span><DropIcon /></chakra.span>
-        <chakra.span ml={1}>{humidity}%</chakra.span>
-      </Flex>
+    <Box as='section'>
+      <HStack
+        align='center'
+        as='ul'
+        justify='center'
+        {...props}
+      >
+        <Flex {...statItemStyle}>
+          <chakra.figure><DropIcon /></chakra.figure>
+          <chakra.span ml={1}>{humidity}%</chakra.span>
+        </Flex>
 
-      <Flex {...WeatherStatStyle}>
-        <chakra.span><CloudIcon /></chakra.span>
-        <chakra.span ml={1}>{cloud}%</chakra.span>
-      </Flex>
+        <Flex {...statItemStyle}>
+          <chakra.figure><CloudIcon /></chakra.figure>
+          <chakra.span ml={1}>{cloud}%</chakra.span>
+        </Flex>
 
-      <Flex {...WeatherStatStyle}>
-        <chakra.span><WindIcon /></chakra.span>
-        <chakra.span ml={1}>{windSpeed}</chakra.span>
-        <chakra.span ml={1}>
-          <WindDirectionIcon degree={degree} />
-        </chakra.span>
-      </Flex>
-    </HStack>
+        <Flex {...statItemStyle}>
+          <chakra.figure><WindIcon /></chakra.figure>
+          <chakra.span ml={1}>{windSpeed}</chakra.span>
+          <WindDirectionIcon degree={degree} ml={1} />
+        </Flex>
+      </HStack>
+    </Box>
   )
 }

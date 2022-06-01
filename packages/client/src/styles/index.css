@@ -50,27 +50,6 @@ html {
 
 @media (min-width: 576px) {
   .weather-card {
-    width: 420px;
-    max-width: 576px;
+    width: 480px;
   }
 }
-
-/* .weather {
-	transition: background-color var(--speed) ease;
-}
-
-.weather.thunder {
-  background-color: #9FA4AD;
-}
-
-.weather.rain {
-  background-color: #D8D8D8;
-}
-
-.weather.sun {
-  background-color: #ccccff;
-}
-
-.weather.cloud {
-  transition: fill var(--speed) ease;
-} */

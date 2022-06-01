@@ -18,9 +18,9 @@ export const Layout: FC<LayoutProps> = ({ data }) => {
       <Box as='main' className='weather-card'>
         <PermissionAlert />
         <Header data={data} />
-        <Temperature data={data} />
+        <Temperature data={data} py='48px' />
         <WeatherStats data={data} />
-        <Spacer />
+        <Spacer as='section' />
         <Forecast data={data} />
       </Box>
     </Box>
