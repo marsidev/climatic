@@ -60,6 +60,7 @@ interface Weather {
   condition: Condition
   updateAt: number
   updateDateAt: string
+  uv: number
 }
 
 export interface WeatherResponse {
@@ -101,6 +102,7 @@ interface ForecastDay {
     chance: number
     willItSnow: boolean
   }
+  uv: number
 }
 
 // type WeatherWithoutTimestamps = Omit<Weather, 'updateAt' | 'updateDateAt'>

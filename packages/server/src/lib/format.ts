@@ -14,7 +14,7 @@ export const formatCondition = (condition: RapidAPICondition): Condition => {
 export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherResponse => {
   const { location, current } = data
   const { country, name, lat, lon, tz_id } = location
-  const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch, pressure_in, pressure_mb } = current
+  const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch, pressure_in, pressure_mb, uv } = current
 
   const timestamp = last_updated_epoch * 1000
 
@@ -50,6 +50,7 @@ export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherRespons
         mb: pressure_mb,
         in: pressure_in
       },
+      uv,
       condition: formatCondition(condition),
       updateAt: timestamp,
       updateDateAt: new Date(timestamp).toISOString()
@@ -61,7 +62,7 @@ export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherRespons
 
 // forecast formatters
 const formatDaySummary = (day: RapidAPIForecastDaySummary) => {
-  const { maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, avgtemp_c, avgtemp_f, maxwind_mph, maxwind_kph, totalprecip_mm, totalprecip_in, avghumidity, condition, daily_will_it_rain, daily_chance_of_rain, daily_will_it_snow, daily_chance_of_snow } = day
+  const { maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, avgtemp_c, avgtemp_f, maxwind_mph, maxwind_kph, totalprecip_mm, totalprecip_in, avghumidity, condition, daily_will_it_rain, daily_chance_of_rain, daily_will_it_snow, daily_chance_of_snow, uv } = day
 
   return {
     temperature: {
@@ -95,13 +96,14 @@ const formatDaySummary = (day: RapidAPIForecastDaySummary) => {
     snow: {
       chance: daily_chance_of_snow,
       willItSnow: daily_will_it_snow === 1
-    }
+    },
+    uv
   }
 }
 
 const formatHoursData = (hours: RapidAPIForecastHour[]) => {
   const result = hours.map((hour, i) => {
-    const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch, will_it_rain, chance_of_rain, will_it_snow, chance_of_snow, pressure_in, pressure_mb } = hour
+    const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch, will_it_rain, chance_of_rain, will_it_snow, chance_of_snow, pressure_in, pressure_mb, uv } = hour
 
     return {
       hour: i,
@@ -137,6 +139,7 @@ const formatHoursData = (hours: RapidAPIForecastHour[]) => {
         chance: chance_of_snow,
         willItSnow: will_it_snow === 1
       },
+      uv,
       timestamp: time_epoch * 1000,
       date: new Date(time_epoch * 1000).toString()
     }
