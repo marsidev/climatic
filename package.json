@@ -12,16 +12,16 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm run --parallel build",
+    "build": "pnpm run -r build",
     "start": "pnpm --filter server start",
-    "dev": "pnpm run --parallel --filter server --filter client dev",
+    "dev": "pnpm run -r --filter server --filter client dev",
     "dev-server": "pnpm --filter server dev",
     "dev-client": "pnpm --filter client dev",
     "dev-client-https": "pnpm --filter client dev-https",
     "start-all": "pnpm build && pnpm start",
-    "lint": "pnpm run --parallel lint",
-    "lint-fix": "pnpm run --parallel lint-fix",
-    "tsc": "pnpm run --parallel tsc",
+    "lint": "pnpm run -r lint",
+    "lint-fix": "pnpm run -r lint-fix",
+    "tsc": "pnpm run -r tsc",
     "heroku": "git push heroku HEAD:main",
     "up-all": "pnpm -r up",
     "prebuild": "npm i -g pnpm && pnpm i"
