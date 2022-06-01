@@ -12,7 +12,7 @@ export const forecast: FastifyPluginAsync = async (server: FastifyInstance, opts
     if (q === 'mock-la') {
       forecastData = require('@/mock_data/forecast-la.json')
     } else if (q === 'mock-bcn') {
-      forecastData = require('@/mock_data/forecast-la.json')
+      forecastData = require('@/mock_data/forecast-bcn.json')
     } else {
       forecastData = await fetchForecastData({ q, days })
     }
