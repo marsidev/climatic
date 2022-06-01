@@ -13,11 +13,6 @@ export interface Astro {
   moon_illumination: string
 }
 
-interface Temperature {
-  celsius: number
-  fahrenheit: number
-}
-
 export interface Condition {
   id: number
   name: string
@@ -32,6 +27,27 @@ interface Location {
   longitude: number
 }
 
+interface Temperature {
+  celsius: number
+  fahrenheit: number
+}
+
+interface WinSpeed {
+  kph: number
+  mph: number
+}
+
+interface Wind {
+  speed: WinSpeed
+  direction: string
+  degree: number
+}
+
+interface Pressure {
+  mb: number
+  in: number
+}
+
 /* Weather */
 interface Weather {
   cloud: number
@@ -39,14 +55,8 @@ interface Weather {
   isDay: boolean
   temperature: Temperature
   feelsLike: Temperature
-  wind: {
-    speed: {
-      kph: number
-      mph: number
-    }
-    direction: string
-    degree: number
-  }
+  wind: Wind
+  pressure: Pressure
   condition: Condition
   updateAt: number
   updateDateAt: string

@@ -14,7 +14,7 @@ export const formatCondition = (condition: RapidAPICondition): Condition => {
 export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherResponse => {
   const { location, current } = data
   const { country, name, lat, lon, tz_id } = location
-  const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch } = current
+  const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch, pressure_in, pressure_mb } = current
 
   const timestamp = last_updated_epoch * 1000
 
@@ -45,6 +45,10 @@ export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherRespons
         },
         direction: wind_dir,
         degree: wind_degree
+      },
+      pressure: {
+        mb: pressure_mb,
+        in: pressure_in
       },
       condition: formatCondition(condition),
       updateAt: timestamp,
@@ -97,7 +101,7 @@ const formatDaySummary = (day: RapidAPIForecastDaySummary) => {
 
 const formatHoursData = (hours: RapidAPIForecastHour[]) => {
   const result = hours.map((hour, i) => {
-    const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch, will_it_rain, chance_of_rain, will_it_snow, chance_of_snow } = hour
+    const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch, will_it_rain, chance_of_rain, will_it_snow, chance_of_snow, pressure_in, pressure_mb } = hour
 
     return {
       hour: i,
@@ -120,6 +124,10 @@ const formatHoursData = (hours: RapidAPIForecastHour[]) => {
         },
         direction: wind_dir,
         degree: wind_degree
+      },
+      pressure: {
+        mb: pressure_mb,
+        in: pressure_in
       },
       rain: {
         chance: chance_of_rain,
