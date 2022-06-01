@@ -1,5 +1,6 @@
 import type { Coordinates, LocationStatus } from '@types'
 import type { ForecastResponse } from '@climatic/shared'
+
 import { DEFAULT_LOCATION, SHOW_MOCK_DATA_ON_DEV } from '@lib/constants'
 
 export interface GetForecast {
@@ -22,10 +23,10 @@ export const getForecast = async ({ coords, locationStatus }: GetForecast): Prom
   if (SHOW_MOCK_DATA_ON_DEV && ENVIROMENT === 'development') {
     if (noGeo || noCoords) {
       console.log('retrieving default mock data')
-      url = '/api/forecast?q=mock_BCN'
+      url = '/api/forecast?q=mock-bcn'
     } else {
       console.log('retrieving mock data with location')
-      url = '/api/forecast?q=mock_LA'
+      url = '/api/forecast?q=mock-la'
     }
   } else {
     if (noGeo || noCoords) {
