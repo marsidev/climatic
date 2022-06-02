@@ -51,7 +51,7 @@ export const SearchInput: FC<SearchInputProps> = ({ closeModal }) => {
         <Input
           autoFocus
           autoComplete='off'
-          placeholder='Search here...'
+          placeholder='Escribe alguna ciudad...'
           type='text'
           onChange={handleChange}
         />
