@@ -20,5 +20,13 @@ export const forecast: StoreSlice<ForecastState> = (set, _get): ForecastState =>
       set(() => ({ forecastData: d }))
       return d
     })
+  },
+
+  forecastQuery: '',
+  setForecastQuery(forecastQuery) {
+    set(() => ({ forecastQuery }))
+  },
+  clearForecastQuery() {
+    set(() => ({ forecastQuery: '' }))
   }
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, HStack, Icon, Text } from '@chakra-ui/react'
+import { Box, HStack, Icon, Spacer, Spinner, Text } from '@chakra-ui/react'
 import { flag } from 'country-emoji'
 import { RiMapPinLine as PinIcon } from 'react-icons/ri'
 import { useStore } from '@store'
@@ -13,13 +13,18 @@ interface SearchItemResultProps {
 }
 
 export const SearchItemResult = ({ name, region, country, url, onSubmit }: SearchItemResultProps) => {
-  const { getForecastDataByQuery } = useStore()
+  const { getForecastDataByQuery, loading, setLoading, setForecastQuery, forecastQuery } = useStore()
 
-  const handleClick = (url: string) => {
-    getForecastDataByQuery({ query: url }).then(_data => {
+  const handleClick = (query: string) => {
+    setLoading(true)
+    setForecastQuery(query)
+    getForecastDataByQuery({ query }).then(_data => {
+      setLoading(false)
       onSubmit()
     })
   }
+
+  const showSpinner = loading && forecastQuery === url
 
   return (
     <HStack
@@ -42,6 +47,10 @@ export const SearchItemResult = ({ name, region, country, url, onSubmit }: Searc
           {region} - {country} {flag(country)}
         </Text>
       </Box>
+
+      <Spacer />
+
+      {showSpinner && <Spinner />}
     </HStack>
   )
 }
