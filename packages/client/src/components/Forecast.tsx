@@ -21,23 +21,11 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       px={2}
       {...props}
     >
-      <Heading
-        as='h4'
-        fontSize={18}
-        pb={2}
-        textAlign='left'
-        w='90%'
-      >
+      <Heading as='h4' className='section-heading'>
         Predicción de los próximos 7 días
       </Heading>
 
-      <VStack
-        as='ul'
-        fontSize={14}
-        fontWeight={600}
-        spacing={1}
-        w='100%'
-      >
+      <VStack as='ul' className='section-list' spacing={2}>
         {forecastFromTomorrow.map(data => {
           const { timestamp, day } = data
           const { condition: { icon, name }, temperature } = day
@@ -51,14 +39,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
           const conditionName = name.toLowerCase()
 
           return (
-            <HStack
-              key={timestamp}
-              as='li'
-              borderBottom='1px solid'
-              borderColor='blackAlpha.300'
-              justify='space-between'
-              w='90%'
-            >
+            <HStack key={timestamp} as='li' className='section-list-item'>
               <Text as='span' minW='80px'>{date}</Text>
 
               <Flex as='figure' justify='center'>

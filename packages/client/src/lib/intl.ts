@@ -1,6 +1,7 @@
 import type { TemperatureUnit, SpeedUnit } from '@climatic/shared'
+import { DEFAULT_LANGUAGE } from '@lib/constants'
 
-const locale: string = 'es-ES'
+const locale = DEFAULT_LANGUAGE
 
 export const formatInt = (n: number): number => {
   const options: Intl.NumberFormatOptions = { maximumFractionDigits: 0 }

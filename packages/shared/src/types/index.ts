@@ -1,10 +1,16 @@
-type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent'
+export type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent'
+
+export type Language = 'es-ES' | 'en-US'
 
 export type TemperatureUnit = 'celsius' | 'farenheit'
 
 export type SpeedUnit = 'mph' | 'kph'
 
 export type PressureUnit = 'mb' | 'in'
+
+export interface Dictionary {
+  [key: string]: any
+}
 
 export interface Astro {
   sunrise: string
