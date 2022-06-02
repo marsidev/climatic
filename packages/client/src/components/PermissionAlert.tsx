@@ -1,5 +1,7 @@
+import type { FlexProps } from '@chakra-ui/react'
+
 import { FC, useState, useEffect } from 'react'
-import { Alert, AlertIcon, FlexProps, HStack, IconButton, Spacer, Text } from '@chakra-ui/react'
+import { Alert, AlertIcon, HStack, IconButton, Text } from '@chakra-ui/react'
 import { MdMyLocation as GeoIcon, MdClose as CloseIcon } from 'react-icons/md'
 import { useStore } from '@store'
 
@@ -25,9 +27,11 @@ export const PermissionAlert: FC<FlexProps> = ({ ...props }) => {
 
   return (
     <Alert
+      as='aside'
       borderRadius={24}
       color='#000'
       flexDir='row'
+      maxW='480px'
       px={2}
       status='warning'
       variant='left-accent'
@@ -39,9 +43,7 @@ export const PermissionAlert: FC<FlexProps> = ({ ...props }) => {
         Acepta el permiso de geolocalización para obtener el clima de tu ubicación.
       </Text>
 
-      <Spacer />
-
-      <HStack>
+      <HStack as='nav'>
         <IconButton
           aria-label='Grant geolocation permission'
           borderRadius={9999}

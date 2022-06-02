@@ -15,11 +15,11 @@ export const Layout: FC<LayoutProps> = ({ data }) => {
       bg='linear-gradient(0deg, rgba(148,187,233,1) 35%, rgba(255,234,107,1) 100%)'
       className='container'
     >
+      <PermissionAlert />
       <Box as='main' className='weather-card'>
-        <PermissionAlert />
         <Header data={data} />
         <Temperature data={data} py='48px' />
-        <WeatherStats data={data} />
+        <WeatherStats data={data} pb='32px' />
         <Spacer as='section' />
         <Forecast data={data} />
       </Box>

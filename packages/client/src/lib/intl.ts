@@ -11,7 +11,7 @@ export const formatInt = (n: number): number => {
 }
 
 export const formatTemperature = (temperature: number, unit: TemperatureUnit): string => {
-  const options: Intl.NumberFormatOptions = { style: 'unit', unit }
+  const options: Intl.NumberFormatOptions = { style: 'unit', unit, maximumFractionDigits: 0 }
 
   const fomatter = new Intl.NumberFormat(locale, options)
   return fomatter.format(formatInt(temperature))

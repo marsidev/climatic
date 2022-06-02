@@ -24,13 +24,19 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       <Heading
         as='h4'
         fontSize={18}
+        pb={2}
         textAlign='left'
         w='90%'
       >
         Predicción de los próximos 7 días
       </Heading>
 
-      <VStack as='ul' fontSize={14} spacing={1} w='100%'>
+      <VStack
+        as='ul'
+        fontSize={14}
+        spacing={1}
+        w='100%'
+      >
         {forecastFromTomorrow.map(data => {
           const { timestamp, day } = data
           const { condition: { icon, name }, temperature } = day
@@ -38,8 +44,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
           const date = getShortDate(timestamp)
           const minTemp = temperature[DEFAULT_TEMPERATURE_UNIT].min
           const maxTemp = temperature[DEFAULT_TEMPERATURE_UNIT].max
-          // const minTempStr = formatTemperature(formatInt(minTemp), DEFAULT_TEMPERATURE_UNIT)
-          const minTempStr = formatTemperature(formatInt(minTemp), DEFAULT_TEMPERATURE_UNIT)
+          const minTempStr = formatTemperature(minTemp, DEFAULT_TEMPERATURE_UNIT)
           const maxTempStr = formatInt(maxTemp)
 
           const conditionName = name.toLowerCase()
@@ -48,6 +53,8 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
             <HStack
               key={timestamp}
               as='li'
+              borderBottom='1px solid'
+              borderColor='blackAlpha.300'
               fontFamily='NunitoVariable, san-serif'
               justify='space-between'
               w='90%'

@@ -20,6 +20,8 @@ export const Temperature: FC<TemperatureProps> = ({ data, ...props }) => {
   const feelTemperature = feelsLike[DEFAULT_TEMPERATURE_UNIT]
   const feelTemperatureStr = formatTemperature(feelTemperature, DEFAULT_TEMPERATURE_UNIT)
 
+  const showFeelsLikeTemperature = temperatureStr !== feelTemperatureStr
+
   return (
     <Flex
       align='center'
@@ -38,12 +40,13 @@ export const Temperature: FC<TemperatureProps> = ({ data, ...props }) => {
         {temperatureStr}
       </Heading>
 
-      <chakra.span
-        fontFamily='NunitoVariable, san-serif'
-        fontWeight={600}
-      >
-        Sensación de {feelTemperatureStr}
-      </chakra.span>
+      {showFeelsLikeTemperature &&
+        <chakra.span
+          fontFamily='NunitoVariable, san-serif'
+          fontWeight={600}
+        >
+          Sensación de {feelTemperatureStr}
+        </chakra.span>}
     </Flex>
   )
 }
