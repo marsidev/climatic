@@ -48,8 +48,7 @@ pnpm dev
 Open [https://localhost:3000](https://localhost:3000) with your browser to see the result.
 
 ## 🚀 Preview
-[Main link](https://climatic-production.up.railway.app) <br />
-[Mirror link](https://climatic.onrender.com)
+[Demo link](https://climatic.onrender.com)
 
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!
