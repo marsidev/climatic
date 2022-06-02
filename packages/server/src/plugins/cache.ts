@@ -4,12 +4,13 @@ import type { Key, Options } from 'node-cache'
 import fp from 'fastify-plugin'
 import NodeCache from 'node-cache'
 
-const CACHE_TTL: number = 900 // cache duration in seconds - 15 minutes
+const DEFAULT_CACHE_TTL: number = 900 // cache duration in seconds - 15 minutes
+const SEARCH_CACHE_TTL: number = 86400 // 24h
 let CACHE_KEY: Key
 
 const CACHE_OPTIONS: Options = {
-  stdTTL: CACHE_TTL,
-  checkperiod: CACHE_TTL * 2
+  stdTTL: DEFAULT_CACHE_TTL,
+  checkperiod: DEFAULT_CACHE_TTL * 2
 }
 const CacheInstance = new NodeCache(CACHE_OPTIONS)
 
@@ -36,7 +37,11 @@ const pluginCallback: FastifyPluginAsync = async (server, _options) => {
       if (url?.includes('/api/')) {
         if (response === undefined && reply.statusCode < 400) {
           // console.log('CACHING RESPONSE FOR KEY', CACHE_KEY)
-          CacheInstance.set(CACHE_KEY, payload, CACHE_TTL)
+          if (url?.includes('/api/search?q=')) {
+            CacheInstance.set(CACHE_KEY, payload, SEARCH_CACHE_TTL)
+          } else {
+            CacheInstance.set(CACHE_KEY, payload, DEFAULT_CACHE_TTL)
+          }
         }
       }
     }
