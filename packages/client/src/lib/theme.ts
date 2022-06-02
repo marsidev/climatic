@@ -4,9 +4,7 @@ import { Dict } from '@chakra-ui/utils'
 import '@fontsource/raleway/variable.css'
 import '@fontsource/rubik/variable.css'
 import '@fontsource/nunito/variable.css'
-import '@fontsource/roboto/300.css'
 import '@fontsource/aileron/300.css'
-import '@fontsource/lato/300.css'
 
 const components = {
   Button: {
