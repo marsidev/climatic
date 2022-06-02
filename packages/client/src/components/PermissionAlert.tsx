@@ -28,18 +28,19 @@ export const PermissionAlert: FC<FlexProps> = ({ ...props }) => {
   return (
     <Alert
       as='aside'
-      borderRadius={24}
+      borderRadius={[0, 24]}
       color='#000'
       flexDir='row'
       maxW='480px'
       px={2}
       status='warning'
+      transition='all ease-in 100ms'
       variant='left-accent'
       {...props}
     >
       <AlertIcon />
 
-      <Text fontSize={12}>
+      <Text fontSize={[14, 16]} mr={2}>
         Acepta el permiso de geolocalización para obtener el clima de tu ubicación.
       </Text>
 
