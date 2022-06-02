@@ -28,7 +28,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       <VStack as='ul' className='section-list' spacing={2}>
         {forecastFromTomorrow.map(data => {
           const { timestamp, day } = data
-          const { condition: { icon, name }, temperature } = day
+          const { condition: { icon: iconPath, name }, temperature } = day
 
           const date = getShortDate(timestamp)
           const minTemp = temperature[DEFAULT_TEMPERATURE_UNIT].min
@@ -46,7 +46,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
                 <Image
                   alt={`icono de clima ${conditionName}`}
                   h={8}
-                  src={`${ASSETS_URL}/icons/${icon}`}
+                  src={`${ASSETS_URL}/icons${iconPath}`}
                   w={8}
                 />
               </Flex>

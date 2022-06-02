@@ -14,7 +14,7 @@ interface HeaderProps extends FlexProps {
 
 export const Header: FC<HeaderProps> = ({ data, ...props }) => {
   const { location, currentWeather } = data
-  const { condition: { icon: conditionIcon, name: conditionName }, updateAt } = currentWeather
+  const { condition: { icon: conditionIconPath, name: conditionName }, updateAt } = currentWeather
   const { country, name: city } = location
 
   const date = getLargeDate(updateAt)
@@ -59,7 +59,7 @@ export const Header: FC<HeaderProps> = ({ data, ...props }) => {
           alt={`icono de clima ${conditionName}`}
           display='inline-block'
           h={8}
-          src={`${ASSETS_URL}/icons/${conditionIcon}`}
+          src={`${ASSETS_URL}/icons${conditionIconPath}`}
           w={8}
         />
       </Flex>
