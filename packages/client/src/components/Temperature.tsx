@@ -42,8 +42,8 @@ export const Temperature: FC<TemperatureProps> = ({ data, ...props }) => {
 
       {showFeelsLikeTemperature &&
         <chakra.span
-          fontFamily='NunitoVariable, san-serif'
-          fontWeight={600}
+          fontFamily='RubikVariable, san-serif'
+          fontWeight={400}
         >
           Sensación de {feelTemperatureStr}
         </chakra.span>}

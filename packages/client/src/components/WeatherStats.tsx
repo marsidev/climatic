@@ -25,7 +25,7 @@ const statItemStyle: FlexProps = {
   border: '1px solid',
   borderColor: 'blackAlpha.700',
   borderRadius: 8,
-  fontFamily: 'NunitoVariable, san-serif',
+  fontFamily: 'RubikVariable, san-serif',
   justify: 'center',
   minH: '50px',
   minW: ['4.5em', '4.5em', '5em', '5em'],

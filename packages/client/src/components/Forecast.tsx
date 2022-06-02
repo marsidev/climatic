@@ -34,6 +34,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       <VStack
         as='ul'
         fontSize={14}
+        fontWeight={600}
         spacing={1}
         w='100%'
       >
@@ -55,7 +56,6 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
               as='li'
               borderBottom='1px solid'
               borderColor='blackAlpha.300'
-              fontFamily='NunitoVariable, san-serif'
               justify='space-between'
               w='90%'
             >
@@ -70,8 +70,8 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
                 />
               </Flex>
 
-              <Text>
-                <chakra.span color='red.400'>{maxTempStr}</chakra.span>
+              <Text fontWeight={800}>
+                <chakra.span color='red.600'>{maxTempStr}</chakra.span>
                 <chakra.span> / </chakra.span>
                 <chakra.span color='blue.600'>{minTempStr}</chakra.span>
               </Text>
