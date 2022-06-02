@@ -4,6 +4,8 @@ export type TemperatureUnit = 'celsius' | 'farenheit'
 
 export type SpeedUnit = 'mph' | 'kph'
 
+export type PressureUnit = 'mb' | 'in'
+
 export interface Astro {
   sunrise: string
   sunset: string
