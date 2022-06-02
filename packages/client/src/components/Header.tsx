@@ -6,6 +6,7 @@ import { Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { getLargeDate } from '@lib/intl'
 import { ASSETS_URL } from '@lib/constants'
 import { flag } from 'country-emoji'
+import { Time } from '@components'
 
 interface HeaderProps extends FlexProps {
   data: ForecastResponse
@@ -41,6 +42,8 @@ export const Header: FC<HeaderProps> = ({ data, ...props }) => {
         mt={1}
       >
         {date}
+        {' - '}
+        <Time />
       </Heading>
 
       <Flex

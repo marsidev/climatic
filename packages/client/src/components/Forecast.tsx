@@ -1,7 +1,7 @@
 import type { ForecastResponse } from '@climatic/shared'
 
 import { FC } from 'react'
-import { Flex, FlexProps, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { chakra, Flex, FlexProps, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { formatInt, getShortDate, formatTemperature } from '@lib/intl'
 import { DEFAULT_TEMPERATURE_UNIT, ASSETS_URL } from '@lib/constants'
 
@@ -70,7 +70,11 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
                 />
               </Flex>
 
-              <Text as='span'>{maxTempStr} / {minTempStr}</Text>
+              <Text>
+                <chakra.span color='red.400'>{maxTempStr}</chakra.span>
+                <chakra.span> / </chakra.span>
+                <chakra.span color='blue.600'>{minTempStr}</chakra.span>
+              </Text>
 
               <Text as='span' fontSize={12} w='100px'>
                 {conditionName}
