@@ -1,4 +1,4 @@
-import type { RapidAPIWeatherResponse, RapidAPIForecastResponse, RapidApiRequestQuery } from '@types'
+import type { RapidAPIWeatherResponse, RapidAPIForecastResponse, RapidAPISearchResponse, RapidApiRequestQuery } from '@types'
 
 import { FETCH_OPTIONS, API_URL } from '@lib/constants'
 import { fillNextForecastDays } from '@lib/dailyForecast'
@@ -39,5 +39,17 @@ export const fetchDayForecastData = async (props: RapidApiRequestQuery): Promise
 
   const response = await fetch(url, FETCH_OPTIONS)
   const data: RapidAPIForecastResponse = await response.json()
+  return data
+}
+
+export const fetchSearchData = async (props: RapidApiRequestQuery): Promise<RapidAPISearchResponse> => {
+  const { q } = props
+
+  const params = { q }
+  const queryString = new URLSearchParams(params).toString()
+  const url = `${API_URL}/search.json?${queryString}`
+
+  const response = await fetch(url, FETCH_OPTIONS)
+  const data: RapidAPISearchResponse = await response.json()
   return data
 }

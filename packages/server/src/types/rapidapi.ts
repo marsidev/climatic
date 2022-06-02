@@ -120,3 +120,16 @@ export interface RapidAPIForecastResponse extends RapidAPIWeatherResponse {
     forecastday: RapidAPIForecastDay[]
   }
 }
+
+// search
+export interface SearchItem {
+  id: string
+  name: string
+  region: string
+  country: string
+  lat: number
+  lon: number
+  url: string
+}
+
+export type RapidAPISearchResponse = SearchItem[]

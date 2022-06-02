@@ -5,7 +5,7 @@ import fastify from 'fastify'
 import fastifyCors from '@fastify/cors'
 import statics from '@fastify/static'
 import { cache } from '@plugins'
-import { ping, weather, forecast } from '@routes'
+import { ping, weather, forecast, search } from '@routes'
 import { logger } from '@lib'
 
 const { PORT = 3001, HOST = '0.0.0.0', APP_URL = '' } = process.env
@@ -23,6 +23,7 @@ async function setupServer() {
   await server.register(ping, { prefix: '/api/ping' })
   await server.register(weather, { prefix: '/api/weather' })
   await server.register(forecast, { prefix: '/api/forecast' })
+  await server.register(search, { prefix: '/api/search' })
 
   // serve client build
   const clientBuildPath: string = path.join(__dirname, '../../../dist')
