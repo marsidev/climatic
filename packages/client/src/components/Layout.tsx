@@ -22,7 +22,7 @@ export const Layout: FC<LayoutProps> = ({ data }) => {
 
   return (
     <Box
-      bg='linear-gradient(0deg, rgba(148,187,233,1) 35%, rgba(255,234,107,1) 100%)'
+      bg='linear-gradient(0deg, rgba(225,148,233,1) 26%, rgba(107,242,255,1) 100%)'
       className='container'
     >
       <Box as='main' className='weather-card'>
