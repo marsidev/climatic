@@ -1,3 +1,5 @@
+import { SearchResponse } from '@climatic/shared'
+
 export interface RapidApiRequestQuery {
   q: string
   days?: number
@@ -122,14 +124,4 @@ export interface RapidAPIForecastResponse extends RapidAPIWeatherResponse {
 }
 
 // search
-export interface SearchItem {
-  id: string
-  name: string
-  region: string
-  country: string
-  lat: number
-  lon: number
-  url: string
-}
-
-export type RapidAPISearchResponse = SearchItem[]
+export interface RapidAPISearchResponse extends SearchResponse { }

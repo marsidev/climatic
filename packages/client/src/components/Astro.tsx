@@ -40,7 +40,7 @@ export const Astro: FC<AstroProps> = ({ data, ...props }) => {
         Astrología
       </Heading>
 
-      <VStack as='ul' className='section-list' spacing={2}>
+      <VStack as='ul' className='section-list' spacing={4}>
         <HStack as='li' className='section-list-item'>
           <LabelIcon icon={<WiSunrise />} label='Salida del sol' />
           <Text as='span'>{sunrise}</Text>

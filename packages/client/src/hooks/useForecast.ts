@@ -8,11 +8,11 @@ import { flag } from 'country-emoji'
 type ReturnState = ForecastResponse | null
 
 export const useForecast = (): ReturnState => {
-  const { coords, locationStatus, forecastData, getForecastData } = useStore()
+  const { coords, locationStatus, forecastData, getForecastDataByCoords } = useStore()
 
   useEffect(() => {
     if (locationStatus !== 'loading') {
-      getForecastData({ coords, locationStatus })
+      getForecastDataByCoords({ coords, locationStatus })
     }
   }, [locationStatus])
 

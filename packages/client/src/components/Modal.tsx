@@ -12,8 +12,8 @@ import {
 
 type ModalProps = ChakraModalProps & {
   title: string
-  showCloseIcon: boolean
-  footer: ReactNode
+  showCloseIcon?: boolean
+  footer?: ReactNode
 }
 
 export const Modal: FC<ModalProps> = props => {
@@ -31,7 +31,6 @@ export const Modal: FC<ModalProps> = props => {
 
   return (
     <ChakraModal
-      isCentered
       isOpen={isOpen}
       motionPreset='slideInBottom'
       size={size}
@@ -41,7 +40,7 @@ export const Modal: FC<ModalProps> = props => {
     >
       <ModalOverlay/>
       <ModalContent>
-        {title && <ModalHeader textAlign='center'>{title}</ModalHeader>}
+        {title && <ModalHeader textAlign='left'>{title}</ModalHeader>}
 
         {showCloseIcon && <ModalCloseButton />}
 

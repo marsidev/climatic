@@ -57,6 +57,7 @@ importers:
       rimraf: ^3.0.2
       tslib: ^2.4.0
       typescript: 4.6.4
+      use-debounce: ^8.0.1
       vite: ^2.9.9
       vite-tsconfig-paths: ^3.4.1
       zustand: 4.0.0-rc.1
@@ -78,6 +79,7 @@ importers:
       react-dom: 18.1.0_react@18.1.0
       react-icons: 4.3.1_react@18.1.0
       react-toastify: 9.0.2_ef5jwxihqo6n7gxfmzogljlgcm
+      use-debounce: 8.0.1_react@18.1.0
       vite: 2.9.9
       vite-tsconfig-paths: 3.5.0_vite@2.9.9
       zustand: 4.0.0-rc.1_react@18.1.0
@@ -4773,6 +4775,15 @@ packages:
       '@types/react': 18.0.9
       react: 18.1.0
       tslib: 2.4.0
+    dev: false
+
+  /use-debounce/8.0.1_react@18.1.0:
+    resolution: {integrity: sha512-6tGAFJKJ0qCalecaV7/gm/M6n238nmitNppvR89ff1yfwSFjwFKR7IQZzIZf1KZRQhqNireBzytzU6jgb29oVg==}
+    engines: {node: '>= 10.0.0'}
+    peerDependencies:
+      react: '>=16.8.0 || 18'
+    dependencies:
+      react: 18.1.0
     dev: false
 
   /use-sidecar/1.1.2_7cpxmzzodpxnolj5zcc5cr63ji:

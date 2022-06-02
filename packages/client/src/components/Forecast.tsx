@@ -22,7 +22,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       {...props}
     >
       <Heading as='h4' className='section-heading'>
-        Predicción de los próximos 7 días
+        Predicción de los próximos días
       </Heading>
 
       <VStack as='ul' className='section-list' spacing={2}>

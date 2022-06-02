@@ -141,3 +141,15 @@ export interface ForecastResponse {
   currentWeather: Weather
   forecast: Forecast[]
 }
+
+export interface SearchItem {
+  id: string
+  name: string
+  region: string
+  country: string
+  lat: number
+  lon: number
+  url: string
+}
+
+export type SearchResponse = SearchItem[]
