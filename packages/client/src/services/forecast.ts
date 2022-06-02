@@ -49,7 +49,7 @@ export const fetchForecastByCoords = async ({ coords, locationStatus }: GetForec
 }
 
 export const fetchForecastByQuery = async ({ query }: GetForecastByQuery): Promise<ForecastResponse> => {
-  const params = { q: query }
+  const params = { q: query, days: '8' }
   const queryString = new URLSearchParams(params).toString()
   const url = `/api/forecast?${queryString}`
 
