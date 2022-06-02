@@ -1,10 +1,11 @@
+import type { GeolocationState, UserState, ForecastState } from '@types'
 import type { GetState, SetState } from 'zustand'
 
 import create from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { geolocation, GeolocationState } from './geolocation'
-import { user, UserState } from './user'
-import { forecast, ForecastState } from './forecast'
+import { geolocation } from './geolocation'
+import { user } from './user'
+import { forecast } from './forecast'
 
 export type StoreSlice<T> = (
   set: SetState<any>,
