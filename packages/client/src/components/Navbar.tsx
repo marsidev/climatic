@@ -44,7 +44,25 @@ const NavIcon: FC<NavIconProps> = ({ icon, ...props }) => {
 }
 
 export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
-  const { grantPermission } = useStore()
+  const {
+    grantPermission,
+    getForecastDataByCoords,
+    locationStatus,
+    coords,
+    setForecastQuery
+  } = useStore()
+
+  const getGeolocationForecast = () => {
+    const { latitude, longitude } = coords ?? {}
+
+    grantPermission()
+
+    if (locationStatus !== 'loading') {
+      getForecastDataByCoords()
+      const query = `${latitude},${longitude}`
+      setForecastQuery(query)
+    }
+  }
 
   return (
     <Flex align='center' as='nav' gap={2} justify='flex-end' p={2} {...props}>
@@ -56,14 +74,11 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
         />
       </ToolTip>
 
-      <ToolTip
-        id='geolocation-icon'
-        tooltipLabel='Obtener datos del clima de tu ubicación'
-      >
+      <ToolTip id='geolocation-icon' tooltipLabel='Obtener datos del clima de tu ubicación'>
         <NavIcon
           aria-label='geolocation icon'
           icon={<GeoIcon />}
-          onClick={grantPermission}
+          onClick={getGeolocationForecast}
         />
       </ToolTip>
     </Flex>
