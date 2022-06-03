@@ -50,6 +50,7 @@ export interface ForecastState {
   setForecastData: (forecastData: ForecastResponse) => void
   getForecastDataByCoords: ({ coords, locationStatus }: GetForecastByCoords) => Promise<ForecastResponse>
   getForecastDataByQuery: ({ query }: GetForecastByQuery) => Promise<ForecastResponse>
+  updateForecastData: () => void
 
   forecastQuery: string
   setForecastQuery: (forecastQuery: string) => void

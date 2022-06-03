@@ -4,18 +4,32 @@ import { useStore } from '@store'
 import { formatTemperature } from '@lib/intl'
 import { DEFAULT_TEMPERATURE_UNIT } from '@lib/constants'
 import { flag } from 'country-emoji'
+import useSWR from 'swr'
 
 type ReturnState = ForecastResponse | null
 
 export const useForecast = (): ReturnState => {
-  const { coords, locationStatus, forecastData, getForecastDataByCoords } = useStore()
+  const { coords, locationStatus, forecastData, getForecastDataByCoords, setForecastQuery, updateForecastData } = useStore()
+
+  const { data, error } = useSWR('update_forecast', updateForecastData, {
+    refreshInterval: 5 * 60 * 1000
+  })
+
+  useEffect(() => {
+    console.log({ data, error })
+  }, [data, error])
+
+  const { latitude, longitude } = coords ?? {}
 
   useEffect(() => {
     if (locationStatus !== 'loading') {
       getForecastDataByCoords({ coords, locationStatus })
+      const query = `${latitude},${longitude}`
+      setForecastQuery(query)
     }
   }, [locationStatus])
 
+  // listen changes on forecast data to update page title
   useEffect(() => {
     if (forecastData) {
       const { location, currentWeather } = forecastData
