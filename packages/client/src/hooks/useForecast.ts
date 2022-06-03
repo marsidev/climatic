@@ -9,16 +9,17 @@ import useSWR from 'swr'
 type ReturnState = ForecastResponse | null
 
 export const useForecast = (): ReturnState => {
-  const { coords, locationStatus, forecastData, getForecastDataByCoords, setForecastQuery, updateForecastData } = useStore()
+  const { coords, locationStatus, forecastData, forecastQuery, getForecastDataByCoords, setForecastQuery, updateForecastData } = useStore()
 
   useSWR('update_forecast', updateForecastData, {
     refreshInterval: 5 * 60 * 1000
   })
 
   const { latitude, longitude } = coords ?? {}
+  const noQuery = !forecastQuery || forecastQuery.includes('undefined')
 
   useEffect(() => {
-    if (locationStatus !== 'loading') {
+    if (locationStatus !== 'loading' && noQuery) {
       getForecastDataByCoords({ coords, locationStatus })
       const query = `${latitude},${longitude}`
       setForecastQuery(query)
@@ -36,7 +37,7 @@ export const useForecast = (): ReturnState => {
       const _temperature = temperature[DEFAULT_TEMPERATURE_UNIT]
       const temperatureString = formatTemperature(_temperature, DEFAULT_TEMPERATURE_UNIT)
       const countryEmoji = flag(country)
-      const timeEmoji = isDay ? '☀' : '🌕'
+      const timeEmoji = isDay ? '☀' : '🌙'
 
       const title = `${temperatureString} en ${city} ${countryEmoji} ${timeEmoji} | Climatic`
       document.title = title
