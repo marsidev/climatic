@@ -1,11 +1,15 @@
 import type { FlexProps } from '@chakra-ui/react'
+import type { ReactNode } from 'react'
 
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import { chakra, Flex } from '@chakra-ui/react'
+import { ToolTip } from '@components'
 
 interface StatItemProps extends FlexProps {
+  ariaLabel: string
   icon: ReactNode
   value: string
+  tooltipId: string
 }
 
 const statItemStyle: FlexProps = {
@@ -23,11 +27,13 @@ const statItemStyle: FlexProps = {
   fontSize: [16, 16, 18, 18]
 }
 
-export const StatCard: FC<StatItemProps> = ({ icon, value, ...props }) => {
+export const StatCard: FC<StatItemProps> = ({ ariaLabel, tooltipId, icon, value, ...props }) => {
   return (
-    <Flex {...statItemStyle} {...props}>
-      <chakra.figure>{icon}</chakra.figure>
-      <chakra.span ml={1}>{value}</chakra.span>
-    </Flex>
+    <ToolTip id={tooltipId} tooltipLabel={ariaLabel}>
+      <Flex {...statItemStyle} {...props}>
+        <chakra.figure>{icon}</chakra.figure>
+        <chakra.span ml={1}>{value}</chakra.span>
+      </Flex>
+    </ToolTip>
   )
 }

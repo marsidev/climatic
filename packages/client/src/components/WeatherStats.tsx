@@ -26,15 +26,34 @@ export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
 
   return (
     <Flex as='section' flexDir='column' px={4} {...props}>
-      <HStack
-        align='center'
-        as='ul'
-        justify='center'
-      >
-        <StatCard icon={<DropIcon />} value={`${humidity}%`} />
-        <StatCard icon={<CloudIcon />} value={`${cloud}%`} />
-        <StatCard icon={<WindDirectionIcon degree={degree} mr={1} />} value={windSpeed} />
-        <StatCard icon={<PressureIcon />} value={pressureStr} />
+      <HStack align='center' as='ul' justify='center'>
+        <StatCard
+          ariaLabel='Humedad'
+          icon={<DropIcon />}
+          tooltipId='humidity-data'
+          value={`${humidity}%`}
+        />
+
+        <StatCard
+          ariaLabel='Nubosidad'
+          icon={<CloudIcon />}
+          tooltipId='cloud-data'
+          value={`${cloud}%`}
+        />
+
+        <StatCard
+          ariaLabel='Dirección y velocidad del viento'
+          icon={<WindDirectionIcon degree={degree} mr={1} />}
+          tooltipId='wind-data'
+          value={windSpeed}
+        />
+
+        <StatCard
+          ariaLabel='Presión'
+          icon={<PressureIcon />}
+          tooltipId='pressure-data'
+          value={pressureStr}
+        />
       </HStack>
     </Flex>
   )

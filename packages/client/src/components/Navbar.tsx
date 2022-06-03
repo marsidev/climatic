@@ -6,6 +6,7 @@ import { BsSearch as SearchIcon } from 'react-icons/bs'
 import { MdMyLocation as GeoIcon } from 'react-icons/md'
 // import { TiCogOutline as CogIcon } from 'react-icons/ti'
 import { useStore } from '@store'
+import { ToolTip } from '@components'
 
 interface NavIconProps extends IconButtonProps {
   icon: ReactElement
@@ -47,19 +48,24 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
 
   return (
     <Flex align='center' as='nav' gap={2} justify='flex-end' p={2} {...props}>
-      <NavIcon
-        aria-label='search icon'
-        icon={<SearchIcon />}
-        onClick={openSearch}
-      />
+      <ToolTip id='search-icon' tooltipLabel='Buscar por ubicación'>
+        <NavIcon
+          aria-label='search icon'
+          icon={<SearchIcon />}
+          onClick={openSearch}
+        />
+      </ToolTip>
 
-      <NavIcon
-        aria-label='geolocation icon'
-        icon={<GeoIcon />}
-        onClick={grantPermission}
-      />
-
-      {/* <NavIcon aria-label='configuration icon' icon={<CogIcon />} /> */}
+      <ToolTip
+        id='geolocation-icon'
+        tooltipLabel='Obtener datos del clima de tu ubicación'
+      >
+        <NavIcon
+          aria-label='geolocation icon'
+          icon={<GeoIcon />}
+          onClick={grantPermission}
+        />
+      </ToolTip>
     </Flex>
   )
 }
