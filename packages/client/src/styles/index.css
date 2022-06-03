@@ -93,6 +93,8 @@ html {
   border-color: var(--chakra-colors-blackAlpha-300);
   justify-content: space-between;
   width: 90%;
+  padding-bottom: .25rem;
+  padding-top: .25rem;
 }
 
 .emoji-font {

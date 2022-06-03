@@ -57,7 +57,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
                 <chakra.span color='blue.600'>{minTempStr}</chakra.span>
               </Text>
 
-              <Text as='span' fontSize={12} w='100px'>
+              <Text as='span' fontSize={12} textAlign='right' w='100px'>
                 {conditionName}
               </Text>
             </HStack>
