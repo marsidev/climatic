@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
 import { DEFAULT_LANGUAGE } from '@lib/constants'
 
-const options: Intl.DateTimeFormatOptions = {
-  hour: 'numeric',
-  minute: 'numeric',
-  hour12: true
-}
-
 const locale = DEFAULT_LANGUAGE
 
-export const useClock = (): string => {
+export const useClock = (timeZone: string): string => {
   const [time, setTime] = useState<Date>(new Date())
+
+  const options: Intl.DateTimeFormatOptions = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+    timeZone
+  }
 
   const formatTime = (time: Date) => new Intl.DateTimeFormat(locale, options).format(time)
 
