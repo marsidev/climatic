@@ -37,7 +37,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
           <>
             <span>, </span>
             <chakra.span className='emoji-font' fontSize={40}>
-              {flag(country)}
+              {emojiFlag}
             </chakra.span>
           </>
         )}
