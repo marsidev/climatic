@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 import type { ForecastResponse } from '@climatic/shared'
-import type { GetForecastByCoords, GetForecastByQuery } from '@services'
 
 export interface Coordinates extends Pick<GeolocationCoordinates, 'latitude' | 'longitude'> { }
 
@@ -48,8 +47,8 @@ export interface UserState {
 export interface ForecastState {
   forecastData: ForecastResponse | null
   setForecastData: (forecastData: ForecastResponse) => void
-  getForecastDataByCoords: ({ coords, locationStatus }: GetForecastByCoords) => Promise<ForecastResponse>
-  getForecastDataByQuery: ({ query }: GetForecastByQuery) => Promise<ForecastResponse>
+  getForecastDataByCoords: () => Promise<ForecastResponse>
+  getForecastDataByQuery: () => Promise<ForecastResponse>
   updateForecastData: () => void
 
   forecastQuery: string

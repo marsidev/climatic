@@ -18,7 +18,7 @@ export const SearchItemResult = ({ name, region, country, url, onSubmit }: Searc
   const handleClick = (query: string) => {
     setLoading(true)
     setForecastQuery(query)
-    getForecastDataByQuery({ query }).then(_data => {
+    getForecastDataByQuery().then(() => {
       setLoading(false)
       onSubmit()
     })

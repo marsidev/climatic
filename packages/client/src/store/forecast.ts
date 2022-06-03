@@ -7,16 +7,16 @@ export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => 
   setForecastData(forecastData) {
     set(() => ({ forecastData }))
   },
-  async getForecastDataByCoords({ coords, locationStatus }) {
+  async getForecastDataByCoords() {
+    const { coords, locationStatus } = get()
     return fetchForecastByCoords({ coords, locationStatus }).then(d => {
-      // console.log(d)
       set(() => ({ forecastData: d }))
       return d
     })
   },
-  async getForecastDataByQuery({ query }) {
+  async getForecastDataByQuery() {
+    const { forecastQuery: query } = get()
     return fetchForecastByQuery({ query }).then(d => {
-      // console.log(d)
       set(() => ({ forecastData: d }))
       return d
     })

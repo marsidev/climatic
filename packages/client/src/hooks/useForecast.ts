@@ -15,12 +15,13 @@ export const useForecast = (): ReturnState => {
     refreshInterval: 5 * 60 * 1000
   })
 
-  const { latitude, longitude } = coords ?? {}
-  const noQuery = !forecastQuery || forecastQuery.includes('undefined')
-
   useEffect(() => {
+    const { latitude, longitude } = coords ?? {}
+
+    const noQuery = !forecastQuery || forecastQuery.includes('undefined')
+
     if (locationStatus !== 'loading' && noQuery) {
-      getForecastDataByCoords({ coords, locationStatus })
+      getForecastDataByCoords()
       const query = `${latitude},${longitude}`
       setForecastQuery(query)
     }
