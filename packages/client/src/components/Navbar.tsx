@@ -16,28 +16,32 @@ interface NavbarProps extends FlexProps {
   openSearch: () => void
 }
 
+export const defaultNavIconProps = {
+  _active: {
+    bg: 'blackAlpha.200',
+    transform: 'scale(1)'
+  },
+  _hover: {
+    bg: 'blackAlpha.200',
+    transform: 'scale(1.15)'
+  },
+  _focus: {
+    outline: '1px solid var(--chakra-colors-blackAlpha-600)'
+  },
+  borderRadius: 'full',
+  colorScheme: 'gray',
+  fontSize: [18, 20],
+  h: [10, 12],
+  transition: 'all 200ms ease-in-out, background 50ms ease-in-out, border-color 0ms',
+  variant: 'ghost',
+  w: [10, 12]
+}
+
 const NavIcon: FC<NavIconProps> = ({ icon, ...props }) => {
   return (
     <IconButton
-      _active={{
-        bg: 'blackAlpha.200',
-        transform: 'scale(1)'
-      }}
-      _focus={{
-        outline: '1px solid var(--chakra-colors-blackAlpha-600)'
-      }}
-      _hover={{
-        bg: 'blackAlpha.200',
-        transform: 'scale(1.15)'
-      }}
-      borderRadius='full'
-      colorScheme='gray'
-      fontSize={[18, 20]}
-      h={[10, 12]}
       icon={icon}
-      transition='all 200ms ease-in-out, background 50ms ease-in-out, border-color 0ms'
-      variant='ghost'
-      w={[10, 12]}
+      {...defaultNavIconProps}
       {...props}
     />
   )

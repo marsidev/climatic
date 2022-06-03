@@ -10,7 +10,8 @@ import {
   WeatherStats,
   Astro,
   Navbar,
-  SearchModal
+  SearchModal,
+  Footer
 } from '@components'
 
 interface LayoutProps extends BoxProps {
@@ -37,6 +38,7 @@ export const AppLayout: FC<LayoutProps> = ({ data }) => {
         <Spacer as='section' />
         <Forecast data={data} pb='32px' />
         <Astro data={data} pb='32px' />
+        <Footer />
       </Box>
 
       <SearchModal isOpen={searchIsOpen} onClose={closeSearch} />
