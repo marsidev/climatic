@@ -12,9 +12,12 @@ interface HeaderProps extends FlexProps {
   data: ForecastResponse
 }
 
-export const Header: FC<HeaderProps> = ({ data, ...props }) => {
+export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
   const { location, currentWeather } = data
-  const { condition: { icon: conditionIconPath, name: conditionName }, updateAt } = currentWeather
+  const {
+    condition: { icon: conditionIconPath, name: conditionName },
+    updateAt
+  } = currentWeather
   const { country, name: city } = location
 
   const date = getLargeDate(updateAt)

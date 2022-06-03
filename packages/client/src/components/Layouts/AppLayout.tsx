@@ -5,8 +5,8 @@ import { FC } from 'react'
 import { Box, Spacer, useDisclosure } from '@chakra-ui/react'
 import {
   Forecast,
-  Header,
-  Temperature,
+  WeatherHeader,
+  WeatherTemperature,
   WeatherStats,
   Astro,
   Navbar,
@@ -17,8 +17,12 @@ interface LayoutProps extends BoxProps {
   data: ForecastResponse
 }
 
-export const Layout: FC<LayoutProps> = ({ data }) => {
-  const { isOpen: searchIsOpen, onClose: closeSearch, onOpen: openSearch } = useDisclosure()
+export const AppLayout: FC<LayoutProps> = ({ data }) => {
+  const {
+    isOpen: searchIsOpen,
+    onClose: closeSearch,
+    onOpen: openSearch
+  } = useDisclosure()
 
   return (
     <Box
@@ -27,8 +31,8 @@ export const Layout: FC<LayoutProps> = ({ data }) => {
     >
       <Box as='main' className='weather-card'>
         <Navbar openSearch={openSearch} />
-        <Header data={data} />
-        <Temperature data={data} py='48px' />
+        <WeatherHeader data={data} />
+        <WeatherTemperature data={data} py='48px' />
         <WeatherStats data={data} pb='32px' />
         <Spacer as='section' />
         <Forecast data={data} pb='32px' />
@@ -40,4 +44,4 @@ export const Layout: FC<LayoutProps> = ({ data }) => {
   )
 }
 
-export default Layout
+export default AppLayout

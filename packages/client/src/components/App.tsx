@@ -2,7 +2,7 @@ import { FlexProps } from '@chakra-ui/react'
 import type { ForecastResponse } from '@climatic/shared'
 
 import { FC } from 'react'
-import { Layout, LoadingLayout } from '@components'
+import { AppLayout, LoadingLayout } from '@components'
 import { useForecast, useGeo } from '@hooks'
 
 export const App: FC<FlexProps> = () => {
@@ -11,7 +11,7 @@ export const App: FC<FlexProps> = () => {
 
   if (!forecastData) return <LoadingLayout />
 
-  return <Layout data={forecastData} />
+  return <AppLayout data={forecastData} />
 }
 
 export default App

@@ -10,7 +10,7 @@ interface TemperatureProps extends FlexProps {
   data: ForecastResponse
 }
 
-export const Temperature: FC<TemperatureProps> = ({ data, ...props }) => {
+export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => {
   const { currentWeather } = data
   const { temperature, feelsLike } = currentWeather
 
