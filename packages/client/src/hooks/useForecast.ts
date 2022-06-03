@@ -11,13 +11,9 @@ type ReturnState = ForecastResponse | null
 export const useForecast = (): ReturnState => {
   const { coords, locationStatus, forecastData, getForecastDataByCoords, setForecastQuery, updateForecastData } = useStore()
 
-  const { data, error } = useSWR('update_forecast', updateForecastData, {
+  useSWR('update_forecast', updateForecastData, {
     refreshInterval: 5 * 60 * 1000
   })
-
-  useEffect(() => {
-    console.log({ data, error })
-  }, [data, error])
 
   const { latitude, longitude } = coords ?? {}
 

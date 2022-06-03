@@ -1,5 +1,6 @@
 import type { LocationStatus, GeolocationState, GeoPositionError, GeoPosition } from '@types'
 import type { StoreSlice } from '.'
+
 import { DISABLED_TIMEOUT, DEFAULT_GEO_OPTIONS } from '@lib/constants'
 
 export const geolocation: StoreSlice<GeolocationState> = (set, _get): GeolocationState => ({
@@ -42,16 +43,12 @@ export const geolocation: StoreSlice<GeolocationState> = (set, _get): Geolocatio
 
       if (elapsed < DISABLED_TIMEOUT && error.code === error.PERMISSION_DENIED) {
         status = 'off'
-        // toast('Parece que tienes la geolocalización desactivada.')
       } else if (error.code === error.PERMISSION_DENIED) {
         status = 'denied'
-        // toast('Has denegado el acceso a tu ubicación.')
       } else if (error.code === (error.TIMEOUT || error.POSITION_UNAVAILABLE)) {
         status = 'not_supported'
-        // toast('No se puede obtener tu ubicación.')
       } else {
         status = 'error'
-        // toast('Ha ocurrido un error al obtener tu ubicación.')
       }
 
       set(() => ({
