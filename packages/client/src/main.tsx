@@ -6,6 +6,7 @@ import { App } from '@components'
 import { createRoot } from 'react-dom/client'
 import { ChakraProvider } from '@chakra-ui/react'
 import { Zoom, ToastContainer, ToastContainerProps } from 'react-toastify'
+import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill'
 
 let container: any = null
 
@@ -28,6 +29,7 @@ const toastProps: ToastContainerProps = {
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!container) {
+    polyfillCountryFlagEmojis('Twemoji Mozilla')
     container = document.getElementById('root') as HTMLElement
     const root = createRoot(container)
     root.render(

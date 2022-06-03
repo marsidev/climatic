@@ -94,3 +94,7 @@ html {
   justify-content: space-between;
   width: 90%;
 }
+
+.emoji-font {
+  font-family: 'Twemoji Mozilla', sans-serif !important;
+}

@@ -2,7 +2,7 @@ import type { ForecastResponse } from '@climatic/shared'
 import { FlexProps } from '@chakra-ui/react'
 
 import { FC } from 'react'
-import { Flex, Heading, Image, Text } from '@chakra-ui/react'
+import { chakra, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { getLargeDate } from '@lib/intl'
 import { ASSETS_URL } from '@lib/constants'
 import { flag } from 'country-emoji'
@@ -18,13 +18,10 @@ export const Header: FC<HeaderProps> = ({ data, ...props }) => {
   const { country, name: city } = location
 
   const date = getLargeDate(updateAt)
+  const emojiFlag = flag(country)
+
   return (
-    <Flex
-      align='center'
-      as='header'
-      flexDir='column'
-      {...props}
-    >
+    <Flex align='center' as='header' flexDir='column' {...props}>
       <Heading
         as='h2'
         fontSize={48}
@@ -32,15 +29,18 @@ export const Header: FC<HeaderProps> = ({ data, ...props }) => {
         lineHeight={1}
         textAlign='center'
       >
-        {`${city}, ${flag(country)}`}
+        {city}
+        {emojiFlag && (
+          <>
+            <span>, </span>
+            <chakra.span className='emoji-font' fontSize={40}>
+              {flag(country)}
+            </chakra.span>
+          </>
+        )}
       </Heading>
 
-      <Heading
-        as='h3'
-        fontSize={24}
-        fontWeight={400}
-        mt={1}
-      >
+      <Heading as='h3' fontSize={24} fontWeight={400} mt={1}>
         {date}
         {' - '}
         <Time />
@@ -53,7 +53,9 @@ export const Header: FC<HeaderProps> = ({ data, ...props }) => {
         fontWeight={400}
         justify='center'
       >
-        <Text as='span' h='100%'>{conditionName}</Text>
+        <Text as='span' h='100%'>
+          {conditionName}
+        </Text>
 
         <Image
           alt={`icono de clima ${conditionName}`}
