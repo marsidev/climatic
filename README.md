@@ -1,6 +1,6 @@
 ## Climatic
 Monorepo project that shows the current weather data and weather forecast for next 7 days. <br />
-Created from scratch to participate in a [Hackathon](https://www.twitch.tv/videos/1488279878) hosted by [midudev](https://www.github.com/midudev) and [RapidAPI](https://rapidapi.com).
+Created from scratch to participate in a 14-days hackathon hosted by [midudev](https://www.github.com/midudev).
 
 ## 🛠️ Tech
 - [fastify](https://github.com/fastify/fastify)
@@ -49,6 +49,13 @@ Open [https://localhost:3000](https://localhost:3000) with your browser to see t
 
 ## 🚀 Preview
 [Demo link](https://climatic.onrender.com)
+
+## Hackathon
+- The hackathon goal was build a weather app in two weeks using a weather API from [RapidAPI](https://rapidapi.com).
+- It was announced in this [Twitch stream](https://www.twitch.tv/videos/1488279878) at 2022/05/19.
+- There was 38 project entries. The first 19 were reviewed at 2022/06/02 in this [Twitch stream](https://www.twitch.tv/videos/1315914232).
+- Climatic was picked as the 4th best project in the first review, but was not elegible for any prize.
+- The last commit before the project revision can be found [here](https://github.com/marsidev/climatic/tree/5d42530432663b8d30fe57047ee51e742d508851).
 
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!
