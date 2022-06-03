@@ -22,9 +22,9 @@ App preview before deadline and project review: <br />
 - Screenshots provided by [webmobilefirst](https://www.webmobilefirst.com/en/).
 
 ### Links
-<a href="https://climatic.onrender.com" target="_blank" title="Climatic">Demo</a>
+<a href="https://climatic.onrender.com" target="_blank" rel="noopener" title="Climatic">Demo</a>
 <br />
-<a href="https://climatic-production.up.railway.app" target="_blank" title="Climatic">Mirror</a>
+<a href="https://climatic-production.up.railway.app" target="_blank" rel="noopener" title="Climatic">Mirror</a>
 
 ## 🛠️ Tech
 - [fastify](https://github.com/fastify/fastify)
