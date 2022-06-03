@@ -21,14 +21,7 @@ export const SearchModal: FC<SearchModalProps> = ({ isOpen, onClose, ...rest }) 
       onClose={onClose}
       {...rest}
     >
-      <Flex
-        flexDir='column'
-        justify='center'
-        maxW='600px'
-        mb={8}
-        minW={['300px', '500px']}
-        w='100%'
-      >
+      <Flex flexDir='column' justify='center' mb={4} w='100%'>
         <SearchInput closeModal={onClose} />
       </Flex>
     </Modal>
