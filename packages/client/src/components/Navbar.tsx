@@ -43,13 +43,7 @@ const NavIcon: FC<NavIconProps> = ({ icon, ...props }) => {
 }
 
 export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
-  const { grantPermission, locationStatus, isSupported } = useStore()
-
-  const showGeoButton =
-    locationStatus !== 'success' &&
-    locationStatus !== 'denied' &&
-    isSupported &&
-    locationStatus === 'idle'
+  const { grantPermission } = useStore()
 
   return (
     <Flex align='center' as='nav' gap={2} justify='flex-end' p={2} {...props}>
@@ -59,13 +53,11 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
         onClick={openSearch}
       />
 
-      {showGeoButton && (
-        <NavIcon
-          aria-label='geolocation icon'
-          icon={<GeoIcon />}
-          onClick={grantPermission}
-        />
-      )}
+      <NavIcon
+        aria-label='geolocation icon'
+        icon={<GeoIcon />}
+        onClick={grantPermission}
+      />
 
       {/* <NavIcon aria-label='configuration icon' icon={<CogIcon />} /> */}
     </Flex>
