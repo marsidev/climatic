@@ -1,5 +1,13 @@
 import React from 'react'
-import { Box, HStack, Icon, Spacer, Spinner, Text } from '@chakra-ui/react'
+import {
+  Box,
+  chakra,
+  HStack,
+  Icon,
+  Spacer,
+  Spinner,
+  Text
+} from '@chakra-ui/react'
 import { flag } from 'country-emoji'
 import { RiMapPinLine as PinIcon } from 'react-icons/ri'
 import { useStore } from '@store'
@@ -12,7 +20,7 @@ interface SearchItemResultProps {
   onSubmit: () => void
 }
 
-export const SearchItemResult = ({ name, region, country, url, onSubmit }: SearchItemResultProps) => {
+const ResultItem = ({ name, region, country, url, onSubmit }: SearchItemResultProps) => {
   const { getForecastDataByQuery, loading, setLoading, setForecastQuery, forecastQuery } = useStore()
 
   const handleClick = (query: string) => {
@@ -25,6 +33,8 @@ export const SearchItemResult = ({ name, region, country, url, onSubmit }: Searc
   }
 
   const showSpinner = loading && forecastQuery === url
+
+  const emojiFlag = flag(country)
 
   return (
     <HStack
@@ -44,7 +54,14 @@ export const SearchItemResult = ({ name, region, country, url, onSubmit }: Searc
         </Text>
 
         <Text fontSize={14}>
-          {region} - {country} {flag(country)}
+          {`${region} - ${country}`}
+          {emojiFlag && (
+            <>
+              <chakra.span className='emoji-font' fontSize={14}>
+                {` ${emojiFlag}`}
+              </chakra.span>
+            </>
+          )}
         </Text>
       </Box>
 
@@ -55,4 +72,4 @@ export const SearchItemResult = ({ name, region, country, url, onSubmit }: Searc
   )
 }
 
-export default SearchItemResult
+export default ResultItem

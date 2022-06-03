@@ -5,13 +5,13 @@ import React, { FC, useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { Flex, Input, InputGroup, InputRightElement, Spinner, Text } from '@chakra-ui/react'
 import { searchByQuery } from '@services'
-import { SearchItemResult } from './SearchItemResult'
+import ResultItem from './ResultItem'
 
 interface SearchInputProps extends FlexProps {
   closeModal: () => void
 }
 
-export const SearchInput: FC<SearchInputProps> = ({ closeModal }) => {
+const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
   const [query, setQuery] = useState<string>('')
   const [isLoading, setLoading] = useState<boolean>(false)
   const [data, setData] = useState<Array<SearchItem>>([])
@@ -43,7 +43,8 @@ export const SearchInput: FC<SearchInputProps> = ({ closeModal }) => {
   }
 
   const noResults = data.length === 0 && query !== '' && showData && !isLoading
-  const thereIsResults = data.length > 0 && query !== '' && showData && !isLoading
+  const thereIsResults =
+    data.length > 0 && query !== '' && showData && !isLoading
 
   return (
     <Flex flexDir='column' gap={2}>
@@ -68,11 +69,11 @@ export const SearchInput: FC<SearchInputProps> = ({ closeModal }) => {
         {thereIsResults && (
           <>
             <Text fontWeight={600} mb={2} mt={4} textAlign='left'>
-              {`${data.length} results`}
+              {`${data.length} resultados`}
             </Text>
 
             {data.map(d => (
-              <SearchItemResult key={d.id} onSubmit={onSubmit} {...d} />
+              <ResultItem key={d.id} onSubmit={onSubmit} {...d} />
             ))}
           </>
         )}
@@ -81,4 +82,4 @@ export const SearchInput: FC<SearchInputProps> = ({ closeModal }) => {
   )
 }
 
-export default SearchInput
+export default InputAndResults

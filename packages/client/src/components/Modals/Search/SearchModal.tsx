@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Flex } from '@chakra-ui/react'
 import { Modal } from '@components'
-import SearchInput from './SearchInput'
+import InputAndResults from './InputAndResults'
 
 interface SearchModalProps {
   isOpen: boolean
@@ -22,7 +22,7 @@ export const SearchModal: FC<SearchModalProps> = ({ isOpen, onClose, ...rest }) 
       {...rest}
     >
       <Flex flexDir='column' justify='center' mb={4} w='100%'>
-        <SearchInput closeModal={onClose} />
+        <InputAndResults closeModal={onClose} />
       </Flex>
     </Modal>
   )
