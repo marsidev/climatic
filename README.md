@@ -34,6 +34,7 @@ App preview before deadline and project review: <br />
 - [chakra-ui](https://github.com/chakra-ui/chakra-ui)
 - [zustand](https://github.com/pmndrs/zustand)
 - [swr](https://github.com/vercel/swr)
+- [react-router](https://reactrouter.com)
 - [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch)
 - [typescript](https://github.com/microsoft/TypeScript)
 - [eslint](https://github.com/eslint/eslint)
