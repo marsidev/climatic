@@ -23,13 +23,13 @@ export const fetchForecastByCoords = async ({ coords, locationStatus }: GetForec
 
   const noCoords: boolean = !latitude && !longitude
   const noGeo: boolean = locationStatus === 'denied' || locationStatus === 'not_supported' || locationStatus === 'error'
-  const validLocation = noGeo || noCoords
+  const validLocation = !noGeo && !noCoords
 
   let query: string = ''
   if (SHOW_MOCK && validLocation) query = 'mock-la'
   if (SHOW_MOCK && !validLocation) query = 'mock-bcn'
-  if (!SHOW_MOCK && validLocation) query = `${defaultLat},${defaultLon}`
-  if (!SHOW_MOCK && !validLocation) query = `${latitude},${longitude}`
+  if (!SHOW_MOCK && validLocation) query = `${latitude},${longitude}`
+  if (!SHOW_MOCK && !validLocation) query = `${defaultLat},${defaultLon}`
 
   const params = { q: query, days: DEFAULT_FORECAST_DAYS }
   const queryString = new URLSearchParams(params).toString()

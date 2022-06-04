@@ -11,6 +11,7 @@ import {
 import { flag } from 'country-emoji'
 import { RiMapPinLine as PinIcon } from 'react-icons/ri'
 import { useStore } from '@store'
+import { useNavigate } from 'react-router-dom'
 
 interface SearchItemResultProps {
   country: string
@@ -20,19 +21,28 @@ interface SearchItemResultProps {
   onSubmit: () => void
 }
 
-const ResultItem = ({ name, region, country, url, onSubmit }: SearchItemResultProps) => {
-  const { getForecastDataByQuery, loading, setLoading, setForecastQuery, forecastQuery } = useStore()
+const ResultItem = ({ name, region, country, onSubmit }: SearchItemResultProps) => {
+  const {
+    getForecastDataByQuery,
+    fetching,
+    setForecastQuery,
+    forecastQuery
+  } = useStore()
+  const navigate = useNavigate()
 
-  const handleClick = (query: string) => {
-    setLoading(true)
-    setForecastQuery(query)
-    getForecastDataByQuery().then(() => {
-      setLoading(false)
-      onSubmit()
-    })
+  const itemQuery = `${name}-${country}`
+    .toLowerCase()
+    .replace(/ /g, '-')
+
+  const handleClick = async () => {
+    setForecastQuery(itemQuery)
+
+    await getForecastDataByQuery()
+    navigate(`/${itemQuery}`)
+    onSubmit()
   }
 
-  const showSpinner = loading && forecastQuery === url
+  const showSpinner = fetching && forecastQuery === itemQuery
 
   const emojiFlag = flag(country)
 
@@ -44,7 +54,7 @@ const ResultItem = ({ name, region, country, url, onSubmit }: SearchItemResultPr
       cursor='pointer'
       mb={2}
       p={3}
-      onClick={() => handleClick(url)}
+      onClick={handleClick}
     >
       <Icon as={PinIcon} h={5} mr={2} w={5} />
 
@@ -54,13 +64,12 @@ const ResultItem = ({ name, region, country, url, onSubmit }: SearchItemResultPr
         </Text>
 
         <Text fontSize={14}>
-          {`${region} - ${country}`}
+          {region && `${region} - `}
+          {country}
           {emojiFlag && (
-            <>
-              <chakra.span className='emoji-font' fontSize={14}>
-                {` ${emojiFlag}`}
-              </chakra.span>
-            </>
+            <chakra.span className='emoji-font' fontSize={14}>
+              {` ${emojiFlag}`}
+            </chakra.span>
           )}
         </Text>
       </Box>

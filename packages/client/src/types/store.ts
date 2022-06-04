@@ -45,11 +45,12 @@ export interface UserState {
 }
 
 export interface ForecastState {
+  fetching: boolean
+
   forecastData: ForecastResponse | null
-  setForecastData: (forecastData: ForecastResponse) => void
-  getForecastDataByCoords: () => Promise<ForecastResponse>
-  getForecastDataByQuery: () => Promise<ForecastResponse>
-  updateForecastData: () => void
+  setForecastData: (forecastData: ForecastResponse | null) => void
+  getForecastDataByCoords: () => Promise<any>
+  getForecastDataByQuery: () => Promise<any>
 
   forecastQuery: string
   setForecastQuery: (forecastQuery: string) => void

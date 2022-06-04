@@ -3,34 +3,26 @@ import type { StoreSlice } from '.'
 import { fetchForecastByCoords, fetchForecastByQuery } from '@services'
 
 export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => ({
+  fetching: false,
+
   forecastData: null,
   setForecastData(forecastData) {
     set(() => ({ forecastData }))
   },
   async getForecastDataByCoords() {
     const { coords, locationStatus } = get()
-    return fetchForecastByCoords({ coords, locationStatus }).then(d => {
-      set(() => ({ forecastData: d }))
-      return d
-    })
+    set(() => ({ fetching: true }))
+    const forecastData = await fetchForecastByCoords({ coords, locationStatus })
+    set(() => ({ forecastData, fetching: false }))
   },
   async getForecastDataByQuery() {
     const { forecastQuery: query } = get()
-    return fetchForecastByQuery({ query }).then(d => {
-      set(() => ({ forecastData: d }))
-      return d
-    })
-  },
-  async updateForecastData() {
-    const { forecastQuery } = get()
 
-    if (!forecastQuery) return null
-    if (forecastQuery.includes('undefined')) return null
+    if (!query || query.includes('undefined')) return null
 
-    return fetchForecastByQuery({ query: forecastQuery }).then(d => {
-      set(() => ({ forecastData: d }))
-      return d
-    })
+    set(() => ({ fetching: true }))
+    const forecastData = await fetchForecastByQuery({ query })
+    set(() => ({ forecastData, fetching: false }))
   },
 
   forecastQuery: '',

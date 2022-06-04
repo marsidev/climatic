@@ -7,6 +7,7 @@ import { MdMyLocation as GeoIcon } from 'react-icons/md'
 // import { TiCogOutline as CogIcon } from 'react-icons/ti'
 import { useStore } from '@store'
 import { ToolTip } from '@components'
+import { useNavigate } from 'react-router-dom'
 
 interface NavIconProps extends IconButtonProps {
   icon: ReactElement
@@ -49,22 +50,26 @@ const NavIcon: FC<NavIconProps> = ({ icon, ...props }) => {
 
 export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
   const {
-    grantPermission,
-    getForecastDataByCoords,
     locationStatus,
     coords,
+    grantPermission,
+    getForecastDataByCoords,
     setForecastQuery
   } = useStore()
 
-  const getGeolocationForecast = () => {
+  const navigate = useNavigate()
+
+  const getGeolocationForecast = async () => {
     const { latitude, longitude } = coords ?? {}
 
     grantPermission()
 
     if (locationStatus !== 'loading') {
-      getForecastDataByCoords()
       const query = `${latitude},${longitude}`
       setForecastQuery(query)
+
+      await getForecastDataByCoords()
+      navigate('/')
     }
   }
 
