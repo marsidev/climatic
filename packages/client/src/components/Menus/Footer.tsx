@@ -1,9 +1,9 @@
 import type { StackProps } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC } from 'react'
 import { IconButton, Link, Stack, Text } from '@chakra-ui/react'
 import { FiGithub } from 'react-icons/fi'
-import { defaultNavIconProps } from '@components/Navbar'
+import { defaultNavIconProps } from './NavIcon'
 
 interface FooterProps extends StackProps { }
 
