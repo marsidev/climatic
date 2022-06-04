@@ -14,6 +14,7 @@ export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => 
     set(() => ({ fetching: true }))
     const forecastData = await fetchForecastByCoords({ coords, locationStatus })
     set(() => ({ forecastData, fetching: false }))
+    return forecastData
   },
   async getForecastDataByQuery() {
     const { forecastQuery: query } = get()
@@ -23,6 +24,7 @@ export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => 
     set(() => ({ fetching: true }))
     const forecastData = await fetchForecastByQuery({ query })
     set(() => ({ forecastData, fetching: false }))
+    return forecastData
   },
 
   forecastQuery: '',

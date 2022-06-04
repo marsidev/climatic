@@ -1,7 +1,7 @@
 import type { Coordinates, LocationStatus } from '@types'
 import type { ForecastResponse } from '@climatic/shared'
 
-import { DEFAULT_LOCATION, SHOW_MOCK_DATA_ON_DEV } from '@lib/constants'
+import { DEFAULT_QUERY, SHOW_MOCK_DATA_ON_DEV } from '@lib/constants'
 
 export interface GetForecastByCoords {
   coords: Coordinates | null
@@ -19,7 +19,6 @@ const DEFAULT_FORECAST_DAYS = '8'
 
 export const fetchForecastByCoords = async ({ coords, locationStatus }: GetForecastByCoords): Promise<ForecastResponse> => {
   const { latitude, longitude } = coords ?? {}
-  const { latitude: defaultLat, longitude: defaultLon } = DEFAULT_LOCATION
 
   const noCoords: boolean = !latitude && !longitude
   const noGeo: boolean = locationStatus === 'denied' || locationStatus === 'not_supported' || locationStatus === 'error'
@@ -29,7 +28,7 @@ export const fetchForecastByCoords = async ({ coords, locationStatus }: GetForec
   if (SHOW_MOCK && validLocation) query = 'mock-la'
   if (SHOW_MOCK && !validLocation) query = 'mock-bcn'
   if (!SHOW_MOCK && validLocation) query = `${latitude},${longitude}`
-  if (!SHOW_MOCK && !validLocation) query = `${defaultLat},${defaultLon}`
+  if (!SHOW_MOCK && !validLocation) query = DEFAULT_QUERY
 
   const params = { q: query, days: DEFAULT_FORECAST_DAYS }
   const queryString = new URLSearchParams(params).toString()

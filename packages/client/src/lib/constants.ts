@@ -1,12 +1,9 @@
 import type { TemperatureUnit, SpeedUnit, PressureUnit, Language, Dictionary } from '@climatic/shared'
-import type { Coordinates, GeoPositionOptions } from '@types'
+import type { GeoPositionOptions } from '@types'
 
 export const SHOW_MOCK_DATA_ON_DEV = false
 
-export const DEFAULT_LOCATION: Coordinates = {
-  latitude: 41.38,
-  longitude: 2.18
-}
+export const DEFAULT_QUERY: string = 'barcelona-spain'
 
 export const DEFAULT_GEO_OPTIONS: GeoPositionOptions = {
   enableHighAccuracy: true,
