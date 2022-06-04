@@ -1,20 +1,20 @@
 import 'dotenv/config'
 import 'isomorphic-fetch'
-import path from 'path'
+import fs from 'fs'
 import fastify from 'fastify'
 import fastifyCors from '@fastify/cors'
-import statics from '@fastify/static'
+import fastifyStatic from '@fastify/static'
 import { cache } from '@plugins'
 import { ping, weather, forecast, search } from '@routes'
-import { logger } from '@lib'
+import { logger, assetsConfig, clientAssetsConfig, html } from '@lib'
 
 const { PORT = 3001, HOST = '0.0.0.0', APP_URL = '' } = process.env
+
 const server = fastify({ logger: false })
 
 async function setupServer() {
   // register plugins
   await server.register(cache)
-
   if (APP_URL) {
     await server.register(fastifyCors, { origin: APP_URL })
   }
@@ -25,18 +25,13 @@ async function setupServer() {
   await server.register(forecast, { prefix: '/api/forecast' })
   await server.register(search, { prefix: '/api/search' })
 
-  // serve client build
-  const clientBuildPath: string = path.join(__dirname, '../../../dist')
-  server.register(statics, { root: clientBuildPath })
-
-  // serve client assets
-  const clientAssetsPath: string = path.join(__dirname, '../../../packages/client/src/assets')
-  server.register(statics, {
-    root: clientAssetsPath, prefix: '/server-assets/',
-    decorateReply: false
+  // serve static files
+  await server.register(fastifyStatic, assetsConfig)
+  await server.register(fastifyStatic, clientAssetsConfig)
+  server.get('/*', async (_request, reply) => {
+    await reply.type('text/html').send(fs.createReadStream(html))
   })
 
-  // prepare server
   await server.ready()
 }
 
