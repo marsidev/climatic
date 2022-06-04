@@ -20,7 +20,7 @@ export const Footer: FC<FooterProps> = ({ ...props }) => {
     >
       <Stack align='center' direction='row' justify='space-between' w='90%'>
         <Text fontSize={18}>
-          Made by{' '}
+          Hecho por{' '}
           <Link
             isExternal
             href='https://twitter.com/marsigliacr'
