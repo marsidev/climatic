@@ -7,9 +7,6 @@ export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => 
   fetching: false,
 
   forecastData: null,
-  setForecastData(forecastData) {
-    set(() => ({ forecastData }))
-  },
   async getForecastDataByCoords() {
     const { coords, locationStatus, forecastQuery } = get()
     const coordsQuery = coordsToQuery(coords)
@@ -43,8 +40,5 @@ export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => 
   forecastQuery: '',
   setForecastQuery(forecastQuery) {
     set(() => ({ forecastQuery }))
-  },
-  clearForecastQuery() {
-    set(() => ({ forecastQuery: '' }))
   }
 })

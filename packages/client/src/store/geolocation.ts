@@ -5,19 +5,10 @@ import { DISABLED_TIMEOUT, DEFAULT_GEO_OPTIONS } from '@lib/constants'
 
 export const geolocation: StoreSlice<GeolocationState> = (set, _get): GeolocationState => ({
   loading: true,
-  setLoading(loading) {
-    set(() => ({ loading }))
-  },
 
   isSupported: navigator && 'geolocation' in navigator,
-  setIsSupported(isSupported) {
-    set(() => ({ isSupported }))
-  },
 
   coords: null,
-  setCoords(coords) {
-    set(() => ({ coords }))
-  },
   getCoords() {
     let startTime: number
     let endTime: number
@@ -34,6 +25,8 @@ export const geolocation: StoreSlice<GeolocationState> = (set, _get): Geolocatio
         error: null,
         locationStatus: 'success'
       }))
+
+      return coords
     }
 
     const onError = (error: GeoPositionError) => {
@@ -42,6 +35,7 @@ export const geolocation: StoreSlice<GeolocationState> = (set, _get): Geolocatio
       let status: LocationStatus
 
       if (elapsed < DISABLED_TIMEOUT && error.code === error.PERMISSION_DENIED) {
+        // it got denied too fast, so we assume it's a device with location disabled
         status = 'off'
       } else if (error.code === error.PERMISSION_DENIED) {
         status = 'denied'
@@ -53,7 +47,6 @@ export const geolocation: StoreSlice<GeolocationState> = (set, _get): Geolocatio
 
       set(() => ({
         error,
-        // loading: false,
         coords: null,
         timestamp: null,
         locationStatus: status,
@@ -61,21 +54,16 @@ export const geolocation: StoreSlice<GeolocationState> = (set, _get): Geolocatio
       }))
     }
 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError, DEFAULT_GEO_OPTIONS)
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        position => resolve(onSuccess(position)),
+        error => reject(onError(error)),
+        DEFAULT_GEO_OPTIONS
+      )
+    })
   },
 
   timestamp: null,
-  setTimestamp(timestamp) {
-    set(() => ({ timestamp }))
-  },
-
   error: null,
-  setError(error) {
-    set(() => ({ error }))
-  },
-
-  locationStatus: 'idle',
-  setLocationStatus(locationStatus) {
-    set(() => ({ locationStatus }))
-  }
+  locationStatus: 'idle'
 })

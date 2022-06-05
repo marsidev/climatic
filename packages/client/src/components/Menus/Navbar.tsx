@@ -7,6 +7,7 @@ import { MdMyLocation as GeoIcon } from 'react-icons/md'
 // import { TiCogOutline as CogIcon } from 'react-icons/ti'
 import { useStore } from '@store'
 import { ToolTip } from '@components'
+import { coordsToQuery, resolveQueryFromData } from '@lib'
 import { useNavigate } from 'react-router-dom'
 import { NavIcon } from './NavIcon'
 
@@ -16,28 +17,27 @@ interface NavbarProps extends FlexProps {
 
 export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
   const {
-    locationStatus,
-    coords,
     grantPermission,
     getForecastDataByCoords,
     setForecastQuery,
-    fetching
+    fetching,
+    getCoords
   } = useStore()
 
   const navigate = useNavigate()
 
   const getGeolocationForecast = async () => {
-    const { latitude, longitude } = coords ?? {}
-
     grantPermission()
 
-    if (locationStatus !== 'loading') {
-      const query = `${latitude},${longitude}`
-      setForecastQuery(query)
+    getCoords().then(c => {
+      getForecastDataByCoords().then(data => {
+        const coordsQuery = coordsToQuery(c)
+        const query = coordsQuery ? coordsQuery : resolveQueryFromData(data)
 
-      await getForecastDataByCoords()
-      navigate('/')
-    }
+        setForecastQuery(query)
+        navigate({ search: `q=${query}` })
+      })
+    })
   }
 
   return (
