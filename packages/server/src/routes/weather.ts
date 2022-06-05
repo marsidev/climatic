@@ -1,9 +1,9 @@
 import type { WeatherRequest } from '@types'
-import type { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyPluginAsync } from 'fastify'
+import type { FastifyPluginAsync } from 'fastify'
 import { fetchWeatherData, formatWeatherData } from '@lib'
 
-export const weather: FastifyPluginAsync = async (server: FastifyInstance, opts: FastifyPluginOptions) => {
-  server.get('/', opts, async (request: WeatherRequest, reply: FastifyReply) => {
+export const weather: FastifyPluginAsync = async (server, opts) => {
+  server.get('/weather', opts, async (request: WeatherRequest, reply) => {
     const { query } = request
     const { q = 'Los Angeles', original = '0' } = query
 
@@ -17,3 +17,5 @@ export const weather: FastifyPluginAsync = async (server: FastifyInstance, opts:
     return reply.send(data)
   })
 }
+
+export default weather

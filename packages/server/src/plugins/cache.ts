@@ -12,14 +12,14 @@ const CACHE_OPTIONS: Options = {
   stdTTL: DEFAULT_CACHE_TTL,
   checkperiod: DEFAULT_CACHE_TTL * 2
 }
-const CacheInstance = new NodeCache(CACHE_OPTIONS)
+const cacheInstance = new NodeCache(CACHE_OPTIONS)
 
 const pluginCallback: FastifyPluginAsync = async (server, _options) => {
   server.addHook('onRequest', async (request, reply) => {
     if (request.method === 'GET') {
       const { url, method } = request
       CACHE_KEY = `${method}-${url}`
-      const cached = CacheInstance.get(CACHE_KEY)
+      const cached = cacheInstance.get(CACHE_KEY)
 
       if (cached !== undefined) {
         // console.log('RETURNING FROM CACHE FOR KEY', CACHE_KEY)
@@ -32,15 +32,15 @@ const pluginCallback: FastifyPluginAsync = async (server, _options) => {
     if (request.method === 'GET') {
       const { url, method } = request
       CACHE_KEY = `${method}-${url}`
-      const response = CacheInstance.get(CACHE_KEY)
+      const response = cacheInstance.get(CACHE_KEY)
 
-      if (url?.includes('/api/')) {
+      if (url.substring(0, 5) === '/api/') {
         if (response === undefined && reply.statusCode < 400) {
           // console.log('CACHING RESPONSE FOR KEY', CACHE_KEY)
           if (url?.includes('/api/search?q=')) {
-            CacheInstance.set(CACHE_KEY, payload, SEARCH_CACHE_TTL)
+            cacheInstance.set(CACHE_KEY, payload, SEARCH_CACHE_TTL)
           } else {
-            CacheInstance.set(CACHE_KEY, payload, DEFAULT_CACHE_TTL)
+            cacheInstance.set(CACHE_KEY, payload, DEFAULT_CACHE_TTL)
           }
         }
       }
@@ -50,4 +50,4 @@ const pluginCallback: FastifyPluginAsync = async (server, _options) => {
   })
 }
 
-export const cache = fp(pluginCallback)
+export default fp(pluginCallback)
