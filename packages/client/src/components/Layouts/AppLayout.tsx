@@ -1,18 +1,20 @@
 import type { ForecastResponse } from '@climatic/shared'
 import type { BoxProps } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC } from 'react'
+import { lazy, Suspense } from 'react'
 import { Box, Spacer, useDisclosure } from '@chakra-ui/react'
 import {
   Forecast,
   WeatherHeader,
   WeatherTemperature,
   WeatherStats,
-  Astro,
-  Navbar,
-  SearchModal,
-  Footer
+  Navbar
 } from '@components'
+
+const SearchModal = lazy(() => import('@components/Modals/Search/SearchModal'))
+const Astro = lazy(() => import('@components/Astro'))
+const Footer = lazy(() => import('@components/Menus/Footer'))
 
 interface LayoutProps extends BoxProps {
   data: ForecastResponse
@@ -37,11 +39,16 @@ export const AppLayout: FC<LayoutProps> = ({ data }) => {
         <WeatherStats data={data} pb='32px' />
         <Spacer as='section' />
         <Forecast data={data} pb='32px' />
-        <Astro data={data} pb='32px' />
-        <Footer />
+
+        <Suspense>
+          <Astro data={data} pb='32px' />
+          <Footer />
+        </Suspense>
       </Box>
 
-      <SearchModal isOpen={searchIsOpen} onClose={closeSearch} />
+      <Suspense>
+        <SearchModal isOpen={searchIsOpen} onClose={closeSearch} />
+      </Suspense>
     </Box>
   )
 }

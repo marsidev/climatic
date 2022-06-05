@@ -1,6 +1,6 @@
-import { FlexProps } from '@chakra-ui/react'
+import type { FlexProps } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC } from 'react'
 import { AppLayout, LoadingLayout } from '@components'
 import { useForecast, useGeo } from '@hooks'
 

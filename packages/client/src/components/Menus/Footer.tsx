@@ -45,3 +45,5 @@ export const Footer: FC<FooterProps> = ({ ...props }) => {
     </Stack>
   )
 }
+
+export default Footer

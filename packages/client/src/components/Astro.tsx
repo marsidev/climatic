@@ -70,3 +70,5 @@ export const Astro: FC<AstroProps> = ({ data, ...props }) => {
     </Flex>
   )
 }
+
+export default Astro
