@@ -1,11 +1,10 @@
 import type { ForecastResponse } from '@climatic/shared'
+
 import { useEffect } from 'react'
 import { useStore } from '@store'
-import { formatTemperature } from '@lib/intl'
-import { DEFAULT_TEMPERATURE_UNIT } from '@lib/constants'
-import { flag } from 'country-emoji'
 import useSWR from 'swr'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { resolveDefaultQuery, updatePageTitle, resolveQueryFromData, coordsToQuery } from '@lib'
 
 type ReturnState = ForecastResponse | null
 
@@ -17,12 +16,11 @@ export const useForecast = (): ReturnState => {
     forecastQuery,
     getForecastDataByCoords,
     getForecastDataByQuery,
-    setForecastQuery,
-    setForecastData
+    setForecastQuery
   } = useStore()
 
-  const params = useParams()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
 
   // this update the data based on the query that is saved on state
   useSWR('update_forecast', getForecastDataByQuery, {
@@ -32,59 +30,54 @@ export const useForecast = (): ReturnState => {
     refreshWhenHidden: true
   })
 
-  const withErrors = (forecastData as any)?.error
+  const withErrors = (forecastData as any)?.error !== undefined
   useEffect(() => {
     if (withErrors) {
-      console.log({ withErrors })
-      setForecastData(null)
-      setForecastQuery('')
-      navigate('/barcelona-spain')
+      const defaultQuery = resolveDefaultQuery(coords)
+      setForecastQuery(defaultQuery)
+      navigate({ search: `q=${defaultQuery}` })
     }
   }, [withErrors])
 
-  /*
-    listen to url params and locationStatus changes.
-    if there is a query, fetch the query, if not, try no get the data of current location
-  */
+  // listen to searchParams changes.
   useEffect(() => {
-    const { query } = params
+    const query = searchParams.get('q')
     if (query) {
       setForecastQuery(query)
       getForecastDataByQuery()
-    } else {
-      const { latitude, longitude } = coords ?? {}
-      const noQuery = !forecastQuery || forecastQuery.includes('undefined')
+    }
+  }, [searchParams])
 
-      if (locationStatus !== 'loading' && noQuery) {
-        if (latitude && latitude) {
-          const query = `${latitude},${longitude}`
+  // listen to locationStatus changes.
+  useEffect(() => {
+    const query = searchParams.get('q')
+    if (!query) {
+      if (locationStatus !== 'loading' && !forecastQuery) {
+        getForecastDataByCoords().then(data => {
+          let query = ''
+          const coordsQuery = coordsToQuery(coords)
+          if (coordsQuery) {
+            query = coordsQuery
+          } else {
+            query = resolveQueryFromData(data)
+          }
+
           setForecastQuery(query)
-        }
-
-        getForecastDataByCoords()
+          navigate({ search: `?q=${query}` })
+        })
       }
     }
-  }, [params, locationStatus])
+  }, [locationStatus])
 
   // listen changes on forecast data to update page title
   useEffect(() => {
     if (forecastData && !withErrors) {
-      const { location, currentWeather } = forecastData
-      const { temperature, isDay } = currentWeather
-
-      const { country, name: city } = location
-
-      const _temperature = temperature[DEFAULT_TEMPERATURE_UNIT]
-      const temperatureString = formatTemperature(_temperature, DEFAULT_TEMPERATURE_UNIT)
-      const countryEmoji = flag(country)
-      const timeEmoji = isDay ? '☀' : '🌙'
-
-      const title = `${temperatureString} en ${city} ${countryEmoji} ${timeEmoji} | Climatic`
-      document.title = title
+      updatePageTitle(forecastData)
     }
   }, [forecastData])
 
   if (withErrors) return null
+
   return forecastData
 }
 

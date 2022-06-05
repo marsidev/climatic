@@ -38,7 +38,7 @@ const ResultItem = ({ name, region, country, onSubmit }: SearchItemResultProps) 
     setForecastQuery(itemQuery)
 
     await getForecastDataByQuery()
-    navigate(`/${itemQuery}`)
+    navigate({ search: `?q=${itemQuery}` })
     onSubmit()
   }
 
