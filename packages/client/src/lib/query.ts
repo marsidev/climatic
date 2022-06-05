@@ -6,8 +6,8 @@ import { DEFAULT_QUERY } from './constants'
 export const coordsToQuery = (coords: Coordinates | null): string | null => {
   const { latitude, longitude } = coords ?? {}
 
-  if (latitude && latitude) {
-    return `${latitude},${longitude}`
+  if (latitude && longitude) {
+    return `${latitude.toFixed(4)},${longitude.toFixed(4)}`
   }
 
   return null
