@@ -27,10 +27,19 @@ async function setupServer() {
   })
 
   // serve static files
-  await server.register(fastifyStatic, assetsConfig)
   await server.register(fastifyStatic, clientAssetsConfig)
+  await server.register(fastifyStatic, assetsConfig)
+
   server.get('/', async (_request, reply) => {
     await reply.type('text/html').send(fs.createReadStream(html))
+  })
+
+  server.get('/*', async (request, reply) => {
+    if (request.url.startsWith('/api/')) {
+      reply.callNotFound()
+    } else {
+      reply.redirect('/')
+    }
   })
 
   await server.ready()
