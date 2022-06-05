@@ -1,4 +1,6 @@
-import { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
+import type { ModalProps as ChakraModalProps } from '@chakra-ui/react'
+
 import {
   Modal as ChakraModal,
   ModalOverlay,
@@ -6,8 +8,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  ModalCloseButton,
-  ModalProps as ChakraModalProps
+  ModalCloseButton
 } from '@chakra-ui/react'
 
 type ModalProps = ChakraModalProps & {

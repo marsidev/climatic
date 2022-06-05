@@ -1,8 +1,9 @@
 /* eslint-disable react/display-name */
 import type { ForecastResponse } from '@climatic/shared'
 import { ChakraProps } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { chakra } from '@chakra-ui/react'
 import { useClock } from '@hooks'
 import { useStore } from '@store'

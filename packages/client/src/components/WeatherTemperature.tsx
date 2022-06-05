@@ -1,7 +1,7 @@
 import type { ForecastResponse } from '@climatic/shared'
 import { FlexProps } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC } from 'react'
 import { chakra, Flex, Heading } from '@chakra-ui/react'
 import { formatTemperature } from '@lib/intl'
 import { DEFAULT_TEMPERATURE_UNIT } from '@lib/constants'

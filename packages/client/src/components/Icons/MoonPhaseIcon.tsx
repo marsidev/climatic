@@ -1,7 +1,7 @@
 import type { MoonPhase } from '@climatic/shared'
 import type { IconProps } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC } from 'react'
 import {
   WiMoonNew as NewMoonIcon,
   WiMoonFirstQuarter as FirstQuarterMoonIcon,

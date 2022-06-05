@@ -1,7 +1,7 @@
 import type { ForecastResponse } from '@climatic/shared'
 import { FlexProps } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC } from 'react'
 import { chakra, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { getLargeDate } from '@lib/intl'
 import { ASSETS_URL } from '@lib/constants'

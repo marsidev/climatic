@@ -1,14 +1,17 @@
+import type { FC } from 'react'
 import type { ForecastResponse } from '@climatic/shared'
 import { StackProps } from '@chakra-ui/react'
 
-import { FC } from 'react'
 import { Flex, HStack } from '@chakra-ui/react'
 import { formatSpeed, formatInt } from '@lib/intl'
 import { DEFAULT_SPEED_UNIT, DEFAULT_PRESSURE_UNIT } from '@lib/constants'
 import { StatCard } from './StatCard'
 import { WindDirectionIcon } from '@components'
 
-import { MdOutlineWaterDrop as DropIcon, MdCloudQueue as CloudIcon } from 'react-icons/md'
+import {
+  MdOutlineWaterDrop as DropIcon,
+  MdCloudQueue as CloudIcon
+} from 'react-icons/md'
 import { CgCompressV as PressureIcon } from 'react-icons/cg'
 
 interface WeatherStatsProps extends StackProps {

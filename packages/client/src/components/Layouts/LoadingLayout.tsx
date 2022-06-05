@@ -1,5 +1,6 @@
 import { FlexProps } from '@chakra-ui/react'
-import { FC } from 'react'
+import type { FC } from 'react'
+
 import { Box, Heading, HStack, Skeleton, VStack } from '@chakra-ui/react'
 
 export const LoadingLayout: FC<FlexProps> = () => {

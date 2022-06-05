@@ -1,7 +1,6 @@
 import type { FlexProps } from '@chakra-ui/react'
-import type { ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 
-import { FC } from 'react'
 import { chakra, Flex } from '@chakra-ui/react'
 import { ToolTip } from '@components'
 

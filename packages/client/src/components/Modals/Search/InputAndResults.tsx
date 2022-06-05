@@ -1,7 +1,8 @@
 import type { SearchItem } from '@climatic/shared'
 import type { FlexProps } from '@chakra-ui/react'
+import type { FC, ChangeEvent } from 'react'
 
-import React, { FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDebounce } from 'use-debounce'
 import { Flex, Input, InputGroup, InputRightElement, Spinner, Text } from '@chakra-ui/react'
 import { searchByQuery } from '@services'
@@ -18,7 +19,7 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
   const [debouncedQuery] = useDebounce(query, 500)
   const [showData, setShowData] = useState<boolean>(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value)
 
     if (e.target.value.length === 0) {

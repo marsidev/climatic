@@ -1,8 +1,7 @@
 import type { BoxProps } from '@chakra-ui/react'
 import type { TooltipProps } from 'react-tooltip'
-import type { ReactNode } from 'react'
+import type { ReactNode, FC } from 'react'
 
-import { FC } from 'react'
 import { Box } from '@chakra-ui/react'
 import ReactTooltip from 'react-tooltip'
 

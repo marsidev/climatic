@@ -1,6 +1,6 @@
 import { FlexProps, Icon, Spacer, Spinner } from '@chakra-ui/react'
+import type { FC } from 'react'
 
-import { FC } from 'react'
 import { Flex } from '@chakra-ui/react'
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 import { MdMyLocation as GeoIcon } from 'react-icons/md'

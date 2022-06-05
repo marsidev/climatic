@@ -1,7 +1,7 @@
+import type { FC, ReactNode } from 'react'
 import type { ForecastResponse } from '@climatic/shared'
 import type { StackProps, FlexProps } from '@chakra-ui/react'
 
-import { FC, ReactNode } from 'react'
 import { chakra, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/react'
 import { MoonPhaseIcon } from '@components'
 import { MOON_PHASES_ES } from '@lib/constants'
