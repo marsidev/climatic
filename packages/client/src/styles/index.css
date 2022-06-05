@@ -98,5 +98,5 @@ html {
 }
 
 .emoji-font {
-  font-family: 'Twemoji Mozilla', sans-serif !important;
+  font-family: 'flag-emojis-polyfill', sans-serif !important;
 }

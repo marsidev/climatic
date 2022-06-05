@@ -23,7 +23,7 @@ const Content = (
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!container) {
-    polyfillCountryFlagEmojis('Twemoji Mozilla')
+    polyfillCountryFlagEmojis('flag-emojis-polyfill')
     container = document.getElementById('root') as HTMLElement
     const root = createRoot(container)
     root.render(Content)
