@@ -1,7 +1,7 @@
 import type { ForecastRequest } from '@types'
 import type { FastifyPluginAsync } from 'fastify'
 
-import { fetchForecastData, formatForecastData } from '@lib'
+import { fetchForecastData, formatForecastData, formatQuery } from '@lib'
 
 export const forecast: FastifyPluginAsync = async (server, opts) => {
   server.get('/forecast', opts, async (request: ForecastRequest, reply) => {
@@ -14,7 +14,7 @@ export const forecast: FastifyPluginAsync = async (server, opts) => {
     } else if (q === 'mock-bcn') {
       forecastData = require('@/mock_data/forecast-bcn.json')
     } else {
-      forecastData = await fetchForecastData({ q, days })
+      forecastData = await fetchForecastData({ q: formatQuery(q), days })
     }
 
     if (original === '1') {

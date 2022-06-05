@@ -1,6 +1,8 @@
 import type { RapidAPIWeatherResponse, RapidAPICondition, RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, RapidAPIForecastDay } from '@types'
 import type { WeatherResponse, Condition, ForecastResponse } from '@climatic/shared'
 
+import '@climatic/shared/src/utils/strings'
+
 // weather formatters
 export const formatCondition = (condition: RapidAPICondition): Condition => {
   const { text, icon, code } = condition
@@ -178,4 +180,13 @@ export const formatForecastData = (data: RapidAPIForecastResponse): ForecastResp
   }
 
   return result
+}
+
+export const formatQuery = (q: string): string => {
+  return q
+    .toLowerCase()
+    .removeDiacritics()
+    .removeSpecialChars()
+    .trim()
+    .removeSpaces('-')
 }
