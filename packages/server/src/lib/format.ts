@@ -183,10 +183,15 @@ export const formatForecastData = (data: RapidAPIForecastResponse): ForecastResp
 }
 
 export const formatQuery = (q: string): string => {
-  return q
+  const f = q
     .toLowerCase()
-    .removeDiacritics()
-    .removeSpecialChars()
     .trim()
-    .removeSpaces('-')
+    .replaceSpecialChars(' ')
+    .replaceExtraSpaces()
+    .replaceDiacritics()
+    .replaceSpecialChars()
+    .replaceSpaces('-')
+
+  console.log({ q, f })
+  return f
 }
