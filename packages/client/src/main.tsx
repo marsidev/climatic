@@ -13,9 +13,7 @@ const Content = (
   <ChakraProvider theme={theme}>
     <BrowserRouter>
       <Routes>
-        <Route element={<App />} path='/'>
-          <Route element={<App />} path=':query' />
-        </Route>
+        <Route element={<App />} path='/' />
       </Routes>
     </BrowserRouter>
   </ChakraProvider>
