@@ -26,7 +26,10 @@ export const useForecast = (): ReturnState => {
 
   // this update the data based on the query that is saved on state
   useSWR('update_forecast', getForecastDataByQuery, {
-    refreshInterval: 10 * 60 * 1000
+    refreshInterval: 10 * 60 * 1000,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: true,
+    refreshWhenHidden: true
   })
 
   const withErrors = (forecastData as any)?.error
