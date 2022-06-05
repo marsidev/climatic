@@ -1,4 +1,4 @@
-import type { FlexProps } from '@chakra-ui/react'
+import { FlexProps, Icon, Spacer, Spinner } from '@chakra-ui/react'
 
 import { FC } from 'react'
 import { Flex } from '@chakra-ui/react'
@@ -20,7 +20,8 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
     coords,
     grantPermission,
     getForecastDataByCoords,
-    setForecastQuery
+    setForecastQuery,
+    fetching
   } = useStore()
 
   const navigate = useNavigate()
@@ -40,7 +41,17 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
   }
 
   return (
-    <Flex align='center' as='nav' gap={2} justify='flex-end' p={2} {...props}>
+    <Flex align='center' as='nav' gap={2} justify='flex-start' p={2} {...props}>
+      {fetching && (
+        <ToolTip id='spinner-icon' tooltipLabel='Obteniendo datos...'>
+          <Flex px={2}>
+            <Icon as={Spinner} h={5} w={5} />
+          </Flex>
+        </ToolTip>
+      )}
+
+      <Spacer />
+
       <ToolTip id='search-icon' tooltipLabel='Buscar por ubicación'>
         <NavIcon
           aria-label='search icon'

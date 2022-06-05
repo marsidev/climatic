@@ -21,10 +21,10 @@ export const defaultNavIconProps = {
   borderRadius: 'full',
   colorScheme: 'gray',
   fontSize: [18, 20],
-  h: [10, 12],
+  h: [10, 10],
   transition: 'all 200ms ease-in-out, background 50ms ease-in-out, border-color 0ms',
   variant: 'ghost',
-  w: [10, 12]
+  w: [10, 10]
 }
 
 export const NavIcon: FC<NavIconProps> = ({ icon, ...props }) => {
