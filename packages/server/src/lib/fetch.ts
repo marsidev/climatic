@@ -31,7 +31,7 @@ export const fetchForecastData = async (props: RapidApiRequestQuery): Promise<Ra
     return forecastData
   }
 
-  const forecastFilled = fillNextForecastDays(forecastData, { q, days, lang })
+  const forecastFilled = await fillNextForecastDays(forecastData, { q, days, lang })
 
   return forecastFilled
 }
