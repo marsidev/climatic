@@ -6,7 +6,8 @@
   },
   "rules": {
     "new-cap": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "max-nested-callbacks": "off"
   },
   "ignorePatterns": ["dist/"]
 }
