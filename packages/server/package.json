@@ -21,6 +21,7 @@
     "@climatic/shared": "workspace:^1.0.0",
     "@fastify/autoload": "^4.0.1",
     "@fastify/cors": "^7.0.0",
+    "@fastify/sensible": "^4.1.0",
     "@fastify/static": "^5.0.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.1",
