@@ -58,6 +58,10 @@ interface RapidAPILocation {
 export interface RapidAPIWeatherResponse {
   location: RapidAPILocation
   current: RapidAPICurrentWeather
+  error?: {
+    code: number
+    message: string
+  }
 }
 
 // forecast
@@ -120,6 +124,10 @@ export interface RapidAPIForecastDay {
 export interface RapidAPIForecastResponse extends RapidAPIWeatherResponse {
   forecast: {
     forecastday: RapidAPIForecastDay[]
+  }
+  error?: {
+    code: number
+    message: string
   }
 }
 

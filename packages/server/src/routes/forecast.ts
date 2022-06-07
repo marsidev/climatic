@@ -17,6 +17,10 @@ export const forecast: FastifyPluginAsync = async (server, opts) => {
       forecastData = await fetchForecastData({ q: formatQuery(q), days })
     }
 
+    if (forecastData.error) {
+      reply.code(500).send(forecastData)
+    }
+
     if (original === '1') {
       return reply.send(forecastData)
     }

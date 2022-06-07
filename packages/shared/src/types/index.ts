@@ -74,6 +74,10 @@ interface Weather {
 export interface WeatherResponse {
   location: Location
   weather: Weather
+  error?: {
+    code: number
+    message: string
+  }
 }
 
 /* Forecast */
@@ -140,6 +144,10 @@ export interface ForecastResponse {
   location: Location
   currentWeather: Weather
   forecast: Forecast[]
+  error?: {
+    code: number
+    message: string
+  }
 }
 
 export interface SearchItem {

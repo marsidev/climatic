@@ -9,6 +9,10 @@ export const weather: FastifyPluginAsync = async (server, opts) => {
 
     const weatherData = await fetchWeatherData({ q: formatQuery(q) })
 
+    if (weatherData.error) {
+      reply.code(500).send(weatherData)
+    }
+
     if (original === '1') {
       return reply.send(weatherData)
     }
