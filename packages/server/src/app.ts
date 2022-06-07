@@ -1,6 +1,5 @@
 import type { FastifyInstance, FastifyServerOptions } from 'fastify'
 
-import 'dotenv/config'
 import 'isomorphic-fetch'
 import { join } from 'path'
 import fastify from 'fastify'

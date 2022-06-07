@@ -1,8 +1,8 @@
-import buildApp from './app'
-
-const { PORT = 3001, HOST = '0.0.0.0' } = process.env
+import buildApp from '@app'
+import config from '@lib/config'
 
 const runServer = async () => {
+  const { PORT, HOST } = config
   const app = await buildApp({ logger: false })
 
   app.listen(PORT, HOST, async (err, address) => {
