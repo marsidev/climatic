@@ -23,11 +23,15 @@ export const fetchForecastData = async (props: RapidApiRequestQuery): Promise<Ra
   const url = `${API_URL}/forecast.json?${queryString}`
 
   const response = await fetch(url, FETCH_OPTIONS)
-  const _data: RapidAPIForecastResponse = await response.json()
+  const forecastData: RapidAPIForecastResponse = await response.json()
 
-  const data = fillNextForecastDays(_data, { q, days, lang })
+  if (forecastData.error) {
+    return forecastData
+  }
 
-  return data
+  const forecastFilled = fillNextForecastDays(forecastData, { q, days, lang })
+
+  return forecastFilled
 }
 
 export const fetchDayForecastData = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {

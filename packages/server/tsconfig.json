@@ -5,6 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+
+      "@app": ["src/app"],
+      "@server": ["src/server"],
       
       "@lib": ["src/lib"],
       "@lib/*": ["src/lib/*"],
@@ -16,10 +19,9 @@
       "@routes/*": ["src/routes/*"],
       
       "@types": ["src/types"],
-      "@types/*": ["src/types/*"]
+      "@types/*": ["src/types/*"],
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "./dist/**/*"],
-  "moduleResolution": ["node_modules", "node"]
 }

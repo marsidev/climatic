@@ -15,6 +15,7 @@
     "build": "pnpm run -r build",
     "start": "pnpm --filter server start",
     "dev": "pnpm run -r --filter server --filter client dev",
+    "dev-c": "concurrently -k -p \"[{name}]\" -n \"server,client\" -c \"yellow.bold,cyan.bold\" \"pnpm:dev-server\" \"pnpm:dev-client\"",
     "dev-server": "pnpm --filter server dev",
     "dev-client": "pnpm --filter client dev",
     "dev-client-https": "pnpm --filter client dev-https",
@@ -24,12 +25,14 @@
     "tsc": "pnpm run -r tsc",
     "heroku": "git push heroku HEAD:main",
     "up-all": "pnpm -r up",
+    "test": "pnpm -r test",
     "prebuild": "npm i -g pnpm && pnpm i"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
+    "concurrently": "^7.2.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.16.0",
     "eslint-config-xo": "^0.41.0",
