@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify'
 import type { SuperTest, Test } from 'supertest'
 
-import { buildApp } from '@app'
+import { buildApp } from '../../src/app'
 import supertest from 'supertest'
 
 let fastify: FastifyInstance
@@ -34,4 +34,3 @@ describe('GET /api/ping', () => {
     expect(body.ping).toEqual('pong')
   })
 })
-

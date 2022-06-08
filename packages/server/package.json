@@ -15,7 +15,7 @@
     "lint-fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
     "clean": "rimraf dist",
     "tsc": "tsc --noEmit",
-    "test": "jest src/tests --verbose"
+    "test": "jest tests --verbose"
   },
   "dependencies": {
     "@climatic/shared": "workspace:^1.0.0",
@@ -41,7 +41,7 @@
     "@types/supertest": "2.0.12",
     "eslint": "8.16.0",
     "eslint-plugin-node": "11.1.0",
-    "jest": "28.1.0",
+    "jest": "28.1.1",
     "rimraf": "3.0.2",
     "supertest": "6.2.3",
     "ts-jest": "28.0.4",

@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify'
 import type { SuperTest, Test } from 'supertest'
 
-import { buildApp } from '@app'
+import { buildApp } from '../../src/app'
 import supertest from 'supertest'
 
 let fastify: FastifyInstance
@@ -27,10 +27,7 @@ afterAll(() => {
 
 describe('GET /', () => {
   it('has expected statusCode and content-type', async () => {
-    await api
-      .get(VALID_URL)
-      .expect(200)
-      .expect('Content-Type', 'text/html')
+    await api.get(VALID_URL).expect(200).expect('Content-Type', 'text/html')
   }, 10000)
 
   it('contains a proper <title />', async () => {

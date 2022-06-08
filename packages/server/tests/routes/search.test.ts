@@ -2,7 +2,7 @@ import type { SearchResponse } from '@climatic/shared'
 import type { FastifyInstance } from 'fastify'
 import type { SuperTest, Test } from 'supertest'
 
-import { buildApp } from '@app'
+import { buildApp } from '../../src/app'
 import supertest from 'supertest'
 
 let fastify: FastifyInstance
