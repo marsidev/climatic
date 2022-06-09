@@ -12,7 +12,7 @@
     "build": "pnpm clean && tsc",
     "start": "cross-env NODE_ENV=production node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/server.js",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
-    "lint-fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
+    "lint:fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
     "clean": "rimraf dist",
     "tsc": "tsc --noEmit",
     "test": "cross-env NODE_ENV=test jest tests --verbose"
