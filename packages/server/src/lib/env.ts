@@ -1,5 +1,3 @@
-import 'dotenv/config'
-
 export const loadEnvironmentVariable = (keyname: string, defaultValue?: any) => {
   const envVar = process.env[keyname]
 
