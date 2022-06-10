@@ -6,7 +6,7 @@ import { Box, Heading, HStack, Skeleton, VStack } from '@chakra-ui/react'
 export const LoadingLayout: FC<FlexProps> = () => {
   return (
     <Box className='container'>
-      <Box as='main' className='weather-card'>
+      <Box as='main' className='weather-card app-skeleton'>
         <VStack align='center' flexDir='column' mt={4}>
           <Skeleton w='90%'>
             <Heading as='h2' fontSize={48}>

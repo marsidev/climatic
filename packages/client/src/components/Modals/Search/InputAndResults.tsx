@@ -60,7 +60,7 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
         {isLoading && <InputRightElement children={<Spinner />} />}
       </InputGroup>
 
-      <Flex flexDir='column' mt={2}>
+      <Flex className='search-results' flexDir='column' mt={2}>
         {noResults && (
           <Text fontWeight={600} py={2} textAlign='left'>
             No se encontraron resultados 😞

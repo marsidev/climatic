@@ -31,6 +31,7 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
     >
       <Heading
         as='h3'
+        className='temperature'
         fontFamily='Aileron, san-serif'
         fontSize={96}
         fontWeight={300}

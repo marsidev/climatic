@@ -36,7 +36,7 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["./src"],
+  "include": ["src", "tests"],
   "exclude": ["node_modules", "./dist/**/*"],
   "moduleResolution": ["node_modules", "node"]
 }

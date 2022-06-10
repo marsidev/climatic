@@ -13,6 +13,7 @@ export const SearchModal: FC<SearchModalProps> = ({ isOpen, onClose, ...rest }) 
   return (
     <Modal
       blockScrollOnMount={false}
+      id='search'
       isOpen={isOpen}
       motionPreset='slideInBottom'
       scrollBehavior='inside'
