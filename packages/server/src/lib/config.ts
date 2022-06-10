@@ -22,7 +22,7 @@ const { NODE_ENV } = process.env
 
 export default {
   PORT: 3001,
-  HOST: NODE_ENV === 'development' ? '::' : '0.0.0.0',
+  HOST: NODE_ENV === 'production' ? '0.0.0.0' : '::',
   RAPIDAPI_KEY,
   FETCH_OPTIONS,
   APP_URL,
