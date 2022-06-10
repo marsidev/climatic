@@ -15,7 +15,8 @@
     "lint:fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
     "clean": "rimraf dist",
     "tsc": "tsc --noEmit",
-    "test": "cross-env NODE_ENV=test jest tests --verbose"
+    "test": "cross-env NODE_ENV=test jest tests --verbose",
+    "test:watch": "pnpm test -- --watchAll"
   },
   "dependencies": {
     "@climatic/shared": "workspace:^1.0.0",

@@ -26,6 +26,7 @@
     "heroku": "git push heroku HEAD:main",
     "up:all": "pnpm -r up",
     "test": "pnpm -r test",
+    "test:watch": "pnpm -r test:watch",
     "prebuild": "npm i -g pnpm && pnpm i"
   },
   "devDependencies": {
