@@ -20,7 +20,8 @@
       
       "@types": ["src/types"],
       "@types/*": ["src/types/*"],
-    }
+    },
+    "declarationDir": "dist/types"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "./dist/**/*"],
