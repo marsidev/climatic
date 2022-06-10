@@ -11,7 +11,9 @@ const jestConfig = {
     '@routes(.*)': '<rootDir>/src/routes$1',
     '@types(.*)': '<rootDir>/src/types$1'
   },
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  testMatch: ['**/tests/**/*.test.ts'],
+  testTimeout: 60000
 }
 
 export default jestConfig

@@ -29,8 +29,12 @@ beforeAll(async () => {
   })
 })
 
-afterAll(() => {
-  fastify.close()
+afterAll(async () => {
+  await fastify.close()
+})
+
+beforeEach(() => {
+  jest.setTimeout(40000)
 })
 
 describe('GET non-valid-query', () => {

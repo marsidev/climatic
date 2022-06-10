@@ -14,8 +14,12 @@ beforeAll(async () => {
   api = supertest(fastify.server)
 })
 
-afterAll(() => {
-  fastify.close()
+afterAll(async () => {
+  await fastify.close()
+})
+
+beforeEach(() => {
+  jest.setTimeout(40000)
 })
 
 describe('GET /api/ping', () => {
