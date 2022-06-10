@@ -4,8 +4,8 @@ Created from scratch to participate in a 14-days hackathon hosted by [midudev](h
 
 ## Hackathon
 - The hackathon goal was build a weather web app (*mobile-first* or *mobile-only*) in two weeks using a weather API from [RapidAPI](https://rapidapi.com).
-- It was announced in this [Twitch stream](https://www.twitch.tv/videos/1488279878) at **2022/05/19**.
-- There was 38 project entries. The first 19 were reviewed at **2022/06/02** in this [Twitch stream](https://www.twitch.tv/videos/1315914232).
+- It was announced at **[2022/05/19](https://www.twitch.tv/videos/1488279878)**.
+- There was 38 project entries. The first 19 were reviewed at **[2022/06/02](https://www.twitch.tv/videos/1315914232)**. The last 19 were reviewed at **2022/06/07**.
 - Climatic was picked as the 4th best project in the first review, but was not elegible for any prize.
 - The last commit before the project revision can be found [here](https://github.com/marsidev/climatic/tree/5d42530432663b8d30fe57047ee51e742d508851).
 
@@ -26,7 +26,7 @@ App preview before deadline and project review: <br />
 <br />
 <a href="https://climatic-production.up.railway.app" target="_blank" rel="noopener" title="Climatic">Mirror</a>
 
-## 🛠️ Tech
+## 🛠️ Technologies
 - [fastify](https://github.com/fastify/fastify)
 - [node-cache](https://github.com/node-cache/node-cache)
 - [react](https://github.com/facebook/react)
@@ -37,6 +37,8 @@ App preview before deadline and project review: <br />
 - [react-router](https://reactrouter.com)
 - [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch)
 - [typescript](https://github.com/microsoft/TypeScript)
+- [jest](https://github.com/facebook/jest)
+- [playwright](https://github.com/microsoft/playwright)
 - [eslint](https://github.com/eslint/eslint)
 - [pnpm](https://github.com/pnpm/pnpm)
 
@@ -71,7 +73,14 @@ To get your `RAPIDAPI_KEY` you need to subscribe to [weatherapi](https://rapidap
 pnpm dev
 ```
 
-Open [https://localhost:3000](https://localhost:3000) with your browser to see the result.
+In order to use the geolocation API, you need to run the client server with `https` protocol. This can achieved by running:
+```bash
+pnpm dev:https
+```
+
+Open [http://localhost:3000](http://localhost:3000) or [https://localhost:3000](https://localhost:3000) with your browser to see the result.
+
+Note: If you are running in *https* mode, you will get a warning in your browser about non-secure connection.
 
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!
