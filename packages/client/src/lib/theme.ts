@@ -6,16 +6,6 @@ import '@fontsource/rubik/variable.css'
 import '@fontsource/nunito/variable.css'
 import '@fontsource/aileron/300.css'
 
-const components = {
-  Button: {
-    baseStyle: {
-      _focus: {
-        boxShadow: 'none'
-      }
-    }
-  }
-}
-
 const fonts = {
   heading: 'NunitoVariable, RalewayVariable, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
   body: 'NunitoVariable, RalewayVariable, Roboto, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'
@@ -26,6 +16,6 @@ const config: ThemeConfig = {
   useSystemColorMode: true
 }
 
-export const theme: Dict = extendTheme({ config, components, fonts })
+export const theme: Dict = extendTheme({ config, fonts })
 
 export default theme
