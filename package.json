@@ -25,8 +25,12 @@
     "tsc": "pnpm run -r tsc",
     "heroku": "git push heroku HEAD:main",
     "up:all": "pnpm -r up",
-    "test": "pnpm -r test",
-    "test:watch": "pnpm -r test:watch",
+    "test": "run-p -l test:server test:client",
+    "test:watch": "run-p -l test:server:watch test:client:watch",
+    "test:server": "pnpm --filter=server test",
+    "test:server:watch": "pnpm --filter=server test:watch",
+    "test:client": "pnpm --filter=client test",
+    "test:client:watch": "pnpm --filter=client test:watch",
     "prebuild": "npm i -g pnpm && pnpm i"
   },
   "devDependencies": {
