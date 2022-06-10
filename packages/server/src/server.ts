@@ -6,9 +6,10 @@ const runServer = async () => {
   const { PORT, HOST } = config
   const app = await buildApp({ logger })
 
-  app.listen(PORT, HOST, async (err, address) => {
+  app.listen(PORT, HOST, async err => {
     if (err) return console.error(err)
-    console.log(`Server running on ${address}`)
+
+    console.log(`Server running on http://localhost:${PORT}`)
   })
 }
 
