@@ -1,8 +1,10 @@
-import fp from 'fastify-plugin'
-import sensible, { SensibleOptions } from '@fastify/sensible'
+import type { FastifyPluginAsync } from 'fastify'
 
-export default fp<SensibleOptions>(async (fastify, _opts) => {
-  fastify.register(sensible, {
-    errorHandler: false
-  })
-})
+import fp from 'fastify-plugin'
+import sensible from '@fastify/sensible'
+
+const sensiblePlugin: FastifyPluginAsync = async (fastify, _opts) => {
+  await fastify.register(sensible)
+}
+
+export default fp(sensiblePlugin)

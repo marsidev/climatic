@@ -1,26 +1,21 @@
 import type { FastifyPluginAsync, FastifyRequest } from 'fastify'
-import type { Key } from 'node-cache'
+import type { Key, Options } from 'node-cache'
 
 import fp from 'fastify-plugin'
 import NodeCache from 'node-cache'
 
-const DEBUG = false
+const DEBUG: boolean = false
 const DEFAULT_CACHE_TTL: number = 900 // cache duration in seconds - 15 minutes
 const SEARCH_CACHE_TTL: number = 86400 // 24h
 
-const cacheInstance = new NodeCache({
-  stdTTL: DEFAULT_CACHE_TTL,
-  checkperiod: DEFAULT_CACHE_TTL * 2
-})
+type CachePluginProps = FastifyPluginAsync<Options>
 
-const getCacheKeys = (request: FastifyRequest): Key[] => {
-  const { url, method } = request
-  const key1 = `${method}__${url}`
-  const key2 = `${key1}__content-type`
-  return [key1, key2]
-}
+const cachePlugin: CachePluginProps = async (fastify, _opts) => {
+  const cacheInstance = new NodeCache({
+    stdTTL: DEFAULT_CACHE_TTL,
+    checkperiod: DEFAULT_CACHE_TTL * 2
+  })
 
-const pluginCallback: FastifyPluginAsync = async (fastify, _options) => {
   fastify.addHook('onRequest', async (request, reply) => {
     const { url, method } = request
     if (method === 'GET') {
@@ -31,16 +26,8 @@ const pluginCallback: FastifyPluginAsync = async (fastify, _options) => {
       const isCached = cached !== undefined && cachedType !== undefined
 
       if (isCached) {
-        if (DEBUG) {
-          console.log({
-            message: 'returns from cache',
-            url,
-            cachedType,
-            keys
-          })
-        }
-
-        reply.type(cachedType as string).send(cached)
+        logger('cached', url, cachedType, keys)
+        return reply.type(cachedType as string).send(cached)
       }
     }
   })
@@ -57,14 +44,7 @@ const pluginCallback: FastifyPluginAsync = async (fastify, _options) => {
 
       if (url.startsWith('/api/')) {
         if (!isCached && reply.statusCode < 400) {
-          if (DEBUG) {
-            console.log({
-              message: 'caching response',
-              url,
-              contentType,
-              keys
-            })
-          }
+          logger('caching', url, contentType, keys)
 
           if (url?.startsWith('/api/search?q=')) {
             cacheInstance.set(keys[0], payload, SEARCH_CACHE_TTL)
@@ -81,4 +61,17 @@ const pluginCallback: FastifyPluginAsync = async (fastify, _options) => {
   })
 }
 
-export default fp(pluginCallback)
+const logger = (message: string, url: string, contentType: any, keys: Key[]) => {
+  if (DEBUG) {
+    console.log({ message, url, contentType, keys })
+  }
+}
+
+const getCacheKeys = (request: FastifyRequest): Key[] => {
+  const { url, method } = request
+  const key1 = `${method}__${url}`
+  const key2 = `${key1}__content-type`
+  return [key1, key2]
+}
+
+export default fp(cachePlugin)

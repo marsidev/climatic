@@ -8,11 +8,11 @@ import autoload from '@fastify/autoload'
 const buildApp = async (opts: FastifyServerOptions = {}): Promise<FastifyInstance> => {
   const app = fastify(opts)
 
-  app.register(autoload, {
+  await app.register(autoload, {
     dir: join(__dirname, 'plugins')
   })
 
-  app.register(autoload, {
+  await app.register(autoload, {
     dir: join(__dirname, 'routes'),
     options: { prefix: '/api' }
   })

@@ -18,7 +18,7 @@ export const forecast: FastifyPluginAsync = async (server, opts) => {
     }
 
     if (forecastData.error) {
-      reply.code(500).send(forecastData)
+      return reply.code(500).send(forecastData)
     }
 
     if (original === '1') {

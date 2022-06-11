@@ -1,13 +1,14 @@
-import pino from 'pino'
+import pino, { LoggerOptions } from 'pino'
+import { FastifyRequest, FastifyReply } from 'fastify'
 
 // https://github.com/pinojs/pino/blob/master/docs/api.md#options-object
-export const logger = pino({
+const options: LoggerOptions = {
   serializers: {
-    req(request) {
+    req(request: FastifyRequest) {
       const { url, method } = request
       return `${method} - ${url}`
     },
-    res(response) {
+    res(response: FastifyReply) {
       const { statusCode } = response
       return `${statusCode}`
     }
@@ -22,4 +23,6 @@ export const logger = pino({
       ignore: 'hostname,pid'
     }
   }
-})
+}
+
+export const logger = pino(options)

@@ -1,14 +1,14 @@
 import type { FastifyPluginAsync } from 'fastify'
 import fp from 'fastify-plugin'
 
-const pluginCallback: FastifyPluginAsync = async (fastify, _options) => {
+const redirectPlugin: FastifyPluginAsync = async (fastify, _opts) => {
   fastify.get('/*', async (request, reply) => {
     if (request.url.startsWith('/api/')) {
-      reply.callNotFound()
-    } else {
-      reply.redirect('/')
+      return reply.callNotFound()
     }
+
+    return reply.redirect('/')
   })
 }
 
-export default fp(pluginCallback)
+export default fp(redirectPlugin)

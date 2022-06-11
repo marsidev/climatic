@@ -3,13 +3,13 @@ import config from '@lib/config'
 import { logger } from '@lib'
 
 const runServer = async () => {
-  const { PORT, HOST } = config
+  const { PORT: port, HOST: host } = config
   const app = await buildApp({ logger })
 
-  app.listen(PORT, HOST, async err => {
+  app.listen({ port, host }, async err => {
     if (err) return console.error(err)
 
-    console.log(`Server running on http://localhost:${PORT}`)
+    console.log(`Server running on http://localhost:${port}`)
   })
 }
 
