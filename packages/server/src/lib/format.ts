@@ -188,7 +188,7 @@ export const formatQuery = (q: string): string => {
     .trim()
     .replaceSpecialChars(' ')
     .replaceExtraSpaces()
-    .replaceDiacritics()
+    .removeDiacritics()
     .replaceSpecialChars()
     .replaceSpaces('-')
 }

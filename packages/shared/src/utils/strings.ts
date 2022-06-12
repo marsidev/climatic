@@ -3,7 +3,7 @@ declare global {
     /** Replace diacritics from a string, by default it will replace with empty string.
      * @param {string} [replaceWith] - the string to replace the diacritics with
      */
-    replaceDiacritics: (replaceWith?: string) => string
+    removeDiacritics: () => string
 
     /** Replace special characters from a string, by default it will replace with empty string.
      * @param {string} [replaceWith] - the string to replace the special characters with
@@ -22,8 +22,8 @@ declare global {
   }
 }
 
-String.prototype.replaceDiacritics = function (replaceWith: string = '') {
-  return this.normalize('NFD').replace(/[\u0300-\u036f]/g, replaceWith)
+String.prototype.removeDiacritics = function () {
+  return this.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
 String.prototype.replaceSpecialChars = function (replaceWith: string = '') {
