@@ -3,7 +3,7 @@ import type { FC } from 'react'
 
 import { chakra, Flex, FlexProps, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { formatInt, getShortDate, formatTemperature } from '@lib/intl'
-import { DEFAULT_TEMPERATURE_UNIT, ASSETS_URL } from '@lib/constants'
+import { DEFAULT_TEMPERATURE_UNIT, ASSETS_URL } from '@lib/config'
 
 interface ForecastProps extends FlexProps {
   data: ForecastResponse

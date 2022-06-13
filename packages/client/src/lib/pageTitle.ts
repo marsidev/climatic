@@ -2,7 +2,7 @@ import type { ForecastResponse } from '@climatic/shared'
 
 import { flag } from 'country-emoji'
 import { formatTemperature } from './intl'
-import { DEFAULT_TEMPERATURE_UNIT } from './constants'
+import { DEFAULT_TEMPERATURE_UNIT } from './config'
 
 export const updatePageTitle = (forecastData: ForecastResponse) => {
   const { location, currentWeather } = forecastData

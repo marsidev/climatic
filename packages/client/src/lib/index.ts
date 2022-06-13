@@ -1,4 +1,4 @@
-export * from './constants'
+export * from './config'
 export * from './intl'
 export * from './localStorage'
 export * from './theme'

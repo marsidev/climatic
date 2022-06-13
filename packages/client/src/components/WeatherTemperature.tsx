@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import { chakra, Flex, Heading } from '@chakra-ui/react'
 import { formatTemperature } from '@lib/intl'
-import { DEFAULT_TEMPERATURE_UNIT } from '@lib/constants'
+import { DEFAULT_TEMPERATURE_UNIT } from '@lib/config'
 
 interface TemperatureProps extends FlexProps {
   data: ForecastResponse
@@ -31,10 +31,10 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
     >
       <Heading
         as='h3'
-        className='temperature'
         fontFamily='Aileron, san-serif'
         fontSize={96}
         fontWeight={300}
+        id='temperature'
         lineHeight={1}
         py={0}
       >

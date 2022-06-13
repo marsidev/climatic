@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 import { chakra, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { getLargeDate } from '@lib/intl'
-import { ASSETS_URL } from '@lib/constants'
+import { ASSETS_URL } from '@lib/config'
 import { flag } from 'country-emoji'
 import { Time } from '@components'
 

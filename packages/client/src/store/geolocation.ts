@@ -1,7 +1,7 @@
 import type { LocationStatus, GeolocationState, GeoPositionError, GeoPosition } from '@types'
 import type { StoreSlice } from '.'
 
-import { DISABLED_TIMEOUT, DEFAULT_GEO_OPTIONS } from '@lib/constants'
+import { DISABLED_TIMEOUT, DEFAULT_GEO_OPTIONS } from '@lib/config'
 
 export const geolocation: StoreSlice<GeolocationState> = (set, _get): GeolocationState => ({
   loading: true,

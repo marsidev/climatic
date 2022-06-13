@@ -4,7 +4,7 @@ import { StackProps } from '@chakra-ui/react'
 
 import { Flex, HStack } from '@chakra-ui/react'
 import { formatSpeed, formatInt } from '@lib/intl'
-import { DEFAULT_SPEED_UNIT, DEFAULT_PRESSURE_UNIT } from '@lib/constants'
+import { DEFAULT_SPEED_UNIT, DEFAULT_PRESSURE_UNIT } from '@lib/config'
 import { StatCard } from './StatCard'
 import { WindDirectionIcon } from '@components'
 

@@ -4,7 +4,7 @@ import type { StackProps, FlexProps } from '@chakra-ui/react'
 
 import { chakra, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/react'
 import { MoonPhaseIcon } from '@components'
-import { MOON_PHASES_ES } from '@lib/constants'
+import { MOON_PHASES_ES } from '@lib/config'
 import { WiMoonset, WiMoonrise, WiSunset, WiSunrise } from 'react-icons/wi'
 
 interface AstroProps extends StackProps {

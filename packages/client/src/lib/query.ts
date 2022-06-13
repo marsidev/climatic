@@ -1,7 +1,7 @@
 import type { ForecastResponse } from '@climatic/shared'
 import type { Coordinates } from '@types'
 
-import { DEFAULT_QUERY } from './constants'
+import { DEFAULT_QUERY } from './config'
 
 export const coordsToQuery = (coords: Coordinates | null): string | null => {
   const { latitude, longitude } = coords ?? {}

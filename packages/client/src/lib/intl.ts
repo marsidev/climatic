@@ -1,5 +1,5 @@
 import type { TemperatureUnit, SpeedUnit } from '@climatic/shared'
-import { DEFAULT_LANGUAGE } from '@lib/constants'
+import { DEFAULT_LANGUAGE } from '@lib/config'
 
 const locale = DEFAULT_LANGUAGE
 
