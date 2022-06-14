@@ -25,12 +25,14 @@
     "tsc": "pnpm run -r tsc",
     "heroku": "git push heroku HEAD:main",
     "up:all": "pnpm -r up",
-    "test": "run-p test:server test:client",
+    "test": "run-p test:server test:client test:shared",
     "test:watch": "run-p test:server:watch test:client:watch",
     "test:server": "pnpm --filter=server test",
     "test:server:watch": "pnpm --filter=server test:watch",
     "test:client": "pnpm --filter=client test",
     "test:client:watch": "pnpm --filter=client test:watch",
+    "test:shared": "pnpm --filter=shared test",
+    "test:shared:watch": "pnpm --filter=shared test:watch",
     "prebuild": "npm i -g pnpm && pnpm i"
   },
   "devDependencies": {
