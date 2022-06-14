@@ -39,6 +39,8 @@ App preview before deadline and project review: <br />
 - [typescript](https://github.com/microsoft/TypeScript)
 - [jest](https://github.com/facebook/jest)
 - [playwright](https://github.com/microsoft/playwright)
+- [vitest](https://github.com/vitest-dev/vitest)
+- [react-testing-library](https://github.com/testing-library/react-testing-library)
 - [eslint](https://github.com/eslint/eslint)
 - [pnpm](https://github.com/pnpm/pnpm)
 
