@@ -1,6 +1,6 @@
 import { rest } from 'msw'
 import mockForecast from './forecast.json'
-import mockForecastMadrid from './forecast.json'
+import mockForecastMadrid from './forecast-madrid.json'
 
 export default [
   rest.get('http://localhost:3001/api/forecast', (req, res, ctx) => {
