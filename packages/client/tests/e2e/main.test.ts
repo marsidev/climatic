@@ -1,7 +1,7 @@
 import type { Browser, Page } from '@playwright/test'
 
 import { chromium, expect, test as it, test, devices } from '@playwright/test'
-import { checkAppIsRunning, deleteScreenshots, waitFor } from '../helpers'
+import { checkAppIsRunning, deleteScreenshots, waitFor } from './helpers'
 
 const testsPath = './tests/e2e'
 const ssPath = `${testsPath}/screenshots`
