@@ -29,6 +29,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
         as='h2'
         fontSize={48}
         fontWeight={300}
+        id='location-name'
         lineHeight={1}
         textAlign='center'
       >

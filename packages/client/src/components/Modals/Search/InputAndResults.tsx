@@ -61,23 +61,13 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
       </InputGroup>
 
       <Flex className='search-results' flexDir='column' mt={2}>
-        {noResults && (
-          <Text fontWeight={600} py={2} textAlign='left'>
-            No se encontraron resultados 😞
-          </Text>
-        )}
+        <Text fontWeight={600} id='search-heading' py={2} textAlign='left'>
+          {noResults && 'No se encontraron resultados 😞'}
+          {thereIsResults && `${data.length} resultados`}
+        </Text>
 
-        {thereIsResults && (
-          <>
-            <Text fontWeight={600} mb={2} mt={4} textAlign='left'>
-              {`${data.length} resultados`}
-            </Text>
-
-            {data.map(d => (
-              <ResultItem key={d.id} onSubmit={onSubmit} {...d} />
-            ))}
-          </>
-        )}
+        {thereIsResults &&
+          data.map(d => <ResultItem key={d.id} onSubmit={onSubmit} {...d} />)}
       </Flex>
     </Flex>
   )

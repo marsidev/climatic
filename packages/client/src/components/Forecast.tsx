@@ -18,6 +18,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       align='center'
       as='section'
       flexDir='column'
+      id='forecast-section'
       px={2}
       {...props}
     >

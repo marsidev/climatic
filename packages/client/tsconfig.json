@@ -34,9 +34,10 @@
       
       "@utils": ["src/utils"],
       "@utils/*": ["src/utils/*"]
-    }
+    },
+    "module": "es2022"
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": ["node_modules", "./dist/**/*"],
   "moduleResolution": ["node_modules", "node"]
 }

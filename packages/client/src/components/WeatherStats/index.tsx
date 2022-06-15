@@ -30,7 +30,7 @@ export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
 
   return (
     <Flex as='section' flexDir='column' px={4} {...props}>
-      <HStack align='center' as='ul' justify='center'>
+      <HStack align='center' as='ul' id='weather-data-stack' justify='center'>
         <StatCard
           ariaLabel='Humedad'
           icon={<DropIcon />}

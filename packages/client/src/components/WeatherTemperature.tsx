@@ -23,12 +23,7 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
   const showFeelsLikeTemperature = temperatureStr !== feelTemperatureStr
 
   return (
-    <Flex
-      align='center'
-      as='section'
-      flexDir='column'
-      {...props}
-    >
+    <Flex align='center' as='section' flexDir='column' {...props}>
       <Heading
         as='h3'
         fontFamily='Aileron, san-serif'
@@ -41,13 +36,15 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
         {temperatureStr}
       </Heading>
 
-      {showFeelsLikeTemperature &&
+      {showFeelsLikeTemperature && (
         <chakra.span
           fontFamily='RubikVariable, san-serif'
           fontWeight={400}
+          id='feels-like'
         >
-          Sensación de {feelTemperatureStr}
-        </chakra.span>}
+          Sensación térmica de {feelTemperatureStr}
+        </chakra.span>
+      )}
     </Flex>
   )
 }

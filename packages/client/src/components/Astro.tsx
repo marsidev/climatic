@@ -35,7 +35,14 @@ export const Astro: FC<AstroProps> = ({ data, ...props }) => {
   const { moon_phase, moonrise, moonset, sunrise, sunset } = astro
 
   return (
-    <Flex align='center' as='section' flexDir='column' px={2} {...props}>
+    <Flex
+      align='center'
+      as='section'
+      flexDir='column'
+      id='astro-section'
+      px={2}
+      {...props}
+    >
       <Heading as='h4' className='section-heading'>
         Astrología
       </Heading>
@@ -62,9 +69,14 @@ export const Astro: FC<AstroProps> = ({ data, ...props }) => {
         </HStack>
 
         <HStack as='li' className='section-list-item'>
-          <Text as='span' minW='80px'>Fase de la luna</Text>
+          <Text as='span' minW='80px'>
+            Fase de la luna
+          </Text>
 
-          <LabelIcon icon={<MoonPhaseIcon phase={moon_phase} />} label={MOON_PHASES_ES[moon_phase]} />
+          <LabelIcon
+            icon={<MoonPhaseIcon phase={moon_phase} />}
+            label={MOON_PHASES_ES[moon_phase]}
+          />
         </HStack>
       </VStack>
     </Flex>

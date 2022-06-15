@@ -50,6 +50,7 @@ const ResultItem = ({ name, region, country, onSubmit }: SearchItemResultProps) 
       as='a'
       borderRadius={8}
       borderWidth={1}
+      className='search-item'
       cursor='pointer'
       mb={2}
       p={3}
