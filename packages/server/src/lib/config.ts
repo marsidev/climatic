@@ -18,10 +18,10 @@ const FETCH_OPTIONS: FetchOptions = {
   }
 }
 
-const { NODE_ENV } = process.env
+const { NODE_ENV, PORT } = process.env
 
 export default {
-  PORT: 3001,
+  PORT: (PORT as any) ?? 3001,
   HOST: NODE_ENV === 'production' ? '0.0.0.0' : '::',
   RAPIDAPI_KEY,
   FETCH_OPTIONS,
