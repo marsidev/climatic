@@ -1,21 +1,22 @@
 // import type { RenderResult } from '@testing-library/react'
 import { beforeAll, describe, expect, test } from 'vitest'
-import { render, waitFor, screen } from '../helpers'
+import { render, waitFor, screen, resetDom } from '../helpers'
 import { App } from '@components'
 
 // let dom: RenderResult
 
 beforeAll(() => {
+  resetDom()
   render(<App />)
 })
 
-test.skip('The skeleton layout is not in the DOM (data loaded)', async () => {
+test('The skeleton layout is not in the DOM (data loaded)', async () => {
   await waitFor(() => {
     expect(document.querySelector('.app-skeleton')).toBeNull()
   })
 })
 
-describe.concurrent.skip('Sections', () => {
+describe.concurrent('Sections', () => {
   test('DOM has a <nav /> element', () => {
     const el = screen.getByRole('navigation')
     expect(el).toBeDefined()

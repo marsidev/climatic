@@ -1,6 +1,6 @@
 import type { TestingLibraryMatchers } from '@testing-library/jest-dom/matchers'
 
-import { afterAll, afterEach, beforeAll, beforeEach, expect, vi } from 'vitest'
+import { afterAll, afterEach, beforeAll, expect, vi } from 'vitest'
 import { server } from '../mocks/server'
 
 /* tweak to avoid errors between vitest and @testing-library/jest-dom
@@ -30,16 +30,6 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: vi.fn(),
     dispatchEvent: vi.fn()
   }))
-})
-
-beforeEach(() => {
-  document.getElementById('chakra-toast-portal')?.remove()
-  document.getElementById('chakra-toast-manager-top')?.remove()
-  document.getElementById('chakra-toast-manager-top-left')?.remove()
-  document.getElementById('chakra-toast-manager-top-right')?.remove()
-  document.getElementById('chakra-toast-manager-bottom')?.remove()
-  document.getElementById('chakra-toast-manager-bottom-left')?.remove()
-  document.getElementById('chakra-toast-manager-bottom-right')?.remove()
 })
 
 // setup msw

@@ -2,7 +2,7 @@ import type { ForecastResponse } from '@climatic/shared'
 import type { RenderResult } from '@testing-library/react'
 
 import { beforeAll, describe, expect, it } from 'vitest'
-import { render } from '../helpers'
+import { render, resetDom } from '../helpers'
 import { WeatherTemperature } from '@components'
 import { fetchForecastByQuery } from '@services'
 import { formatTemperature } from '@lib/intl'
@@ -11,12 +11,13 @@ let dom: RenderResult
 let forecast: ForecastResponse
 
 beforeAll(async () => {
+  resetDom()
   const data = await fetchForecastByQuery({ query: 'New York' })
   dom = render(<WeatherTemperature data={data} py='48px' />)
   forecast = data
 })
 
-describe.concurrent.skip('<WeatherTemperature />', () => {
+describe.concurrent('<WeatherTemperature />', () => {
   it('has element #temperature', () => {
     const { container } = dom
     const el = container.querySelector('#temperature')
