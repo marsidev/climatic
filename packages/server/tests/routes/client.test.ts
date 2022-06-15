@@ -8,15 +8,13 @@ let fastify: FastifyInstance
 let api: SuperTest<Test>
 let validResponse: string
 
-const VALID_URL = '/'
-
-jest.setTimeout(40000)
+const URL = '/'
 
 beforeAll(async () => {
   fastify = await buildApp({ logger: false })
   api = supertest(fastify.server)
 
-  await api.get(VALID_URL).then(data => {
+  await api.get(URL).then(data => {
     validResponse = data.text
   })
 })
@@ -31,7 +29,7 @@ beforeEach(() => {
 
 describe('GET /', () => {
   it('has expected statusCode and content-type', async () => {
-    await api.get(VALID_URL).expect(200).expect('Content-Type', 'text/html')
+    await api.get(URL).expect(200).expect('Content-Type', 'text/html')
   }, 10000)
 
   it('contains a proper <title />', async () => {

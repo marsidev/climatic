@@ -7,7 +7,7 @@ import supertest from 'supertest'
 let fastify: FastifyInstance
 let api: SuperTest<Test>
 
-const url = '/api/ping'
+const URL = '/api/ping'
 
 beforeAll(async () => {
   fastify = await buildApp({ logger: false })
@@ -25,13 +25,13 @@ beforeEach(() => {
 describe('GET /api/ping', () => {
   it('has expected statusCode and content-type', async () => {
     await api
-      .get(url)
+      .get(URL)
       .expect(200)
       .expect('Content-Type', 'application/json; charset=utf-8')
   }, 10000)
 
   it('has a expected content', async () => {
-    const { body } = await api.get(url)
+    const { body } = await api.get(URL)
 
     expect(body).toHaveProperty('ping')
     expect(body.ping).not.toBeNull()

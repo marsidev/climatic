@@ -13,8 +13,6 @@ let nonValidResponse: WeatherResponse
 const NON_VALID_URL = '/api/weather?q=nonvalidquery'
 const VALID_URL = '/api/weather?q=madrid'
 
-jest.setTimeout(40000)
-
 beforeAll(async () => {
   fastify = await buildApp({ logger: false })
   api = supertest(fastify.server)
