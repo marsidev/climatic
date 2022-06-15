@@ -2,8 +2,9 @@ import type { TemperatureUnit, SpeedUnit, PressureUnit, Language, Dictionary } f
 import type { GeoPositionOptions } from '@types'
 
 export const mode = import.meta.env.VITE_ENV_TYPE
+export const environment = process.env.NODE_ENV
 
-export const IS_PROD = mode === 'prod'
+export const IS_PROD = mode === 'prod' || environment === 'production'
 export const IS_DEV = mode === 'dev'
 export const IS_TEST = mode === 'test'
 
@@ -42,7 +43,7 @@ export const MOON_PHASES_ES: Dictionary = {
   'Waning Crescent': 'Cuarto menguante'
 }
 
-export const ASSETS_URL = !IS_PROD ? '/src/assets' : '/server-assets'
+export const ASSETS_URL = IS_PROD ? '/server-assets' : '/src/assets'
 
 export const API_URL = IS_TEST ? 'http://localhost:3001/api' : '/api'
 

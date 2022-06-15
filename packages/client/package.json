@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "cross-env VITE_ENV_TYPE=dev vite --host",
     "dev:https": "cross-env VITE_ENV_TYPE=dev vite --host --https",
-    "build": "cross-env VITE_ENV_TYPE=prod pnpm clean && pnpm tsc && vite build",
-    "preview": "vite preview",
+    "build": "pnpm clean && pnpm tsc && vite build",
     "start": "vite preview",
     "clean": "rimraf ../../dist",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",

@@ -12,7 +12,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "pnpm run -r build",
+    "build": "pnpm run --parallel build",
     "start": "pnpm --filter=server start",
     "dev": "run-p -l -r dev:server dev:client",
     "dev:https": "run-p -l -r dev:server dev:client:https",
@@ -20,11 +20,9 @@
     "dev:client": "pnpm --filter=client dev",
     "dev:client:https": "pnpm --filter=client dev:https",
     "start:all": "pnpm build && pnpm start",
-    "lint": "pnpm run -r lint",
+    "lint": "pnpm run --parallel lint",
     "lint:fix": "pnpm run -r lint:fix",
-    "tsc": "pnpm run -r tsc",
-    "heroku": "git push heroku HEAD:main",
-    "up:all": "pnpm -r up",
+    "tsc": "pnpm run --parallel tsc",
     "test": "run-p test:server test:client test:shared",
     "test:watch": "run-p test:server:watch test:client:watch",
     "test:server": "pnpm --filter=server test",
