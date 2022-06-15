@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, test } from 'vitest'
-import { render, screen, waitFor, resetDom } from '../helpers'
+import { render, screen, waitFor, resetDom, cleanup } from '../helpers'
 import { Navbar, SearchModal } from '@components'
 import { Box, useDisclosure } from '@chakra-ui/react'
 import userEvent from '@testing-library/user-event'
@@ -29,6 +29,7 @@ const openDialog = async () => {
 
 beforeAll(() => {
   resetDom()
+  cleanup()
   render(<AppWithNavbar />)
 })
 

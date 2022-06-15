@@ -1,12 +1,10 @@
-// import type { RenderResult } from '@testing-library/react'
 import { beforeAll, describe, expect, test } from 'vitest'
-import { render, waitFor, screen, resetDom } from '../helpers'
+import { render, waitFor, screen, resetDom, cleanup } from '../helpers'
 import { App } from '@components'
-
-// let dom: RenderResult
 
 beforeAll(() => {
   resetDom()
+  cleanup()
   render(<App />)
 })
 
