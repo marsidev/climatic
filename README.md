@@ -5,9 +5,10 @@ Created from scratch to participate in a 14-days hackathon hosted by [midudev](h
 ## Hackathon
 - The hackathon goal was build a weather web app (*mobile-first* or *mobile-only*) in two weeks using a weather API from [RapidAPI](https://rapidapi.com).
 - It was announced at **[2022/05/19](https://www.twitch.tv/videos/1488279878)**.
-- There was 38 project entries. The first 19 were reviewed at **[2022/06/02](https://www.twitch.tv/videos/1315914232)**. The last 19 were reviewed at **2022/06/07**.
+- There was 38 project entries. The first 19 were reviewed at **[2022/06/02](https://www.twitch.tv/videos/1315914232)**. The last 19 were reviewed at **2022/06/07**. The winner was choosed at **2022/06/14**.
 - Climatic was picked as the 4th best project in the first review, but was not elegible for any prize.
 - The last commit before the project revision can be found [here](https://github.com/marsidev/climatic/tree/5d42530432663b8d30fe57047ee51e742d508851).
+- The winner project can be found [here](https://github.com/ikurotime/GeoWeather).
 
 ## 🚀 Preview
 App preview before deadline and project review: <br />
@@ -19,16 +20,17 @@ App preview before deadline and project review: <br />
   <img src="preview/preview-3.png" alt="Preview of Climatic on a Mackbook Air" width="90%"/>
 </div>
 
-- Screenshots provided by [webmobilefirst](https://www.webmobilefirst.com/en/).
+> Screenshots provided by [webmobilefirst](https://www.webmobilefirst.com/en/).
 
 ### Links
-<a href="https://climatic.onrender.com" target="_blank" rel="noopener" title="Climatic">Demo</a>
-<br />
-<a href="https://climatic-production.up.railway.app" target="_blank" rel="noopener" title="Climatic">Mirror</a>
+- [Demo](https://clima-tic.herokuapp.com "Climatic deployed on Heroku") <br />
+- [Mirror 1](https://climatic.onrender.com "Climatic deployed on Render") <br />
+- [Mirror 2](https://climatic-production.up.railway.app "Climatic deployed on Railway")
 
 ## 🛠️ Technologies
+- [pnpm](https://github.com/pnpm/pnpm)
+- [typescript](https://github.com/microsoft/TypeScript)
 - [fastify](https://github.com/fastify/fastify)
-- [node-cache](https://github.com/node-cache/node-cache)
 - [react](https://github.com/facebook/react)
 - [vite](https://github.com/vitejs/vite)
 - [chakra-ui](https://github.com/chakra-ui/chakra-ui)
@@ -36,14 +38,13 @@ App preview before deadline and project review: <br />
 - [swr](https://github.com/vercel/swr)
 - [react-router](https://reactrouter.com)
 - [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch)
-- [typescript](https://github.com/microsoft/TypeScript)
+- [node-cache](https://github.com/node-cache/node-cache)
 - [jest](https://github.com/facebook/jest)
 - [playwright](https://github.com/microsoft/playwright)
 - [vitest](https://github.com/vitest-dev/vitest)
 - [react-testing-library](https://github.com/testing-library/react-testing-library)
 - [msw](https://github.com/mswjs/msw)
 - [eslint](https://github.com/eslint/eslint)
-- [pnpm](https://github.com/pnpm/pnpm)
 
 ## ✨ Getting Started
 
@@ -68,7 +69,7 @@ RAPIDAPI_KEY=
 APP_URL=
 ```
 
-To get your `RAPIDAPI_KEY` you need to subscribe to [weatherapi](https://rapidapi.com/weatherapi/api/weatherapi-com/). <br />
+> To get your `RAPIDAPI_KEY` you need to subscribe to [weatherapi](https://rapidapi.com/weatherapi/api/weatherapi-com/). <br />
 `APP_URL` is optional. If present, will be used as origin url for [cors](https://github.com/fastify/fastify-cors).
 
 ### Run the project
@@ -83,7 +84,7 @@ pnpm dev:https
 
 Open [http://localhost:3000](http://localhost:3000) or [https://localhost:3000](https://localhost:3000) with your browser to see the result.
 
-Note: If you are running in *https* mode, you will get a warning in your browser about non-secure connection.
+> If you are running in *https* mode, you will get a warning in your browser about non-secure connection.
 
 ## 🤝 Contributing
 Contributions, issues and feature requests are welcome!
