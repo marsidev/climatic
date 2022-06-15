@@ -41,6 +41,7 @@ App preview before deadline and project review: <br />
 - [playwright](https://github.com/microsoft/playwright)
 - [vitest](https://github.com/vitest-dev/vitest)
 - [react-testing-library](https://github.com/testing-library/react-testing-library)
+- [msw](https://github.com/mswjs/msw)
 - [eslint](https://github.com/eslint/eslint)
 - [pnpm](https://github.com/pnpm/pnpm)
 
