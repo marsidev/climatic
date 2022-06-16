@@ -39,7 +39,6 @@ App preview before deadline and project review: <br />
 - [react-router](https://reactrouter.com)
 - [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch)
 - [node-cache](https://github.com/node-cache/node-cache)
-- [jest](https://github.com/facebook/jest)
 - [playwright](https://github.com/microsoft/playwright)
 - [vitest](https://github.com/vitest-dev/vitest)
 - [react-testing-library](https://github.com/testing-library/react-testing-library)
