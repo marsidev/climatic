@@ -1,42 +1,37 @@
-import type { FastifyInstance } from 'fastify'
 import type { SuperTest, Test } from 'supertest'
+import type { FastifyInstance } from 'fastify'
 
-import { buildApp } from '../../src/app'
+import { describe, it, expect, beforeAll, afterAll } from 'vitest'
 import supertest from 'supertest'
+import { buildApp } from '@app'
 
-let fastify: FastifyInstance
 let api: SuperTest<Test>
-let validResponse: string
-
-const URL = '/'
+let fastify: FastifyInstance
 
 beforeAll(async () => {
   fastify = await buildApp({ logger: false })
   api = supertest(fastify.server)
-
-  await api.get(URL).then(data => {
-    validResponse = data.text
-  })
 })
 
 afterAll(async () => {
   await fastify.close()
 })
 
-beforeEach(() => {
-  jest.setTimeout(40000)
-})
-
-describe('GET /', () => {
+describe.concurrent('GET /', () => {
   it('has expected statusCode and content-type', async () => {
-    await api.get(URL).expect(200).expect('Content-Type', 'text/html')
-  }, 10000)
+    await api
+      .get('/')
+      .expect(200)
+      .expect('Content-Type', 'text/html')
+  })
 
   it('contains a proper <title />', async () => {
-    expect(validResponse).toContain('<title>Climatic</title>')
+    const { text } = await api.get('/')
+    expect(text).toContain('<title>Climatic</title>')
   })
 
   it('contains a #root', async () => {
-    expect(validResponse).toContain('<div id="root"></div>')
+    const { text } = await api.get('/')
+    expect(text).toContain('<div id="root"></div>')
   })
 })

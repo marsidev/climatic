@@ -21,8 +21,10 @@
       "@types": ["src/types"],
       "@types/*": ["src/types/*"],
     },
-    "declarationDir": "dist/types"
+    "declarationDir": "dist/types",
+    "types": ["node", "vitest/globals"],
+    "typeRoots": ["src/types"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "tests/**/*.ts"],
   "exclude": ["node_modules", "./dist/**/*"],
 }

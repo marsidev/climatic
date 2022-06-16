@@ -3,16 +3,16 @@ import type { FastifyInstance, FastifyServerOptions } from 'fastify'
 import 'isomorphic-fetch'
 import { join } from 'path'
 import fastify from 'fastify'
-import autoload from '@fastify/autoload'
+import autoload from '@lib/autoload'
 
 const buildApp = async (opts: FastifyServerOptions = {}): Promise<FastifyInstance> => {
   const app = fastify(opts)
 
-  await app.register(autoload, {
+  await autoload(app, {
     dir: join(__dirname, 'plugins')
   })
 
-  await app.register(autoload, {
+  await autoload(app, {
     dir: join(__dirname, 'routes'),
     options: { prefix: '/api' }
   })
