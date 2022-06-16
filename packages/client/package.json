@@ -15,12 +15,12 @@
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint:fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
     "tsc": "tsc --noEmit",
-    "test": "pnpm test:int && pnpm test:e2e",
-    "test:watch": "pnpm test:e2e:watch",
+    "test": "pnpm test:integration",
+    "test:watch": "pnpm test:integration:watch",
+    "test:integration": "cross-env VITE_ENV_TYPE=test vitest run",
+    "test:integration:watch": "cross-env VITE_ENV_TYPE=test vitest",
     "test:e2e": "npx playwright test",
-    "test:e2e:watch": "nodemon --delay 1 -e ts,tsx --exec pnpm test:e2e",
-    "test:int": "cross-env VITE_ENV_TYPE=test vitest run",
-    "test:int:watch": "cross-env VITE_ENV_TYPE=test vitest"
+    "test:e2e:watch": "nodemon --delay 1 -e ts,tsx --exec pnpm test:e2e"
   },
   "dependencies": {
     "@babel/core": "7.18.2",
