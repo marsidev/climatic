@@ -12,12 +12,21 @@ const autoload = async (app: FastifyInstance, options: AutoloadPluginOptions) =>
     options: registerOptions = {}
   } = options
 
-  const list = await readdir(dir, { withFileTypes: true })
-
-  list.forEach(file => {
-    const fullFilePath = `${dir}\\${file.name}`
-    app.register(import(fullFilePath), registerOptions)
-  })
+  try {
+    const files = await readdir(dir, { withFileTypes: true })
+    for (const file of files) {
+      const { name: fileName } = file
+      if (
+        file.isFile() &&
+        (fileName.endsWith('.ts') || fileName.endsWith('.js'))
+      ) {
+        const fullFilePath = `${dir}\\${fileName}`
+        app.register(import(fullFilePath), registerOptions)
+      }
+    }
+  } catch (error) {
+    console.error('Error loading autoload files:', error)
+  }
 }
 
 export default autoload
