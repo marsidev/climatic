@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx watch src/server.ts",
     "build": "pnpm clean && tsc",
-    "start": "cross-env NODE_ENV=production node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/server.js",
+    "start": "cross-env NODE_ENV=production tsx dist/src/server.js",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "lint:fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
     "clean": "rimraf dist",
@@ -32,7 +32,6 @@
     "node-cache": "5.1.2",
     "pino": "8.0.0",
     "pino-pretty": "8.0.0",
-    "ts-node": "10.8.1",
     "tsconfig-paths": "4.0.0"
   },
   "devDependencies": {
