@@ -9,10 +9,11 @@
   "license": "ISC",
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx watch src/server.ts",
+    "dev:log": "pnpm dev --log",
     "build": "pnpm clean && tsc",
     "start": "cross-env NODE_ENV=production tsx dist/src/server.js",
     "lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
-    "lint:fix": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx --fix",
+    "lint:fix": "pnpm lint --fix",
     "clean": "rimraf dist",
     "tsc": "tsc --noEmit",
     "test": "cross-env NODE_ENV=test vitest run",

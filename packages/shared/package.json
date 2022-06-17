@@ -10,7 +10,7 @@
   "main": "src/index.ts",
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
+    "lint:fix": "pnpm lint --fix",
     "tsc": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
