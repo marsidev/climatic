@@ -23,8 +23,8 @@ App preview before deadline and project review: <br />
 > Screenshots provided by [webmobilefirst](https://www.webmobilefirst.com/en/).
 
 ### Links
-- [Demo](https://clima-tic.herokuapp.com "Climatic deployed on Heroku") <br />
-- [Mirror 1](https://climatic.onrender.com "Climatic deployed on Render") <br />
+- [Demo](https://climatic.onrender.com "Climatic deployed on Render") <br />
+- [Mirror 1](https://clima-tic.herokuapp.com "Climatic deployed on Heroku") <br />
 - [Mirror 2](https://climatic-production.up.railway.app "Climatic deployed on Railway")
 
 ## 🛠️ Technologies
