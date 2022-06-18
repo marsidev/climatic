@@ -1,6 +1,6 @@
 import buildApp from '@app'
 import config from '@lib/config'
-import { logger as pino } from '@lib'
+import { logger as pino, runningLog } from '@lib/logger'
 
 const runServer = async () => {
   const { PORT: port, HOST: host } = config
@@ -13,8 +13,7 @@ const runServer = async () => {
 
   app.listen({ port, host }, async err => {
     if (err) return console.error(err)
-
-    console.log(`Server running on http://localhost:${port}`)
+    runningLog()
   })
 }
 

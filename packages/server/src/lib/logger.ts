@@ -1,5 +1,8 @@
+import type { FastifyRequest, FastifyReply } from 'fastify'
 import pino, { LoggerOptions } from 'pino'
-import { FastifyRequest, FastifyReply } from 'fastify'
+import { getVersion } from './getVersion'
+import config from './config'
+import pc from 'picocolors'
 
 // https://github.com/pinojs/pino/blob/master/docs/api.md#options-object
 const options: LoggerOptions = {
@@ -26,3 +29,22 @@ const options: LoggerOptions = {
 }
 
 export const logger = pino(options)
+
+export const runningLog = () => {
+  const { NODE_ENV } = process.env
+  const { PORT } = config
+
+  const isProd = NODE_ENV === 'production'
+  const mode = isProd ? 'prod' : 'dev'
+  const address = `http://localhost:${PORT}/`
+
+  const versionIndex = getVersion('fastify')
+
+  const fastify = versionIndex
+    ? pc.bold(`fastify v${versionIndex}`)
+    : pc.bold('fastify')
+
+  const runningAt = pc.magenta(`${mode} server running at ${address}`)
+  const message = `🚀 ${fastify} ${runningAt}`
+  console.log(message)
+}
