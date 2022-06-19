@@ -8,7 +8,7 @@
   "main": "dist/src/server.js",
   "license": "ISC",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development tsx watch src/server.ts",
+    "dev": "cross-env NODE_ENV=development tsx watch src/server.ts --host",
     "dev:log": "pnpm dev --log",
     "build": "pnpm clean && tsc",
     "start": "cross-env NODE_ENV=production tsx dist/src/server.js",
@@ -41,6 +41,7 @@
     "@types/supertest": "2.0.12",
     "eslint": "8.17.0",
     "eslint-plugin-node": "11.1.0",
+    "perf_hooks": "0.0.1",
     "picocolors": "1.0.0",
     "rimraf": "3.0.2",
     "supertest": "6.2.3",
