@@ -2,7 +2,11 @@ import { useEffect } from 'react'
 import { useStore } from '@store'
 
 export const useGeo = () => {
-  const { getCoords, isSupported, localStorageReaded, permission, initLocalStorage } = useStore()
+  const getCoords = useStore(s => s.getCoords)
+  const isSupported = useStore(s => s.isSupported)
+  const localStorageReaded = useStore(s => s.localStorageReaded)
+  const permission = useStore(s => s.permission)
+  const initLocalStorage = useStore(s => s.initLocalStorage)
 
   // read local storage on mount
   useEffect(() => {

@@ -16,7 +16,7 @@ export const useClock = (timeZone: string): string => {
   const formatTime = (time: Date) => new Intl.DateTimeFormat(locale, options).format(time)
 
   useEffect(() => {
-    const timerId = setInterval(() => setTime(new Date()), 1000)
+    const timerId = setInterval(() => setTime(new Date()), 5000)
 
     return () => clearInterval(timerId)
   }, [])

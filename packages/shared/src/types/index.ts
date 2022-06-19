@@ -2,7 +2,7 @@ export type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxi
 
 export type Language = 'es-ES' | 'en-US'
 
-export type TemperatureUnit = 'celsius' | 'farenheit'
+export type TemperatureUnit = 'celsius' | 'fahrenheit'
 
 export type SpeedUnit = 'mph' | 'kph'
 

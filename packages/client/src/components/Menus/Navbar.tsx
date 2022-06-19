@@ -15,14 +15,12 @@ interface NavbarProps extends FlexProps {
   openSearch: () => void
 }
 
-export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
-  const {
-    grantPermission,
-    getForecastDataByCoords,
-    setForecastQuery,
-    fetching,
-    getCoords
-  } = useStore()
+export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => {
+  const grantPermission = useStore(s => s.grantPermission)
+  const getForecastDataByCoords = useStore(s => s.getForecastDataByCoords)
+  const setForecastQuery = useStore(s => s.setForecastQuery)
+  const fetching = useStore(s => s.fetching)
+  const getCoords = useStore(s => s.getCoords)
 
   const navigate = useNavigate()
 
@@ -60,7 +58,10 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, ...props }) => {
         />
       </ToolTip>
 
-      <ToolTip id='geolocation-icon' tooltipLabel='Obtener datos del clima de tu ubicación'>
+      <ToolTip
+        id='geolocation-icon'
+        tooltipLabel='Obtener datos del clima de tu ubicación'
+      >
         <NavIcon
           aria-label='geolocation icon'
           icon={<GeoIcon />}

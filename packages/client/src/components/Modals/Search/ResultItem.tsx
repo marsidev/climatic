@@ -21,12 +21,10 @@ interface SearchItemResultProps {
 }
 
 const ResultItem = ({ name, region, country, onSubmit }: SearchItemResultProps) => {
-  const {
-    getForecastDataByQuery,
-    fetching,
-    setForecastQuery,
-    forecastQuery
-  } = useStore()
+  const getForecastDataByQuery = useStore(s => s.getForecastDataByQuery)
+  const fetching = useStore(s => s.fetching)
+  const setForecastQuery = useStore(s => s.setForecastQuery)
+  const forecastQuery = useStore(s => s.forecastQuery)
   const navigate = useNavigate()
 
   const itemQuery = `${name}-${country}`

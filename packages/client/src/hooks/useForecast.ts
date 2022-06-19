@@ -9,15 +9,13 @@ import { resolveDefaultQuery, updatePageTitle, resolveQueryFromData, coordsToQue
 type ReturnState = ForecastResponse | null
 
 export const useForecast = (): ReturnState => {
-  const {
-    coords,
-    locationStatus,
-    forecastData,
-    forecastQuery,
-    getForecastDataByCoords,
-    getForecastDataByQuery,
-    setForecastQuery
-  } = useStore()
+  const coords = useStore(s => s.coords)
+  const locationStatus = useStore(s => s.locationStatus)
+  const forecastData = useStore(s => s.forecastData)
+  const forecastQuery = useStore(s => s.forecastQuery)
+  const getForecastDataByCoords = useStore(s => s.getForecastDataByCoords)
+  const getForecastDataByQuery = useStore(s => s.getForecastDataByQuery)
+  const setForecastQuery = useStore(s => s.setForecastQuery)
 
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
