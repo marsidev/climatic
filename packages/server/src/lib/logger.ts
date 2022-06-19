@@ -1,3 +1,4 @@
+/* eslint-disable max-params */
 import type { FastifyRequest, FastifyReply } from 'fastify'
 import type { LoggerOptions as PinoLoggerOptions } from 'pino'
 
@@ -42,7 +43,8 @@ const printServerUrls = (
   address: string,
   port: number,
   base: string,
-  exposeNet: boolean | undefined
+  exposeNet: boolean = false,
+  withColors: boolean = true
 ) => {
   const protocol = address.split(':')[0]
   const hostname = 'localhost'
@@ -63,12 +65,13 @@ const printServerUrls = (
         const host = detail.address.replace('127.0.0.1', hostname)
         const isLocal = detail.address.includes('127.0.0.1')
 
-        const fullUrl = `${protocol}://${host}:${pc.bold(port)}${base}`
+        const fullUrl = withColors
+          ? pc.yellow(`${protocol}://${host}:${pc.bold(port)}${base}`)
+          : `${protocol}://${host}:${port}${base}`
+
         const url = isLocal
-          ? pc.yellow(fullUrl)
-          : exposeNet
-            ? pc.yellow(fullUrl)
-            : 'use `--host` to expose'
+          ? fullUrl : exposeNet
+            ? fullUrl : 'use `--host` to expose'
 
         const label = isLocal ? 'Local' : 'Network'
         urls.push({ label, url })
@@ -79,33 +82,34 @@ const printServerUrls = (
   const length = Math.max(...urls.map(({ label }) => label.length))
 
   const print = (icon: string, label: string, message: string) => {
-    const fullMessage = `  ${icon}  ${
-      label ? pc.bold(label) + ':' : ' '
+    const formattedLabel = withColors ? pc.bold(label) : label
+    const formattedIcon = withColors ? pc.yellow(icon) : icon
+
+    const fullMessage = `  ${formattedIcon}  ${
+      label ? formattedLabel + ':' : ' '
     } ${' '.repeat(length - label.length)}${message}`
 
     console.log(fullMessage)
   }
 
   urls.forEach(({ label, url: text }) => {
-    print(pc.yellow('➜'), label, text)
+    print(withColors ? '➜' : '>', label, text)
   })
 
   console.log()
 }
 
-const printStartupDuration = (startTime: number) => {
-  console.log(
-    pc.yellow(
-      `  ✨ ready in ${pc.bold(Math.ceil(performance.now() - startTime))}ms.`
-    )
-  )
+const printStartupDuration = (startTime: number, withColors: boolean = true) => {
+  const time = Math.ceil(performance.now() - startTime)
+
+  const message = withColors
+    ? pc.yellow(`  ✨ ready in ${pc.bold(time)}ms.`)
+    : `  ready in ${time}ms.`
+
+  console.log(message)
 }
 
-export const startupLog = (
-  address: string,
-  startTime: number,
-  exposeNet?: boolean
-) => {
+export const startupLog = (address: string, startTime: number, exposeNet?: boolean) => {
   const { NODE_ENV } = process.env
   const { PORT } = config
 
@@ -117,14 +121,17 @@ export const startupLog = (
   const appVersion = getVersion(appName)
   const appWithVersion = `${appName}${appVersion ? ` v${appVersion}` : ''}`
 
-  // if (pc.isColorSupported) {
-  //   console.log('Yay! This script can use colors and formatters')
-  // }
+  const withColors = pc.isColorSupported
 
-  const app = pc.white(pc.bold(`  🚀 ${appWithVersion}`))
-  const runningAt = pc.green(`${mode} server running at:`)
+  const app = withColors ?
+    pc.white(pc.bold(`  🚀 ${appWithVersion}`))
+    : `  ${appWithVersion}`
+
+  const runningAt = withColors
+    ? pc.green(`${mode} server running at:`)
+    : `${mode} server running at:`
 
   console.log(`${app} ${runningAt}\n`)
-  printServerUrls(address, PORT, baseUrl, exposeNet)
-  printStartupDuration(startTime)
+  printServerUrls(address, PORT, baseUrl, exposeNet, withColors)
+  printStartupDuration(startTime, withColors)
 }
