@@ -18,3 +18,4 @@ dist
 todo.md
 emojis.md
 .pnpm-debug.log
+pnpm-lock.yaml
