@@ -1,7 +1,15 @@
-import pjson from '../../package.json'
+import { readFileSync } from 'fs'
+import { join } from 'path'
 
 export const getVersion = (dependencyName: string): string => {
-  return pjson.dependencies[dependencyName]
-    ?? pjson.devDependencies[dependencyName]
-    ?? ''
+  const pjson = JSON.parse(
+    readFileSync(join(__dirname, '../..', 'package.json')).toString('utf8')
+  )
+
+  const v =
+    pjson.dependencies[dependencyName] ??
+    pjson.devDependencies[dependencyName] ??
+    ''
+
+  return v
 }
