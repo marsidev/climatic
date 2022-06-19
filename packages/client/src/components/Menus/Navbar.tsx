@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { Flex } from '@chakra-ui/react'
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 import { MdMyLocation as GeoIcon } from 'react-icons/md'
-// import { TiCogOutline as CogIcon } from 'react-icons/ti'
+import { TiCogOutline as CogIcon } from 'react-icons/ti'
 import { useStore } from '@store'
 import { ToolTip } from '@components'
 import { coordsToQuery, resolveQueryFromData } from '@lib'
@@ -13,6 +13,7 @@ import { NavIcon } from './NavIcon'
 
 interface NavbarProps extends FlexProps {
   openSearch: () => void
+  openSetup: () => void
 }
 
 export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => {
@@ -66,6 +67,14 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
           aria-label='geolocation icon'
           icon={<GeoIcon />}
           onClick={getGeolocationForecast}
+        />
+      </ToolTip>
+
+      <ToolTip id='cog-icon' tooltipLabel='Configuración'>
+        <NavIcon
+          aria-label='cog icon'
+          icon={<CogIcon />}
+          onClick={openSetup}
         />
       </ToolTip>
     </Flex>

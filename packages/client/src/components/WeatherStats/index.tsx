@@ -1,12 +1,12 @@
 import type { FC } from 'react'
 import type { ForecastResponse } from '@climatic/shared'
-import { StackProps } from '@chakra-ui/react'
+import type { StackProps } from '@chakra-ui/react'
 
 import { Flex, HStack } from '@chakra-ui/react'
-import { formatSpeed, formatInt } from '@lib/intl'
-import { DEFAULT_SPEED_UNIT, DEFAULT_PRESSURE_UNIT } from '@lib/config'
+import { formatSpeed, formatPressure } from '@lib/intl'
 import { StatCard } from './StatCard'
 import { WindDirectionIcon } from '@components'
+import { useStore } from '@store'
 
 import {
   MdOutlineWaterDrop as DropIcon,
@@ -19,14 +19,14 @@ interface WeatherStatsProps extends StackProps {
 }
 
 export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
+  const speedUnit = useStore(s => s.speedUnit)
+  const pressureUnit = useStore(s => s.pressureUnit)
   const { currentWeather } = data
   const { humidity, cloud, wind, pressure } = currentWeather
   const { degree, speed } = wind
 
-  const windSpeed = formatSpeed(speed[DEFAULT_SPEED_UNIT], DEFAULT_SPEED_UNIT)
-
-  const pressureValue = formatInt(pressure[DEFAULT_PRESSURE_UNIT])
-  const pressureStr = `${pressureValue} ${DEFAULT_PRESSURE_UNIT}`
+  const windSpeed = formatSpeed(speed[speedUnit], speedUnit)
+  const pressureValue = formatPressure(pressure[pressureUnit], pressureUnit)
 
   return (
     <Flex as='section' flexDir='column' px={4} {...props}>
@@ -56,7 +56,7 @@ export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
           ariaLabel='Presión'
           icon={<PressureIcon />}
           tooltipId='pressure-data'
-          value={pressureStr}
+          value={pressureValue}
         />
       </HStack>
     </Flex>

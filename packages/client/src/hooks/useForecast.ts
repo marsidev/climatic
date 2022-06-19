@@ -13,6 +13,7 @@ export const useForecast = (): ReturnState => {
   const locationStatus = useStore(s => s.locationStatus)
   const forecastData = useStore(s => s.forecastData)
   const forecastQuery = useStore(s => s.forecastQuery)
+  const temperatureUnit = useStore(s => s.temperatureUnit)
   const getForecastDataByCoords = useStore(s => s.getForecastDataByCoords)
   const getForecastDataByQuery = useStore(s => s.getForecastDataByQuery)
   const setForecastQuery = useStore(s => s.setForecastQuery)
@@ -70,9 +71,9 @@ export const useForecast = (): ReturnState => {
   // listen changes on forecast data to update page title
   useEffect(() => {
     if (forecastData && !withErrors) {
-      updatePageTitle(forecastData)
+      updatePageTitle(forecastData, temperatureUnit)
     }
-  }, [forecastData])
+  }, [forecastData, temperatureUnit])
 
   if (withErrors) return null
 

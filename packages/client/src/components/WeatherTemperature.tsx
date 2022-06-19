@@ -4,21 +4,22 @@ import type { FC } from 'react'
 
 import { chakra, Flex, Heading } from '@chakra-ui/react'
 import { formatTemperature } from '@lib/intl'
-import { DEFAULT_TEMPERATURE_UNIT } from '@lib/config'
+import { useStore } from '@store'
 
 interface TemperatureProps extends FlexProps {
   data: ForecastResponse
 }
 
 export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => {
+  const temperatureUnit = useStore(s => s.temperatureUnit)
   const { currentWeather } = data
   const { temperature, feelsLike } = currentWeather
 
-  const _temperature = temperature[DEFAULT_TEMPERATURE_UNIT]
-  const temperatureStr = formatTemperature(_temperature, DEFAULT_TEMPERATURE_UNIT)
+  const _temperature = temperature[temperatureUnit]
+  const temperatureStr = formatTemperature(_temperature, temperatureUnit)
 
-  const feelTemperature = feelsLike[DEFAULT_TEMPERATURE_UNIT]
-  const feelTemperatureStr = formatTemperature(feelTemperature, DEFAULT_TEMPERATURE_UNIT)
+  const feelTemperature = feelsLike[temperatureUnit]
+  const feelTemperatureStr = formatTemperature(feelTemperature, temperatureUnit)
 
   const showFeelsLikeTemperature = temperatureStr !== feelTemperatureStr
 

@@ -18,7 +18,7 @@ export const SearchModal: FC<SearchModalProps> = ({ isOpen, onClose, ...rest }) 
       motionPreset='slideInBottom'
       scrollBehavior='inside'
       showCloseIcon={true}
-      size='lg'
+      size='md'
       title='Buscar una ubicación'
       onClose={onClose}
       {...rest}

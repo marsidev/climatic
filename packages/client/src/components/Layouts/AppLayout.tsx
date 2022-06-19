@@ -13,6 +13,7 @@ import {
 } from '@components'
 
 const SearchModal = lazy(() => import('@components/Modals/Search/SearchModal'))
+const SetupModal = lazy(() => import('@components/Modals/Setup/SetupModal'))
 const Astro = lazy(() => import('@components/Astro'))
 const Footer = lazy(() => import('@components/Menus/Footer'))
 
@@ -27,13 +28,19 @@ export const AppLayout: FC<LayoutProps> = ({ data }) => {
     onOpen: openSearch
   } = useDisclosure()
 
+  const {
+    isOpen: setupIsOpen,
+    onClose: closeSetup,
+    onOpen: openSetup
+  } = useDisclosure()
+
   return (
     <Box
       bg='linear-gradient(0deg, rgba(225,148,233,1) 26%, rgba(107,242,255,1) 100%)'
       className='container'
     >
       <Box as='main' className='weather-card'>
-        <Navbar openSearch={openSearch} />
+        <Navbar openSearch={openSearch} openSetup={openSetup} />
         <WeatherHeader data={data} />
         <WeatherTemperature data={data} py='48px' />
         <WeatherStats data={data} pb='32px' />
@@ -48,6 +55,7 @@ export const AppLayout: FC<LayoutProps> = ({ data }) => {
 
       <Suspense>
         <SearchModal isOpen={searchIsOpen} onClose={closeSearch} />
+        <SetupModal isOpen={setupIsOpen} onClose={closeSetup} />
       </Suspense>
     </Box>
   )

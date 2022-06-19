@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import type { ForecastResponse } from '@climatic/shared'
+import type { ForecastResponse, TemperatureUnit, SpeedUnit, PressureUnit } from '@climatic/shared'
 
 export interface Coordinates extends Pick<GeolocationCoordinates, 'latitude' | 'longitude'> { }
 
@@ -26,6 +26,15 @@ export interface GeolocationState {
 export interface UserState {
   permission: GeoPermission
   grantPermission: () => void
+
+  temperatureUnit: TemperatureUnit
+  switchTemperatureUnit: () => void
+
+  speedUnit: SpeedUnit
+  switchSpeedUnit: () => void
+
+  pressureUnit: PressureUnit
+  switchPressureUnit: () => void
 
   localStorageReaded: boolean
   initLocalStorage: () => void

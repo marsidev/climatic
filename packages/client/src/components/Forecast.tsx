@@ -3,13 +3,15 @@ import type { FC } from 'react'
 
 import { chakra, Flex, FlexProps, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import { formatInt, getShortDate, formatTemperature } from '@lib/intl'
-import { DEFAULT_TEMPERATURE_UNIT, ASSETS_URL } from '@lib/config'
+import { ASSETS_URL } from '@lib/config'
+import { useStore } from '@store'
 
 interface ForecastProps extends FlexProps {
   data: ForecastResponse
 }
 
 export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
+  const temperatureUnit = useStore(s => s.temperatureUnit)
   const { forecast } = data
   const forecastFromTomorrow = forecast.slice(1)
 
@@ -32,9 +34,9 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
           const { condition: { icon: iconPath, name }, temperature } = day
 
           const date = getShortDate(timestamp)
-          const minTemp = temperature[DEFAULT_TEMPERATURE_UNIT].min
-          const maxTemp = temperature[DEFAULT_TEMPERATURE_UNIT].max
-          const minTempStr = formatTemperature(minTemp, DEFAULT_TEMPERATURE_UNIT)
+          const minTemp = temperature[temperatureUnit].min
+          const maxTemp = temperature[temperatureUnit].max
+          const minTempStr = formatTemperature(minTemp, temperatureUnit)
           const maxTempStr = formatInt(maxTemp)
 
           const conditionName = name.toLowerCase()
