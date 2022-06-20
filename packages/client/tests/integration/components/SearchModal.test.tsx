@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, test } from 'vitest'
 import { render, screen, waitFor, resetDom, cleanup } from '../helpers'
-import { Navbar, SearchModal } from '@components'
+import { Navbar, SearchModal, SetupModal } from '@components'
 import { Box, useDisclosure } from '@chakra-ui/react'
 import userEvent from '@testing-library/user-event'
 
@@ -11,9 +11,16 @@ const AppWithNavbar = () => {
     onOpen: openSearch
   } = useDisclosure()
 
+  const {
+    isOpen: setupIsOpen,
+    onClose: closeSetup,
+    onOpen: openSetup
+  } = useDisclosure()
+
   return (
     <Box as='main' className='weather-card'>
-      <Navbar openSearch={openSearch} />
+      <Navbar openSearch={openSearch} openSetup={openSetup} />
+      <SetupModal isOpen={setupIsOpen} onClose={closeSetup} />
       <SearchModal isOpen={searchIsOpen} onClose={closeSearch} />
     </Box>
   )
