@@ -45,6 +45,12 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
             <HStack key={timestamp} as='li' className='section-list-item'>
               <Text as='span' minW='80px'>{date}</Text>
 
+              <Text fontWeight={800}>
+                <chakra.span color='red.600'>{maxTempStr}</chakra.span>
+                <chakra.span> / </chakra.span>
+                <chakra.span color='blue.600'>{minTempStr}</chakra.span>
+              </Text>
+
               <Flex as='figure' justify='center'>
                 <Image
                   alt={`icono de clima ${conditionName}`}
@@ -54,13 +60,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
                 />
               </Flex>
 
-              <Text fontWeight={800}>
-                <chakra.span color='red.600'>{maxTempStr}</chakra.span>
-                <chakra.span> / </chakra.span>
-                <chakra.span color='blue.600'>{minTempStr}</chakra.span>
-              </Text>
-
-              <Text as='span' fontSize={12} textAlign='right' w='100px'>
+              <Text as='span' fontSize='xs' textAlign='right' w='100px'>
                 {conditionName}
               </Text>
             </HStack>

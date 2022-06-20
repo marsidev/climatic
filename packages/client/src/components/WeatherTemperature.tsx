@@ -28,7 +28,7 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
       <Heading
         as='h3'
         fontFamily='Aileron, san-serif'
-        fontSize={96}
+        fontSize='8xl'
         fontWeight={300}
         id='temperature'
         lineHeight={1}
@@ -40,6 +40,7 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
       {showFeelsLikeTemperature && (
         <chakra.span
           fontFamily='RubikVariable, san-serif'
+          fontSize='lg'
           fontWeight={400}
           id='feels-like'
         >

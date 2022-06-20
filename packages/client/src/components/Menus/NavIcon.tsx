@@ -20,7 +20,7 @@ export const defaultNavIconProps = {
   },
   borderRadius: 'full',
   colorScheme: 'gray',
-  fontSize: [18, 20],
+  fontSize: ['md', 'lg'],
   h: [10, 10],
   transition: 'all 200ms ease-in-out, background 50ms ease-in-out, border-color 0ms',
   variant: 'ghost',

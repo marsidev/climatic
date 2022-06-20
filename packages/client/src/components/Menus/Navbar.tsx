@@ -42,7 +42,11 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
   return (
     <Flex align='center' as='nav' gap={2} justify='flex-start' p={2} {...props}>
       {fetching && (
-        <ToolTip id='spinner-icon' tooltipLabel='Obteniendo datos...'>
+        <ToolTip
+          fontSize='md'
+          id='spinner-icon'
+          tooltipLabel='Obteniendo datos...'
+        >
           <Flex px={2}>
             <Icon as={Spinner} h={5} w={5} />
           </Flex>
@@ -51,7 +55,11 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
 
       <Spacer />
 
-      <ToolTip id='search-icon' tooltipLabel='Buscar por ubicación'>
+      <ToolTip
+        fontSize='md'
+        id='search-icon'
+        tooltipLabel='Buscar por ubicación'
+      >
         <NavIcon
           aria-label='search icon'
           icon={<SearchIcon />}
@@ -60,6 +68,7 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
       </ToolTip>
 
       <ToolTip
+        fontSize='md'
         id='geolocation-icon'
         tooltipLabel='Obtener datos del clima de tu ubicación'
       >
@@ -70,12 +79,11 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
         />
       </ToolTip>
 
-      <ToolTip id='cog-icon' tooltipLabel='Configuración'>
-        <NavIcon
-          aria-label='cog icon'
-          icon={<CogIcon />}
-          onClick={openSetup}
-        />
+      <ToolTip
+        fontSize='md'
+        id='cog-icon' tooltipLabel='Configuración'
+      >
+        <NavIcon aria-label='cog icon' icon={<CogIcon />} onClick={openSetup} />
       </ToolTip>
     </Flex>
   )

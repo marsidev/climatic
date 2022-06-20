@@ -3,7 +3,7 @@ import type { BoxProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 
 import { lazy, Suspense } from 'react'
-import { Box, Spacer, useDisclosure } from '@chakra-ui/react'
+import { Box, useDisclosure } from '@chakra-ui/react'
 import {
   Forecast,
   WeatherHeader,
@@ -44,7 +44,6 @@ export const AppLayout: FC<LayoutProps> = ({ data }) => {
         <WeatherHeader data={data} />
         <WeatherTemperature data={data} py='48px' />
         <WeatherStats data={data} pb='32px' />
-        <Spacer as='section' />
         <Forecast data={data} pb='32px' />
 
         <Suspense>

@@ -21,7 +21,7 @@ const LabelIcon: FC<LabelIconProps> = ({ label, icon }) => {
     <Flex align='center'>
       <Text as='span' minW='80px'>{label}</Text>
 
-      <chakra.figure display='inline-block' fontSize={20}>
+      <chakra.figure display='inline-block' fontSize='md'>
         {icon}
       </chakra.figure>
     </Flex>

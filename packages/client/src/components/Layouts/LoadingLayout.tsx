@@ -9,19 +9,19 @@ export const LoadingLayout: FC<FlexProps> = () => {
       <Box as='main' className='weather-card app-skeleton'>
         <VStack align='center' flexDir='column' mt={4}>
           <Skeleton w='90%'>
-            <Heading as='h2' fontSize={48}>
+            <Heading as='h2' fontSize='5xl'>
               Location
             </Heading>
           </Skeleton>
 
           <Skeleton w='90%'>
-            <Heading as='h3' fontSize={24} lineHeight={1}>
+            <Heading as='h3' fontSize='2xl' lineHeight={1}>
               Condition
             </Heading>
           </Skeleton>
 
           <Skeleton w='40%'>
-            <Heading as='h3' fontSize={96} lineHeight={1}>
+            <Heading as='h3' fontSize='8xl' lineHeight={1}>
               20
             </Heading>
           </Skeleton>

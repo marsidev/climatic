@@ -36,14 +36,12 @@ html {
 	padding: 0;
   min-height: 100vh;
 	width: 100%;
-	/* overflow: auto; */
 	position: relative;
 }
 
 .weather-card {
   display: flex;
   flex-direction: column;
-  /* overflow: hidden; */
   width: 100%;
   padding: 0;
   border-radius: 12px;
@@ -54,7 +52,7 @@ html {
   transition: background-color var(--speed) ease;
   padding-top: 1em;
   padding-bottom: 1em;
-  /* border: 2px solid var(--chakra-colors-red-400); */
+  justify-content: space-between;
 }
 
 @media (min-width: 1024px) {
@@ -76,14 +74,14 @@ html {
 }
 
 .section-heading {
-  font-size: 18px !important;
+  font-size: 1.2em !important;
   padding-bottom: 0.5em;
   text-align: left;
   width: 90%;
 }
 
 .section-list {
-  font-size: 14px !important;
+  font-size: .9em !important;
   font-weight: 600;
   width: 100%;
 }

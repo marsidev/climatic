@@ -21,14 +21,12 @@ export interface RadioOption {
 
 export type RadioOptions = RadioOption[]
 
-// export interface RadioSelectorProps extends Omit<RadioGroupProps, 'children'> {
 export interface RadioSelectorProps extends FormControlProps {
   control: Control<any>
   name: string
   id: string
   label: string
   tooltipLabel?: string
-  size?: string
   options: RadioOptions
 }
 
@@ -40,7 +38,6 @@ export const RadioSelector: FC<RadioSelectorProps> = props => {
     label,
     tooltipLabel,
     defaultValue = '',
-    size = 'md',
     options,
     ...rest
   } = props
@@ -48,15 +45,9 @@ export const RadioSelector: FC<RadioSelectorProps> = props => {
   const { field } = useController({ name, control, defaultValue })
   const { onChange, value, ref } = field
 
-  let fontSize: string = ''
-  if (size === 'sm') fontSize = '0.9rem'
-  else if (size === 'md') fontSize = '1rem'
-  else if (size === 'lg') fontSize = '1.1rem'
-  else fontSize = '1rem'
-
   return (
     <FormControl id={id} {...rest}>
-      <FormLabel fontSize={fontSize} fontWeight={600} htmlFor={id}>
+      <FormLabel fontSize='md' fontWeight={600} htmlFor={id}>
         {label}
 
         {tooltipLabel && (
@@ -69,7 +60,7 @@ export const RadioSelector: FC<RadioSelectorProps> = props => {
       <RadioGroup
         ref={ref}
         name={name}
-        size={size}
+        size='sm'
         value={value}
         onChange={onChange}
       >

@@ -57,15 +57,15 @@ const ResultItem = ({ name, region, country, onSubmit }: SearchItemResultProps) 
       <Icon as={PinIcon} h={5} mr={2} w={5} />
 
       <Box>
-        <Text fontSize={16} fontWeight={600}>
+        <Text fontSize='md' fontWeight={600}>
           {name}
         </Text>
 
-        <Text fontSize={14}>
+        <Text fontSize='sm'>
           {region && `${region} - `}
           {country}
           {emojiFlag && (
-            <chakra.span className='emoji-font' fontSize={14}>
+            <chakra.span className='emoji-font' fontSize='sm'>
               {` ${emojiFlag}`}
             </chakra.span>
           )}

@@ -96,7 +96,6 @@ export const SetupModal: FC<SetupModalProps> = ({ isOpen, onClose, ...rest }) =>
           label='Unidad de temperatura'
           name='temperatureUnit'
           options={temperatureUnitOptions}
-          size='sm'
         />
 
         <RadioSelector
@@ -107,7 +106,6 @@ export const SetupModal: FC<SetupModalProps> = ({ isOpen, onClose, ...rest }) =>
           mt={4}
           name='speedUnit'
           options={speedUnitOptions}
-          size='sm'
         />
 
         <RadioSelector
@@ -118,7 +116,6 @@ export const SetupModal: FC<SetupModalProps> = ({ isOpen, onClose, ...rest }) =>
           mt={4}
           name='pressureUnit'
           options={pressureUnitOptions}
-          size='sm'
         />
       </chakra.form>
     </Modal>

@@ -48,7 +48,7 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
     data.length > 0 && query !== '' && showData && !isLoading
 
   return (
-    <Flex flexDir='column' gap={2}>
+    <Flex flexDir='column' mb={4}>
       <InputGroup>
         <Input
           autoFocus

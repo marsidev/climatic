@@ -19,7 +19,7 @@ export const Footer: FC<FooterProps> = ({ ...props }) => {
       {...props}
     >
       <Stack align='center' direction='row' justify='space-between' w='90%'>
-        <Text fontSize={18}>
+        <Text fontSize={['md', 'lg']}>
           Hecho por{' '}
           <Link
             isExternal

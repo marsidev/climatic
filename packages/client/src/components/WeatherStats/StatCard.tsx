@@ -28,10 +28,12 @@ const statItemStyle: FlexProps = {
 
 export const StatCard: FC<StatItemProps> = ({ ariaLabel, tooltipId, icon, value, ...props }) => {
   return (
-    <ToolTip id={tooltipId} tooltipLabel={ariaLabel}>
+    <ToolTip fontSize='md' id={tooltipId} tooltipLabel={ariaLabel}>
       <Flex {...statItemStyle} {...props}>
         <chakra.figure>{icon}</chakra.figure>
-        <chakra.span ml={1}>{value}</chakra.span>
+        <chakra.span fontSize='md' ml={1}>
+          {value}
+        </chakra.span>
       </Flex>
     </ToolTip>
   )

@@ -27,7 +27,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
     <Flex align='center' as='header' flexDir='column' {...props}>
       <Heading
         as='h2'
-        fontSize={48}
+        fontSize='5xl'
         fontWeight={300}
         id='location-name'
         lineHeight={1}
@@ -37,14 +37,14 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
         {emojiFlag && (
           <>
             <span>, </span>
-            <chakra.span className='emoji-font' fontSize={40}>
+            <chakra.span className='emoji-font' fontSize='4xl'>
               {emojiFlag}
             </chakra.span>
           </>
         )}
       </Heading>
 
-      <Heading as='h3' fontSize={24} fontWeight={400} mt={1}>
+      <Heading as='h3' fontSize='2xl' fontWeight={400} mt={1}>
         {date}
         {' - '}
         <Time />
@@ -53,7 +53,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
       <Flex
         align='center'
         as='h3'
-        fontSize={24}
+        fontSize='2xl'
         fontWeight={400}
         justify='center'
       >
@@ -62,7 +62,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
         </Text>
 
         <Image
-          alt={`icono de clima ${conditionName}`}
+          alt={`${conditionName} icon`}
           display='inline-block'
           h={8}
           src={`${ASSETS_URL}/icons${conditionIconPath}`}
