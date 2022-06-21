@@ -1,5 +1,11 @@
 /* eslint-disable no-undef */
-import type { ForecastResponse, TemperatureUnit, SpeedUnit, PressureUnit } from '@climatic/shared'
+import type {
+  ForecastResponse,
+  TemperatureUnit,
+  SpeedUnit,
+  PressureUnit,
+  Locale
+} from '@climatic/shared'
 
 export interface Coordinates extends Pick<GeolocationCoordinates, 'latitude' | 'longitude'> { }
 
@@ -44,8 +50,8 @@ export interface ForecastState {
   fetching: boolean
 
   forecastData: ForecastResponse | null
-  getForecastDataByCoords: () => Promise<any>
-  getForecastDataByQuery: () => Promise<any>
+  getForecastDataByCoords: (lang?: Locale) => Promise<any>
+  getForecastDataByQuery: (lang?: Locale) => Promise<any>
 
   forecastQuery: string
   setForecastQuery: (forecastQuery: string) => void

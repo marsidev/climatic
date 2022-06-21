@@ -51,7 +51,6 @@ const selectOptionTest = (unitName: string, optionsArray: string[][]) => {
 
     const oppositeUnit =
       unitName === optionsArray[1][0] ? optionsArray[0][0] : optionsArray[1][0]
-    // similar to -> `const oppositeUnit = unitName === 'Fahrenheit' ? 'Celsius' : 'Fahrenheit'`
 
     const radio1 = screen.getByRole('radio', { name: oppositeUnit })
     const radio2 = screen.getByRole('radio', { name: unitName })
@@ -78,24 +77,24 @@ const radioTestSuite = async (options: string[][], cbTests: (expectedUnit: strin
 }
 
 const temperatureArray = [
-  ['Celsius', '°C'], // option 1
-  ['Fahrenheit', '°F'] // option 2
+  ['Celsius (°C)', '°C'], // option 1
+  ['Fahrenheit (°F)', '°F'] // option 2
 ]
 
 const speedArray = [
-  ['Kilómetros por hora', 'km/h'],
-  ['Millas por hora', 'mi/h']
+  ['Kilómetros por hora (km/h)', 'km/h'],
+  ['Millas por hora (mi/h)', 'mi/h']
 ]
 
 const pressureArray = [
-  ['Milibar', 'mb'],
-  ['Pulgadas de mercurio', 'inHg']
+  ['Milibars (mb)', 'mb'],
+  ['Pulgadas de mercurio (inHg)', 'inHg']
 ]
 
 beforeAll(async () => {
   resetDom()
   cleanup()
-  const data = await fetchForecastByQuery({ query: 'New York' })
+  const data = await fetchForecastByQuery({ query: 'New York', lang: 'es' })
   render(<AppWithNavbar data={data} />)
 })
 

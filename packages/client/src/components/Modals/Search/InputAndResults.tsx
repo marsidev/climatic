@@ -7,6 +7,7 @@ import { useDebounce } from 'use-debounce'
 import { Flex, Input, InputGroup, InputRightElement, Spinner, Text } from '@chakra-ui/react'
 import { searchByQuery } from '@services'
 import ResultItem from './ResultItem'
+import { useTranslation } from 'react-i18next'
 
 interface SearchInputProps extends FlexProps {
   closeModal: () => void
@@ -18,6 +19,7 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
   const [data, setData] = useState<Array<SearchItem>>([])
   const [debouncedQuery] = useDebounce(query, 500)
   const [showData, setShowData] = useState<boolean>(false)
+  const { t } = useTranslation()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value)
@@ -44,8 +46,7 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
   }
 
   const noResults = data.length === 0 && query !== '' && showData && !isLoading
-  const thereIsResults =
-    data.length > 0 && query !== '' && showData && !isLoading
+  const thereIsResults = data.length > 0 && query !== '' && showData && !isLoading
 
   return (
     <Flex flexDir='column' mb={4}>
@@ -53,7 +54,7 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
         <Input
           autoFocus
           autoComplete='off'
-          placeholder='Escribe alguna ciudad...'
+          placeholder={t('search-modal.input-placeholder')}
           type='text'
           onChange={handleChange}
         />
@@ -61,9 +62,10 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
       </InputGroup>
 
       <Flex className='search-results' flexDir='column' mt={2}>
-        <Text fontWeight={600} id='search-heading' py={2} textAlign='left'>
-          {noResults && 'No se encontraron resultados 😞'}
-          {thereIsResults && `${data.length} resultados`}
+        <Text fontWeight={600} id='search-heading' pt={4} textAlign='left'>
+          {noResults && t('search-modal.no-results')}
+
+          {thereIsResults && t('search-modal.results', { n: data.length })}
         </Text>
 
         {thereIsResults &&

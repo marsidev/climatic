@@ -1,7 +1,7 @@
-import { FlexProps, Icon, Spacer, Spinner } from '@chakra-ui/react'
+import type { FlexProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 
-import { Flex } from '@chakra-ui/react'
+import { Flex, Icon, Spacer, Spinner } from '@chakra-ui/react'
 import { BsSearch as SearchIcon } from 'react-icons/bs'
 import { MdMyLocation as GeoIcon } from 'react-icons/md'
 import { TiCogOutline as CogIcon } from 'react-icons/ti'
@@ -10,6 +10,7 @@ import { ToolTip } from '@components'
 import { coordsToQuery, resolveQueryFromData } from '@lib'
 import { useNavigate } from 'react-router-dom'
 import { NavIcon } from './NavIcon'
+import { useTranslation } from 'react-i18next'
 
 interface NavbarProps extends FlexProps {
   openSearch: () => void
@@ -17,24 +18,27 @@ interface NavbarProps extends FlexProps {
 }
 
 export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+
   const grantPermission = useStore(s => s.grantPermission)
   const getForecastDataByCoords = useStore(s => s.getForecastDataByCoords)
   const setForecastQuery = useStore(s => s.setForecastQuery)
   const fetching = useStore(s => s.fetching)
   const getCoords = useStore(s => s.getCoords)
 
-  const navigate = useNavigate()
-
   const getGeolocationForecast = async () => {
     grantPermission()
 
     getCoords().then(c => {
       getForecastDataByCoords().then(data => {
-        const coordsQuery = coordsToQuery(c)
-        const query = coordsQuery ? coordsQuery : resolveQueryFromData(data)
+        if (!data.error) {
+          const coordsQuery = coordsToQuery(c)
+          const query = coordsQuery ? coordsQuery : resolveQueryFromData(data)
 
-        setForecastQuery(query)
-        navigate({ search: `q=${query}` })
+          setForecastQuery(query)
+          navigate({ search: `q=${query}` })
+        }
       })
     })
   }
@@ -45,7 +49,7 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
         <ToolTip
           fontSize='md'
           id='spinner-icon'
-          tooltipLabel='Obteniendo datos...'
+          tooltipLabel={t('tooltips.fetching')}
         >
           <Flex px={2}>
             <Icon as={Spinner} h={5} w={5} />
@@ -58,7 +62,7 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
       <ToolTip
         fontSize='md'
         id='search-icon'
-        tooltipLabel='Buscar por ubicación'
+        tooltipLabel={t('tooltips.search')}
       >
         <NavIcon
           aria-label='search icon'
@@ -70,7 +74,7 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
       <ToolTip
         fontSize='md'
         id='geolocation-icon'
-        tooltipLabel='Obtener datos del clima de tu ubicación'
+        tooltipLabel={t('tooltips.geolocation')}
       >
         <NavIcon
           aria-label='geolocation icon'
@@ -81,7 +85,8 @@ export const Navbar: FC<NavbarProps> = ({ openSearch, openSetup, ...props }) => 
 
       <ToolTip
         fontSize='md'
-        id='cog-icon' tooltipLabel='Configuración'
+        id='cog-icon'
+        tooltipLabel={t('tooltips.setup')}
       >
         <NavIcon aria-label='cog icon' icon={<CogIcon />} onClick={openSetup} />
       </ToolTip>

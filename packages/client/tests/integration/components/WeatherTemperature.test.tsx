@@ -11,7 +11,7 @@ let forecast: ForecastResponse
 beforeAll(async () => {
   resetDom()
   cleanup()
-  const data = await fetchForecastByQuery({ query: 'New York' })
+  const data = await fetchForecastByQuery({ query: 'New York', lang: 'es' })
   render(<WeatherTemperature data={data} py='48px' />)
   forecast = data
 })

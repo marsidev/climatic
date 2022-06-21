@@ -1,3 +1,4 @@
+import type { Locale } from '@climatic/shared'
 import type { ForecastRequest } from '@types'
 import type { FastifyPluginAsync } from 'fastify'
 
@@ -7,6 +8,7 @@ export const forecast: FastifyPluginAsync = async (server, opts) => {
   server.get('/forecast', opts, async (request: ForecastRequest, reply) => {
     const { query } = request
     const { q = 'Los Angeles', original = '0', days = 3 } = query
+    const lang = query.lang as Locale
 
     let forecastData: any
     if (q === 'mock-la') {
@@ -14,7 +16,7 @@ export const forecast: FastifyPluginAsync = async (server, opts) => {
     } else if (q === 'mock-bcn') {
       forecastData = require('@/mock_data/forecast-bcn.json')
     } else {
-      forecastData = await fetchForecastData({ q: formatQuery(q), days })
+      forecastData = await fetchForecastData({ q: formatQuery(q), days, lang })
     }
 
     if (forecastData.error) {

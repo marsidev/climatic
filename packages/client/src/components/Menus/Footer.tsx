@@ -4,27 +4,29 @@ import type { FC } from 'react'
 import { IconButton, Link, Stack, Text } from '@chakra-ui/react'
 import { FiGithub } from 'react-icons/fi'
 import { defaultNavIconProps } from './NavIcon'
+import { useTranslation } from 'react-i18next'
 
 interface FooterProps extends StackProps { }
 
 export const Footer: FC<FooterProps> = ({ ...props }) => {
+  const { t } = useTranslation()
+
   return (
     <Stack
       align='center'
       as='footer'
       direction='row'
-      gap={2}
       justify='center'
       p={2}
       {...props}
     >
       <Stack align='center' direction='row' justify='space-between' w='90%'>
         <Text fontSize={['md', 'lg']}>
-          Hecho por{' '}
+          {t('footer.made-by')}{' '}
           <Link
             isExternal
             href='https://twitter.com/marsigliacr'
-            title='@marsigliacr on Twitter '
+            title={t('tooltips.twitter')}
           >
             <strong>Luis Marsiglia</strong>
           </Link>
@@ -33,7 +35,7 @@ export const Footer: FC<FooterProps> = ({ ...props }) => {
         <Link
           isExternal
           href='https://github.com/marsidev/climatic'
-          title='Source code'
+          title={t('tooltips.source')}
         >
           <IconButton
             aria-label='github icon'

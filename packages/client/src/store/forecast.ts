@@ -7,30 +7,31 @@ export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => 
   fetching: false,
 
   forecastData: null,
-  async getForecastDataByCoords() {
+  async getForecastDataByCoords(lang) {
     const { coords, locationStatus, forecastQuery } = get()
     const coordsQuery = coordsToQuery(coords)
 
     set(() => ({ fetching: true }))
 
-    const forecastData = await fetchForecastByCoords({ coords, locationStatus })
-
-    set(() => ({
-      forecastData,
-      fetching: false,
-      forecastQuery: coordsQuery ? coordsQuery : forecastQuery
-    }))
+    const forecastData = await fetchForecastByCoords({ coords, locationStatus, lang })
+    if (!forecastData?.error) {
+      set(() => ({
+        forecastData,
+        fetching: false,
+        forecastQuery: coordsQuery ? coordsQuery : forecastQuery
+      }))
+    }
 
     return forecastData
   },
-  async getForecastDataByQuery() {
+  async getForecastDataByQuery(lang) {
     const { forecastQuery: query } = get()
 
     if (!query || query.includes('undefined')) return null
 
     set(() => ({ fetching: true }))
 
-    const forecastData = await fetchForecastByQuery({ query })
+    const forecastData = await fetchForecastByQuery({ query, lang })
 
     set(() => ({ forecastData, fetching: false }))
 

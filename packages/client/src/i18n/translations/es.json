@@ -1,0 +1,62 @@
+{
+  "setup-modal": {
+    "title": "Configuración",
+    "lang": "Idioma",
+    "temperature-unit": {
+      "title": "Unidad de temperatura",
+      "c": "Celsius (°C)",
+      "f": "Fahrenheit (°F)"
+    },
+    "speed-unit": {
+      "title": "Unidad de velocidad del viento",
+      "kph": "Kilómetros por hora (km/h)",
+      "mph": "Millas por hora (mi/h)"
+    },
+    "pressure-unit": {
+      "title": "Unidad de presión atmosférica",
+      "mb": "Milibars (mb)",
+      "in": "Pulgadas de mercurio (inHg)"
+    }
+  },
+  "search-modal": {
+    "title": "Buscar una ubicación",
+    "input-placeholder": "Escribe alguna ciudad...",
+    "no-results": "No se encontraron resultados 😞",
+    "results": "{{n}} resultados"
+  },
+  "feels-like-label": "Sensación térmica de {{t}}",
+  "forecast-title": "Predicción de los próximos {{d}} días",
+  "astro": {
+    "title": "Astrología",
+    "sunrise": "Salida del sol",
+    "sunset": "Puesta del sol",
+    "moonrise": "Salida de la luna",
+    "moonset": "Puesta de la luna",
+    "moon-phase": "Fase de la luna",
+    "moon-phases": {
+      "New Moon": "Luna nueva",
+      "Waxing Crescent": "Cuarto creciente",
+      "First Quarter": "Primer cuarto",
+      "Waxing Gibbous": "Luna creciente",
+      "Full Moon": "Luna llena",
+      "Waning Gibbous": "Luna menguante",
+      "Last Quarter": "Último cuarto",
+      "Waning Crescent": "Cuarto menguante"
+    }
+  },
+  "footer": {
+    "made-by": "Hecho por"
+  },
+  "tooltips": {
+    "twitter": "@marsigliacr en Twitter",
+    "source": "Código fuente",
+    "fetching": "Obteniendo datos...",
+    "search": "Buscar por ubicación",
+    "geolocation": "Obtener datos del clima de tu ubicación",
+    "setup": "Configuración",
+    "humidity": "Humedad",
+    "cloudly": "Nubosidad",
+    "wind-data": "Dirección y velocidad del viento",
+    "pressure": "Presión"
+  }
+}

@@ -1,12 +1,13 @@
 import type { RapidAPIWeatherResponse, RapidAPIForecastResponse, RapidAPISearchResponse, RapidApiRequestQuery } from '@types'
 
+import { DEFAULT_LOCALE } from '@climatic/shared'
 import { fillNextForecastDays } from '@lib/dailyForecast'
 import config from '@lib/config'
 
 const { FETCH_OPTIONS, API_URL } = config
 
 export const fetchWeatherData = async (props: RapidApiRequestQuery): Promise<RapidAPIWeatherResponse> => {
-  const { q, days = 3, lang = 'es' }: RapidApiRequestQuery = props
+  const { q, days = 3, lang = DEFAULT_LOCALE }: RapidApiRequestQuery = props
 
   const params = { q, days: days.toString(), lang }
   const queryString = new URLSearchParams(params).toString()
@@ -18,7 +19,7 @@ export const fetchWeatherData = async (props: RapidApiRequestQuery): Promise<Rap
 }
 
 export const fetchForecastData = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
-  const { q, days = 3, lang = 'es' }: RapidApiRequestQuery = props
+  const { q, days = 3, lang = DEFAULT_LOCALE }: RapidApiRequestQuery = props
 
   const params = { q, days: days.toString(), lang }
   const queryString = new URLSearchParams(params).toString()
@@ -37,7 +38,7 @@ export const fetchForecastData = async (props: RapidApiRequestQuery): Promise<Ra
 }
 
 export const fetchDayForecastData = async (props: RapidApiRequestQuery): Promise<RapidAPIForecastResponse> => {
-  const { q, dt = '', lang = 'es' } = props
+  const { q, dt = '', lang = DEFAULT_LOCALE } = props
 
   const params = { q, dt, lang }
   const queryString = new URLSearchParams(params).toString()

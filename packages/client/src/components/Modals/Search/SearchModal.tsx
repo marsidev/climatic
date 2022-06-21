@@ -2,6 +2,7 @@ import type { FC } from 'react'
 
 import { Modal } from '@components'
 import InputAndResults from './InputAndResults'
+import { useTranslation } from 'react-i18next'
 
 interface SearchModalProps {
   isOpen: boolean
@@ -9,6 +10,7 @@ interface SearchModalProps {
 }
 
 export const SearchModal: FC<SearchModalProps> = ({ isOpen, onClose, ...rest }) => {
+  const { t } = useTranslation()
   return (
     <Modal
       blockScrollOnMount={false}
@@ -18,7 +20,7 @@ export const SearchModal: FC<SearchModalProps> = ({ isOpen, onClose, ...rest }) 
       scrollBehavior='inside'
       showCloseIcon={true}
       size='md'
-      title='Buscar una ubicación'
+      title={t('search-modal.title')}
       onClose={onClose}
       {...rest}
     >

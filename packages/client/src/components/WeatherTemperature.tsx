@@ -1,16 +1,18 @@
 import type { ForecastResponse } from '@climatic/shared'
-import { FlexProps } from '@chakra-ui/react'
+import type { FlexProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 
 import { chakra, Flex, Heading } from '@chakra-ui/react'
 import { formatTemperature } from '@lib/intl'
 import { useStore } from '@store'
+import { useTranslation } from 'react-i18next'
 
 interface TemperatureProps extends FlexProps {
   data: ForecastResponse
 }
 
 export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => {
+  const { t } = useTranslation()
   const temperatureUnit = useStore(s => s.temperatureUnit)
   const { currentWeather } = data
   const { temperature, feelsLike } = currentWeather
@@ -44,7 +46,8 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
           fontWeight={400}
           id='feels-like'
         >
-          Sensación térmica de {feelTemperatureStr}
+          {t('feels-like-label', { t: feelTemperatureStr })}
+          {/* Sensación térmica de {feelTemperatureStr} */}
         </chakra.span>
       )}
     </Flex>

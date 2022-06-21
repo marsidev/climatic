@@ -2,13 +2,7 @@ import type { FC } from 'react'
 import type { FormControlProps } from '@chakra-ui/react'
 import type { Control } from 'react-hook-form'
 
-import {
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  Radio,
-  Stack
-} from '@chakra-ui/react'
+import { FormControl, FormLabel, Select as ChakraSelect } from '@chakra-ui/react'
 import { useController } from 'react-hook-form'
 
 export interface Option {
@@ -16,7 +10,7 @@ export interface Option {
   label: string
 }
 
-export interface RadioSelectorProps extends FormControlProps {
+export interface SelectProps extends FormControlProps {
   control: Control<any>
   name: string
   id: string
@@ -24,7 +18,7 @@ export interface RadioSelectorProps extends FormControlProps {
   options: Option[]
 }
 
-export const RadioSelector: FC<RadioSelectorProps> = props => {
+export const Select: FC<SelectProps> = props => {
   const {
     control,
     name,
@@ -44,23 +38,21 @@ export const RadioSelector: FC<RadioSelectorProps> = props => {
         {label}
       </FormLabel>
 
-      <RadioGroup
+      <ChakraSelect
         ref={ref}
         name={name}
         size='sm'
         value={value}
         onChange={onChange}
       >
-        <Stack direction='row' gap={2}>
-          {options.map(o => (
-            <Radio key={o.value} value={o.value}>
-              {o.label}
-            </Radio>
-          ))}
-        </Stack>
-      </RadioGroup>
+        {options.map(o => (
+          <option key={o.value} value={o.value}>
+            {o.label}
+          </option>
+        ))}
+      </ChakraSelect>
     </FormControl>
   )
 }
 
-export default RadioSelector
+export default Select

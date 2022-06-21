@@ -12,6 +12,7 @@ export interface FetchOptions {
 interface WeatherQuerystring {
   q: string
   original?: string
+  lang?: string
 }
 
 export interface ForecastQuerystring extends WeatherQuerystring {
@@ -28,4 +29,5 @@ interface ForecastRequestQuery {
 }
 
 export type WeatherRequest = FastifyRequest<WeatherRequestQuery>
+export type SearchRequest = FastifyRequest<WeatherRequestQuery>
 export type ForecastRequest = FastifyRequest<ForecastRequestQuery>

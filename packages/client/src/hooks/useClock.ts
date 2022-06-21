@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DEFAULT_LANGUAGE } from '@lib/config'
-
-const locale = DEFAULT_LANGUAGE
+import i18n from 'i18next'
 
 export const useClock = (timeZone: string): string => {
   const [time, setTime] = useState<Date>(new Date())
@@ -13,7 +11,7 @@ export const useClock = (timeZone: string): string => {
     timeZone
   }
 
-  const formatTime = (time: Date) => new Intl.DateTimeFormat(locale, options).format(time)
+  const formatTime = (time: Date) => new Intl.DateTimeFormat(i18n.language, options).format(time)
 
   useEffect(() => {
     const timerId = setInterval(() => setTime(new Date()), 5000)

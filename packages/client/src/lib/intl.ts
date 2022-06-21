@@ -1,14 +1,12 @@
 import type { TemperatureUnit, SpeedUnit, PressureUnit } from '@climatic/shared'
-import { DEFAULT_LANGUAGE } from '@lib/config'
+import i18n from 'i18next'
 
-const locale = DEFAULT_LANGUAGE
-
-export const formatInt = (n: number): number => {
+export const formatInt = (n: number): string => {
   const options: Intl.NumberFormatOptions = { maximumFractionDigits: 0 }
 
-  const fomatter = new Intl.NumberFormat(locale, options)
+  const fomatter = new Intl.NumberFormat(i18n.language, options)
   const num = fomatter.format(n)
-  return Number(num)
+  return num
 }
 
 export const formatTemperature = (temperature: number, unit: TemperatureUnit): string => {
@@ -18,8 +16,8 @@ export const formatTemperature = (temperature: number, unit: TemperatureUnit): s
     maximumFractionDigits: 0
   }
 
-  const fomatter = new Intl.NumberFormat(locale, options)
-  return fomatter.format(formatInt(temperature))
+  const fomatter = new Intl.NumberFormat(i18n.language, options)
+  return fomatter.format(Math.round(temperature))
 }
 
 export const formatSpeed = (speed: number, unit: SpeedUnit): string => {
@@ -33,8 +31,8 @@ export const formatSpeed = (speed: number, unit: SpeedUnit): string => {
     unitDisplay: 'short'
   }
 
-  const fomatter = new Intl.NumberFormat(locale, options)
-  return fomatter.format(formatInt(speed))
+  const fomatter = new Intl.NumberFormat(i18n.language, options)
+  return fomatter.format(Math.round(speed))
 }
 
 export const formatPressure = (pressure: number, unit: PressureUnit): string => {
@@ -42,7 +40,7 @@ export const formatPressure = (pressure: number, unit: PressureUnit): string => 
   if (unit === 'mb') unitFormatted = 'mb'
   if (unit === 'in') unitFormatted = 'inHg'
 
-  const value = `${formatInt(pressure)} ${unitFormatted}`
+  const value = `${formatInt(Math.round(pressure))} ${unitFormatted}`
   return value
 }
 
@@ -52,7 +50,7 @@ export const getDayName = (date: number | Date) => {
     timeZone: 'UTC'
   }
 
-  const fomatter = new Intl.DateTimeFormat(locale, options)
+  const fomatter = new Intl.DateTimeFormat(i18n.language, options)
   return fomatter.format(date)
 }
 
@@ -64,7 +62,7 @@ export const getShortDate = (date: number | Date) => {
     timeZone: 'UTC'
   }
 
-  const fomatter = new Intl.DateTimeFormat(locale, options)
+  const fomatter = new Intl.DateTimeFormat(i18n.language, options)
   return fomatter.format(date)
 }
 
@@ -76,6 +74,6 @@ export const getLargeDate = (date: number | Date) => {
     timeZone: 'UTC'
   }
 
-  const fomatter = new Intl.DateTimeFormat(locale, options)
+  const fomatter = new Intl.DateTimeFormat(i18n.language, options)
   return fomatter.format(date)
 }

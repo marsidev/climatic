@@ -7,6 +7,7 @@ import { formatSpeed, formatPressure } from '@lib/intl'
 import { StatCard } from './StatCard'
 import { WindDirectionIcon } from '@components'
 import { useStore } from '@store'
+import { useTranslation } from 'react-i18next'
 
 import {
   MdOutlineWaterDrop as DropIcon,
@@ -19,8 +20,10 @@ interface WeatherStatsProps extends StackProps {
 }
 
 export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
+  const { t } = useTranslation()
   const speedUnit = useStore(s => s.speedUnit)
   const pressureUnit = useStore(s => s.pressureUnit)
+
   const { currentWeather } = data
   const { humidity, cloud, wind, pressure } = currentWeather
   const { degree, speed } = wind
@@ -32,28 +35,28 @@ export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
     <Flex as='section' flexDir='column' px={4} {...props}>
       <HStack align='center' as='ul' id='weather-data-stack' justify='center'>
         <StatCard
-          ariaLabel='Humedad'
+          ariaLabel={t('tooltips.humidity')}
           icon={<DropIcon />}
           tooltipId='humidity-data'
           value={`${humidity}%`}
         />
 
         <StatCard
-          ariaLabel='Nubosidad'
+          ariaLabel={t('tooltips.cloudly')}
           icon={<CloudIcon />}
           tooltipId='cloud-data'
           value={`${cloud}%`}
         />
 
         <StatCard
-          ariaLabel='Dirección y velocidad del viento'
+          ariaLabel={t('tooltips.wind-data')}
           icon={<WindDirectionIcon degree={degree} mr={1} />}
           tooltipId='wind-data'
           value={windSpeed}
         />
 
         <StatCard
-          ariaLabel='Presión'
+          ariaLabel={t('tooltips.pressure')}
           icon={<PressureIcon />}
           tooltipId='pressure-data'
           value={pressureValue}

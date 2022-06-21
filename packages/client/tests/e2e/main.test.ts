@@ -27,7 +27,7 @@ test.beforeAll(async () => {
   browser = await chromium.launch()
 
   page = await browser.newPage()
-  await page.goto('/')
+  await page.goto('/es')
 
   // screenshot the first view
   await page.screenshot({ path: `${ssPath}/0-beforeAll.png` })

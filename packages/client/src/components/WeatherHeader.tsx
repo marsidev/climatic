@@ -1,5 +1,5 @@
 import type { ForecastResponse } from '@climatic/shared'
-import { FlexProps } from '@chakra-ui/react'
+import type { FlexProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 
 import { chakra, Flex, Heading, Image, Text } from '@chakra-ui/react'

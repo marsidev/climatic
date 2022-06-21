@@ -1,0 +1,62 @@
+{
+  "setup-modal": {
+    "title": "Setup",
+    "lang": "Language",
+    "temperature-unit": {
+      "title": "Temperature unit",
+      "c": "Celsius (°C)",
+      "f": "Fahrenheit (°F)"
+    },
+    "speed-unit": {
+      "title": "Wind speed unit",
+      "kph": "Kilometers per hour (km/h)",
+      "mph": "Miles per hour (mph)"
+    },
+    "pressure-unit": {
+      "title": "Atmospheric pressure unit",
+      "mb": "Millibars (mb)",
+      "in": "Inches of mercury (inHg)"
+    }
+  },
+  "search-modal": {
+    "title": "Search by location",
+    "input-placeholder": "Type some city...",
+    "no-results": "Nothing found 😞",
+    "results": "{{n}} results"
+  },
+  "feels-like-label": "Feels like {{t}}",
+  "forecast-title": "{{d}}-days forecast",
+  "astro": {
+    "title": "Astrology",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "moonrise": "Moonrise",
+    "moonset": "Moonset",
+    "moon-phase": "Moon phase",
+    "moon-phases": {
+      "New Moon": "New moon",
+      "Waxing Crescent": "Waxing crescent",
+      "First Quarter": "First quarter",
+      "Waxing Gibbous": "Waxing gibbous",
+      "Full Moon": "Full moon",
+      "Waning Gibbous": "Waning gibbous",
+      "Last Quarter": "Last quarter",
+      "Waning Crescent": "Waning crescent"
+    }
+  },
+  "footer": {
+    "made-by": "Made by"
+  },
+  "tooltips": {
+    "twitter": "@marsigliacr on Twitter",
+    "source": "Source code",
+    "fetching": "Fetching data...",
+    "search": "Search by location",
+    "geolocation": "Get weather data of your geolocation",
+    "setup": "Setup",
+    "humidity": "Humidity",
+    "cloudly": "Cloudly",
+    "wind-data": "Wind direction and speed",
+    "pressure": "Pressure"
+  }
+}

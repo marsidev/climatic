@@ -1,9 +1,9 @@
-import { SearchResponse } from '@climatic/shared'
+import { SearchResponse, MoonPhase, Locale } from '@climatic/shared'
 
 export interface RapidApiRequestQuery {
   q: string
   days?: number
-  lang?: 'es' | 'en'
+  lang?: Locale
   dt?: string
 }
 
@@ -65,8 +65,6 @@ export interface RapidAPIWeatherResponse {
 }
 
 // forecast
-type MoonPhase = 'New Moon' | 'Waxing Crescent' | 'First Quarter' | 'Waxing Gibbous' | 'Full Moon' | 'Waning Gibbous' | 'Last Quarter' | 'Waning Crescent'
-
 export interface RapidAPIForecastHour extends RapidAPIWeather {
   time_epoch: number
   time: string

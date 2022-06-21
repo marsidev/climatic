@@ -53,16 +53,18 @@ export const useForecast = (): ReturnState => {
     if (!query) {
       if (locationStatus !== 'loading' && !forecastQuery) {
         getForecastDataByCoords().then(data => {
-          let query = ''
-          const coordsQuery = coordsToQuery(coords)
-          if (coordsQuery) {
-            query = coordsQuery
-          } else {
-            query = resolveQueryFromData(data)
-          }
+          if (!data.error) {
+            let query = ''
+            const coordsQuery = coordsToQuery(coords)
+            if (coordsQuery) {
+              query = coordsQuery
+            } else {
+              query = resolveQueryFromData(data)
+            }
 
-          setForecastQuery(query)
-          navigate({ search: `?q=${query}` })
+            setForecastQuery(query)
+            navigate({ search: `?q=${query}` })
+          }
         })
       }
     }

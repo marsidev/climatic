@@ -41,20 +41,22 @@ export const AppLayout: FC<LayoutProps> = ({ data }) => {
     >
       <Box as='main' className='weather-card'>
         <Navbar openSearch={openSearch} openSetup={openSetup} />
-        <WeatherHeader data={data} />
-        <WeatherTemperature data={data} py='48px' />
-        <WeatherStats data={data} pb='32px' />
-        <Forecast data={data} pb='32px' />
+        <WeatherHeader data={data} py={10} />
+        <WeatherTemperature data={data} pb={10} />
+        <WeatherStats data={data} pb={10} />
+        <Forecast data={data} pb={10} />
 
         <Suspense>
-          <Astro data={data} pb='32px' />
+          <Astro data={data} pb={8} />
           <Footer />
         </Suspense>
       </Box>
 
       <Suspense>
-        <SearchModal isOpen={searchIsOpen} onClose={closeSearch} />
-        <SetupModal isOpen={setupIsOpen} onClose={closeSetup} />
+        <aside>
+          <SearchModal isOpen={searchIsOpen} onClose={closeSearch} />
+          <SetupModal isOpen={setupIsOpen} onClose={closeSetup} />
+        </aside>
       </Suspense>
     </Box>
   )

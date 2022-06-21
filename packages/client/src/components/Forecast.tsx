@@ -5,12 +5,14 @@ import { chakra, Flex, FlexProps, Heading, HStack, Image, Text, VStack } from '@
 import { formatInt, getShortDate, formatTemperature } from '@lib/intl'
 import { ASSETS_URL } from '@lib/config'
 import { useStore } from '@store'
+import { useTranslation } from 'react-i18next'
 
 interface ForecastProps extends FlexProps {
   data: ForecastResponse
 }
 
 export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
+  const { t } = useTranslation()
   const temperatureUnit = useStore(s => s.temperatureUnit)
   const { forecast } = data
   const forecastFromTomorrow = forecast.slice(1)
@@ -25,7 +27,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       {...props}
     >
       <Heading as='h4' className='section-heading'>
-        Predicción de los próximos días
+        {t('forecast-title', { d: forecastFromTomorrow.length })}
       </Heading>
 
       <VStack as='ul' className='section-list' spacing={2}>
@@ -43,7 +45,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
 
           return (
             <HStack key={timestamp} as='li' className='section-list-item'>
-              <Text as='span' minW='80px'>{date}</Text>
+              <Text as='span' minW='6.15em'>{date}</Text>
 
               <Text fontWeight={800}>
                 <chakra.span color='red.600'>{maxTempStr}</chakra.span>
