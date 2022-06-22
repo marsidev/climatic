@@ -1,0 +1,92 @@
+[
+  {
+    "id": 2548773,
+    "name": "Los Angeles",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.05,
+    "lon": -118.24,
+    "url": "los-angeles-california-united-states-of-america"
+  },
+  {
+    "id": 2549280,
+    "name": "Naud Junction",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.06,
+    "lon": -118.24,
+    "url": "naud-junction-california-united-states-of-america"
+  },
+  {
+    "id": 2549305,
+    "name": "New Chinatown",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.06,
+    "lon": -118.24,
+    "url": "new-chinatown-california-united-states-of-america"
+  },
+  {
+    "id": 2549096,
+    "name": "Mission Junction",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.06,
+    "lon": -118.23,
+    "url": "mission-junction-california-united-states-of-america"
+  },
+  {
+    "id": 2550821,
+    "name": "Taylor Junction",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.06,
+    "lon": -118.22,
+    "url": "taylor-junction-california-united-states-of-america"
+  },
+  {
+    "id": 2546106,
+    "name": "Angelino Heights",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.07,
+    "lon": -118.25,
+    "url": "angelino-heights-california-united-states-of-america"
+  },
+  {
+    "id": 2546563,
+    "name": "Brooklyn Heights",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.05,
+    "lon": -118.21,
+    "url": "brooklyn-heights-california-united-states-of-america"
+  },
+  {
+    "id": 2547828,
+    "name": "Glendale Junction",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.08,
+    "lon": -118.22,
+    "url": "glendale-junction-california-united-states-of-america"
+  },
+  {
+    "id": 2546627,
+    "name": "Butte Street Junction",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.02,
+    "lon": -118.23,
+    "url": "butte-street-junction-california-united-states-of-america"
+  },
+  {
+    "id": 2547191,
+    "name": "Dayton Avenue",
+    "region": "California",
+    "country": "United States of America",
+    "lat": 34.08,
+    "lon": -118.22,
+    "url": "dayton-avenue-california-united-states-of-america"
+  }
+]

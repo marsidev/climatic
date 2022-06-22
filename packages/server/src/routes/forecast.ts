@@ -1,22 +1,22 @@
-import type { Locale } from '@climatic/shared'
 import type { ForecastRequest } from '@types'
 import type { FastifyPluginAsync } from 'fastify'
 
 import { fetchForecastData, formatForecastData, formatQuery } from '@lib'
 
+const mocksPath = '@climatic/shared/src/mocks/api/source/'
+
 export const forecast: FastifyPluginAsync = async (server, opts) => {
   server.get('/forecast', opts, async (request: ForecastRequest, reply) => {
     const { query } = request
     const { q = 'Los Angeles', original = '0', days = 3 } = query
-    const lang = query.lang as Locale
 
     let forecastData: any
-    if (q === 'mock-la') {
-      forecastData = require('@/mock_data/forecast-la.json')
-    } else if (q === 'mock-bcn') {
-      forecastData = require('@/mock_data/forecast-bcn.json')
+    if (q === '{{mock}}') {
+      forecastData = require(`${mocksPath}/forecast.json`)
+    } else if (q === '{{mock-la}}') {
+      forecastData = require(`${mocksPath}/forecast-la.json`)
     } else {
-      forecastData = await fetchForecastData({ q: formatQuery(q), days, lang })
+      forecastData = await fetchForecastData({ q: formatQuery(q), days })
     }
 
     if (forecastData.error) {

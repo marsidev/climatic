@@ -100,8 +100,8 @@ describe('<SearchModal />', () => {
     })
 
     test('can type a custom location', async () => {
-      await userEvent.type(screen.getByRole('textbox'), 'madrid')
-      expect(screen.getByDisplayValue('madrid')).toBeInTheDocument()
+      await userEvent.type(screen.getByRole('textbox'), 'los angeles')
+      expect(screen.getByDisplayValue('los angeles')).toBeInTheDocument()
     })
 
     test('it shows search results', async () => {

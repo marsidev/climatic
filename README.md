@@ -24,8 +24,8 @@ App preview before deadline and project review: <br />
 
 ### Links
 - [Demo](https://climatic.onrender.com "Climatic deployed on Render") <br />
-- [Mirror 1](https://clima-tic.herokuapp.com "Climatic deployed on Heroku") <br />
-- [Mirror 2](https://climatic-production.up.railway.app "Climatic deployed on Railway")
+- [Mirror](https://clima-tic.herokuapp.com "Climatic deployed on Heroku") <br />
+<!-- - [Mirror 2](https://climatic-production.up.railway.app "Climatic deployed on Railway") -->
 
 ## 🛠️ Technologies
 - [pnpm](https://github.com/pnpm/pnpm)

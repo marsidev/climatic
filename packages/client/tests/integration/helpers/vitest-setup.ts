@@ -1,7 +1,7 @@
 import type { TestingLibraryMatchers } from '@testing-library/jest-dom/matchers'
 
 import { afterAll, afterEach, beforeAll, expect, vi } from 'vitest'
-import { server } from '../mocks/server'
+import { server } from '../msw/server'
 
 /* tweak to avoid errors between vitest and @testing-library/jest-dom
   @ref: https://github.com/testing-library/jest-dom/issues/439#issuecomment-1087504347

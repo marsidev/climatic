@@ -1,4 +1,3 @@
-import { Locale } from '@climatic/shared'
 import type { WeatherRequest } from '@types'
 import type { FastifyPluginAsync } from 'fastify'
 import { fetchWeatherData, formatWeatherData, formatQuery } from '@lib'
@@ -7,9 +6,8 @@ export const weather: FastifyPluginAsync = async (server, opts) => {
   server.get('/weather', opts, async (request: WeatherRequest, reply) => {
     const { query } = request
     const { q = 'Los Angeles', original = '0' } = query
-    const lang = query.lang as Locale
 
-    const weatherData = await fetchWeatherData({ q: formatQuery(q), lang })
+    const weatherData = await fetchWeatherData({ q: formatQuery(q) })
 
     if (weatherData.error) {
       return reply.code(500).send(weatherData)

@@ -30,7 +30,7 @@ describe.concurrent('Sections', () => {
     expect(el).toBeDefined()
 
     const text = el?.textContent
-    expect(text).toBe('New York, 🇺🇸')
+    expect(text).toBe('Barcelona, 🇪🇸')
   })
 
   test('DOM show the current temperature', () => {

@@ -3,8 +3,7 @@ import type {
   ForecastResponse,
   TemperatureUnit,
   SpeedUnit,
-  PressureUnit,
-  Locale
+  PressureUnit
 } from '@climatic/shared'
 
 export interface Coordinates extends Pick<GeolocationCoordinates, 'latitude' | 'longitude'> { }
@@ -50,8 +49,8 @@ export interface ForecastState {
   fetching: boolean
 
   forecastData: ForecastResponse | null
-  getForecastDataByCoords: (lang?: Locale) => Promise<any>
-  getForecastDataByQuery: (lang?: Locale) => Promise<any>
+  getForecastDataByCoords: () => Promise<any>
+  getForecastDataByQuery: () => Promise<any>
 
   forecastQuery: string
   setForecastQuery: (forecastQuery: string) => void

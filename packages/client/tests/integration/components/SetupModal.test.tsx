@@ -61,13 +61,13 @@ const selectOptionTest = (unitName: string, optionsArray: string[][]) => {
     expect(radio2).toBeChecked()
 
     await closeDialog()
-  }, 10000)
+  }, 20000)
 }
 
 const radioTestSuite = async (options: string[][], cbTests: (expectedUnit: string) => void) => {
   const opts = options.reverse() // reverse to test the opposite unit first
   describe('Changing speed unit', () => {
-    describe.each(opts)('Switch to -> %s (%s)', (unitName, expectedUnit) => {
+    describe.each(opts)('Switch to -> %s', (unitName, expectedUnit) => {
       selectOptionTest(unitName, options)
       describe.concurrent(`Unit changes to "${expectedUnit}"`, async () => {
         cbTests(expectedUnit)
@@ -102,7 +102,7 @@ describe('<SetupModal />', () => {
   test('Can be opened', async () => {
     await openDialog()
     expect(await screen.findByRole('dialog')).toBeTruthy()
-  })
+  }, 10000)
 
   describe('Can be closed', () => {
     test('by pressing close icon', async () => {

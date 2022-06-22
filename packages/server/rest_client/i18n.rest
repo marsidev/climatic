@@ -1,0 +1,19 @@
+# Make requests from VSCode with REST Client extension:
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+#
+# The following requests generate i18n translations for all possible weather conditions. Original JSON can be found here: https://www.weatherapi.com/docs/conditions.json
+
+###
+GET http://localhost:3001/api/conditions-i18n/langs
+
+###
+GET http://localhost:3001/api/conditions-i18n/en
+
+###
+GET http://localhost:3001/api/conditions-i18n/es
+
+###
+GET http://localhost:3001/api/conditions-i18n/pt
+
+###
+GET http://localhost:3001/api/conditions-i18n/jp

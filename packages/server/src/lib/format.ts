@@ -1,5 +1,17 @@
-import type { RapidAPIWeatherResponse, RapidAPICondition, RapidAPIForecastResponse, RapidAPIForecastDaySummary, RapidAPIForecastHour, RapidAPIForecastDay } from '@types'
-import type { WeatherResponse, Condition, ForecastResponse } from '@climatic/shared'
+import type {
+  RapidAPIWeatherResponse,
+  RapidAPICondition,
+  RapidAPIForecastResponse,
+  RapidAPIForecastDaySummary,
+  RapidAPIForecastHour,
+  RapidAPIForecastDay
+} from '@types'
+
+import type {
+  WeatherResponse,
+  Condition,
+  ForecastResponse
+} from '@climatic/shared'
 
 import '@climatic/shared/src/utils/strings'
 
@@ -13,10 +25,29 @@ export const formatCondition = (condition: RapidAPICondition): Condition => {
   }
 }
 
-export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherResponse => {
+export const formatWeatherData = (
+  data: RapidAPIWeatherResponse
+): WeatherResponse => {
   const { location, current } = data
   const { country, name, lat, lon, tz_id } = location
-  const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, last_updated_epoch, pressure_in, pressure_mb, uv } = current
+  const {
+    condition,
+    humidity,
+    cloud,
+    feelslike_c,
+    feelslike_f,
+    is_day,
+    temp_c,
+    temp_f,
+    wind_kph,
+    wind_mph,
+    wind_dir,
+    wind_degree,
+    last_updated_epoch,
+    pressure_in,
+    pressure_mb,
+    uv
+  } = current
 
   const timestamp = last_updated_epoch * 1000
 
@@ -64,7 +95,25 @@ export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherRespons
 
 // forecast formatters
 const formatDaySummary = (day: RapidAPIForecastDaySummary) => {
-  const { maxtemp_c, maxtemp_f, mintemp_c, mintemp_f, avgtemp_c, avgtemp_f, maxwind_mph, maxwind_kph, totalprecip_mm, totalprecip_in, avghumidity, condition, daily_will_it_rain, daily_chance_of_rain, daily_will_it_snow, daily_chance_of_snow, uv } = day
+  const {
+    maxtemp_c,
+    maxtemp_f,
+    mintemp_c,
+    mintemp_f,
+    avgtemp_c,
+    avgtemp_f,
+    maxwind_mph,
+    maxwind_kph,
+    totalprecip_mm,
+    totalprecip_in,
+    avghumidity,
+    condition,
+    daily_will_it_rain,
+    daily_chance_of_rain,
+    daily_will_it_snow,
+    daily_chance_of_snow,
+    uv
+  } = day
 
   return {
     temperature: {
@@ -105,7 +154,28 @@ const formatDaySummary = (day: RapidAPIForecastDaySummary) => {
 
 const formatHoursData = (hours: RapidAPIForecastHour[]) => {
   const result = hours.map((hour, i) => {
-    const { condition, humidity, cloud, feelslike_c, feelslike_f, is_day, temp_c, temp_f, wind_kph, wind_mph, wind_dir, wind_degree, time_epoch, will_it_rain, chance_of_rain, will_it_snow, chance_of_snow, pressure_in, pressure_mb, uv } = hour
+    const {
+      condition,
+      humidity,
+      cloud,
+      feelslike_c,
+      feelslike_f,
+      is_day,
+      temp_c,
+      temp_f,
+      wind_kph,
+      wind_mph,
+      wind_dir,
+      wind_degree,
+      time_epoch,
+      will_it_rain,
+      chance_of_rain,
+      will_it_snow,
+      chance_of_snow,
+      pressure_in,
+      pressure_mb,
+      uv
+    } = hour
 
     return {
       hour: i,
@@ -164,10 +234,17 @@ export const formatForecastDay = (data: RapidAPIForecastDay) => {
   }
 }
 
-export const formatForecastData = (data: RapidAPIForecastResponse): ForecastResponse => {
-  const { forecast: { forecastday }, location, current } = data
+export const formatForecastData = (
+  data: RapidAPIForecastResponse
+): ForecastResponse => {
+  const {
+    forecast: { forecastday },
+    location,
+    current
+  } = data
 
-  const { location: locationFormatted, weather: currentWeather } = formatWeatherData({ location, current })
+  const { location: locationFormatted, weather: currentWeather } =
+    formatWeatherData({ location, current })
 
   const forecast = forecastday.map(foreData => {
     return formatForecastDay(foreData)

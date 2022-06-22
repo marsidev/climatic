@@ -1,5 +1,13 @@
-import type { Locale, TemperatureUnit, SpeedUnit, PressureUnit } from '@climatic/shared'
+import type { Locale } from '@climatic/shared'
 import type { FC } from 'react'
+import type {
+  SetupModalProps,
+  FormValues,
+  TemperatureOption,
+  SpeedOption,
+  PressureOption,
+  LangOption
+} from './types'
 
 import { useEffect } from 'react'
 import { chakra } from '@chakra-ui/react'
@@ -11,39 +19,11 @@ import { useStore } from '@store'
 import { loadAsyncLanguage, extractLocaleFromPath } from '@/i18n'
 import { DEFAULT_LOCALE, SUPPORTED_LANGUAGES } from '@climatic/shared/src/i18n'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
-interface SetupModalProps {
-  isOpen: boolean
-  onClose: () => void
-}
-
-interface FormValues {
-  temperatureUnit: TemperatureUnit
-  speedUnit: SpeedUnit
-  pressureUnit: PressureUnit
-  lang: Locale
-}
-
-interface TemperatureOption {
-  value: TemperatureUnit
-  label: string
-}
-
-interface SpeedOption {
-  value: SpeedUnit
-  label: string
-}
-
-interface PressureOption {
-  value: PressureUnit
-  label: string
-}
-
-interface LangOption {
-  value: string
-  label: string
-}
+const langOptions: LangOption[] = SUPPORTED_LANGUAGES.map(l => {
+  return { value: l.locale, label: l.name }
+})
 
 export const SetupModal: FC<SetupModalProps> = ({ isOpen, onClose, ...rest }) => {
   const { control, watch, setValue } = useForm<FormValues>()
@@ -53,11 +33,10 @@ export const SetupModal: FC<SetupModalProps> = ({ isOpen, onClose, ...rest }) =>
   const switchTemperatureUnit = useStore(s => s.switchTemperatureUnit)
   const switchSpeedUnit = useStore(s => s.switchSpeedUnit)
   const switchPressureUnit = useStore(s => s.switchPressureUnit)
-  // const fetching = useStore(s => s.fetching)
-  const getForecastDataByQuery = useStore(s => s.getForecastDataByQuery)
 
   const { t, i18n } = useTranslation()
   const navigate = useNavigate()
+  const { search: searchParams } = useLocation()
 
   // check lang from url path and update hook-state
   useEffect(() => {
@@ -69,31 +48,31 @@ export const SetupModal: FC<SetupModalProps> = ({ isOpen, onClose, ...rest }) =>
     const subscription = watch((allValues, { name: updated }) => {
       const newValue = updated ? allValues[updated] : undefined
 
-      if (newValue && updated === 'temperatureUnit') {
-        // useStore.setState({ temperatureUnit: newValue as TemperatureUnit })
-        switchTemperatureUnit()
-      } else if (newValue && updated === 'speedUnit') {
-        switchSpeedUnit()
-      } else if (newValue && updated === 'pressureUnit') {
-        switchPressureUnit()
-      } else if (newValue && updated === 'lang') {
-        setLang(newValue as Locale)
-        getForecastDataByQuery(newValue as Locale)
+      if (newValue) {
+        if (updated === 'temperatureUnit') {
+          // useStore.setState({ temperatureUnit: newValue as TemperatureUnit })
+          switchTemperatureUnit()
+        } else if (updated === 'speedUnit') {
+          switchSpeedUnit()
+        } else if (updated === 'pressureUnit') {
+          switchPressureUnit()
+        } else if (updated === 'lang') {
+          const locale = newValue as Locale
+          setLang(locale, searchParams)
+        }
       }
     })
 
     return () => subscription.unsubscribe()
-  }, [watch])
+  }, [watch, searchParams])
 
-  const setLang = async (locale: Locale) => {
+  const setLang = async (locale: Locale, params: string) => {
     const base = locale === DEFAULT_LOCALE ? '../' : `../${locale}`
-    await loadAsyncLanguage(i18n, locale)
-    navigate(base, { replace: true })
-  }
+    const path = base + params
 
-  const langOptions: LangOption[] = SUPPORTED_LANGUAGES.map(l => {
-    return { value: l.locale, label: l.name }
-  })
+    await loadAsyncLanguage(i18n, locale)
+    navigate(path, { replace: true })
+  }
 
   const temperatureUnitOptions: TemperatureOption[] = [
     { value: 'celsius', label: t('setup-modal.temperature-unit.c') },

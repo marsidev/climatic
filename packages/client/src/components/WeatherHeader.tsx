@@ -7,21 +7,27 @@ import { getLargeDate } from '@lib/intl'
 import { ASSETS_URL } from '@lib/config'
 import { flag } from 'country-emoji'
 import { Time } from '@components'
+import { useTranslation } from 'react-i18next'
+import { getWeatherConditionTranslationKey } from '@/i18n/helpers'
 
 interface HeaderProps extends FlexProps {
   data: ForecastResponse
 }
 
 export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
+  const { t } = useTranslation()
   const { location, currentWeather } = data
-  const {
-    condition: { icon: conditionIconPath, name: conditionName },
-    updateAt
-  } = currentWeather
-  const { country, name: city } = location
+  const { condition, updateAt, isDay } = currentWeather
+  const { icon: conditionIconPath, name: conditionName, id: conditionId } = condition
+  const { country, name: city, timezone } = location
 
   const date = getLargeDate(updateAt)
   const emojiFlag = flag(country)
+
+  const conditionTranslationKey = getWeatherConditionTranslationKey(
+    conditionId,
+    isDay
+  )
 
   return (
     <Flex align='center' as='header' flexDir='column' {...props}>
@@ -47,7 +53,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
       <Heading as='h3' fontSize='2xl' fontWeight={400} mt={1}>
         {date}
         {' - '}
-        <Time />
+        <Time timezone={timezone} />
       </Heading>
 
       <Flex
@@ -58,7 +64,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
         justify='center'
       >
         <Text as='span' h='100%'>
-          {conditionName}
+          {t(conditionTranslationKey)}
         </Text>
 
         <Image

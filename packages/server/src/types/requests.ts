@@ -28,6 +28,11 @@ interface ForecastRequestQuery {
   Querystring: ForecastQuerystring
 }
 
+interface ConditionsI18nQuerystring {
+  Params: { lang: string }
+}
+
 export type WeatherRequest = FastifyRequest<WeatherRequestQuery>
 export type SearchRequest = FastifyRequest<WeatherRequestQuery>
 export type ForecastRequest = FastifyRequest<ForecastRequestQuery>
+export type ConditionsI18nRequest = FastifyRequest<ConditionsI18nQuerystring>

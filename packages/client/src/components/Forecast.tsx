@@ -6,6 +6,7 @@ import { formatInt, getShortDate, formatTemperature } from '@lib/intl'
 import { ASSETS_URL } from '@lib/config'
 import { useStore } from '@store'
 import { useTranslation } from 'react-i18next'
+import { getWeatherConditionTranslationKey } from '@/i18n/helpers'
 
 interface ForecastProps extends FlexProps {
   data: ForecastResponse
@@ -33,7 +34,8 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
       <VStack as='ul' className='section-list' spacing={2}>
         {forecastFromTomorrow.map(data => {
           const { timestamp, day } = data
-          const { condition: { icon: iconPath, name }, temperature } = day
+          const { condition, temperature } = day
+          const { icon: iconPath, name, id: conditionId } = condition
 
           const date = getShortDate(timestamp)
           const minTemp = temperature[temperatureUnit].min
@@ -42,6 +44,10 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
           const maxTempStr = formatInt(maxTemp)
 
           const conditionName = name.toLowerCase()
+          const conditionTranslationKey = getWeatherConditionTranslationKey(
+            conditionId,
+            true
+          )
 
           return (
             <HStack key={timestamp} as='li' className='section-list-item'>
@@ -63,7 +69,7 @@ export const Forecast: FC<ForecastProps> = ({ data, ...props }) => {
               </Flex>
 
               <Text as='span' fontSize='xs' textAlign='right' w='100px'>
-                {conditionName}
+                {t(conditionTranslationKey)}
               </Text>
             </HStack>
           )
