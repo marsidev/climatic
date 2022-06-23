@@ -39,16 +39,16 @@
   },
   "devDependencies": {
     "@types/node": "18.0.0",
-    "@typescript-eslint/eslint-plugin": "5.27.1",
+    "@typescript-eslint/eslint-plugin": "5.29.0",
     "@typescript-eslint/parser": "5.27.1",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.17.0",
+    "eslint": "8.18.0",
     "eslint-config-xo": "0.41.0",
     "npm-run-all": "4.1.5",
     "tslib": "2.4.0",
-    "typescript": "4.7.3"
+    "typescript": "4.7.4"
   },
-  "packageManager": "pnpm@7.1.6",
+  "packageManager": "pnpm@7.3.0",
   "pnpm": {
     "overrides": {
       "client": "workspace:*",
@@ -56,9 +56,6 @@
       "shared": "workspace:*"
     },
     "peerDependencyRules": {
-      "ignoreMissing": [
-        "@babel/core"
-      ],
       "allowedVersions": {
         "react": "18",
         "react-dom": "18"
