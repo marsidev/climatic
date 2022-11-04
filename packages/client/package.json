@@ -27,7 +27,7 @@
 	"dependencies": {
 		"@babel/core": "7.18.5",
 		"@chakra-ui/react": "2.2.1",
-		"@climatic/shared": "workspace:*",
+		"@climatic/shared": "link:../shared",
 		"@emotion/react": "11.9.3",
 		"@emotion/styled": "11.9.3",
 		"@fontsource/aileron": "4.5.3",
