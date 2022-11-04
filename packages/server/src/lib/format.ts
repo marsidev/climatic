@@ -8,7 +8,7 @@ import type {
 } from '../types'
 import type { Condition, ForecastResponse, WeatherResponse } from '~/../../packages/shared'
 
-import '@climatic/shared/src/utils/strings'
+import '~/../../packages/shared/src/utils/strings'
 
 // weather formatters
 export const formatCondition = (condition: RapidAPICondition): Condition => {
