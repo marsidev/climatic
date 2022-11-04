@@ -6,7 +6,7 @@
 	"framework": null,
 	"functions": {
 		"packages/server/src/server2.ts": {
-			"memory": 3008,
+			"memory": 1024,
 			"maxDuration": 10
 		}
 	},
