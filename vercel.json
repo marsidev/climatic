@@ -1,0 +1,7 @@
+{
+	"buildCommand": "pnpm build",
+	"outputDirectory": "public",
+	"installCommand": "pnpm install",
+	"cleanUrls": true,
+	"framework": null
+}
