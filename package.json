@@ -55,11 +55,6 @@
 	},
 	"packageManager": "pnpm@7.14.0",
 	"pnpm": {
-		"overrides": {
-			"client": "workspace:*",
-			"server": "workspace:*",
-			"shared": "workspace:*"
-		},
 		"peerDependencyRules": {
 			"allowedVersions": {
 				"react": "18",
