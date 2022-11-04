@@ -1,7 +1,7 @@
 import { performance } from 'perf_hooks'
-// import { join } from 'node:path'
-// import Fastify from 'fastify'
-// import autoload from '@fastify/autoload'
+import { join } from 'node:path'
+import Fastify from 'fastify'
+import autoload from '@fastify/autoload'
 import buildApp from './app'
 import config from './lib/config'
 import { logger as pino, startupLog } from './lib/logger'
@@ -45,17 +45,17 @@ const runServer = async () => {
 	const expose = args.includes('--host')
 	const logger = showLogger ? pino : false
 
-	const app = await buildApp({ logger })
-	// const app = Fastify({ logger })
+	// const app = await buildApp({ logger })
+	const app = Fastify({ logger })
 
-	// await app.register(autoload, {
-	// 	dir: join(__dirname, 'plugins')
-	// })
+	await app.register(autoload, {
+		dir: join(__dirname, 'plugins')
+	})
 
-	// await app.register(autoload, {
-	// 	dir: join(__dirname, 'routes'),
-	// 	prefix: '/api'
-	// })
+	await app.register(autoload, {
+		dir: join(__dirname, 'routes'),
+		prefix: '/api'
+	})
 
 	app.listen({ port, host }, (err, address) => {
 		if (err) return console.error(err)
