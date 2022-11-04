@@ -4,7 +4,7 @@ import type { FormValues, LangOption, PressureOption, SetupModalProps, SpeedOpti
 import { useEffect } from 'react'
 import { chakra } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
-import { DEFAULT_LOCALE, SUPPORTED_LANGUAGES } from '@climatic/shared/i18n'
+import { DEFAULT_LOCALE, SUPPORTED_LANGUAGES } from '@climatic/shared'
 import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useStore } from '@store'
