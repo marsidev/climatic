@@ -17,6 +17,7 @@ export async function loadAsyncLanguage(i18n: any, locale: Locale = DEFAULT_LOCA
 	try {
 		const result = await importLocale(locale)
 		if (result) {
+			// @ts-ignore
 			i18n.addResourceBundle(locale, 'translation', result.default || result)
 			i18n.changeLanguage(locale)
 		}
