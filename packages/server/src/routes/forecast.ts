@@ -2,7 +2,7 @@ import type { ForecastRequest } from '@types'
 import type { FastifyPluginAsync } from 'fastify'
 import { fetchForecastData, formatForecastData, formatQuery } from '../lib'
 
-const mocksPath = '~/../../packages/shared/src/mocks/api/source/'
+const mocksPath = '@climatic/shared/src/mocks/api/source/'
 
 export const forecast: FastifyPluginAsync = async (server, opts) => {
 	server.get('/forecast', opts, async (request: ForecastRequest, reply) => {

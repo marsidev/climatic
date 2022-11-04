@@ -1,7 +1,7 @@
 import type { SearchRequest } from '../types'
 import type { FastifyPluginAsync } from 'fastify'
 import { fetchSearchData, formatQuery } from '../lib'
-import '~/../../packages/shared'
+import '@climatic/shared'
 
 export const search: FastifyPluginAsync = async (server, opts) => {
 	server.get('/search', opts, async (request: SearchRequest, reply) => {

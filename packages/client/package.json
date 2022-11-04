@@ -25,6 +25,7 @@
 	"dependencies": {
 		"@babel/core": "7.18.5",
 		"@chakra-ui/react": "2.2.1",
+		"@climatic/shared": "file:../shared/src",
 		"@emotion/react": "11.9.3",
 		"@emotion/styled": "11.9.3",
 		"@fontsource/aileron": "4.5.3",
@@ -51,7 +52,6 @@
 	},
 	"devDependencies": {
 		"@chakra-ui/utils": "2.0.2",
-		"@climatic/shared": "file:../shared/src",
 		"@playwright/test": "1.22.2",
 		"@testing-library/dom": "8.14.0",
 		"@testing-library/jest-dom": "5.16.4",

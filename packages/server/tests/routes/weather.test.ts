@@ -1,4 +1,4 @@
-import type { WeatherResponse } from '~/../../packages/shared'
+import type { WeatherResponse } from '@climatic/shared'
 import type { SuperTest, Test } from 'supertest'
 import type { FastifyInstance } from 'fastify'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'

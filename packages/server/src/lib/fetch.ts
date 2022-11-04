@@ -4,7 +4,7 @@ import type {
 	RapidAPIWeatherResponse,
 	RapidApiRequestQuery
 } from '@types'
-import { DEFAULT_LOCALE } from '~/../../packages/shared'
+import { DEFAULT_LOCALE } from '@climatic/shared'
 import { fillNextForecastDays } from './dailyForecast'
 import config from './config'
 
