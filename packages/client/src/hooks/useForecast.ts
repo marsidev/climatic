@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '@climatic/shared'
+import type { ForecastResponse } from '~/../../packages/shared'
 import { useEffect } from 'react'
 import useSWR from 'swr'
 import { useNavigate, useSearchParams } from 'react-router-dom'

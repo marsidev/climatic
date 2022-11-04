@@ -1,11 +1,8 @@
-import type { ForecastResponse, TemperatureUnit } from '@climatic/shared'
+import type { ForecastResponse, TemperatureUnit } from '~/../../packages/shared'
 import { flag } from 'country-emoji'
 import { formatTemperature } from './intl'
 
-export const updatePageTitle = (
-	forecastData: ForecastResponse,
-	temperatureUnit: TemperatureUnit
-) => {
+export const updatePageTitle = (forecastData: ForecastResponse, temperatureUnit: TemperatureUnit) => {
 	const { location, currentWeather } = forecastData
 	const { temperature, isDay } = currentWeather
 

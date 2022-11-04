@@ -1,12 +1,9 @@
 import type { FC } from 'react'
-import type { ForecastResponse } from '@climatic/shared'
+import type { ForecastResponse } from '~/../../packages/shared'
 import type { StackProps } from '@chakra-ui/react'
 import { Flex, HStack } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
-import {
-	MdCloudQueue as CloudIcon,
-	MdOutlineWaterDrop as DropIcon
-} from 'react-icons/md'
+import { MdCloudQueue as CloudIcon, MdOutlineWaterDrop as DropIcon } from 'react-icons/md'
 import { CgCompressV as PressureIcon } from 'react-icons/cg'
 import { useStore } from '@store'
 import { WindDirectionIcon } from '@components'
@@ -39,12 +36,7 @@ export const WeatherStats: FC<WeatherStatsProps> = ({ data, ...props }) => {
 					value={`${humidity}%`}
 				/>
 
-				<StatCard
-					ariaLabel={t('tooltips.cloudly')}
-					icon={<CloudIcon />}
-					tooltipId='cloud-data'
-					value={`${cloud}%`}
-				/>
+				<StatCard ariaLabel={t('tooltips.cloudly')} icon={<CloudIcon />} tooltipId='cloud-data' value={`${cloud}%`} />
 
 				<StatCard
 					ariaLabel={t('tooltips.wind-data')}

@@ -1,4 +1,4 @@
-import { Locale, MoonPhase, SearchResponse } from '@climatic/shared'
+import { Locale, MoonPhase, SearchResponse } from '~/../../packages/shared'
 
 export interface RapidApiRequestQuery {
 	q: string

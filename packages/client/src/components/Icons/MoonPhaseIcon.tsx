@@ -1,4 +1,4 @@
-import type { MoonPhase } from '@climatic/shared'
+import type { MoonPhase } from '~/../../packages/shared'
 import type { IconProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 import {

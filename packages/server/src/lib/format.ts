@@ -6,11 +6,7 @@ import type {
 	RapidAPIForecastResponse,
 	RapidAPIWeatherResponse
 } from '../types'
-import type {
-	Condition,
-	ForecastResponse,
-	WeatherResponse
-} from '@climatic/shared'
+import type { Condition, ForecastResponse, WeatherResponse } from '~/../../packages/shared'
 
 import '@climatic/shared/src/utils/strings'
 
@@ -24,9 +20,7 @@ export const formatCondition = (condition: RapidAPICondition): Condition => {
 	}
 }
 
-export const formatWeatherData = (
-	data: RapidAPIWeatherResponse
-): WeatherResponse => {
+export const formatWeatherData = (data: RapidAPIWeatherResponse): WeatherResponse => {
 	const { location, current } = data
 	const { country, name, lat, lon, tz_id } = location
 	const {
@@ -233,17 +227,14 @@ export const formatForecastDay = (data: RapidAPIForecastDay) => {
 	}
 }
 
-export const formatForecastData = (
-	data: RapidAPIForecastResponse
-): ForecastResponse => {
+export const formatForecastData = (data: RapidAPIForecastResponse): ForecastResponse => {
 	const {
 		forecast: { forecastday },
 		location,
 		current
 	} = data
 
-	const { location: locationFormatted, weather: currentWeather } =
-		formatWeatherData({ location, current })
+	const { location: locationFormatted, weather: currentWeather } = formatWeatherData({ location, current })
 
 	const forecast = forecastday.map(foreData => {
 		return formatForecastDay(foreData)

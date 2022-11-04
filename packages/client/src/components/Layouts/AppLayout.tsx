@@ -1,15 +1,9 @@
-import type { ForecastResponse } from '@climatic/shared'
+import type { ForecastResponse } from '~/../../packages/shared'
 import type { BoxProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 import { Suspense, lazy } from 'react'
 import { Box, useDisclosure } from '@chakra-ui/react'
-import {
-	Forecast,
-	Navbar,
-	WeatherHeader,
-	WeatherStats,
-	WeatherTemperature
-} from '@components'
+import { Forecast, Navbar, WeatherHeader, WeatherStats, WeatherTemperature } from '@components'
 
 const SearchModal = lazy(() => import('@components/Modals/Search/SearchModal'))
 const SetupModal = lazy(() => import('@components/Modals/Setup/SetupModal'))
@@ -21,23 +15,12 @@ interface LayoutProps extends BoxProps {
 }
 
 export const AppLayout: FC<LayoutProps> = ({ data }) => {
-	const {
-		isOpen: searchIsOpen,
-		onClose: closeSearch,
-		onOpen: openSearch
-	} = useDisclosure()
+	const { isOpen: searchIsOpen, onClose: closeSearch, onOpen: openSearch } = useDisclosure()
 
-	const {
-		isOpen: setupIsOpen,
-		onClose: closeSetup,
-		onOpen: openSetup
-	} = useDisclosure()
+	const { isOpen: setupIsOpen, onClose: closeSetup, onOpen: openSetup } = useDisclosure()
 
 	return (
-		<Box
-			bg='linear-gradient(0deg, rgba(225,148,233,1) 26%, rgba(107,242,255,1) 100%)'
-			className='container'
-		>
+		<Box bg='linear-gradient(0deg, rgba(225,148,233,1) 26%, rgba(107,242,255,1) 100%)' className='container'>
 			<Box as='main' className='weather-card'>
 				<Navbar openSearch={openSearch} openSetup={openSetup} />
 				<WeatherHeader data={data} py={10} />

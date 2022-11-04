@@ -1,4 +1,4 @@
-import type { SearchResponse } from '@climatic/shared'
+import type { SearchResponse } from '~/../../packages/shared'
 import { API_URL } from '@lib/config'
 
 export interface SearchByQuery {
@@ -9,6 +9,6 @@ export const searchByQuery = async ({ q }: SearchByQuery): Promise<SearchRespons
 	const queryString = new URLSearchParams({ q }).toString()
 	const url = `${API_URL}/search?${queryString}`
 
-	const data = await fetch(url).then(r => r.json()) as SearchResponse
+	const data = (await fetch(url).then(r => r.json())) as SearchResponse
 	return data
 }

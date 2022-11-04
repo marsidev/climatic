@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '@climatic/shared'
+import type { ForecastResponse } from '~/../../packages/shared'
 import type { Coordinates } from '@types'
 import { DEFAULT_QUERY } from './config'
 
@@ -24,9 +24,7 @@ export const resolveQueryFromData = (forecastData: ForecastResponse): string => 
 	const { location } = forecastData
 	const { name, country } = location
 
-	const query = `${name}-${country}`
-		.toLowerCase()
-		.replace(/ /g, '-')
+	const query = `${name}-${country}`.toLowerCase().replace(/ /g, '-')
 
 	return query
 }

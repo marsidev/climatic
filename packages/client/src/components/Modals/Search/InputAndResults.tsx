@@ -1,4 +1,4 @@
-import type { SearchItem } from '@climatic/shared'
+import type { SearchItem } from '~/../../packages/shared'
 import type { FlexProps } from '@chakra-ui/react'
 import type { ChangeEvent, FC } from 'react'
 import { useEffect, useState } from 'react'
@@ -67,8 +67,7 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
 					{thereIsResults && t('search-modal.results', { n: data.length })}
 				</Text>
 
-				{thereIsResults &&
-          data.map(d => <ResultItem key={d.id} onSubmit={onSubmit} {...d} />)}
+				{thereIsResults && data.map(d => <ResultItem key={d.id} onSubmit={onSubmit} {...d} />)}
 			</Flex>
 		</Flex>
 	)

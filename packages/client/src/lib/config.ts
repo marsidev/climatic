@@ -1,4 +1,4 @@
-import type { PressureUnit, SpeedUnit, TemperatureUnit } from '@climatic/shared'
+import type { PressureUnit, SpeedUnit, TemperatureUnit } from '~/../../packages/shared'
 import type { GeoPositionOptions } from '@types'
 
 export const mode = import.meta.env.VITE_ENV_TYPE

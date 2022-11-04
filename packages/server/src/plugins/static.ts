@@ -3,7 +3,7 @@ import type { FastifyStaticOptions } from '@fastify/static'
 import fs from 'fs'
 import fastifyStatic from '@fastify/static'
 import fp from 'fastify-plugin'
-import { SUPPORTED_LOCALES } from '@climatic/shared'
+import { SUPPORTED_LOCALES } from '~/../../packages/shared'
 import { assetsConfig, clientAssetsConfig, html } from '../lib'
 
 type staticPluginProps = FastifyPluginAsync<FastifyStaticOptions>

@@ -1,13 +1,6 @@
-import type { Locale } from '@climatic/shared'
+import type { Locale } from '~/../../packages/shared'
 import type { FC } from 'react'
-import type {
-	FormValues,
-	LangOption,
-	PressureOption,
-	SetupModalProps,
-	SpeedOption,
-	TemperatureOption
-} from './types'
+import type { FormValues, LangOption, PressureOption, SetupModalProps, SpeedOption, TemperatureOption } from './types'
 import { useEffect } from 'react'
 import { chakra } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'

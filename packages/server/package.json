@@ -20,7 +20,6 @@
 		"test:watch": "cross-env NODE_ENV=test vitest"
 	},
 	"dependencies": {
-		"@climatic/shared": "file:../shared",
 		"@fastify/autoload": "5.0.0",
 		"@fastify/cors": "8.0.0",
 		"@fastify/sensible": "5.1.0",

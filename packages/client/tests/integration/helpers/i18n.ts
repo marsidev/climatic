@@ -1,7 +1,7 @@
-import type { Locale } from '@climatic/shared'
+import type { Locale } from '~/../../packages/shared'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@climatic/shared'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '~/../../packages/shared'
 import es from '@/i18n/translations/es.json'
 import en from '@/i18n/translations/en.json'
 

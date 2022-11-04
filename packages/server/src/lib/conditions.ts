@@ -1,4 +1,4 @@
-import allConditions from '@climatic/shared/src/mocks/api/source/conditions-multilang.json'
+import allConditions from '~/../../packages/shared/src/mocks/api/source/conditions-multilang.json'
 
 interface Condition {
 	id: number

@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '@climatic/shared'
+import type { ForecastResponse } from '~/../../packages/shared'
 import type { FlexProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 import { Flex, Heading, Image, Text, chakra } from '@chakra-ui/react'
@@ -23,21 +23,11 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
 	const date = getLargeDate(updateAt)
 	const emojiFlag = flag(country)
 
-	const conditionTranslationKey = getWeatherConditionTranslationKey(
-		conditionId,
-		isDay
-	)
+	const conditionTranslationKey = getWeatherConditionTranslationKey(conditionId, isDay)
 
 	return (
 		<Flex align='center' as='header' flexDir='column' {...props}>
-			<Heading
-				as='h2'
-				fontSize='5xl'
-				fontWeight={300}
-				id='location-name'
-				lineHeight={1}
-				textAlign='center'
-			>
+			<Heading as='h2' fontSize='5xl' fontWeight={300} id='location-name' lineHeight={1} textAlign='center'>
 				{city}
 				{emojiFlag && (
 					<>
@@ -55,13 +45,7 @@ export const WeatherHeader: FC<HeaderProps> = ({ data, ...props }) => {
 				<Time timezone={timezone} />
 			</Heading>
 
-			<Flex
-				align='center'
-				as='h3'
-				fontSize='2xl'
-				fontWeight={400}
-				justify='center'
-			>
+			<Flex align='center' as='h3' fontSize='2xl' fontWeight={400} justify='center'>
 				<Text as='span' h='100%'>
 					{t(conditionTranslationKey)}
 				</Text>

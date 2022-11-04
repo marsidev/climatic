@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '@climatic/shared'
+import type { ForecastResponse } from '~/../../packages/shared'
 import type { FlexProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 import { Flex, Heading, chakra } from '@chakra-ui/react'
@@ -39,12 +39,7 @@ export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => 
 			</Heading>
 
 			{showFeelsLikeTemperature && (
-				<chakra.span
-					fontFamily='RubikVariable, san-serif'
-					fontSize='lg'
-					fontWeight={400}
-					id='feels-like'
-				>
+				<chakra.span fontFamily='RubikVariable, san-serif' fontSize='lg' fontWeight={400} id='feels-like'>
 					{t('feels-like-label', { t: feelTemperatureStr })}
 					{/* Sensación térmica de {feelTemperatureStr} */}
 				</chakra.span>

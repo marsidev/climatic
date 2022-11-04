@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react'
-import type { Astro as AstroType, ForecastResponse } from '@climatic/shared'
+import type { Astro as AstroType, ForecastResponse } from '~/../../packages/shared'
 import type { FlexProps, StackProps } from '@chakra-ui/react'
 import { Flex, HStack, Heading, Text, VStack, chakra } from '@chakra-ui/react'
 import { WiMoonrise, WiMoonset, WiSunrise, WiSunset } from 'react-icons/wi'
@@ -29,7 +29,9 @@ const resolveAstro = (data: AstroType, lang: string) => {
 const LabelIcon: FC<LabelIconProps> = ({ label, icon }) => {
 	return (
 		<Flex align='center'>
-			<Text as='span' minW='80px'>{label}</Text>
+			<Text as='span' minW='80px'>
+				{label}
+			</Text>
 
 			<chakra.figure display='inline-block' fontSize='md'>
 				{icon}
@@ -49,14 +51,7 @@ export const Astro: FC<AstroProps> = ({ data, ...props }) => {
 	const { moonrise, moonset, sunrise, sunset, moon_phase } = astro
 
 	return (
-		<Flex
-			align='center'
-			as='section'
-			flexDir='column'
-			id='astro-section'
-			px={2}
-			{...props}
-		>
+		<Flex align='center' as='section' flexDir='column' id='astro-section' px={2} {...props}>
 			<Heading as='h4' className='section-heading'>
 				{t('astro.title')}
 			</Heading>
@@ -87,10 +82,7 @@ export const Astro: FC<AstroProps> = ({ data, ...props }) => {
 						{t('astro.moon-phase')}
 					</Text>
 
-					<LabelIcon
-						icon={<MoonPhaseIcon phase={moon_phase} />}
-						label={t(`astro.moon-phases.${moon_phase}`)}
-					/>
+					<LabelIcon icon={<MoonPhaseIcon phase={moon_phase} />} label={t(`astro.moon-phases.${moon_phase}`)} />
 				</HStack>
 			</VStack>
 		</Flex>

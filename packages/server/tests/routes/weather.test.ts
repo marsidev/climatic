@@ -1,4 +1,4 @@
-import type { WeatherResponse } from '@climatic/shared'
+import type { WeatherResponse } from '~/../../packages/shared'
 import type { SuperTest, Test } from 'supertest'
 import type { FastifyInstance } from 'fastify'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
@@ -23,10 +23,7 @@ afterAll(async () => {
 describe.concurrent('GET /api/weather', () => {
 	describe.concurrent('with a non-valid-query', () => {
 		it('has expected statusCode and content-type', async () => {
-			await api
-				.get(NON_VALID_URL)
-				.expect(500)
-				.expect('Content-Type', 'application/json; charset=utf-8')
+			await api.get(NON_VALID_URL).expect(500).expect('Content-Type', 'application/json; charset=utf-8')
 		})
 
 		it('has expected properties', async () => {
@@ -42,10 +39,7 @@ describe.concurrent('GET /api/weather', () => {
 
 	describe.concurrent('with a valid-query', () => {
 		it('has expected statusCode and content-type', async () => {
-			await api
-				.get(VALID_URL)
-				.expect(200)
-				.expect('Content-Type', 'application/json; charset=utf-8')
+			await api.get(VALID_URL).expect(200).expect('Content-Type', 'application/json; charset=utf-8')
 		})
 
 		it('has expected properties', async () => {

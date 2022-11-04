@@ -1,11 +1,6 @@
 import type { Coordinates, LocationStatus } from '@types'
-import type { ForecastResponse, Locale } from '@climatic/shared'
-import {
-	API_URL,
-	DEFAULT_FORECAST_DAYS,
-	DEFAULT_QUERY,
-	SHOW_MOCK
-} from '@lib/config'
+import type { ForecastResponse, Locale } from '~/../../packages/shared'
+import { API_URL, DEFAULT_FORECAST_DAYS, DEFAULT_QUERY, SHOW_MOCK } from '@lib/config'
 
 export interface GetForecastByCoords {
 	coords: Coordinates | null
@@ -18,7 +13,10 @@ export interface GetForecastByQuery {
 	lang?: Locale
 }
 
-export const fetchForecastByCoords = async ({ coords, locationStatus }: GetForecastByCoords): Promise<ForecastResponse> => {
+export const fetchForecastByCoords = async ({
+	coords,
+	locationStatus
+}: GetForecastByCoords): Promise<ForecastResponse> => {
 	const { latitude, longitude } = coords ?? {}
 
 	const noCoords: boolean = !latitude && !longitude
