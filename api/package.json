@@ -5,7 +5,7 @@
 	},
 	"name": "@climatic/api",
 	"version": "1.0.0",
-	"main": "dist/src/server.js",
+	"main": "src/server.ts",
 	"license": "ISC",
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development tsx watch src/server.ts --host",

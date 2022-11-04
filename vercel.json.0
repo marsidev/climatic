@@ -1,6 +1,6 @@
 {
 	"buildCommand": "pnpm build",
-	"outputDirectory": "packages/client/dist",
+	"outputDirectory": "public",
 	"installCommand": "pnpm install",
 	"cleanUrls": true,
 	"framework": null,
@@ -11,11 +11,11 @@
 		},
 		{
 			"source": "/assets/(.*)",
-			"destination": "packages/client/dist/assets/$1"
+			"destination": "public/assets/$1"
 		},
 		{
 			"source": "/(.*)",
-			"destination": "packages/client/dist/index.html"
+			"destination": "public/index.html"
 		}
 	]
 }

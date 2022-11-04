@@ -12,7 +12,7 @@
 		"packages/*"
 	],
 	"scripts": {
-		"build": "pnpm run --parallel build",
+		"build": "pnpm run --filter=client build",
 		"start": "pnpm run --filter=api start",
 		"dev": "run-p -l dev:api dev:client",
 		"dev:https": "run-p -l dev:api dev:client:https",
