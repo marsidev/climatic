@@ -1,0 +1,36 @@
+{
+	"version": 2,
+	"builds": [
+		{
+			"src": "packages/server/src/server2.ts",
+			"use": "@vercel/node"
+		},
+		{
+			"src": "packages/client/package.json",
+			"use": "@vercel/static-build",
+			"config": {
+				"distDir": "dist"
+			}
+		}
+	],
+	"routes": [
+		{
+			"src": "/api/(.*)",
+			"dest": "packages/server/src/server2.ts",
+			"headers": {
+				"cache-control": "s-maxage=0"
+			}
+		},
+		{
+			"src": "/assets/(.*)",
+			"headers": {
+				"cache-control": "s-maxage=31536000,immutable"
+			},
+			"dest": "packages/client/assets/$1"
+		},
+		{
+			"src": "/(.*)",
+			"dest": "packages/client/index.html"
+		}
+	]
+}

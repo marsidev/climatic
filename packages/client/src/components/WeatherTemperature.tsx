@@ -1,55 +1,54 @@
 import type { ForecastResponse } from '@climatic/shared'
 import type { FlexProps } from '@chakra-ui/react'
 import type { FC } from 'react'
-
-import { chakra, Flex, Heading } from '@chakra-ui/react'
+import { Flex, Heading, chakra } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 import { formatTemperature } from '@lib/intl'
 import { useStore } from '@store'
-import { useTranslation } from 'react-i18next'
 
 interface TemperatureProps extends FlexProps {
-  data: ForecastResponse
+	data: ForecastResponse
 }
 
 export const WeatherTemperature: FC<TemperatureProps> = ({ data, ...props }) => {
-  const { t } = useTranslation()
-  const temperatureUnit = useStore(s => s.temperatureUnit)
-  const { currentWeather } = data
-  const { temperature, feelsLike } = currentWeather
+	const { t } = useTranslation()
+	const temperatureUnit = useStore(s => s.temperatureUnit)
+	const { currentWeather } = data
+	const { temperature, feelsLike } = currentWeather
 
-  const _temperature = temperature[temperatureUnit]
-  const temperatureStr = formatTemperature(_temperature, temperatureUnit)
+	const _temperature = temperature[temperatureUnit]
+	const temperatureStr = formatTemperature(_temperature, temperatureUnit)
 
-  const feelTemperature = feelsLike[temperatureUnit]
-  const feelTemperatureStr = formatTemperature(feelTemperature, temperatureUnit)
+	const feelTemperature = feelsLike[temperatureUnit]
+	const feelTemperatureStr = formatTemperature(feelTemperature, temperatureUnit)
 
-  const showFeelsLikeTemperature = temperatureStr !== feelTemperatureStr
+	const showFeelsLikeTemperature = temperatureStr !== feelTemperatureStr
 
-  return (
-    <Flex align='center' as='section' flexDir='column' {...props}>
-      <Heading
-        as='h3'
-        fontFamily='Aileron, san-serif'
-        fontSize='8xl'
-        fontWeight={300}
-        id='temperature'
-        lineHeight={1}
-        py={0}
-      >
-        {temperatureStr}
-      </Heading>
+	return (
+		<Flex align='center' as='section' flexDir='column' {...props}>
+			<Heading
+				as='h3'
+				fontFamily='Aileron, san-serif'
+				fontSize='8xl'
+				fontWeight={300}
+				id='temperature'
+				lineHeight={1}
+				py={0}
+			>
+				{temperatureStr}
+			</Heading>
 
-      {showFeelsLikeTemperature && (
-        <chakra.span
-          fontFamily='RubikVariable, san-serif'
-          fontSize='lg'
-          fontWeight={400}
-          id='feels-like'
-        >
-          {t('feels-like-label', { t: feelTemperatureStr })}
-          {/* Sensación térmica de {feelTemperatureStr} */}
-        </chakra.span>
-      )}
-    </Flex>
-  )
+			{showFeelsLikeTemperature && (
+				<chakra.span
+					fontFamily='RubikVariable, san-serif'
+					fontSize='lg'
+					fontWeight={400}
+					id='feels-like'
+				>
+					{t('feels-like-label', { t: feelTemperatureStr })}
+					{/* Sensación térmica de {feelTemperatureStr} */}
+				</chakra.span>
+			)}
+		</Flex>
+	)
 }

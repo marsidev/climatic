@@ -1,15 +1,15 @@
 import type { Language } from '../types'
 
 export const SUPPORTED_LANGUAGES: Language[] = [
-  {
-    locale: 'en',
-    name: 'English',
-    default: true
-  },
-  {
-    locale: 'es',
-    name: 'Español'
-  }
+	{
+		locale: 'en',
+		name: 'English',
+		default: true
+	},
+	{
+		locale: 'es',
+		name: 'Español'
+	}
 ]
 
 export const SUPPORTED_LOCALES = SUPPORTED_LANGUAGES.map(l => l.locale)

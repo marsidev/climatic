@@ -3,33 +3,33 @@ import type { FastifyRequest } from 'fastify'
 export interface Ping { ping: string }
 
 export interface FetchOptions {
-  method: string
-  headers: {
-    [key: string]: string
-  }
+	method: string
+	headers: {
+		[key: string]: string
+	}
 }
 
 interface WeatherQuerystring {
-  q: string
-  original?: string
-  lang?: string
+	q: string
+	original?: string
+	lang?: string
 }
 
 export interface ForecastQuerystring extends WeatherQuerystring {
-  days?: number
-  dt?: string
+	days?: number
+	dt?: string
 }
 
 interface WeatherRequestQuery {
-  Querystring: WeatherQuerystring
+	Querystring: WeatherQuerystring
 }
 
 interface ForecastRequestQuery {
-  Querystring: ForecastQuerystring
+	Querystring: ForecastQuerystring
 }
 
 interface ConditionsI18nQuerystring {
-  Params: { lang: string }
+	Params: { lang: string }
 }
 
 export type WeatherRequest = FastifyRequest<WeatherRequestQuery>

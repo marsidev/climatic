@@ -1,33 +1,32 @@
 import type { ForecastResponse } from '@climatic/shared'
 import type { Coordinates } from '@types'
-
 import { DEFAULT_QUERY } from './config'
 
 export const coordsToQuery = (coords: Coordinates | null): string | null => {
-  const { latitude, longitude } = coords ?? {}
+	const { latitude, longitude } = coords ?? {}
 
-  if (latitude && longitude) {
-    return `${latitude.toFixed(4)},${longitude.toFixed(4)}`
-  }
+	if (latitude && longitude) {
+		return `${latitude.toFixed(4)},${longitude.toFixed(4)}`
+	}
 
-  return null
+	return null
 }
 
 export const resolveDefaultQuery = (coords: Coordinates | null): string => {
-  const coordsQuery = coordsToQuery(coords)
+	const coordsQuery = coordsToQuery(coords)
 
-  if (coordsQuery) return coordsQuery
+	if (coordsQuery) return coordsQuery
 
-  return DEFAULT_QUERY
+	return DEFAULT_QUERY
 }
 
 export const resolveQueryFromData = (forecastData: ForecastResponse): string => {
-  const { location } = forecastData
-  const { name, country } = location
+	const { location } = forecastData
+	const { name, country } = location
 
-  const query = `${name}-${country}`
-    .toLowerCase()
-    .replace(/ /g, '-')
+	const query = `${name}-${country}`
+		.toLowerCase()
+		.replace(/ /g, '-')
 
-  return query
+	return query
 }

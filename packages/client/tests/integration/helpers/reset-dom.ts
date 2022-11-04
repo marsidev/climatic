@@ -1,4 +1,4 @@
 export const resetDom = () => {
-  document.body.innerHTML = ''
-  document.head.innerHTML = ''
+	document.body.innerHTML = ''
+	document.head.innerHTML = ''
 }

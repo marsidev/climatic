@@ -1,79 +1,80 @@
 {
-  "private": true,
-  "author": {
-    "name": "Luis Marsiglia",
-    "email": "marsiglia.business@gmail.com"
-  },
-  "name": "climatic",
-  "description": "Climatic is a weather forecast app.",
-  "version": "1.0.0",
-  "license": "ISC",
-  "workspaces": [
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "pnpm run --parallel build",
-    "start": "pnpm --filter=server start",
-    "dev": "run-p -l dev:server dev:client",
-    "dev:https": "run-p -l dev:server dev:client:https",
-    "dev:server": "pnpm --filter=server dev",
-    "dev:client": "pnpm --filter=client dev",
-    "dev:client:https": "pnpm --filter=client dev:https",
-    "start:all": "pnpm build && pnpm start",
-    "lint": "pnpm run --parallel lint",
-    "lint:fix": "pnpm run --parallel lint:fix",
-    "tsc": "pnpm run --parallel tsc",
-    "test": "run-p -l test:shared test:server test:client",
-    "test:watch": "run-p -l test:shared:watch test:server:watch test:client:watch",
-    "test:server": "pnpm --filter=server test",
-    "test:server:watch": "pnpm --filter=server test:watch",
-    "test:client": "pnpm --filter=client test",
-    "test:client:watch": "pnpm --filter=client test:watch",
-    "test:e2e": "run-p -l  dev:server dev:client:https test:e2e:client",
-    "test:e2e:watch": "run-p -l  dev:server dev:client:https test:e2e:client:watch",
-    "test:e2e:client": "pnpm --filter=client test:e2e",
-    "test:e2e:client:watch": "pnpm --filter=client test:e2e:watch",
-    "test:shared": "pnpm --filter=shared test",
-    "test:shared:watch": "pnpm --filter=shared test:watch",
-    "prebuild": "npm i -g pnpm && pnpm i"
-  },
-  "devDependencies": {
-    "@types/node": "18.0.0",
-    "@typescript-eslint/eslint-plugin": "5.29.0",
-    "@typescript-eslint/parser": "5.27.1",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.18.0",
-    "eslint-config-xo": "0.41.0",
-    "npm-run-all": "4.1.5",
-    "tslib": "2.4.0",
-    "typescript": "4.7.4"
-  },
-  "packageManager": "pnpm@7.3.0",
-  "pnpm": {
-    "overrides": {
-      "client": "workspace:*",
-      "server": "workspace:*",
-      "shared": "workspace:*"
-    },
-    "peerDependencyRules": {
-      "allowedVersions": {
-        "react": "18",
-        "react-dom": "18"
-      }
-    }
-  },
-  "engines": {
-    "node": "14.x",
-    "pnpm": "7.x"
-  },
-  "keywords": [
-    "weather",
-    "rapidapi",
-    "hackathon",
-    "fastify",
-    "vite",
-    "react",
-    "chakra-ui",
-    "typescript"
-  ]
+	"private": true,
+	"author": {
+		"name": "Luis Marsiglia",
+		"email": "marsiglia.business@gmail.com"
+	},
+	"name": "climatic",
+	"description": "Climatic is a weather forecast app.",
+	"version": "1.0.0",
+	"license": "ISC",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"build": "pnpm run --parallel build",
+		"start": "pnpm run --filter=server start",
+		"dev": "run-p -l dev:server dev:client",
+		"dev:https": "run-p -l dev:server dev:client:https",
+		"dev:server": "pnpm --filter=server dev",
+		"dev:client": "pnpm --filter=client dev",
+		"dev:client:https": "pnpm --filter=client dev:https",
+		"start:all": "pnpm build && pnpm start",
+		"lint": "pnpm run --parallel lint",
+		"lint:fix": "pnpm run --parallel lint:fix",
+		"tsc": "pnpm run --parallel tsc",
+		"test": "run-p -l test:shared test:server test:client",
+		"test:watch": "run-p -l test:shared:watch test:server:watch test:client:watch",
+		"test:server": "pnpm --filter=server test",
+		"test:server:watch": "pnpm --filter=server test:watch",
+		"test:client": "pnpm --filter=client test",
+		"test:client:watch": "pnpm --filter=client test:watch",
+		"test:e2e": "run-p -l  dev:server dev:client:https test:e2e:client",
+		"test:e2e:watch": "run-p -l  dev:server dev:client:https test:e2e:client:watch",
+		"test:e2e:client": "pnpm --filter=client test:e2e",
+		"test:e2e:client:watch": "pnpm --filter=client test:e2e:watch",
+		"test:shared": "pnpm --filter=shared test",
+		"test:shared:watch": "pnpm --filter=shared test:watch"
+	},
+	"devDependencies": {
+		"@types/node": "18.0.0",
+		"@typescript-eslint/eslint-plugin": "5.33.0",
+		"@typescript-eslint/parser": "5.33.0",
+		"eslint-config-marsi": "1.1.1",
+		"eslint-config-standard": "17.0.0",
+		"eslint-import-resolver-typescript": "3.5.1",
+		"eslint-plugin-import": "2.26.0",
+		"eslint-plugin-n": "15.2.5",
+		"eslint-plugin-promise": "6.0.1",
+		"eslint-plugin-react": "7.31.7",
+		"cz-conventional-changelog": "3.3.0",
+		"eslint": "8.18.0",
+		"npm-run-all": "4.1.5",
+		"tslib": "2.4.0",
+		"typescript": "4.7.4"
+	},
+	"packageManager": "pnpm@7.14.0",
+	"pnpm": {
+		"overrides": {
+			"client": "workspace:*",
+			"server": "workspace:*",
+			"shared": "workspace:*"
+		},
+		"peerDependencyRules": {
+			"allowedVersions": {
+				"react": "18",
+				"react-dom": "18"
+			}
+		}
+	},
+	"keywords": [
+		"weather",
+		"rapidapi",
+		"hackathon",
+		"fastify",
+		"vite",
+		"react",
+		"chakra-ui",
+		"typescript"
+	]
 }

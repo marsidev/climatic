@@ -15,151 +15,151 @@ export type SpeedUnit = 'mph' | 'kph'
 export type PressureUnit = 'mb' | 'in'
 
 export interface Astro {
-  sunrise: string
-  sunset: string
-  moonrise: string
-  moonset: string
-  moon_phase: MoonPhase
-  moon_illumination: string
+	sunrise: string
+	sunset: string
+	moonrise: string
+	moonset: string
+	moon_phase: MoonPhase
+	moon_illumination: string
 }
 
 export interface Condition {
-  id: number
-  name: string
-  icon: string
+	id: number
+	name: string
+	icon: string
 }
 
 interface Location {
-  name: string
-  country: string
-  timezone: string
-  latitude: number
-  longitude: number
+	name: string
+	country: string
+	timezone: string
+	latitude: number
+	longitude: number
 }
 
 interface Temperature {
-  celsius: number
-  fahrenheit: number
+	celsius: number
+	fahrenheit: number
 }
 
 interface WinSpeed {
-  kph: number
-  mph: number
+	kph: number
+	mph: number
 }
 
 interface Wind {
-  speed: WinSpeed
-  direction: string
-  degree: number
+	speed: WinSpeed
+	direction: string
+	degree: number
 }
 
 interface Pressure {
-  mb: number
-  in: number
+	mb: number
+	in: number
 }
 
 /* Weather */
 interface Weather {
-  cloud: number
-  humidity: number
-  isDay: boolean
-  temperature: Temperature
-  feelsLike: Temperature
-  wind: Wind
-  pressure: Pressure
-  condition: Condition
-  updateAt: number
-  updateDateAt: string
-  uv: number
+	cloud: number
+	humidity: number
+	isDay: boolean
+	temperature: Temperature
+	feelsLike: Temperature
+	wind: Wind
+	pressure: Pressure
+	condition: Condition
+	updateAt: number
+	updateDateAt: string
+	uv: number
 }
 
 export interface WeatherResponse {
-  location: Location
-  weather: Weather
-  error?: {
-    code: number
-    message: string
-  }
+	location: Location
+	weather: Weather
+	error?: {
+		code: number
+		message: string
+	}
 }
 
 /* Forecast */
 interface ForecastDay {
-  temperature: {
-    celsius: {
-      min: number
-      max: number
-      avg: number
-    }
-    fahrenheit: {
-      min: number
-      max: number
-      avg: number
-    }
-  }
-  wind: {
-    speed: {
-      kph: number
-      mph: number
-    }
-  }
-  precipitation: {
-    mm: number
-    inches: number
-  }
-  avgHumidity: number
-  condition: Condition
-  rain: {
-    chance: number
-    willItRain: boolean
-  }
-  snow: {
-    chance: number
-    willItSnow: boolean
-  }
-  uv: number
+	temperature: {
+		celsius: {
+			min: number
+			max: number
+			avg: number
+		}
+		fahrenheit: {
+			min: number
+			max: number
+			avg: number
+		}
+	}
+	wind: {
+		speed: {
+			kph: number
+			mph: number
+		}
+	}
+	precipitation: {
+		mm: number
+		inches: number
+	}
+	avgHumidity: number
+	condition: Condition
+	rain: {
+		chance: number
+		willItRain: boolean
+	}
+	snow: {
+		chance: number
+		willItSnow: boolean
+	}
+	uv: number
 }
 
 // type WeatherWithoutTimestamps = Omit<Weather, 'updateAt' | 'updateDateAt'>
 interface ForecastHour extends Omit<Weather, 'updateAt' | 'updateDateAt'> {
-  hour: number
-  rain: {
-    chance: number
-    willItRain: boolean
-  }
-  snow: {
-    chance: number
-    willItSnow: boolean
-  }
-  timestamp: number
-  date: string
+	hour: number
+	rain: {
+		chance: number
+		willItRain: boolean
+	}
+	snow: {
+		chance: number
+		willItSnow: boolean
+	}
+	timestamp: number
+	date: string
 }
 
 export interface Forecast {
-  timestamp: number
-  date: string
-  day: ForecastDay
-  hours: ForecastHour[]
-  astro: Astro
+	timestamp: number
+	date: string
+	day: ForecastDay
+	hours: ForecastHour[]
+	astro: Astro
 }
 
 export interface ForecastResponse {
-  location: Location
-  currentWeather: Weather
-  forecast: Forecast[]
-  error?: {
-    code: number
-    message: string
-  }
+	location: Location
+	currentWeather: Weather
+	forecast: Forecast[]
+	error?: {
+		code: number
+		message: string
+	}
 }
 
 export interface SearchItem {
-  id: string
-  name: string
-  region: string
-  country: string
-  lat: number
-  lon: number
-  url: string
+	id: string
+	name: string
+	region: string
+	country: string
+	lat: number
+	lon: number
+	url: string
 }
 
 export type SearchResponse = SearchItem[]
