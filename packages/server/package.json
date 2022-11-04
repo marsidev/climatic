@@ -45,7 +45,7 @@
 		"rimraf": "3.0.2",
 		"supertest": "6.2.3",
 		"tsx": "3.5.0",
-		"typescript": "4.7.4",
+		"typescript": "4.8.4",
 		"vite": "3.2.2",
 		"vite-tsconfig-paths": "3.5.2",
 		"vitest": "0.24.5"
