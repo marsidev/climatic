@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '~/../../packages/shared'
+import type { ForecastResponse } from '@climatic/shared'
 import { beforeAll, describe, expect, it } from 'vitest'
 import { WeatherTemperature } from '@components'
 import { fetchForecastByQuery } from '@services'

@@ -1,4 +1,4 @@
-import type { PressureUnit, SpeedUnit, TemperatureUnit } from '~/../../packages/shared'
+import type { PressureUnit, SpeedUnit, TemperatureUnit } from '@climatic/shared'
 import type { GeoPermission } from '@types'
 import { DEFAULT_PRESSURE_UNIT, DEFAULT_SPEED_UNIT, DEFAULT_TEMPERATURE_UNIT } from './config'
 

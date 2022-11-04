@@ -1,4 +1,4 @@
-import type { PressureUnit, SpeedUnit, TemperatureUnit } from '~/../../packages/shared'
+import type { PressureUnit, SpeedUnit, TemperatureUnit } from '@climatic/shared'
 import type { UserState } from '@types'
 import type { StoreSlice } from '.'
 import {

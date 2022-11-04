@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import type { ForecastResponse } from '~/../../packages/shared'
+import type { ForecastResponse } from '@climatic/shared'
 import type { StackProps } from '@chakra-ui/react'
 import { Flex, HStack } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'

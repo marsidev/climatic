@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '~/../../packages/shared'
+import type { ForecastResponse } from '@climatic/shared'
 import type { BoxProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 import { Suspense, lazy } from 'react'

@@ -1,4 +1,4 @@
-import type { Locale, PressureUnit, SpeedUnit, TemperatureUnit } from '~/../../packages/shared'
+import type { Locale, PressureUnit, SpeedUnit, TemperatureUnit } from '@climatic/shared'
 
 export interface SetupModalProps {
 	isOpen: boolean

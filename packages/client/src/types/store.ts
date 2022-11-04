@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import type { ForecastResponse, PressureUnit, SpeedUnit, TemperatureUnit } from '~/../../packages/shared'
+import type { ForecastResponse, PressureUnit, SpeedUnit, TemperatureUnit } from '@climatic/shared'
 
 export type Coordinates = Pick<GeolocationCoordinates, 'latitude' | 'longitude'>
 

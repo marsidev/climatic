@@ -1,4 +1,4 @@
-import type { ForecastResponse } from '~/../../packages/shared'
+import type { ForecastResponse } from '@climatic/shared'
 import type { Coordinates } from '@types'
 import { DEFAULT_QUERY } from './config'
 

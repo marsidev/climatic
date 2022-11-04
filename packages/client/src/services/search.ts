@@ -1,4 +1,4 @@
-import type { SearchResponse } from '~/../../packages/shared'
+import type { SearchResponse } from '@climatic/shared'
 import { API_URL } from '@lib/config'
 
 export interface SearchByQuery {

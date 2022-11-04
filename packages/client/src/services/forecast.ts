@@ -1,5 +1,5 @@
 import type { Coordinates, LocationStatus } from '@types'
-import type { ForecastResponse, Locale } from '~/../../packages/shared'
+import type { ForecastResponse, Locale } from '@climatic/shared'
 import { API_URL, DEFAULT_FORECAST_DAYS, DEFAULT_QUERY, SHOW_MOCK } from '@lib/config'
 
 export interface GetForecastByCoords {

@@ -1,4 +1,4 @@
-import type { ForecastResponse, TemperatureUnit } from '~/../../packages/shared'
+import type { ForecastResponse, TemperatureUnit } from '@climatic/shared'
 import { flag } from 'country-emoji'
 import { formatTemperature } from './intl'
 

@@ -1,4 +1,4 @@
-import type { PressureUnit, SpeedUnit, TemperatureUnit } from '~/../../packages/shared'
+import type { PressureUnit, SpeedUnit, TemperatureUnit } from '@climatic/shared'
 import i18n from 'i18next'
 
 export const formatInt = (n: number): string => {

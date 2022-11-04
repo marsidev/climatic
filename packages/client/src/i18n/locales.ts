@@ -1,5 +1,5 @@
-import type { Locale } from '~/../../packages/shared'
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '~/../../packages/shared'
+import type { Locale } from '@climatic/shared'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@climatic/shared'
 
 export function extractLocaleFromPath(path = '') {
 	const maybeLocale = path.split('/')[1] as Locale

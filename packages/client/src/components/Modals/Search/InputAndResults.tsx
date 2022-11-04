@@ -1,4 +1,4 @@
-import type { SearchItem } from '~/../../packages/shared'
+import type { SearchItem } from '@climatic/shared'
 import type { FlexProps } from '@chakra-ui/react'
 import type { ChangeEvent, FC } from 'react'
 import { useEffect, useState } from 'react'

@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react'
-import type { Astro as AstroType, ForecastResponse } from '~/../../packages/shared'
+import type { Astro as AstroType, ForecastResponse } from '@climatic/shared'
 import type { FlexProps, StackProps } from '@chakra-ui/react'
 import { Flex, HStack, Heading, Text, VStack, chakra } from '@chakra-ui/react'
 import { WiMoonrise, WiMoonset, WiSunrise, WiSunset } from 'react-icons/wi'
