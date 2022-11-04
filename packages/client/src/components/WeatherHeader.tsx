@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { getLargeDate } from '@lib/intl'
 import { ASSETS_URL } from '@lib/config'
 import { Time } from '@components'
-import { getWeatherConditionTranslationKey } from '@/i18n/helpers'
+import { getWeatherConditionTranslationKey } from '~/i18n/helpers'
 
 interface HeaderProps extends FlexProps {
 	data: ForecastResponse

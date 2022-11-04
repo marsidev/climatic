@@ -7,7 +7,6 @@
 		"noEmit": true,
 		"paths": {
 			"~/*": ["src/*"],
-			"@/*": ["src/*"],
 
 			"@assets": ["src/assets"],
 			"@assets/*": ["src/assets/*"],
@@ -36,7 +35,8 @@
 			"@utils": ["src/utils"],
 			"@utils/*": ["src/utils/*"]
 		},
-		"module": "es2022"
+		"module": "es2022",
+		"skipLibCheck": true
 	},
 	"include": ["src", "tests", "vite.config.ts", "playwright.config.ts"],
 	"exclude": ["node_modules", "./dist/**/*"],
