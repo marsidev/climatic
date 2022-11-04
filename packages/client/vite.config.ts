@@ -25,7 +25,10 @@ export default defineConfig({
 	plugins: [react(), tsconfigPaths()],
 	build: {
 		outDir: './dist',
-		emptyOutDir: false
+		emptyOutDir: false,
+		rollupOptions: {
+			external: ['../shared']
+		}
 	},
 	test: vitestConfig.test
 })
