@@ -21,12 +21,12 @@
 		"test:integration:watch": "cross-env VITE_ENV_TYPE=test vitest",
 		"test:e2e": "npx playwright test",
 		"test:e2e:watch": "nodemon --delay 1 -e ts,tsx --exec pnpm test:e2e",
-		"prebuild": "npm i -g pnpm && cd ../.. && pnpm i && cd packages/client"
+		"preinstall": "npm i -g pnpm && cd ../.. && pnpm i && cd packages/client"
 	},
 	"dependencies": {
 		"@babel/core": "7.18.5",
 		"@chakra-ui/react": "2.2.1",
-		"@climatic/shared": "link:../shared",
+		"@climatic/shared": "file:../shared",
 		"@emotion/react": "11.9.3",
 		"@emotion/styled": "11.9.3",
 		"@fontsource/aileron": "4.5.3",
