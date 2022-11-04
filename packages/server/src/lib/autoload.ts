@@ -1,6 +1,6 @@
 import type { FastifyInstance, FastifyPluginOptions } from 'fastify'
 import { readdir } from 'fs/promises'
-import { extname } from 'path'
+import { extname } from 'node:path'
 
 interface AutoloadPluginOptions {
 	dir: string

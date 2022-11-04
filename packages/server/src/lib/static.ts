@@ -1,5 +1,5 @@
 import type { FastifyStaticOptions } from '@fastify/static'
-import path from 'path'
+import path from 'node:path'
 
 const root = path.join(__dirname, '../../../../')
 const packagesPath = path.join(root, 'packages')
