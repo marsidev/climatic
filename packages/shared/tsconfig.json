@@ -1,11 +1,14 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "types": ["node"],
-    "baseUrl": "."
-  },
-  "include": ["src", "tests", "vitest.config.ts"],
-  "exclude": ["node_modules", "./dist/**/*"],
-  "moduleResolution": ["node_modules", "node"]
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"outDir": "./dist",
+		"types": ["node"],
+		"baseUrl": ".",
+		"esModuleInterop": false,
+		"isolatedModules": false,
+		"module": "ESNext"
+	},
+	"include": ["src", "tests", "vitest.config.ts"],
+	"exclude": ["node_modules", "./dist/**/*"],
+	"moduleResolution": ["node_modules", "node"]
 }
