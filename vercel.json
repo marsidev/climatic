@@ -5,9 +5,7 @@
 	"cleanUrls": true,
 	"framework": null,
 	"functions": {
-		"api/**/*.ts": {
-			"includeFiles": "packages/server/src/server2.ts"
-		}
+		"packages/server/src/server2.ts": {}
 	},
 	"rewrites": [
 		{
