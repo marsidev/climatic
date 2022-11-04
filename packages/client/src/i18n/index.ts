@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { Locale } from '~/../../packages/shared'
+import type { Locale } from '@climatic/shared'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '~/../../packages/shared'
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@climatic/shared'
 
 // This is a dynamic import so not all languages are bundled in frontend.
 const messageImports = import.meta.glob('./translations/*.json')
