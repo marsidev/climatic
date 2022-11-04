@@ -20,8 +20,7 @@
 		"test:integration": "cross-env VITE_ENV_TYPE=test vitest run",
 		"test:integration:watch": "cross-env VITE_ENV_TYPE=test vitest",
 		"test:e2e": "npx playwright test",
-		"test:e2e:watch": "nodemon --delay 1 -e ts,tsx --exec pnpm test:e2e",
-		"preinstall": "npm i -g pnpm && cd ../.. && pnpm i && cd packages/client"
+		"test:e2e:watch": "nodemon --delay 1 -e ts,tsx --exec pnpm test:e2e"
 	},
 	"dependencies": {
 		"@babel/core": "7.18.5",
