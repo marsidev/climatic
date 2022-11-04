@@ -11,7 +11,7 @@
 		"dev:https": "pnpm dev --https",
 		"build": "pnpm clean && pnpm tsc && vite build",
 		"start": "vite preview",
-		"clean": "rimraf ./dist",
+		"clean": "rimraf ../../public",
 		"lint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
 		"lint:fix": "pnpm lint --fix",
 		"tsc": "tsc --noEmit",
@@ -25,7 +25,7 @@
 	"dependencies": {
 		"@babel/core": "7.18.5",
 		"@chakra-ui/react": "2.2.1",
-		"@climatic/shared": "file:../shared/src",
+		"@climatic/shared": "workspace:*",
 		"@emotion/react": "11.9.3",
 		"@emotion/styled": "11.9.3",
 		"@fontsource/aileron": "4.5.3",

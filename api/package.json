@@ -3,7 +3,7 @@
 		"name": "Luis Marsiglia",
 		"email": "marsiglia.business@gmail.com"
 	},
-	"name": "@climatic/server",
+	"name": "@climatic/api",
 	"version": "1.0.0",
 	"main": "dist/src/server.js",
 	"license": "ISC",
@@ -11,7 +11,7 @@
 		"dev": "cross-env NODE_ENV=development tsx watch src/server.ts --host",
 		"dev:log": "pnpm dev --log",
 		"build": "pnpm clean && tsc",
-		"start": "cross-env NODE_ENV=production tsx dist/src/server.js",
+		"start": "tsx src/server.ts",
 		"lint": "eslint . --ext .js --ext .ts",
 		"lint:fix": "pnpm lint --fix",
 		"clean": "rimraf dist",
@@ -21,7 +21,6 @@
 	},
 	"dependencies": {
 		"@climatic/shared": "workspace:*",
-		"@fastify/autoload": "5.0.0",
 		"@fastify/cors": "8.0.0",
 		"@fastify/sensible": "5.1.0",
 		"@fastify/static": "6.4.0",

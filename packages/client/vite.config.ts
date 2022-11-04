@@ -24,7 +24,7 @@ export default defineConfig({
 	},
 	plugins: [react(), tsconfigPaths()],
 	build: {
-		outDir: './dist',
+		outDir: '../../public',
 		emptyOutDir: false,
 		rollupOptions: {
 			external: ['../shared']

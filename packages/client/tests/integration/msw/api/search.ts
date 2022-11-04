@@ -1,5 +1,5 @@
 import { rest } from 'msw'
-import mockSearch from '@climatic/shared/mocks/api/formatted/search.json'
+import mockSearch from '@climatic/shared/src/mocks/api/formatted/search.json'
 
 export default [
 	rest.get('http://localhost:3001/api/search', (_req, res, ctx) => {

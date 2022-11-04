@@ -1,21 +1,37 @@
 {
 	"version": 2,
 	"builds": [
-		{ "src": "packages/server/src/dist/server.js", "use": "@vercel/node" },
-		{ "src": "packages/client/dist/**", "use": "@vercel/static" }
+		{
+			"src": "packages/server/src/server2.ts",
+			"use": "@vercel/node",
+			"config": {
+				"helpers": false,
+				"maxDuration": 60
+			}
+		},
+		{
+			"src": "packages/client/package.json",
+			"use": "@vercel/static-build",
+			"config": {
+				"distDir": "dist"
+			}
+		}
 	],
-	"rewrites": [
+	"routes": [
 		{
-			"source": "/api/(.*)",
-			"destination": "/packages/server/dist/src/server.js"
+			"src": "/api/(.*)",
+			"dest": "packages/server/src/server2.ts"
 		},
 		{
-			"source": "/",
-			"destination": "packages/client/dist/index.html"
+			"src": "/assets/(.*)",
+			"headers": {
+				"cache-control": "s-maxage=31536000,immutable"
+			},
+			"dest": "packages/client/assets/$1"
 		},
 		{
-			"source": "/(.+)",
-			"destination": "packages/client/dist/$1"
+			"src": "/(.*)",
+			"dest": "packages/client/index.html"
 		}
 	]
 }

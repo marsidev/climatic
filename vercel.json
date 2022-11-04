@@ -4,16 +4,10 @@
 	"installCommand": "pnpm install",
 	"cleanUrls": true,
 	"framework": null,
-	"functions": {
-		"packages/server/src/server2.ts": {
-			"memory": 1024,
-			"maxDuration": 10
-		}
-	},
 	"rewrites": [
 		{
 			"source": "/api/(.*)",
-			"destination": "packages/server/src/server2.ts"
+			"destination": "api/index.ts"
 		},
 		{
 			"source": "/assets/(.*)",
