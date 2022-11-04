@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"@chakra-ui/utils": "2.0.2",
-		"@climatic/shared": "workspace:*",
+		"@climatic/shared": "file:../shared/src",
 		"@playwright/test": "1.22.2",
 		"@testing-library/dom": "8.14.0",
 		"@testing-library/jest-dom": "5.16.4",
