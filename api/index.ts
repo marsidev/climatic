@@ -30,10 +30,10 @@
 // export default handler()
 
 const app = require('express')()
-const { v4 } = require('uuid')
 
 app.get('/api', (_req, res) => {
-	const path = `/api/item/${v4()}`
+	const id = Math.floor(Math.random() * 10000)
+	const path = `/api/item/${id}`
 	res.setHeader('Content-Type', 'text/html')
 	res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
 	res.end(`Hello! Go to item: <a href="${path}">${path}</a>`)
