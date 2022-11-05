@@ -3,5 +3,6 @@
 	"outputDirectory": "public",
 	"installCommand": "pnpm install",
 	"cleanUrls": true,
-	"framework": null
+	"framework": null,
+	"rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
 }
