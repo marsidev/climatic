@@ -5,43 +5,47 @@
 
 // export default fastifyApp
 // module.exports = fastifyApp
-import Fastify, { FastifyInstance } from 'fastify'
+// import Fastify, { FastifyInstance } from 'fastify'
 
-async function handler(): Promise<FastifyInstance> {
-	const fastify = Fastify()
+// async function handler(): Promise<FastifyInstance> {
+// 	const fastify = Fastify()
 
-	fastify.get('/api/ping', async (_request, reply) => {
-		reply.send({ ping: 'pong' })
-	})
+// 	fastify.get('/api/ping', async (_request, reply) => {
+// 		reply.send({ ping: 'pong' })
+// 	})
 
-	const port = Number(process.env.PORT ?? 3001)
-	const host = '0.0.0.0'
+// 	const port = Number(process.env.PORT ?? 3001)
+// 	const host = '0.0.0.0'
 
-	await fastify.ready()
+// 	await fastify.ready()
 
-	fastify.listen({ port, host }, (err, address) => {
-		if (err) return console.error(err)
-		console.log(address)
-	})
+// 	fastify.listen({ port, host }, (err, address) => {
+// 		if (err) return console.error(err)
+// 		console.log(address)
+// 	})
 
-	return fastify
-}
+// 	return fastify
+// }
 
-export default handler()
+// export default handler()
 
-// const app = require('express')()
-// const { v4 } = require('uuid')
+const app = require('express')()
+const { v4 } = require('uuid')
 
-// app.get('/api', (req, res) => {
-// 	const path = `/api/item/${v4()}`
-// 	res.setHeader('Content-Type', 'text/html')
-// 	res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
-// 	res.end(`Hello! Go to item: <a href="${path}">${path}</a>`)
-// })
+app.get('/api', (_req, res) => {
+	const path = `/api/item/${v4()}`
+	res.setHeader('Content-Type', 'text/html')
+	res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+	res.end(`Hello! Go to item: <a href="${path}">${path}</a>`)
+})
 
-// app.get('/api/item/:slug', (req, res) => {
-// 	const { slug } = req.params
-// 	res.end(`Item: ${slug}`)
-// })
+app.get('/api/item/:slug', (req, res) => {
+	const { slug } = req.params
+	res.end(`Item: ${slug}`)
+})
 
-// module.exports = app
+app.get('/api/ping', (_req, res) => {
+	res.json({ ping: 'pong' })
+})
+
+module.exports = app
