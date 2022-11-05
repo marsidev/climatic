@@ -6,7 +6,7 @@
 // module.exports = fastifyApp
 import Fastify, { FastifyInstance } from 'fastify'
 
-export default async function handler(): Promise<FastifyInstance> {
+async function handler(): Promise<FastifyInstance> {
 	const fastify = Fastify()
 
 	fastify.get('/ping', async (_request, reply) => {
@@ -25,3 +25,5 @@ export default async function handler(): Promise<FastifyInstance> {
 
 	return fastify
 }
+
+export default handler()
