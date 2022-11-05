@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 // const fastifyApp = require('../packages/server/src/server')
 // import fastifyApp from '../packages/server/src/server'
@@ -9,7 +10,7 @@ import Fastify, { FastifyInstance } from 'fastify'
 async function handler(): Promise<FastifyInstance> {
 	const fastify = Fastify()
 
-	fastify.get('/ping', async (_request, reply) => {
+	fastify.get('/api/ping', async (_request, reply) => {
 		reply.send({ ping: 'pong' })
 	})
 
@@ -27,3 +28,20 @@ async function handler(): Promise<FastifyInstance> {
 }
 
 export default handler()
+
+// const app = require('express')()
+// const { v4 } = require('uuid')
+
+// app.get('/api', (req, res) => {
+// 	const path = `/api/item/${v4()}`
+// 	res.setHeader('Content-Type', 'text/html')
+// 	res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+// 	res.end(`Hello! Go to item: <a href="${path}">${path}</a>`)
+// })
+
+// app.get('/api/item/:slug', (req, res) => {
+// 	const { slug } = req.params
+// 	res.end(`Item: ${slug}`)
+// })
+
+// module.exports = app
