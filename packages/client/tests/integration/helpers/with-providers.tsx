@@ -1,5 +1,5 @@
 /* @ref: https://testing-library.com/docs/react-testing-library/setup/ */
-import type { FC, ReactElement, ReactNode } from 'react'
+import type { FC, ReactElement, JSXElementConstructor } from 'react'
 
 import { render, RenderOptions } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
@@ -9,15 +9,20 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { I18nextProvider } from 'react-i18next'
 import { installI18n, extractLocaleFromPath } from './i18n'
 import 'isomorphic-fetch'
+import React from 'react'
 
 interface Render {
-  (
-    ui: ReactElement,
-    opts?: Omit<RenderOptions, 'wrapper'>
-  ): ReturnType<typeof render>
+  (ui: ReactElement, opts?: Omit<RenderOptions, 'wrapper'>): ReturnType<
+    typeof render
+  >
 }
 
-const Providers: FC<{ children: ReactNode }> = ({ children }) => {
+const Providers: FC<{
+  children:
+    | ReactElement<any, string | JSXElementConstructor<any>>
+    | null
+    | undefined
+}> = ({ children }) => {
   const lang = extractLocaleFromPath(window.location.pathname)
   const i18n = installI18n(lang)
 
