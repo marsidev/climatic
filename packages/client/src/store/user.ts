@@ -1,9 +1,9 @@
 import type { TemperatureUnit, SpeedUnit, PressureUnit } from '@climatic/shared'
 import type { UserState } from '@types'
-import type { StoreSlice } from '.'
+import type { SliceCreator } from '.'
 import { savePermissionToLocalStorage, getPermissionFromLocalStorage, getTemperatureUnit, getPressureUnit, getSpeedUnit, savePressureUnit, saveSpeedUnit, saveTemperatureUnit } from '@lib/localStorage'
 
-export const user: StoreSlice<UserState> = (set, get): UserState => ({
+export const user: SliceCreator<UserState> = (set, get) => ({
   permission: null,
   grantPermission() {
     set(() => ({ permission: 'granted' }))

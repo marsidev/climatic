@@ -60,6 +60,7 @@ const printServerUrls = (
         // Node < v18
         (typeof detail.family === 'string' && detail.family === 'IPv4') ||
         // Node >= v18
+        // @ts-ignore
         (typeof detail.family === 'number' && detail.family === 4)
       ) {
         const host = detail.address.replace('127.0.0.1', hostname)

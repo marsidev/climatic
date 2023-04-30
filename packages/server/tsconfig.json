@@ -8,21 +8,20 @@
 
       "@app": ["src/app"],
       "@server": ["src/server"],
-      
+
       "@lib": ["src/lib"],
       "@lib/*": ["src/lib/*"],
-      
+
       "@plugins": ["src/plugins"],
       "@plugins/*": ["src/plugins/*"],
-      
+
       "@routes": ["src/routes"],
       "@routes/*": ["src/routes/*"],
-      
+
       "@types": ["src/types"],
       "@types/*": ["src/types/*"],
     },
     "declarationDir": "dist/types",
-    "types": ["node", "vitest/globals"],
     "typeRoots": ["src/types"]
   },
   "include": ["src/**/*.ts", "tests/**/*.ts"],

@@ -26,7 +26,7 @@ export const Footer: FC<FooterProps> = ({ ...props }) => {
           <Link
             isExternal
             href='https://twitter.com/marsidev'
-            title={t('tooltips.twitter')}
+            title={t('tooltips.twitter') as string}
           >
             <strong>Luis Marsiglia</strong>
           </Link>
@@ -35,7 +35,7 @@ export const Footer: FC<FooterProps> = ({ ...props }) => {
         <Link
           isExternal
           href='https://github.com/marsidev/climatic'
-          title={t('tooltips.source')}
+          title={t('tooltips.source') as string}
         >
           <IconButton
             aria-label='github icon'

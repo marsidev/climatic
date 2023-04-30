@@ -4,14 +4,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import basicSsl from '@vitejs/plugin-basic-ssl'
 import { resolve } from 'path'
 
 export default defineConfig({
   server: {
     proxy: { '/api': 'http://localhost:3001' },
-    https: false
+    https: false,
+    port: 3000
   },
-  plugins: [react(), tsconfigPaths()],
+  plugins: [react(), tsconfigPaths(), basicSsl()],
   build: {
     outDir: '../../dist',
     emptyOutDir: false

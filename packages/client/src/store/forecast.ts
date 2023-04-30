@@ -1,9 +1,9 @@
 import type { ForecastState } from '@types'
-import type { StoreSlice } from '.'
+import type { SliceCreator } from '.'
 import { fetchForecastByCoords, fetchForecastByQuery } from '@services'
 import { coordsToQuery } from '@lib'
 
-export const forecast: StoreSlice<ForecastState> = (set, get): ForecastState => ({
+export const forecast: SliceCreator<ForecastState> = (set, get) => ({
   fetching: false,
 
   forecastData: null,

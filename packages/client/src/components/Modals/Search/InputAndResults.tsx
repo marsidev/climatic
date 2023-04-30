@@ -54,7 +54,8 @@ const InputAndResults: FC<SearchInputProps> = ({ closeModal }) => {
         <Input
           autoFocus
           autoComplete='off'
-          placeholder={t('search-modal.input-placeholder')}
+          id='search-modal-input'
+          placeholder={t('search-modal.input-placeholder') as string}
           type='text'
           onChange={handleChange}
         />

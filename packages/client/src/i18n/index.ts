@@ -1,6 +1,6 @@
 import type { Locale } from '@climatic/shared'
 
-import i18n from 'i18next'
+import i18n, { ResourceKey } from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@climatic/shared'
 
@@ -13,7 +13,7 @@ function importLocale(locale: Locale) {
       key.includes(`/${locale}.`)
     ) || []
 
-  return importLocale && importLocale()
+  return (importLocale && importLocale()) as Promise<Record<string, ResourceKey>>
 }
 
 export async function loadAsyncLanguage(i18n: any, locale: Locale = DEFAULT_LOCALE) {

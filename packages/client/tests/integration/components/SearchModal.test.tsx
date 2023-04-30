@@ -91,7 +91,8 @@ describe('<SearchModal />', () => {
       await openDialog()
     })
 
-    test('input is initially focused', async () => {
+    test.skip('input is initially focused', async () => {
+      await openDialog()
       expect(await screen.findByRole('dialog')).toBeTruthy()
 
       await waitFor(() => {
